@@ -6,12 +6,14 @@ public interface INavigationService
 {
     event PropertyChangedEventHandler? PropertyChanged;
     string CurrentView { get; }
-    void GoTo(string viewName);
+    object? NavigationParameter { get; }
+    void GoTo(string viewName, object? parameter = null);
 }
 
 public class NavigationService : INavigationService, INotifyPropertyChanged
 {
     private string _currentView = "Home";
+    private object? _navigationParameter;
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -28,10 +30,24 @@ public class NavigationService : INavigationService, INotifyPropertyChanged
         }
     }
 
-    public void GoTo(string viewName)
+    public object? NavigationParameter
+    {
+        get => _navigationParameter;
+        private set
+        {
+            if (_navigationParameter != value)
+            {
+                _navigationParameter = value;
+                OnPropertyChanged(nameof(NavigationParameter));
+            }
+        }
+    }
+
+    public void GoTo(string viewName, object? parameter = null)
     {
         if (IsValidView(viewName))
         {
+            NavigationParameter = parameter;
             CurrentView = viewName;
         }
     }
@@ -51,9 +67,16 @@ public class NavigationService : INavigationService, INotifyPropertyChanged
         GoTo("IrisAnonima");
     }
 
+    public void NavigateToFichaPaciente(int pacienteId = 0)
+    {
+        System.Diagnostics.Debug.WriteLine($"*** NavigateToFichaPaciente chamado com ID: {pacienteId} ***");
+        GoTo("FichaPaciente", pacienteId);
+        System.Diagnostics.Debug.WriteLine($"GoTo executado. CurrentView: {CurrentView}, Parameter: {NavigationParameter}");
+    }
+
     private static bool IsValidView(string viewName)
     {
-        return viewName is "Home" or "Pacientes" or "IrisAnonima";
+        return viewName is "Home" or "Pacientes" or "IrisAnonima" or "FichaPaciente";
     }
 
     protected virtual void OnPropertyChanged(string propertyName)

@@ -13,10 +13,31 @@ public partial class App : Application
 {
     private ServiceProvider? _serviceProvider;
 
+    public static void DebugLog(string message)
+    {
+        var timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        var logMessage = $"[{timestamp}] {message}";
+        
+        // Escrever no console
+        Console.WriteLine(logMessage);
+        
+        // Escrever no ficheiro
+        try
+        {
+            var logPath = Path.Combine(AppContext.BaseDirectory, "debug.log");
+            File.AppendAllText(logPath, logMessage + "\n");
+        }
+        catch { /* Ignorar erros de escrita */ }
+    }
+
     protected override void OnStartup(StartupEventArgs e)
     {
         try
         {
+            // Iniciar logging simples
+            DebugLog("=== BIODESK PRO DEBUG INICIADO (SEM CONSOLE) ===");
+            DebugLog($"Diretório da aplicação: {AppContext.BaseDirectory}");
+            
             base.OnStartup(e);
             
             ConfigureExceptionHandling();
@@ -31,12 +52,12 @@ public partial class App : Application
         catch (Exception ex)
         {
             // Log detalhado do erro de startup
-            var errorMessage = $"Erro durante startup da aplicação:\n\n" +
+            var errorMessage = $"🏥 BioDesk PRO - Erro durante startup:\n\n" +
                              $"Mensagem: {ex.Message}\n\n" +
                              $"StackTrace:\n{ex.StackTrace}\n\n" +
                              $"InnerException: {ex.InnerException?.Message}";
             
-            MessageBox.Show(errorMessage, "Erro de Inicialização", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(errorMessage, "🏥 BioDesk PRO - Erro de Inicialização", MessageBoxButton.OK, MessageBoxImage.Error);
             
             // Tentar escrever no log também
             try
@@ -56,13 +77,8 @@ public partial class App : Application
     {
         var services = new ServiceCollection();
         
-        // Configurar DbContext
-        services.AddDbContext<BioDeskDbContext>(options =>
-        {
-            var dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "BioDesk", "pacientes.db");
-            Directory.CreateDirectory(Path.GetDirectoryName(dbPath)!);
-            options.UseSqlite($"Data Source={dbPath}");
-        });
+        // Configurar DbContext (configuração definida no BioDeskDbContext.cs)
+        services.AddDbContext<BioDeskDbContext>();
         
         // Registar serviços
         services.AddSingleton<INavigationService, NavigationService>();

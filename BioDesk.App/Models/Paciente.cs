@@ -7,17 +7,21 @@ public class Paciente
     public int Id { get; set; }
     
     [Required]
-    [MaxLength(100)]
-    public string PrimeiroNome { get; set; } = string.Empty;
-    
-    [Required]
-    [MaxLength(100)]
-    public string UltimoNome { get; set; } = string.Empty;
-    
-    public string NomeCompleto => $"{PrimeiroNome} {UltimoNome}";
+    [MaxLength(200)]
+    public string NomeCompleto { get; set; } = string.Empty;
     
     [Required]
     public DateTime DataNascimento { get; set; }
+    
+    // Propriedade calculada para idade
+    public int Idade => DateTime.Now.Year - DataNascimento.Year - 
+        (DateTime.Now.DayOfYear < DataNascimento.DayOfYear ? 1 : 0);
+    
+    [MaxLength(20)]
+    public string? Genero { get; set; }
+    
+    [MaxLength(15)]
+    public string? NIF { get; set; }
     
     [MaxLength(20)]
     public string? Telefone { get; set; }
@@ -35,11 +39,20 @@ public class Paciente
     [MaxLength(10)]
     public string? CodigoPostal { get; set; }
     
-    [MaxLength(50)]
-    public string? Pais { get; set; }
+    [MaxLength(100)]
+    public string? Profissao { get; set; }
     
-    [MaxLength(20)]
-    public string? NumeroUtente { get; set; }
+    [MaxLength(50)]
+    public string? EstadoCivil { get; set; }
+    
+    [MaxLength(50)]
+    public string? LocalHabitual { get; set; }
+    
+    [MaxLength(100)]
+    public string? ComoConheceu { get; set; }
+    
+    [MaxLength(200)]
+    public string? QuemRecomendou { get; set; }
     
     [MaxLength(500)]
     public string? Observacoes { get; set; }

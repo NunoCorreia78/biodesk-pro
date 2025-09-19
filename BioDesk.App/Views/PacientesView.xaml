@@ -144,6 +144,19 @@
                     
                     <Border Background="#A4C3A2" CornerRadius="8" Margin="0,0,12,0">
                         <Button Content="+ Novo Paciente"
+                               Command="{Binding NovoPacienteCommand}"
+                               Background="Transparent"
+                               Foreground="White"
+                               FontFamily="Segoe UI"
+                               FontSize="14"
+                               FontWeight="Medium"
+                               BorderThickness="0"
+                               Padding="20,10"/>
+                    </Border>
+
+                    <Border Background="#3B82F6" CornerRadius="8" Margin="0,0,12,0">
+                        <Button Content="📂 Abrir Ficha"
+                               Command="{Binding AbrirFichaCommand}"
                                Background="Transparent"
                                Foreground="White"
                                FontFamily="Segoe UI"
@@ -155,6 +168,7 @@
                     
                     <Border Background="#EF4444" CornerRadius="8">
                         <Button Content="🗑️ Eliminar"
+                               Command="{Binding EliminarPacienteCommand}"
                                Background="Transparent"
                                Foreground="White"
                                FontFamily="Segoe UI"
@@ -179,6 +193,8 @@
             </Border.Effect>
             
             <DataGrid x:Name="PacientesDataGrid"
+                     ItemsSource="{Binding PacientesFiltrados}"
+                     SelectedItem="{Binding PacienteSelecionado}"
                      AutoGenerateColumns="False"
                      CanUserAddRows="False"
                      CanUserDeleteRows="False"
@@ -211,8 +227,8 @@
                                 <Setter Property="Background" Value="#F1F5F9"/>
                             </Trigger>
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="Background" Value="#DBEAFE"/>
-                                <Setter Property="BorderBrush" Value="#3B82F6"/>
+                                <Setter Property="Background" Value="#E2E8F0"/>
+                                <Setter Property="BorderBrush" Value="#64748B"/>
                                 <Setter Property="BorderThickness" Value="1"/>
                             </Trigger>
                         </Style.Triggers>
@@ -235,64 +251,83 @@
                 
                 <!-- Colunas com dados de exemplo -->
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Width="80" IsReadOnly="True">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Padding" Value="16,0"/>
-                                <Setter Property="VerticalAlignment" Value="Center"/>
-                                <Setter Property="Foreground" Value="#6B7280"/>
-                                <Setter Property="FontWeight" Value="Medium"/>
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
-                    
-                    <DataGridTextColumn Header="Nome Completo" Width="*" MinWidth="200" IsReadOnly="True">
+                    <DataGridTextColumn Header="Nome Completo" Width="*" MinWidth="200" IsReadOnly="True" Binding="{Binding NomeCompleto}">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="Padding" Value="16,0"/>
                                 <Setter Property="VerticalAlignment" Value="Center"/>
                                 <Setter Property="Foreground" Value="#111827"/>
                                 <Setter Property="FontWeight" Value="Medium"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=IsSelected}" Value="True">
+                                        <Setter Property="Foreground" Value="#1F2937"/>
+                                        <Setter Property="FontWeight" Value="SemiBold"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
                     
-                    <DataGridTextColumn Header="Data Nascimento" Width="140" IsReadOnly="True">
+                    <DataGridTextColumn Header="Data Nascimento" Width="140" IsReadOnly="True" Binding="{Binding DataNascimento, StringFormat=dd/MM/yyyy}">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="Padding" Value="16,0"/>
                                 <Setter Property="VerticalAlignment" Value="Center"/>
                                 <Setter Property="Foreground" Value="#6B7280"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=IsSelected}" Value="True">
+                                        <Setter Property="Foreground" Value="#374151"/>
+                                        <Setter Property="FontWeight" Value="Medium"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
                     
-                    <DataGridTextColumn Header="Telefone" Width="130" IsReadOnly="True">
+                    <DataGridTextColumn Header="Telefone" Width="130" IsReadOnly="True" Binding="{Binding Telefone}">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="Padding" Value="16,0"/>
                                 <Setter Property="VerticalAlignment" Value="Center"/>
                                 <Setter Property="Foreground" Value="#6B7280"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=IsSelected}" Value="True">
+                                        <Setter Property="Foreground" Value="#374151"/>
+                                        <Setter Property="FontWeight" Value="Medium"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
                     
-                    <DataGridTextColumn Header="Email" Width="200" IsReadOnly="True">
+                    <DataGridTextColumn Header="Email" Width="200" IsReadOnly="True" Binding="{Binding Email}">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="Padding" Value="16,0"/>
                                 <Setter Property="VerticalAlignment" Value="Center"/>
                                 <Setter Property="Foreground" Value="#6B7280"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=IsSelected}" Value="True">
+                                        <Setter Property="Foreground" Value="#374151"/>
+                                        <Setter Property="FontWeight" Value="Medium"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
                     
-                    <DataGridTextColumn Header="Última Consulta" Width="140" IsReadOnly="True">
+                    <DataGridTextColumn Header="Última Consulta" Width="140" IsReadOnly="True" Binding="{Binding UltimaConsulta, StringFormat=dd/MM/yyyy}">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="Padding" Value="16,0"/>
                                 <Setter Property="VerticalAlignment" Value="Center"/>
                                 <Setter Property="Foreground" Value="#6B7280"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=IsSelected}" Value="True">
+                                        <Setter Property="Foreground" Value="#374151"/>
+                                        <Setter Property="FontWeight" Value="Medium"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>

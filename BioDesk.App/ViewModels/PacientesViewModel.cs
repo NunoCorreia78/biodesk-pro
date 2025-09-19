@@ -22,8 +22,21 @@ public partial class PacientesViewModel : ViewModelBase
     [ObservableProperty]
     private ObservableCollection<Paciente> pacientesFiltrados = new();
     
-    [ObservableProperty]
-    private Paciente? pacienteSelecionado;
+    private Paciente? _pacienteSelecionado;
+    public Paciente? PacienteSelecionado 
+    { 
+        get => _pacienteSelecionado;
+        set 
+        {
+            if (SetProperty(ref _pacienteSelecionado, value))
+            {
+                // Notificar comandos para reavaliar CanExecute
+                AbrirFichaCommand.NotifyCanExecuteChanged();
+                EliminarPacienteCommand.NotifyCanExecuteChanged();
+                BioDesk.App.App.DebugLog($"Paciente selecionado mudou para: {value?.NomeCompleto ?? "NULL"}");
+            }
+        }
+    }
     
     [ObservableProperty]
     private string pesquisaTexto = string.Empty;
@@ -49,20 +62,23 @@ public partial class PacientesViewModel : ViewModelBase
         }
     }
     
-    private async Task CarregarPacientesAsync()
+    public async Task CarregarPacientesAsync()
     {
         try
         {
+            BioDesk.App.App.DebugLog("=== CARREGANDO PACIENTES ===");
             IsLoading = true;
             
             // Garantir que a base de dados existe
             await _context.Database.EnsureCreatedAsync();
+            BioDesk.App.App.DebugLog("Base de dados verificada/criada");
             
             var pacientes = await _context.Pacientes
                 .Where(p => p.Ativo)
-                .OrderBy(p => p.PrimeiroNome)
-                .ThenBy(p => p.UltimoNome)
+                .OrderBy(p => p.NomeCompleto)
                 .ToListAsync();
+                
+            BioDesk.App.App.DebugLog($"Pacientes encontrados na BD: {pacientes.Count}");
             
             Pacientes.Clear();
             PacientesFiltrados.Clear();
@@ -72,11 +88,18 @@ public partial class PacientesViewModel : ViewModelBase
                 Pacientes.Add(paciente);
                 PacientesFiltrados.Add(paciente);
             }
+            
+            BioDesk.App.App.DebugLog($"Total na ObservableCollection: {Pacientes.Count}");
         }
         catch (Exception ex)
         {
-            // Log error - por agora só mostra na consola
-            System.Diagnostics.Debug.WriteLine($"Erro ao carregar pacientes: {ex.Message}");
+            BioDesk.App.App.DebugLog($"=== ERRO AO CARREGAR PACIENTES ===");
+            BioDesk.App.App.DebugLog($"Erro: {ex.Message}");
+            BioDesk.App.App.DebugLog($"StackTrace: {ex.StackTrace}");
+            if (ex.InnerException != null)
+            {
+                BioDesk.App.App.DebugLog($"InnerException: {ex.InnerException.Message}");
+            }
         }
         finally
         {
@@ -102,7 +125,7 @@ public partial class PacientesViewModel : ViewModelBase
             p.NomeCompleto.ToLowerInvariant().Contains(termo) ||
             (p.Email?.ToLowerInvariant().Contains(termo) ?? false) ||
             (p.Telefone?.Contains(termo) ?? false) ||
-            (p.NumeroUtente?.Contains(termo) ?? false)
+            (p.NIF?.Contains(termo) ?? false)
         );
         
         foreach (var paciente in pacientesFiltrados)
@@ -112,31 +135,64 @@ public partial class PacientesViewModel : ViewModelBase
     }
     
     [RelayCommand]
-    private async Task NovoPaciente()
+    private void NovoPaciente()
     {
-        // Por agora, apenas mostra uma mensagem
-        System.Diagnostics.Debug.WriteLine("Novo paciente - funcionalidade em desenvolvimento");
-        
-        // TODO: Abrir janela de criação de paciente
-        await Task.CompletedTask;
+        System.Diagnostics.Debug.WriteLine("*** COMANDO NOVO PACIENTE EXECUTADO ***");
+        try
+        {
+            // Navegar para ficha de novo paciente (ID = 0)
+            System.Diagnostics.Debug.WriteLine($"Navegando para FichaPaciente com ID = 0");
+            _navigationService.NavigateToFichaPaciente(0);
+            System.Diagnostics.Debug.WriteLine("Navegação executada com sucesso");
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Erro na navegação: {ex.Message}");
+        }
     }
     
     [RelayCommand]
-    private async Task EditarPaciente()
+    private void EditarPaciente()
     {
         if (PacienteSelecionado == null) return;
         
-        // Por agora, apenas mostra uma mensagem
-        System.Diagnostics.Debug.WriteLine($"Editar paciente: {PacienteSelecionado.NomeCompleto}");
-        
-        // TODO: Abrir janela de edição de paciente
-        await Task.CompletedTask;
+        // Navegar para ficha do paciente selecionado
+        _navigationService.NavigateToFichaPaciente(PacienteSelecionado.Id);
     }
     
-    [RelayCommand]
+    [RelayCommand(CanExecute = nameof(CanAbrirFicha))]
+    private void AbrirFicha()
+    {
+        BioDesk.App.App.DebugLog($"=== COMANDO ABRIR FICHA EXECUTADO ===");
+        BioDesk.App.App.DebugLog($"PacienteSelecionado: {PacienteSelecionado?.NomeCompleto ?? "NULL"}");
+        
+        if (PacienteSelecionado == null) 
+        {
+            BioDesk.App.App.DebugLog("ERRO: Nenhum paciente selecionado");
+            return;
+        }
+        
+        BioDesk.App.App.DebugLog($"Navegando para ficha do paciente ID: {PacienteSelecionado.Id}");
+        
+        // Navegar para ficha do paciente selecionado (mesmo que editar)
+        _navigationService.NavigateToFichaPaciente(PacienteSelecionado.Id);
+    }
+
+    private bool CanAbrirFicha() => PacienteSelecionado != null;
+    
+    [RelayCommand(CanExecute = nameof(CanEliminarPaciente))]
     private async Task EliminarPaciente()
     {
-        if (PacienteSelecionado == null) return;
+        BioDesk.App.App.DebugLog($"=== COMANDO ELIMINAR PACIENTE EXECUTADO ===");
+        BioDesk.App.App.DebugLog($"PacienteSelecionado: {PacienteSelecionado?.NomeCompleto ?? "NULL"}");
+        
+        if (PacienteSelecionado == null) 
+        {
+            BioDesk.App.App.DebugLog("ERRO: Nenhum paciente selecionado para eliminar");
+            return;
+        }
+
+        BioDesk.App.App.DebugLog($"Eliminando paciente ID: {PacienteSelecionado.Id}");
         
         try
         {
@@ -159,6 +215,8 @@ public partial class PacientesViewModel : ViewModelBase
             System.Diagnostics.Debug.WriteLine($"Erro ao eliminar paciente: {ex.Message}");
         }
     }
+
+    private bool CanEliminarPaciente() => PacienteSelecionado != null;
     
     [RelayCommand]
     private void Voltar()

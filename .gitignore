@@ -4,6 +4,12 @@
 [Ll]og/
 [Ll]ogs/
 
+# Base de dados local - não incluir no Git
+Data/
+*.db
+*.sqlite
+*.sqlite3
+
 # Visual Studio
 .vs/
 *.suo

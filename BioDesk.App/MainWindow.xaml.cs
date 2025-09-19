@@ -96,6 +96,7 @@ public partial class MainWindow : Window
                 "Home" => CreateHomeView(),
                 "Pacientes" => CreatePacientesView(),
                 "IrisAnonima" => new IrisAnonimaView(),
+                "FichaPaciente" => CreateFichaPacienteView(),
                 _ => CreateHomeView()
             };
 
@@ -146,6 +147,10 @@ public partial class MainWindow : Window
             var pacientesView = new PacientesView();
             var pacientesViewModel = _serviceProvider.GetRequiredService<PacientesViewModel>();
             pacientesView.DataContext = pacientesViewModel;
+            
+            // Recarregar dados sempre que a vista for criada
+            _ = pacientesViewModel.CarregarPacientesAsync();
+            
             return pacientesView;
         }
         catch
@@ -155,8 +160,47 @@ public partial class MainWindow : Window
             // O PacientesViewModel precisa do DbContext, então vamos usar DI
             var dbContext = _serviceProvider.GetRequiredService<BioDeskDbContext>();
             var navigationService = (NavigationService)_navigationService;
-            pacientesView.DataContext = new PacientesViewModel(dbContext, navigationService);
+            var viewModel = new PacientesViewModel(dbContext, navigationService);
+            pacientesView.DataContext = viewModel;
+            
+            // Recarregar dados
+            _ = viewModel.CarregarPacientesAsync();
+            
             return pacientesView;
+        }
+    }
+
+    private FichaPacienteView CreateFichaPacienteView()
+    {
+        try
+        {
+            var fichaPacienteView = new FichaPacienteView();
+            var dbContext = _serviceProvider.GetRequiredService<BioDeskDbContext>();
+            var navigationService = (NavigationService)_navigationService;
+            var viewModel = new FichaPacienteViewModel(dbContext, navigationService);
+            
+            // Carregar dados do paciente se foi passado um ID
+            if (_navigationService.NavigationParameter is int pacienteId)
+            {
+                _ = Task.Run(async () =>
+                {
+                    await viewModel.CarregarPacienteAsync(pacienteId);
+                });
+            }
+            
+            fichaPacienteView.DataContext = viewModel;
+            
+            return fichaPacienteView;
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Erro ao criar FichaPacienteView: {ex.Message}");
+            // Fallback
+            var fichaPacienteView = new FichaPacienteView();
+            var dbContext = _serviceProvider.GetRequiredService<BioDeskDbContext>();
+            var navigationService = (NavigationService)_navigationService;
+            fichaPacienteView.DataContext = new FichaPacienteViewModel(dbContext, navigationService);
+            return fichaPacienteView;
         }
     }
 

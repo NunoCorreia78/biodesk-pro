@@ -7,6 +7,11 @@
              d:DesignHeight="720" d:DesignWidth="1280"
              Background="#FAFBFC">
     
+    <UserControl.Resources>
+        <!-- Conversor para Boolean para Visibility -->
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </UserControl.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -624,7 +629,8 @@
                                               FontSize="13"
                                               FontWeight="Medium" 
                                               Foreground="#374151"
-                                              Margin="0,0,0,6"/>
+                                              Margin="0,0,0,6"
+                                              Visibility="{Binding MostrarCampoRecomendacao, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                                     <TextBox Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"
                                             Text="{Binding QuemRecomendou, UpdateSourceTrigger=PropertyChanged}"
                                             FontFamily="Segoe UI"
@@ -632,7 +638,8 @@
                                             Padding="12,10"
                                             BorderBrush="#D1D5DB"
                                             BorderThickness="1"
-                                            Background="#FAFBFC"/>
+                                            Background="#FAFBFC"
+                                            Visibility="{Binding MostrarCampoRecomendacao, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                                     
                                     <!-- Observações -->
                                     <TextBlock Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3"

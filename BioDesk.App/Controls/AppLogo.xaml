@@ -1,0 +1,39 @@
+<UserControl x:Class="BioDesk.App.Controls.AppLogo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             x:Name="Root">
+    
+    <!-- Logo baseado na imagem fornecida -->
+    <Viewbox Width="{Binding Size, ElementName=Root}" 
+             Height="{Binding Size, ElementName=Root}">
+        <Canvas Width="100" Height="100">
+            <!-- Círculo exterior verde com stroke -->
+            <Ellipse Width="96" Height="96" 
+                    Canvas.Left="2" Canvas.Top="2"
+                    Fill="#A4C3A2" 
+                    Stroke="#8DB380" 
+                    StrokeThickness="4"/>
+            
+            <!-- Folha estilizada principal -->
+            <Path Data="M 25 40 Q 35 20, 55 30 Q 70 40, 65 60 Q 55 75, 40 70 Q 25 60, 25 40 Z"
+                  Fill="#8DB380" 
+                  Canvas.Left="0" 
+                  Canvas.Top="0"/>
+            
+            <!-- Detalhe interno da folha -->
+            <Path Data="M 35 45 Q 45 30, 55 40 Q 60 50, 50 60 Q 40 55, 35 45 Z"
+                  Fill="#7BA578" 
+                  Canvas.Left="0" 
+                  Canvas.Top="0"/>
+            
+            <!-- Elemento decorativo roxo curvo -->
+            <Path Data="M 55 55 Q 75 45, 80 70 Q 70 80, 55 75 Q 50 65, 55 55 Z"
+                  Fill="#9B7EBD" 
+                  Canvas.Left="0" 
+                  Canvas.Top="0"/>
+        </Canvas>
+    </Viewbox>
+</UserControl>

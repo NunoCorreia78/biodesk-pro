@@ -60,17 +60,36 @@
                 
                 <!-- Informações do Paciente -->
                 <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                    <TextBlock Text="{Binding NomePaciente, FallbackValue='Novo Paciente'}"
-                              FontFamily="Segoe UI"
-                              FontSize="24"
-                              FontWeight="SemiBold"
-                              Foreground="#1E293B"/>
-                    <TextBlock FontFamily="Segoe UI"
-                              FontSize="14"
-                              Foreground="#64748B">
-                        <Run Text="{Binding IdadePaciente, FallbackValue='0'}"/>
-                        <Run Text="anos"/>
-                    </TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding NomePaciente, FallbackValue='Novo Paciente'}"
+                                  FontFamily="Segoe UI"
+                                  FontSize="24"
+                                  FontWeight="SemiBold"
+                                  Foreground="#1E293B"/>
+                        <TextBlock Text=" *" 
+                                  FontFamily="Segoe UI"
+                                  FontSize="24"
+                                  FontWeight="Bold"
+                                  Foreground="#DC2626"
+                                  Margin="4,0,0,0"
+                                  Visibility="{Binding TemAlteracoesNaoGuardadas, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                  ToolTip="Tem alterações não guardadas"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontFamily="Segoe UI"
+                                  FontSize="14"
+                                  Foreground="#64748B">
+                            <Run Text="{Binding IdadePaciente, FallbackValue='0'}"/>
+                            <Run Text="anos"/>
+                        </TextBlock>
+                        <TextBlock Text=" - Alterações não guardadas" 
+                                  FontFamily="Segoe UI"
+                                  FontSize="14"
+                                  Foreground="#DC2626" 
+                                  FontWeight="Medium"
+                                  Margin="4,0,0,0"
+                                  Visibility="{Binding TemAlteracoesNaoGuardadas, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                    </StackPanel>
                 </StackPanel>
                 
                 <!-- Ações -->
@@ -385,7 +404,7 @@
                                     
                                     <!-- Telefone -->
                                     <TextBlock Grid.Row="0" Grid.Column="0" 
-                                              Text="Telefone *" 
+                                              Text="Telefone" 
                                               FontFamily="Segoe UI"
                                               FontSize="13"
                                               FontWeight="Medium" 
@@ -402,7 +421,7 @@
                                     
                                     <!-- Email -->
                                     <TextBlock Grid.Row="0" Grid.Column="2" 
-                                              Text="Email *" 
+                                              Text="Email" 
                                               FontFamily="Segoe UI"
                                               FontSize="13"
                                               FontWeight="Medium" 
@@ -579,7 +598,7 @@
                                     
                                     <!-- Local Habitual -->
                                     <TextBlock Grid.Row="0" Grid.Column="0" 
-                                              Text="Local Habitual *" 
+                                              Text="Local Habitual" 
                                               FontFamily="Segoe UI"
                                               FontSize="13"
                                               FontWeight="Medium" 

@@ -7,6 +7,9 @@ namespace BioDesk.App.Data;
 public class BioDeskDbContext : DbContext
 {
     public DbSet<Paciente> Pacientes { get; set; }
+    public DbSet<QuestionarioSaude> QuestionariosSaude { get; set; }
+    public DbSet<ConsentimentoInformado> ConsentimentosInformados { get; set; }
+    public DbSet<AssinaturaDigital> AssinaturasDigitais { get; set; }
     
     public BioDeskDbContext(DbContextOptions<BioDeskDbContext> options) : base(options)
     {
@@ -129,5 +132,103 @@ public class BioDeskDbContext : DbContext
                 UltimaConsulta = DateTime.Now.AddDays(-3)
             }
         );
+        
+        // Configuração do QuestionarioSaude
+        modelBuilder.Entity<QuestionarioSaude>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Id).ValueGeneratedOnAdd();
+            
+            // Relacionamento com Paciente
+            entity.HasOne(e => e.Paciente)
+                  .WithMany()
+                  .HasForeignKey(e => e.PacienteId)
+                  .OnDelete(DeleteBehavior.Cascade);
+            
+            // Propriedades obrigatórias
+            entity.Property(e => e.DataPreenchimento).IsRequired();
+            entity.Property(e => e.Completo).IsRequired();
+            
+            // Índices para performance
+            entity.HasIndex(e => e.PacienteId);
+            entity.HasIndex(e => e.DataPreenchimento);
+        });
+        
+        // Configuração do ConsentimentoInformado
+        modelBuilder.Entity<ConsentimentoInformado>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Id).ValueGeneratedOnAdd();
+            
+            // Relacionamento com Paciente
+            entity.HasOne(e => e.Paciente)
+                  .WithMany()
+                  .HasForeignKey(e => e.PacienteId)
+                  .OnDelete(DeleteBehavior.Cascade);
+            
+            // Propriedades obrigatórias
+            entity.Property(e => e.TipoTerapia).IsRequired().HasMaxLength(100);
+            entity.Property(e => e.ConteudoConsentimento).IsRequired();
+            entity.Property(e => e.DataConsentimento).IsRequired();
+            entity.Property(e => e.ConsentimentoObtido).IsRequired();
+            entity.Property(e => e.DataCriacao).IsRequired();
+            
+            // Propriedades opcionais com tamanhos definidos
+            entity.Property(e => e.ObservacoesAdicionais).HasMaxLength(500);
+            entity.Property(e => e.TermosEspecificos).HasMaxLength(1000);
+            entity.Property(e => e.IdentificacaoProfissional).HasMaxLength(200);
+            entity.Property(e => e.LocalTratamento).HasMaxLength(100);
+            entity.Property(e => e.CaminhoDocumento).HasMaxLength(500);
+            
+            // Índices para performance
+            entity.HasIndex(e => e.PacienteId);
+            entity.HasIndex(e => e.DataConsentimento);
+            entity.HasIndex(e => e.TipoTerapia);
+            entity.HasIndex(e => e.ConsentimentoObtido);
+        });
+
+        modelBuilder.Entity<AssinaturaDigital>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Id).ValueGeneratedOnAdd();
+            
+            // Propriedades obrigatórias
+            entity.Property(e => e.PacienteId).IsRequired();
+            entity.Property(e => e.TipoDocumento).IsRequired().HasMaxLength(100);
+            entity.Property(e => e.DadosAssinatura).IsRequired();
+            entity.Property(e => e.ImagemAssinatura).IsRequired();
+            entity.Property(e => e.DataAssinatura).IsRequired();
+            entity.Property(e => e.HashVerificacao).IsRequired().HasMaxLength(500);
+            entity.Property(e => e.DataCriacao).IsRequired();
+            entity.Property(e => e.AssinaturaValida).IsRequired();
+            
+            // Propriedades opcionais com tamanhos definidos
+            entity.Property(e => e.DispositivoUtilizado).HasMaxLength(200);
+            entity.Property(e => e.VersaoApp).HasMaxLength(100);
+            entity.Property(e => e.ObservacoesValidacao).HasMaxLength(1000);
+            
+            // Relacionamentos
+            entity.HasOne(a => a.Paciente)
+                  .WithMany()
+                  .HasForeignKey(a => a.PacienteId)
+                  .OnDelete(DeleteBehavior.Cascade);
+                  
+            entity.HasOne(a => a.QuestionarioSaude)
+                  .WithMany()
+                  .HasForeignKey(a => a.QuestionarioSaudeId)
+                  .OnDelete(DeleteBehavior.SetNull);
+                  
+            entity.HasOne(a => a.ConsentimentoInformado)
+                  .WithMany()
+                  .HasForeignKey(a => a.ConsentimentoInformadoId)
+                  .OnDelete(DeleteBehavior.SetNull);
+            
+            // Índices para performance
+            entity.HasIndex(e => e.PacienteId);
+            entity.HasIndex(e => e.DataAssinatura);
+            entity.HasIndex(e => e.TipoDocumento);
+            entity.HasIndex(e => e.AssinaturaValida);
+            entity.HasIndex(e => e.HashVerificacao);
+        });
     }
 }

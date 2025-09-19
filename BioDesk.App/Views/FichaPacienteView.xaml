@@ -228,134 +228,437 @@
                 
                 <!-- Conteúdo Dados Pessoais -->
                 <ScrollViewer VerticalScrollBarVisibility="Auto" 
-                             Padding="32,24">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
+                             Padding="40,32">
+                    <StackPanel>
                         
-                        <!-- Nome Completo -->
-                        <TextBlock Grid.Row="0" Grid.Column="0" 
-                                  Text="Nome Completo *" 
-                                  FontWeight="Medium" 
-                                  Margin="0,0,0,8"/>
-                        <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-                                Text="{Binding NomeCompleto, UpdateSourceTrigger=PropertyChanged}"
-                                Margin="0,0,0,20"/>
+                        <!-- Seção 1: Informações Básicas -->
+                        <Border Background="White" 
+                               CornerRadius="12" 
+                               Padding="24"
+                               BorderBrush="#E2E8F0" 
+                               BorderThickness="1"
+                               Margin="0,0,0,24">
+                            <Border.Effect>
+                                <DropShadowEffect Color="#000000" Opacity="0.04" ShadowDepth="1" BlurRadius="6"/>
+                            </Border.Effect>
+                            
+                            <StackPanel>
+                                <!-- Título da seção -->
+                                <TextBlock Text="👤 Informações Pessoais" 
+                                          FontFamily="Segoe UI"
+                                          FontSize="16" 
+                                          FontWeight="SemiBold" 
+                                          Foreground="#1E293B"
+                                          Margin="0,0,0,20"/>
+                                
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="20"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="20"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="16"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    
+                                    <!-- Nome Completo (span full width) -->
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5"
+                                              Text="Nome Completo *" 
+                                              FontFamily="Segoe UI"
+                                              FontSize="13"
+                                              FontWeight="Medium" 
+                                              Foreground="#374151"
+                                              Margin="0,0,0,6"/>
+                                    <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5"
+                                            Text="{Binding NomeCompleto, UpdateSourceTrigger=PropertyChanged}"
+                                            FontFamily="Segoe UI"
+                                            FontSize="14"
+                                            Padding="12,10"
+                                            BorderBrush="#D1D5DB"
+                                            BorderThickness="1"
+                                            Background="#FAFBFC"/>
+                                    
+                                    <!-- Data de Nascimento -->
+                                    <TextBlock Grid.Row="3" Grid.Column="0" 
+                                              Text="Data de Nascimento *" 
+                                              FontFamily="Segoe UI"
+                                              FontSize="13"
+                                              FontWeight="Medium" 
+                                              Foreground="#374151"
+                                              Margin="0,0,0,6"/>
+                                    <DatePicker Grid.Row="4" Grid.Column="0"
+                                               SelectedDate="{Binding DataNascimento, UpdateSourceTrigger=PropertyChanged}"
+                                               FontFamily="Segoe UI"
+                                               FontSize="14"
+                                               Background="#FAFBFC"
+                                               BorderBrush="#D1D5DB"/>
+                                    
+                                    <!-- Género -->
+                                    <TextBlock Grid.Row="3" Grid.Column="2" 
+                                              Text="Género" 
+                                              FontFamily="Segoe UI"
+                                              FontSize="13"
+                                              FontWeight="Medium" 
+                                              Foreground="#374151"
+                                              Margin="0,0,0,6"/>
+                                    <ComboBox Grid.Row="4" Grid.Column="2"
+                                             SelectedItem="{Binding Genero, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI"
+                                             FontSize="14"
+                                             Background="#FAFBFC"
+                                             BorderBrush="#D1D5DB">
+                                        <ComboBoxItem Content="Masculino"/>
+                                        <ComboBoxItem Content="Feminino"/>
+                                        <ComboBoxItem Content="Outro"/>
+                                    </ComboBox>
+                                    
+                                    <!-- Estado Civil -->
+                                    <TextBlock Grid.Row="3" Grid.Column="4" 
+                                              Text="Estado Civil" 
+                                              FontFamily="Segoe UI"
+                                              FontSize="13"
+                                              FontWeight="Medium" 
+                                              Foreground="#374151"
+                                              Margin="0,0,0,6"/>
+                                    <ComboBox Grid.Row="4" Grid.Column="4"
+                                             SelectedItem="{Binding EstadoCivil, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI"
+                                             FontSize="14"
+                                             Background="#FAFBFC"
+                                             BorderBrush="#D1D5DB">
+                                        <ComboBoxItem Content="Solteiro(a)"/>
+                                        <ComboBoxItem Content="Casado(a)"/>
+                                        <ComboBoxItem Content="Divorciado(a)"/>
+                                        <ComboBoxItem Content="Viúvo(a)"/>
+                                        <ComboBoxItem Content="União de Facto"/>
+                                    </ComboBox>
+                                </Grid>
+                            </StackPanel>
+                        </Border>
                         
-                        <!-- Data de Nascimento e Género -->
-                        <TextBlock Grid.Row="2" Grid.Column="0" 
-                                  Text="Data de Nascimento *" 
-                                  FontWeight="Medium" 
-                                  Margin="0,0,0,8"/>
-                        <DatePicker Grid.Row="3" Grid.Column="0"
-                                   SelectedDate="{Binding DataNascimento, UpdateSourceTrigger=PropertyChanged}"
-                                   Width="200"
-                                   HorizontalAlignment="Left"
-                                   Margin="0,0,20,20"/>
+                        <!-- Seção 2: Contactos -->
+                        <Border Background="White" 
+                               CornerRadius="12" 
+                               Padding="24"
+                               BorderBrush="#E2E8F0" 
+                               BorderThickness="1"
+                               Margin="0,0,0,24">
+                            <Border.Effect>
+                                <DropShadowEffect Color="#000000" Opacity="0.04" ShadowDepth="1" BlurRadius="6"/>
+                            </Border.Effect>
+                            
+                            <StackPanel>
+                                <!-- Título da seção -->
+                                <TextBlock Text="📞 Contactos" 
+                                          FontFamily="Segoe UI"
+                                          FontSize="16" 
+                                          FontWeight="SemiBold" 
+                                          Foreground="#1E293B"
+                                          Margin="0,0,0,20"/>
+                                
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="20"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="20"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="16"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    
+                                    <!-- Telefone -->
+                                    <TextBlock Grid.Row="0" Grid.Column="0" 
+                                              Text="Telefone *" 
+                                              FontFamily="Segoe UI"
+                                              FontSize="13"
+                                              FontWeight="Medium" 
+                                              Foreground="#374151"
+                                              Margin="0,0,0,6"/>
+                                    <TextBox Grid.Row="1" Grid.Column="0"
+                                            Text="{Binding Telefone, UpdateSourceTrigger=PropertyChanged}"
+                                            FontFamily="Segoe UI"
+                                            FontSize="14"
+                                            Padding="12,10"
+                                            BorderBrush="#D1D5DB"
+                                            BorderThickness="1"
+                                            Background="#FAFBFC"/>
+                                    
+                                    <!-- Email -->
+                                    <TextBlock Grid.Row="0" Grid.Column="2" 
+                                              Text="Email *" 
+                                              FontFamily="Segoe UI"
+                                              FontSize="13"
+                                              FontWeight="Medium" 
+                                              Foreground="#374151"
+                                              Margin="0,0,0,6"/>
+                                    <TextBox Grid.Row="1" Grid.Column="2"
+                                            Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"
+                                            FontFamily="Segoe UI"
+                                            FontSize="14"
+                                            Padding="12,10"
+                                            BorderBrush="#D1D5DB"
+                                            BorderThickness="1"
+                                            Background="#FAFBFC"/>
+                                    
+                                    <!-- NIF -->
+                                    <TextBlock Grid.Row="0" Grid.Column="4" 
+                                              Text="NIF" 
+                                              FontFamily="Segoe UI"
+                                              FontSize="13"
+                                              FontWeight="Medium" 
+                                              Foreground="#374151"
+                                              Margin="0,0,0,6"/>
+                                    <TextBox Grid.Row="1" Grid.Column="4"
+                                            Text="{Binding NifPaciente, UpdateSourceTrigger=PropertyChanged}"
+                                            FontFamily="Segoe UI"
+                                            FontSize="14"
+                                            Padding="12,10"
+                                            BorderBrush="#D1D5DB"
+                                            BorderThickness="1"
+                                            Background="#FAFBFC"/>
+                                    
+                                    <!-- Morada (span full width) -->
+                                    <TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5"
+                                              Text="Morada" 
+                                              FontFamily="Segoe UI"
+                                              FontSize="13"
+                                              FontWeight="Medium" 
+                                              Foreground="#374151"
+                                              Margin="0,0,0,6"/>
+                                    <TextBox Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5"
+                                            Text="{Binding Morada, UpdateSourceTrigger=PropertyChanged}"
+                                            FontFamily="Segoe UI"
+                                            FontSize="14"
+                                            Padding="12,10"
+                                            BorderBrush="#D1D5DB"
+                                            BorderThickness="1"
+                                            Background="#FAFBFC"/>
+                                </Grid>
+                            </StackPanel>
+                        </Border>
                         
-                        <TextBlock Grid.Row="2" Grid.Column="1" 
-                                  Text="Género" 
-                                  FontWeight="Medium" 
-                                  Margin="0,0,0,8"/>
-                        <ComboBox Grid.Row="3" Grid.Column="1"
-                                 SelectedItem="{Binding Genero, UpdateSourceTrigger=PropertyChanged}"
-                                 Width="150"
-                                 HorizontalAlignment="Left"
-                                 Margin="0,0,0,20">
-                            <ComboBoxItem Content="Masculino"/>
-                            <ComboBoxItem Content="Feminino"/>
-                            <ComboBoxItem Content="Outro"/>
-                        </ComboBox>
+                        <!-- Seção 3: Localização -->
+                        <Border Background="White" 
+                               CornerRadius="12" 
+                               Padding="24"
+                               BorderBrush="#E2E8F0" 
+                               BorderThickness="1"
+                               Margin="0,0,0,24">
+                            <Border.Effect>
+                                <DropShadowEffect Color="#000000" Opacity="0.04" ShadowDepth="1" BlurRadius="6"/>
+                            </Border.Effect>
+                            
+                            <StackPanel>
+                                <!-- Título da seção -->
+                                <TextBlock Text="📍 Localização" 
+                                          FontFamily="Segoe UI"
+                                          FontSize="16" 
+                                          FontWeight="SemiBold" 
+                                          Foreground="#1E293B"
+                                          Margin="0,0,0,20"/>
+                                
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="20"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="20"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    
+                                    <!-- Cidade -->
+                                    <TextBlock Grid.Row="0" Grid.Column="0" 
+                                              Text="Cidade" 
+                                              FontFamily="Segoe UI"
+                                              FontSize="13"
+                                              FontWeight="Medium" 
+                                              Foreground="#374151"
+                                              Margin="0,0,0,6"/>
+                                    <TextBox Grid.Row="1" Grid.Column="0"
+                                            Text="{Binding Cidade, UpdateSourceTrigger=PropertyChanged}"
+                                            FontFamily="Segoe UI"
+                                            FontSize="14"
+                                            Padding="12,10"
+                                            BorderBrush="#D1D5DB"
+                                            BorderThickness="1"
+                                            Background="#FAFBFC"/>
+                                    
+                                    <!-- Código Postal -->
+                                    <TextBlock Grid.Row="0" Grid.Column="2" 
+                                              Text="Código Postal" 
+                                              FontFamily="Segoe UI"
+                                              FontSize="13"
+                                              FontWeight="Medium" 
+                                              Foreground="#374151"
+                                              Margin="0,0,0,6"/>
+                                    <TextBox Grid.Row="1" Grid.Column="2"
+                                            Text="{Binding CodigoPostal, UpdateSourceTrigger=PropertyChanged}"
+                                            FontFamily="Segoe UI"
+                                            FontSize="14"
+                                            Padding="12,10"
+                                            BorderBrush="#D1D5DB"
+                                            BorderThickness="1"
+                                            Background="#FAFBFC"/>
+                                    
+                                    <!-- Profissão -->
+                                    <TextBlock Grid.Row="0" Grid.Column="4" 
+                                              Text="Profissão" 
+                                              FontFamily="Segoe UI"
+                                              FontSize="13"
+                                              FontWeight="Medium" 
+                                              Foreground="#374151"
+                                              Margin="0,0,0,6"/>
+                                    <TextBox Grid.Row="1" Grid.Column="4"
+                                            Text="{Binding Profissao, UpdateSourceTrigger=PropertyChanged}"
+                                            FontFamily="Segoe UI"
+                                            FontSize="14"
+                                            Padding="12,10"
+                                            BorderBrush="#D1D5DB"
+                                            BorderThickness="1"
+                                            Background="#FAFBFC"/>
+                                </Grid>
+                            </StackPanel>
+                        </Border>
                         
-                        <!-- NIF e Telefone -->
-                        <TextBlock Grid.Row="4" Grid.Column="0" 
-                                  Text="NIF" 
-                                  FontWeight="Medium" 
-                                  Margin="0,0,0,8"/>
-                        <TextBox Grid.Row="5" Grid.Column="0"
-                                Text="{Binding NifPaciente, UpdateSourceTrigger=PropertyChanged}"
-                                Width="180"
-                                HorizontalAlignment="Left"
-                                Margin="0,0,20,20"/>
+                        <!-- Seção 4: Informações Clínicas -->
+                        <Border Background="White" 
+                               CornerRadius="12" 
+                               Padding="24"
+                               BorderBrush="#E2E8F0" 
+                               BorderThickness="1">
+                            <Border.Effect>
+                                <DropShadowEffect Color="#000000" Opacity="0.04" ShadowDepth="1" BlurRadius="6"/>
+                            </Border.Effect>
+                            
+                            <StackPanel>
+                                <!-- Título da seção -->
+                                <TextBlock Text="🏥 Informações Clínicas" 
+                                          FontFamily="Segoe UI"
+                                          FontSize="16" 
+                                          FontWeight="SemiBold" 
+                                          Foreground="#1E293B"
+                                          Margin="0,0,0,20"/>
+                                
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="20"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="16"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="16"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    
+                                    <!-- Local Habitual -->
+                                    <TextBlock Grid.Row="0" Grid.Column="0" 
+                                              Text="Local Habitual *" 
+                                              FontFamily="Segoe UI"
+                                              FontSize="13"
+                                              FontWeight="Medium" 
+                                              Foreground="#374151"
+                                              Margin="0,0,0,6"/>
+                                    <ComboBox Grid.Row="1" Grid.Column="0"
+                                             SelectedItem="{Binding LocalHabitual2, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI"
+                                             FontSize="14"
+                                             Background="#FAFBFC"
+                                             BorderBrush="#D1D5DB">
+                                        <ComboBoxItem Content="Chão de Lopes"/>
+                                        <ComboBoxItem Content="Samora Correia"/>
+                                        <ComboBoxItem Content="Coruche"/>
+                                        <ComboBoxItem Content="Elvas"/>
+                                        <ComboBoxItem Content="Campo Maior"/>
+                                        <ComboBoxItem Content="Cliniprata"/>
+                                        <ComboBoxItem Content="Spazzio Vita"/>
+                                        <ComboBoxItem Content="Online"/>
+                                    </ComboBox>
+                                    
+                                    <!-- Como Conheceu -->
+                                    <TextBlock Grid.Row="0" Grid.Column="2" 
+                                              Text="Como Conheceu" 
+                                              FontFamily="Segoe UI"
+                                              FontSize="13"
+                                              FontWeight="Medium" 
+                                              Foreground="#374151"
+                                              Margin="0,0,0,6"/>
+                                    <ComboBox Grid.Row="1" Grid.Column="2"
+                                             SelectedItem="{Binding ComoConheceu, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI"
+                                             FontSize="14"
+                                             Background="#FAFBFC"
+                                             BorderBrush="#D1D5DB">
+                                        <ComboBoxItem Content="Website/Google"/>
+                                        <ComboBoxItem Content="Recomendação"/>
+                                        <ComboBoxItem Content="Redes Sociais"/>
+                                        <ComboBoxItem Content="Publicidade"/>
+                                        <ComboBoxItem Content="Outro"/>
+                                    </ComboBox>
+                                    
+                                    <!-- Quem Recomendou (condicional) -->
+                                    <TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
+                                              Text="Quem Recomendou" 
+                                              FontFamily="Segoe UI"
+                                              FontSize="13"
+                                              FontWeight="Medium" 
+                                              Foreground="#374151"
+                                              Margin="0,0,0,6"/>
+                                    <TextBox Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"
+                                            Text="{Binding QuemRecomendou, UpdateSourceTrigger=PropertyChanged}"
+                                            FontFamily="Segoe UI"
+                                            FontSize="14"
+                                            Padding="12,10"
+                                            BorderBrush="#D1D5DB"
+                                            BorderThickness="1"
+                                            Background="#FAFBFC"/>
+                                    
+                                    <!-- Observações -->
+                                    <TextBlock Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3"
+                                              Text="Observações" 
+                                              FontFamily="Segoe UI"
+                                              FontSize="13"
+                                              FontWeight="Medium" 
+                                              Foreground="#374151"
+                                              Margin="0,0,0,6"/>
+                                    <TextBox Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3"
+                                            Text="{Binding Observacoes, UpdateSourceTrigger=PropertyChanged}"
+                                            FontFamily="Segoe UI"
+                                            FontSize="14"
+                                            Padding="12,10"
+                                            BorderBrush="#D1D5DB"
+                                            BorderThickness="1"
+                                            Background="#FAFBFC"
+                                            TextWrapping="Wrap"
+                                            AcceptsReturn="True"
+                                            MinHeight="80"
+                                            VerticalScrollBarVisibility="Auto"/>
+                                </Grid>
+                            </StackPanel>
+                        </Border>
                         
-                        <TextBlock Grid.Row="4" Grid.Column="1" 
-                                  Text="Telefone *" 
-                                  FontWeight="Medium" 
-                                  Margin="0,0,0,8"/>
-                        <TextBox Grid.Row="5" Grid.Column="1"
-                                Text="{Binding Telefone, UpdateSourceTrigger=PropertyChanged}"
-                                Width="200"
-                                HorizontalAlignment="Left"
-                                Margin="0,0,0,20"/>
-                        
-                        <!-- Email e Profissão -->
-                        <TextBlock Grid.Row="6" Grid.Column="0" 
-                                  Text="Email *" 
-                                  FontWeight="Medium" 
-                                  Margin="0,0,0,8"/>
-                        <TextBox Grid.Row="7" Grid.Column="0"
-                                Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"
-                                Margin="0,0,20,20"/>
-                        
-                        <TextBlock Grid.Row="6" Grid.Column="1" 
-                                  Text="Profissão" 
-                                  FontWeight="Medium" 
-                                  Margin="0,0,0,8"/>
-                        <TextBox Grid.Row="7" Grid.Column="1"
-                                Text="{Binding Profissao, UpdateSourceTrigger=PropertyChanged}"
-                                Margin="0,0,0,20"/>
-                        
-                        <!-- Local Habitual -->
-                        <TextBlock Grid.Row="8" Grid.Column="0" 
-                                  Text="Local Habitual *" 
-                                  FontWeight="Medium" 
-                                  Margin="0,0,0,8"/>
-                        <ComboBox Grid.Row="9" Grid.Column="0"
-                                 SelectedItem="{Binding LocalHabitual2, UpdateSourceTrigger=PropertyChanged}"
-                                 Width="300"
-                                 HorizontalAlignment="Left"
-                                 Margin="0,0,20,20">
-                            <ComboBoxItem Content="Chão de Lopes"/>
-                            <ComboBoxItem Content="Samora Correia"/>
-                            <ComboBoxItem Content="Coruche"/>
-                            <ComboBoxItem Content="Elvas"/>
-                            <ComboBoxItem Content="Campo Maior"/>
-                            <ComboBoxItem Content="Cliniprata"/>
-                            <ComboBoxItem Content="Spazzio Vita"/>
-                            <ComboBoxItem Content="Online"/>
-                        </ComboBox>
-                        
-                        <!-- Como Conheceu -->
-                        <TextBlock Grid.Row="8" Grid.Column="1" 
-                                  Text="Como Conheceu" 
-                                  FontWeight="Medium" 
-                                  Margin="0,0,0,8"/>
-                        <ComboBox Grid.Row="9" Grid.Column="1"
-                                 SelectedItem="{Binding ComoConheceu, UpdateSourceTrigger=PropertyChanged}"
-                                 Width="200"
-                                 HorizontalAlignment="Left"
-                                 Margin="0,0,0,20">
-                            <ComboBoxItem Content="Internet"/>
-                            <ComboBoxItem Content="Recomendação"/>
-                            <ComboBoxItem Content="Redes Sociais"/>
-                            <ComboBoxItem Content="Publicidade"/>
-                            <ComboBoxItem Content="Outro"/>
-                        </ComboBox>
-                    </Grid>
+                    </StackPanel>
                 </ScrollViewer>
             </TabItem>
             

@@ -12,6 +12,9 @@ namespace BioDesk.App;
 public partial class App : Application
 {
     private ServiceProvider? _serviceProvider;
+    
+    // Propriedade estática para acesso global ao ServiceProvider
+    public static ServiceProvider? Services { get; private set; }
 
     public static void DebugLog(string message)
     {
@@ -95,6 +98,7 @@ public partial class App : Application
         services.AddTransient<QuestionarioCompletoView>();
         
         _serviceProvider = services.BuildServiceProvider();
+        Services = _serviceProvider; // Atribuir à propriedade estática
     }
 
     private void ConfigureExceptionHandling()

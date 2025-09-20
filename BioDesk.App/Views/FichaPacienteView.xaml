@@ -753,12 +753,46 @@
                 
                 <ScrollViewer VerticalScrollBarVisibility="Auto" 
                              Padding="32,24">
-                    <TextBlock Text="Registo Clínico - Em desenvolvimento" 
-                              FontFamily="Segoe UI"
-                              FontSize="16"
-                              Foreground="#64748B"
-                              HorizontalAlignment="Center"
-                              VerticalAlignment="Center"/>
+                    <StackPanel>
+                        <TextBlock Text="Registo Clínico" 
+                                  FontFamily="Segoe UI"
+                                  FontSize="20"
+                                  FontWeight="SemiBold"
+                                  Foreground="#1E293B"
+                                  Margin="0,0,0,16"/>
+                        
+                        <TextBlock Text="Histórico de consultas, diagnósticos e tratamentos realizados." 
+                                  FontFamily="Segoe UI"
+                                  FontSize="14"
+                                  Foreground="#64748B"
+                                  Margin="0,0,0,24"/>
+                        
+                        <!-- Placeholder para futuro desenvolvimento -->
+                        <Border Background="#F8FAFC" 
+                               BorderBrush="#E5E7EB" 
+                               BorderThickness="1" 
+                               CornerRadius="8" 
+                               Padding="24">
+                            <StackPanel HorizontalAlignment="Center">
+                                <TextBlock Text="🔨" 
+                                          FontSize="32" 
+                                          HorizontalAlignment="Center" 
+                                          Margin="0,0,0,8"/>
+                                <TextBlock Text="Em desenvolvimento" 
+                                          FontFamily="Segoe UI"
+                                          FontSize="16"
+                                          FontWeight="Medium"
+                                          Foreground="#64748B"
+                                          HorizontalAlignment="Center"/>
+                                <TextBlock Text="Sistema de registo clínico será implementado numa próxima versão" 
+                                          FontFamily="Segoe UI"
+                                          FontSize="13"
+                                          Foreground="#9CA3AF"
+                                          HorizontalAlignment="Center"
+                                          Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
                 </ScrollViewer>
             </TabItem>
             

@@ -51,7 +51,9 @@
         </Border>
 
         <!-- Conteúdo Principal -->
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Padding="20">
+        <ScrollViewer Grid.Row="1" 
+                     VerticalScrollBarVisibility="Auto" 
+                     Padding="20">
             <StackPanel>
                 
                 <!-- Seção 1: Informações Médicas Gerais -->
@@ -77,74 +79,68 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
                             
+                            <!-- Doença Crónica -->
                             <StackPanel Grid.Column="0" Grid.Row="0" Margin="0,0,12,0">
-                                <TextBlock Text="Tem alguma doença crónica?" 
-                                          FontFamily="Segoe UI" 
-                                          FontSize="14" 
-                                          FontWeight="Medium"
-                                          Foreground="#374151"/>
-                                <TextBox Name="txt_DoencaCronica"
-                                        Text="{Binding DoencaCronica, UpdateSourceTrigger=PropertyChanged}"
-                                        Background="White" 
-                                        BorderBrush="#D1D5DB"
-                                        BorderThickness="1"
-                                        Padding="12,8"
-                                        FontSize="14"
-                                        Margin="0,4,0,0"/>
+                                <TextBlock Text="Doença crónica" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="5"/>
+                                        <ColumnDefinition Width="3*"/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <ComboBox Name="cb_DoencaCronica" Grid.Column="0"
+                                             SelectedItem="{Binding DoencaCronica, UpdateSourceTrigger=PropertyChanged}"
+                                             Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                             Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                             SelectionChanged="ComboBox_SelectionChanged">
+                                        <ComboBoxItem Content="Não"/>
+                                        <ComboBoxItem Content="Hipertensão"/>
+                                        <ComboBoxItem Content="Diabetes"/>
+                                        <ComboBoxItem Content="Problemas cardíacos"/>
+                                        <ComboBoxItem Content="Problemas da tiroide"/>
+                                        <ComboBoxItem Content="Artrite"/>
+                                        <ComboBoxItem Content="Asma"/>
+                                        <ComboBoxItem Content="Outras"/>
+                                    </ComboBox>
+                                    
+                                    <TextBox Name="txt_DoencaCronicaOutras" Grid.Column="2"
+                                            Text="{Binding DoencaCronicaDetalhes, UpdateSourceTrigger=PropertyChanged}"
+                                            Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                            Padding="8,6" FontSize="14" Margin="10,4,0,0"/>
+                                </Grid>
                             </StackPanel>
                             
+                            <!-- Sintomas Atuais -->
                             <StackPanel Grid.Column="1" Grid.Row="0" Margin="12,0,0,0">
-                                <TextBlock Text="Sintomas atuais" 
-                                          FontFamily="Segoe UI" 
-                                          FontSize="14" 
-                                          FontWeight="Medium"
-                                          Foreground="#374151"/>
-                                <TextBox Name="txt_SintomasAtuais"
-                                        Text="{Binding SintomasAtuais, UpdateSourceTrigger=PropertyChanged}"
-                                        Background="White" 
-                                        BorderBrush="#D1D5DB"
-                                        BorderThickness="1"
-                                        Padding="12,8"
-                                        FontSize="14"
-                                        Margin="0,4,0,0"/>
+                                <TextBlock Text="Sintomas atuais" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
+                                <TextBox Text="{Binding SintomasAtuais, UpdateSourceTrigger=PropertyChanged}"
+                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                        Padding="12,8" FontSize="14" Margin="0,4,0,0"
+                                       />
                             </StackPanel>
                             
+                            <!-- Medicação Atual -->
                             <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,16,0,0">
-                                <TextBlock Text="Medicação atual" 
-                                          FontFamily="Segoe UI" 
-                                          FontSize="14" 
-                                          FontWeight="Medium"
-                                          Foreground="#374151"/>
-                                <TextBox Name="txt_MedicacaoAtual"
-                                        Text="{Binding MedicacaoAtual, UpdateSourceTrigger=PropertyChanged}"
-                                        Background="White" 
-                                        BorderBrush="#D1D5DB"
-                                        BorderThickness="1"
-                                        Padding="12,8"
-                                        FontSize="14"
-                                        AcceptsReturn="True"
-                                        MinHeight="80"
-                                        Margin="0,4,0,0"/>
+                                <TextBlock Text="Medicação atual" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
+                                <TextBox Text="{Binding MedicacaoAtual, UpdateSourceTrigger=PropertyChanged}"
+                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                        Padding="12,8" FontSize="14" Margin="0,4,0,0"
+                                        AcceptsReturn="True" MinHeight="60"
+                                       />
                             </StackPanel>
                         </Grid>
                     </StackPanel>
                 </Expander>
 
-                <!-- Seção 2: Alergias -->
-                <Expander Background="White" 
-                         BorderBrush="#E2E8F0" 
-                         BorderThickness="1"
-                         Margin="0,0,0,16">
+                <!-- Seção 2: Alergias e Intolerâncias -->
+                <Expander Background="White" BorderBrush="#E2E8F0" BorderThickness="1" Margin="0,0,0,16">
                     <Expander.Header>
                         <TextBlock Text="⚠️ Alergias e Intolerâncias" 
-                                  FontFamily="Segoe UI" 
-                                  FontSize="16" 
-                                  FontWeight="SemiBold"
-                                  Foreground="#1E293B"
-                                  Margin="16,12"/>
+                                  FontFamily="Segoe UI" FontSize="16" FontWeight="SemiBold"
+                                  Foreground="#1E293B" Margin="16,12"/>
                     </Expander.Header>
                     <StackPanel Margin="24">
                         <Grid>
@@ -155,151 +151,669 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
                             
+                            <!-- Alergias Alimentares -->
                             <StackPanel Grid.Column="0" Grid.Row="0" Margin="0,0,12,0">
-                                <TextBlock Text="Alergias alimentares" 
-                                          FontFamily="Segoe UI" 
-                                          FontSize="14" 
-                                          FontWeight="Medium"
-                                          Foreground="#374151"/>
-                                <TextBox Name="txt_AlergiasAlimentares"
-                                        Text="{Binding AlergiasAlimentares, UpdateSourceTrigger=PropertyChanged}"
-                                        Background="White" 
-                                        BorderBrush="#D1D5DB"
-                                        BorderThickness="1"
-                                        Padding="12,8"
-                                        FontSize="14"
-                                        Margin="0,4,0,0"/>
+                                <TextBlock Text="Alergias alimentares" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="5"/>
+                                        <ColumnDefinition Width="3*"/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <ComboBox Name="cb_AlergiasAlimentares" Grid.Column="0"
+                                             SelectedItem="{Binding AlergiasAlimentares, UpdateSourceTrigger=PropertyChanged}"
+                                             Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                             Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                             SelectionChanged="ComboBox_SelectionChanged">
+                                        <ComboBoxItem Content="Nenhuma"/>
+                                        <ComboBoxItem Content="Lactose"/>
+                                        <ComboBoxItem Content="Glúten"/>
+                                        <ComboBoxItem Content="Frutos secos"/>
+                                        <ComboBoxItem Content="Marisco"/>
+                                        <ComboBoxItem Content="Ovos"/>
+                                        <ComboBoxItem Content="Soja"/>
+                                        <ComboBoxItem Content="Outras"/>
+                                    </ComboBox>
+                                    
+                                    <TextBox Name="txt_AlergiasAlimentaresOutras" Grid.Column="2"
+                                            Text="{Binding AlergiasAlimentaresDetalhes, UpdateSourceTrigger=PropertyChanged}"
+                                            Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                            Padding="8,6" FontSize="14" Margin="10,4,0,0"/>
+                                </Grid>
                             </StackPanel>
                             
+                            <!-- Alergias a Medicamentos -->
                             <StackPanel Grid.Column="1" Grid.Row="0" Margin="12,0,0,0">
-                                <TextBlock Text="Alergias a medicamentos" 
-                                          FontFamily="Segoe UI" 
-                                          FontSize="14" 
-                                          FontWeight="Medium"
-                                          Foreground="#374151"/>
-                                <TextBox Name="txt_AlergiasMedicamentos"
-                                        Text="{Binding AlergiasMedicamentos, UpdateSourceTrigger=PropertyChanged}"
-                                        Background="White" 
-                                        BorderBrush="#D1D5DB"
-                                        BorderThickness="1"
-                                        Padding="12,8"
-                                        FontSize="14"
-                                        Margin="0,4,0,0"/>
+                                <TextBlock Text="Alergias a medicamentos" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="5"/>
+                                        <ColumnDefinition Width="3*"/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <ComboBox Name="cb_AlergiasMedicamentos" Grid.Column="0"
+                                             SelectedItem="{Binding AlergiasMedicamentos, UpdateSourceTrigger=PropertyChanged}"
+                                             Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                             Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                             SelectionChanged="ComboBox_SelectionChanged">
+                                        <ComboBoxItem Content="Nenhuma"/>
+                                        <ComboBoxItem Content="Penicilina"/>
+                                        <ComboBoxItem Content="Aspirina"/>
+                                        <ComboBoxItem Content="Ibuprofeno"/>
+                                        <ComboBoxItem Content="Antibióticos"/>
+                                        <ComboBoxItem Content="Anestésicos"/>
+                                        <ComboBoxItem Content="Outras"/>
+                                    </ComboBox>
+                                    
+                                    <TextBox Name="txt_AlergiasMedicamentosOutras" Grid.Column="2"
+                                            Text="{Binding AlergiasMedicamentosDetalhes, UpdateSourceTrigger=PropertyChanged}"
+                                            Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                            Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                            />
+                                </Grid>
                             </StackPanel>
                             
+                            <!-- Alergias Ambientais -->
                             <StackPanel Grid.Column="0" Grid.Row="1" Margin="0,16,12,0">
-                                <TextBlock Text="Alergias ambientais" 
-                                          FontFamily="Segoe UI" 
-                                          FontSize="14" 
-                                          FontWeight="Medium"
-                                          Foreground="#374151"/>
-                                <TextBox Name="txt_AlergiasAmbientais"
-                                        Text="{Binding AlergiasAmbientais, UpdateSourceTrigger=PropertyChanged}"
-                                        Background="White" 
-                                        BorderBrush="#D1D5DB"
-                                        BorderThickness="1"
-                                        Padding="12,8"
-                                        FontSize="14"
-                                        Margin="0,4,0,0"/>
+                                <TextBlock Text="Alergias ambientais" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151" Margin="0,0,0,8"/>
+                                
+                                <!-- CheckBoxes para alergias específicas -->
+                                <StackPanel Orientation="Vertical">
+                                    <CheckBox Content="Pólen" 
+                                             IsChecked="{Binding AlergiaPolen, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                    
+                                    <CheckBox Content="Ácaros do pó" 
+                                             IsChecked="{Binding AlergiaAcaros, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                    
+                                    <CheckBox Content="Pelos de animais" 
+                                             IsChecked="{Binding AlergiaPelosAnimais, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                    
+                                    <CheckBox Content="Poeira" 
+                                             IsChecked="{Binding AlergiaPoeira, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                    
+                                    <CheckBox Content="Mofo" 
+                                             IsChecked="{Binding AlergiaMofo, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563"/>
+                                </StackPanel>
+                                
+                                <!-- Campo para outras alergias ambientais -->
+                                <TextBlock Text="Outras alergias ambientais:" FontFamily="Segoe UI" FontSize="12" FontWeight="Medium" Foreground="#6B7280" Margin="0,12,0,4"/>
+                                <TextBox Name="txt_AlergiasAmbientaisOutras"
+                                        Text="{Binding AlergiasAmbientaisOutras, UpdateSourceTrigger=PropertyChanged}"
+                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                        Padding="8,6" FontSize="13" TextWrapping="Wrap" AcceptsReturn="True"
+                                        Height="60">
+                                    <TextBox.Style>
+                                        <Style TargetType="TextBox">
+                                            <Style.Triggers>
+                                                <Trigger Property="Text" Value="">
+                                                    <Setter Property="Background">
+                                                        <Setter.Value>
+                                                            <VisualBrush AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                                                <VisualBrush.Visual>
+                                                                    <Label Content="Especifique outras alergias ambientais..." Foreground="#9CA3AF" />
+                                                                </VisualBrush.Visual>
+                                                            </VisualBrush>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBox.Style>
+                                </TextBox>
                             </StackPanel>
                             
+                            <!-- Alergias a Plantas/Fitoterápicos -->
                             <StackPanel Grid.Column="1" Grid.Row="1" Margin="12,16,0,0">
-                                <TextBlock Text="Outras alergias" 
-                                          FontFamily="Segoe UI" 
-                                          FontSize="14" 
-                                          FontWeight="Medium"
-                                          Foreground="#374151"/>
-                                <TextBox Name="txt_OutrasAlergias"
-                                        Text="{Binding OutrasAlergias, UpdateSourceTrigger=PropertyChanged}"
-                                        Background="White" 
-                                        BorderBrush="#D1D5DB"
-                                        BorderThickness="1"
-                                        Padding="12,8"
-                                        FontSize="14"
-                                        Margin="0,4,0,0"/>
+                                <TextBlock Text="Plantas/Fitoterápicos" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="5"/>
+                                        <ColumnDefinition Width="3*"/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <ComboBox Name="cb_AlergiasPlantas" Grid.Column="0"
+                                             SelectedItem="{Binding AlergiasPlantas, UpdateSourceTrigger=PropertyChanged}"
+                                             Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                             Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                             SelectionChanged="ComboBox_SelectionChanged">
+                                        <ComboBoxItem Content="Nenhuma"/>
+                                        <ComboBoxItem Content="Camomila"/>
+                                        <ComboBoxItem Content="Eucalipto"/>
+                                        <ComboBoxItem Content="Arnica"/>
+                                        <ComboBoxItem Content="Aloe vera"/>
+                                        <ComboBoxItem Content="Ginkgo biloba"/>
+                                        <ComboBoxItem Content="Ginseng"/>
+                                        <ComboBoxItem Content="Equinácea"/>
+                                        <ComboBoxItem Content="Outras"/>
+                                    </ComboBox>
+                                    
+                                    <TextBox Name="txt_AlergiasPlantasOutras" Grid.Column="2"
+                                            Text="{Binding AlergiasPlantasDetalhes, UpdateSourceTrigger=PropertyChanged}"
+                                            Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                            Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                            />
+                                </Grid>
+                            </StackPanel>
+                            
+                            <!-- Outras Alergias -->
+                            <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Margin="0,16,0,0">
+                                <TextBlock Text="Outras alergias (látex, níquel, cosméticos, etc.)" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="5"/>
+                                        <ColumnDefinition Width="3*"/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <ComboBox Name="cb_OutrasAlergias" Grid.Column="0"
+                                             SelectedItem="{Binding OutrasAlergias, UpdateSourceTrigger=PropertyChanged}"
+                                             Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                             Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                             SelectionChanged="ComboBox_SelectionChanged">
+                                        <ComboBoxItem Content="Nenhuma"/>
+                                        <ComboBoxItem Content="Látex"/>
+                                        <ComboBoxItem Content="Níquel"/>
+                                        <ComboBoxItem Content="Cosméticos"/>
+                                        <ComboBoxItem Content="Detergentes"/>
+                                        <ComboBoxItem Content="Outras"/>
+                                    </ComboBox>
+                                    
+                                    <TextBox Name="txt_OutrasAlergiasOutras" Grid.Column="2"
+                                            Text="{Binding OutrasAlergiasDetalhes, UpdateSourceTrigger=PropertyChanged}"
+                                            Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                            Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                            />
+                                </Grid>
                             </StackPanel>
                         </Grid>
                     </StackPanel>
                 </Expander>
 
-                <!-- Seção 3: Histórico Médico -->
-                <Expander Background="White" 
-                         BorderBrush="#E2E8F0" 
-                         BorderThickness="1"
-                         Margin="0,0,0,16">
+                <!-- Seção 3: Doenças Oncológicas -->
+                <Expander Background="White" BorderBrush="#E2E8F0" BorderThickness="1" Margin="0,0,0,16">
                     <Expander.Header>
-                        <TextBlock Text="🏥 Histórico Médico" 
-                                  FontFamily="Segoe UI" 
-                                  FontSize="16" 
-                                  FontWeight="SemiBold"
-                                  Foreground="#1E293B"
-                                  Margin="16,12"/>
+                        <TextBlock Text="🎗️ Sistema Oncológico" 
+                                  FontFamily="Segoe UI" FontSize="16" FontWeight="SemiBold"
+                                  Foreground="#1E293B" Margin="16,12"/>
                     </Expander.Header>
                     <StackPanel Margin="24">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            
-                            <StackPanel Grid.Column="0" Margin="0,0,12,0">
-                                <TextBlock Text="Cirurgias realizadas" 
-                                          FontFamily="Segoe UI" 
-                                          FontSize="14" 
-                                          FontWeight="Medium"
-                                          Foreground="#374151"/>
-                                <TextBox Name="txt_HistoricoCirurgico"
-                                        Text="{Binding HistoricoCirurgico, UpdateSourceTrigger=PropertyChanged}"
-                                        Background="White" 
-                                        BorderBrush="#D1D5DB"
-                                        BorderThickness="1"
-                                        Padding="12,8"
-                                        FontSize="14"
-                                        AcceptsReturn="True"
-                                        MinHeight="80"
-                                        Margin="0,4,0,0"/>
-                            </StackPanel>
-                            
-                            <StackPanel Grid.Column="1" Margin="12,0,0,0">
-                                <TextBlock Text="Fraturas e lesões" 
-                                          FontFamily="Segoe UI" 
-                                          FontSize="14" 
-                                          FontWeight="Medium"
-                                          Foreground="#374151"/>
-                                <TextBox Name="txt_Fraturas"
-                                        Text="{Binding Fraturas, UpdateSourceTrigger=PropertyChanged}"
-                                        Background="White" 
-                                        BorderBrush="#D1D5DB"
-                                        BorderThickness="1"
-                                        Padding="12,8"
-                                        FontSize="14"
-                                        AcceptsReturn="True"
-                                        MinHeight="80"
-                                        Margin="0,4,0,0"/>
-                            </StackPanel>
-                        </Grid>
+                        <!-- Histórico Oncológico -->
+                        <StackPanel Margin="0,0,0,16">
+                            <TextBlock Text="Histórico oncológico" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <ComboBox Name="cb_ProblemasOncologicos" Grid.Column="0"
+                                         SelectedItem="{Binding ProblemasOncologicos, UpdateSourceTrigger=PropertyChanged}"
+                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                         Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                         SelectionChanged="ComboBox_SelectionChanged">
+                                    <ComboBoxItem Content="Nenhum"/>
+                                    <ComboBoxItem Content="Câncer de mama"/>
+                                    <ComboBoxItem Content="Câncer de pulmão"/>
+                                    <ComboBoxItem Content="Câncer colorretal"/>
+                                    <ComboBoxItem Content="Câncer de próstata"/>
+                                    <ComboBoxItem Content="Câncer de estômago"/>
+                                    <ComboBoxItem Content="Linfoma"/>
+                                    <ComboBoxItem Content="Leucemia"/>
+                                    <ComboBoxItem Content="Melanoma"/>
+                                    <ComboBoxItem Content="Outras"/>
+                                </ComboBox>
+                                
+                                <TextBox Name="txt_ProblemasOncologicosOutras" Grid.Column="2"
+                                        Text="{Binding ProblemasOncologicosDetalhes, UpdateSourceTrigger=PropertyChanged}"
+                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                        Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                        />
+                            </Grid>
+                        </StackPanel>
                     </StackPanel>
                 </Expander>
 
-                <!-- Seção 4: Estilo de Vida -->
-                <Expander Background="White" 
-                         BorderBrush="#E2E8F0" 
-                         BorderThickness="1"
-                         Margin="0,0,0,16">
+                <!-- Seção 4: Doenças Reumáticas -->
+                <Expander Background="White" BorderBrush="#E2E8F0" BorderThickness="1" Margin="0,0,0,16">
                     <Expander.Header>
-                        <TextBlock Text="🌿 Estilo de Vida" 
-                                  FontFamily="Segoe UI" 
-                                  FontSize="16" 
-                                  FontWeight="SemiBold"
-                                  Foreground="#1E293B"
-                                  Margin="16,12"/>
+                        <TextBlock Text="🦴 Sistema Reumático" 
+                                  FontFamily="Segoe UI" FontSize="16" FontWeight="SemiBold"
+                                  Foreground="#1E293B" Margin="16,12"/>
+                    </Expander.Header>
+                    <StackPanel Margin="24">
+                        <!-- Problemas Reumáticos -->
+                        <StackPanel Margin="0,0,0,16">
+                            <TextBlock Text="Doenças reumáticas" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <ComboBox Name="cb_ProblemasReumaticos" Grid.Column="0"
+                                         SelectedItem="{Binding ProblemasReumaticos, UpdateSourceTrigger=PropertyChanged}"
+                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                         Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                         SelectionChanged="ComboBox_SelectionChanged">
+                                    <ComboBoxItem Content="Nenhuma"/>
+                                    <ComboBoxItem Content="Artrite reumatoide"/>
+                                    <ComboBoxItem Content="Osteoartrite"/>
+                                    <ComboBoxItem Content="Fibromialgia"/>
+                                    <ComboBoxItem Content="Lupus"/>
+                                    <ComboBoxItem Content="Artrite psoriática"/>
+                                    <ComboBoxItem Content="Espondilite anquilosante"/>
+                                    <ComboBoxItem Content="Gota"/>
+                                    <ComboBoxItem Content="Outras"/>
+                                </ComboBox>
+                                
+                                <TextBox Name="txt_ProblemasReumaticosOutras" Grid.Column="2"
+                                        Text="{Binding ProblemasReumaticosDetalhes, UpdateSourceTrigger=PropertyChanged}"
+                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                        Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                        />
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+
+                <!-- Seção 5: Sistema Respiratório -->
+                <Expander Background="White" BorderBrush="#E2E8F0" BorderThickness="1" Margin="0,0,0,16">
+                    <Expander.Header>
+                        <TextBlock Text="🫁 Sistema Respiratório" 
+                                  FontFamily="Segoe UI" FontSize="16" FontWeight="SemiBold"
+                                  Foreground="#1E293B" Margin="16,12"/>
+                    </Expander.Header>
+                    <StackPanel Margin="24">
+                        <StackPanel Margin="0,0,0,16">
+                            <TextBlock Text="Problemas respiratórios" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <ComboBox Name="cb_ProblemasRespiratorios" Grid.Column="0"
+                                         SelectedItem="{Binding ProblemasRespiratorios, UpdateSourceTrigger=PropertyChanged}"
+                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                         Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                         SelectionChanged="ComboBox_SelectionChanged">
+                                    <ComboBoxItem Content="Nenhum"/>
+                                    <ComboBoxItem Content="Asma"/>
+                                    <ComboBoxItem Content="Bronquite"/>
+                                    <ComboBoxItem Content="DPOC"/>
+                                    <ComboBoxItem Content="Apneia do sono"/>
+                                    <ComboBoxItem Content="Rinite alérgica"/>
+                                    <ComboBoxItem Content="Sinusite"/>
+                                    <ComboBoxItem Content="Outras"/>
+                                </ComboBox>
+                                
+                                <TextBox Name="txt_ProblemasRespiratoriosOutras" Grid.Column="2"
+                                        Text="{Binding ProblemasRespiratoriosDetalhes, UpdateSourceTrigger=PropertyChanged}"
+                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                        Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                        />
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+
+                <!-- Seção 6: Sistema Digestivo -->
+                <Expander Background="White" BorderBrush="#E2E8F0" BorderThickness="1" Margin="0,0,0,16">
+                    <Expander.Header>
+                        <TextBlock Text="🍽️ Sistema Digestivo" 
+                                  FontFamily="Segoe UI" FontSize="16" FontWeight="SemiBold"
+                                  Foreground="#1E293B" Margin="16,12"/>
+                    </Expander.Header>
+                    <StackPanel Margin="24">
+                        <StackPanel Margin="0,0,0,16">
+                            <TextBlock Text="Problemas digestivos" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <ComboBox Name="cb_ProblemasDigestivos" Grid.Column="0"
+                                         SelectedItem="{Binding ProblemasDigestivos, UpdateSourceTrigger=PropertyChanged}"
+                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                         Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                         SelectionChanged="ComboBox_SelectionChanged">
+                                    <ComboBoxItem Content="Nenhum"/>
+                                    <ComboBoxItem Content="Gastrite"/>
+                                    <ComboBoxItem Content="Úlcera"/>
+                                    <ComboBoxItem Content="Refluxo"/>
+                                    <ComboBoxItem Content="Síndrome do intestino irritável"/>
+                                    <ComboBoxItem Content="Doença de Crohn"/>
+                                    <ComboBoxItem Content="Colite ulcerosa"/>
+                                    <ComboBoxItem Content="Prisão de ventre"/>
+                                    <ComboBoxItem Content="Outras"/>
+                                </ComboBox>
+                                
+                                <TextBox Name="txt_ProblemasDigestivosOutras" Grid.Column="2"
+                                        Text="{Binding ProblemasDigestivosDetalhes, UpdateSourceTrigger=PropertyChanged}"
+                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                        Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                        />
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+
+                <!-- Seção 7: Sistema Cardiovascular -->
+                <Expander Background="White" BorderBrush="#E2E8F0" BorderThickness="1" Margin="0,0,0,16">
+                    <Expander.Header>
+                        <TextBlock Text="❤️ Sistema Cardiovascular" 
+                                  FontFamily="Segoe UI" FontSize="16" FontWeight="SemiBold"
+                                  Foreground="#1E293B" Margin="16,12"/>
+                    </Expander.Header>
+                    <StackPanel Margin="24">
+                        <StackPanel Margin="0,0,0,16">
+                            <TextBlock Text="Problemas cardiovasculares" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <ComboBox Name="cb_ProblemasCardiovasculares" Grid.Column="0"
+                                         SelectedItem="{Binding ProblemasCardiovasculares, UpdateSourceTrigger=PropertyChanged}"
+                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                         Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                         SelectionChanged="ComboBox_SelectionChanged">
+                                    <ComboBoxItem Content="Nenhum"/>
+                                    <ComboBoxItem Content="Hipertensão"/>
+                                    <ComboBoxItem Content="Arritmia"/>
+                                    <ComboBoxItem Content="Angina"/>
+                                    <ComboBoxItem Content="Enfarte do miocárdio"/>
+                                    <ComboBoxItem Content="Insuficiência cardíaca"/>
+                                    <ComboBoxItem Content="Varizes"/>
+                                    <ComboBoxItem Content="Outras"/>
+                                </ComboBox>
+                                
+                                <TextBox Name="txt_ProblemasCardiovascularesOutras" Grid.Column="2"
+                                        Text="{Binding ProblemasCardiovascularesDetalhes, UpdateSourceTrigger=PropertyChanged}"
+                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                        Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                        />
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+
+                <!-- Seção 8: Sistema Neurológico -->
+                <Expander Background="White" BorderBrush="#E2E8F0" BorderThickness="1" Margin="0,0,0,16">
+                    <Expander.Header>
+                        <TextBlock Text="🧠 Sistema Neurológico" 
+                                  FontFamily="Segoe UI" FontSize="16" FontWeight="SemiBold"
+                                  Foreground="#1E293B" Margin="16,12"/>
+                    </Expander.Header>
+                    <StackPanel Margin="24">
+                        <StackPanel Margin="0,0,0,16">
+                            <TextBlock Text="Problemas neurológicos" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <ComboBox Name="cb_ProblemasNeurologicos" Grid.Column="0"
+                                         SelectedItem="{Binding ProblemasNeurologicos, UpdateSourceTrigger=PropertyChanged}"
+                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                         Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                         SelectionChanged="ComboBox_SelectionChanged">
+                                    <ComboBoxItem Content="Nenhum"/>
+                                    <ComboBoxItem Content="Enxaquecas"/>
+                                    <ComboBoxItem Content="Epilepsia"/>
+                                    <ComboBoxItem Content="Parkinson"/>
+                                    <ComboBoxItem Content="Alzheimer"/>
+                                    <ComboBoxItem Content="Esclerose múltipla"/>
+                                    <ComboBoxItem Content="AVC"/>
+                                    <ComboBoxItem Content="Outras"/>
+                                </ComboBox>
+                                
+                                <TextBox Name="txt_ProblemasNeurologicosOutras" Grid.Column="2"
+                                        Text="{Binding ProblemasNeurologicosDetalhes, UpdateSourceTrigger=PropertyChanged}"
+                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                        Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                        />
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+
+                <!-- Seção 9: Sistema Musculoesquelético -->
+                <Expander Background="White" BorderBrush="#E2E8F0" BorderThickness="1" Margin="0,0,0,16">
+                    <Expander.Header>
+                        <TextBlock Text="🦴 Sistema Musculoesquelético" 
+                                  FontFamily="Segoe UI" FontSize="16" FontWeight="SemiBold"
+                                  Foreground="#1E293B" Margin="16,12"/>
+                    </Expander.Header>
+                    <StackPanel Margin="24">
+                        <StackPanel Margin="0,0,0,16">
+                            <TextBlock Text="Problemas musculoesqueléticos" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <ComboBox Name="cb_ProblemasMusculoesqueleticos" Grid.Column="0"
+                                         SelectedItem="{Binding ProblemasMusculoesqueleticos, UpdateSourceTrigger=PropertyChanged}"
+                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                         Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                         SelectionChanged="ComboBox_SelectionChanged">
+                                    <ComboBoxItem Content="Nenhum"/>
+                                    <ComboBoxItem Content="Dor nas costas"/>
+                                    <ComboBoxItem Content="Hérnia discal"/>
+                                    <ComboBoxItem Content="Escoliose"/>
+                                    <ComboBoxItem Content="Tendinite"/>
+                                    <ComboBoxItem Content="Bursite"/>
+                                    <ComboBoxItem Content="Fraturas"/>
+                                    <ComboBoxItem Content="Outras"/>
+                                </ComboBox>
+                                
+                                <TextBox Name="txt_ProblemasMusculoesqueleticosOutras" Grid.Column="2"
+                                        Text="{Binding ProblemasMusculoesqueleticosDetalhes, UpdateSourceTrigger=PropertyChanged}"
+                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                        Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                        />
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+
+                <!-- Seção 10: Sistema Urinário -->
+                <Expander Background="White" BorderBrush="#E2E8F0" BorderThickness="1" Margin="0,0,0,16">
+                    <Expander.Header>
+                        <TextBlock Text="💧 Sistema Urinário" 
+                                  FontFamily="Segoe UI" FontSize="16" FontWeight="SemiBold"
+                                  Foreground="#1E293B" Margin="16,12"/>
+                    </Expander.Header>
+                    <StackPanel Margin="24">
+                        <StackPanel Margin="0,0,0,16">
+                            <TextBlock Text="Problemas urinários" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <ComboBox Name="cb_ProblemasUrinarios" Grid.Column="0"
+                                         SelectedItem="{Binding ProblemasUrinarios, UpdateSourceTrigger=PropertyChanged}"
+                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                         Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                         SelectionChanged="ComboBox_SelectionChanged">
+                                    <ComboBoxItem Content="Nenhum"/>
+                                    <ComboBoxItem Content="Infecções urinárias"/>
+                                    <ComboBoxItem Content="Cálculos renais"/>
+                                    <ComboBoxItem Content="Incontinência"/>
+                                    <ComboBoxItem Content="Cistite"/>
+                                    <ComboBoxItem Content="Problemas de próstata"/>
+                                    <ComboBoxItem Content="Outras"/>
+                                </ComboBox>
+                                
+                                <TextBox Name="txt_ProblemasUrinariosOutras" Grid.Column="2"
+                                        Text="{Binding ProblemasUrinariosDetalhes, UpdateSourceTrigger=PropertyChanged}"
+                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                        Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                        />
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+
+                <!-- Seção 11: Sistema Imunitário -->
+                <Expander Background="White" BorderBrush="#E2E8F0" BorderThickness="1" Margin="0,0,0,16">
+                    <Expander.Header>
+                        <TextBlock Text="🛡️ Sistema Imunitário" 
+                                  FontFamily="Segoe UI" FontSize="16" FontWeight="SemiBold"
+                                  Foreground="#1E293B" Margin="16,12"/>
+                    </Expander.Header>
+                    <StackPanel Margin="24">
+                        <StackPanel Margin="0,0,0,16">
+                            <TextBlock Text="Problemas imunitários" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <ComboBox Name="cb_ProblemasImunitarios" Grid.Column="0"
+                                         SelectedItem="{Binding ProblemasImunitarios, UpdateSourceTrigger=PropertyChanged}"
+                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                         Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                         SelectionChanged="ComboBox_SelectionChanged">
+                                    <ComboBoxItem Content="Nenhum"/>
+                                    <ComboBoxItem Content="Doenças autoimunes"/>
+                                    <ComboBoxItem Content="Imunossupressão"/>
+                                    <ComboBoxItem Content="Infeções recorrentes"/>
+                                    <ComboBoxItem Content="HIV"/>
+                                    <ComboBoxItem Content="Outras"/>
+                                </ComboBox>
+                                
+                                <TextBox Name="txt_ProblemasImunitariosOutras" Grid.Column="2"
+                                        Text="{Binding ProblemasImunitariosDetalhes, UpdateSourceTrigger=PropertyChanged}"
+                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                        Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                        />
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+
+                <!-- Seção 12: Sistema Endócrino -->
+                <Expander Background="White" BorderBrush="#E2E8F0" BorderThickness="1" Margin="0,0,0,16">
+                    <Expander.Header>
+                        <TextBlock Text="⚗️ Sistema Endócrino" 
+                                  FontFamily="Segoe UI" FontSize="16" FontWeight="SemiBold"
+                                  Foreground="#1E293B" Margin="16,12"/>
+                    </Expander.Header>
+                    <StackPanel Margin="24">
+                        <StackPanel Margin="0,0,0,16">
+                            <TextBlock Text="Problemas endócrinos" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <ComboBox Name="cb_ProblemasEndocrinos" Grid.Column="0"
+                                         SelectedItem="{Binding ProblemasEndocrinos, UpdateSourceTrigger=PropertyChanged}"
+                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                         Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                         SelectionChanged="ComboBox_SelectionChanged">
+                                    <ComboBoxItem Content="Nenhum"/>
+                                    <ComboBoxItem Content="Diabetes"/>
+                                    <ComboBoxItem Content="Hipertiroidismo"/>
+                                    <ComboBoxItem Content="Hipotiroidismo"/>
+                                    <ComboBoxItem Content="Problemas das supra-renais"/>
+                                    <ComboBoxItem Content="Síndrome metabólica"/>
+                                    <ComboBoxItem Content="Outras"/>
+                                </ComboBox>
+                                
+                                <TextBox Name="txt_ProblemasEndocrinosOutras" Grid.Column="2"
+                                        Text="{Binding ProblemasEndocrinosDetalhes, UpdateSourceTrigger=PropertyChanged}"
+                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                        Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                        />
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+
+                <!-- Seção 13: Pele e Anexos -->
+                <Expander Background="White" BorderBrush="#E2E8F0" BorderThickness="1" Margin="0,0,0,16">
+                    <Expander.Header>
+                        <TextBlock Text="🌟 Pele e Anexos" 
+                                  FontFamily="Segoe UI" FontSize="16" FontWeight="SemiBold"
+                                  Foreground="#1E293B" Margin="16,12"/>
+                    </Expander.Header>
+                    <StackPanel Margin="24">
+                        <StackPanel Margin="0,0,0,16">
+                            <TextBlock Text="Problemas de pele" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <ComboBox Name="cb_ProblemasPele" Grid.Column="0"
+                                         SelectedItem="{Binding ProblemasPele, UpdateSourceTrigger=PropertyChanged}"
+                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                         Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                         SelectionChanged="ComboBox_SelectionChanged">
+                                    <ComboBoxItem Content="Nenhum"/>
+                                    <ComboBoxItem Content="Eczema"/>
+                                    <ComboBoxItem Content="Psoríase"/>
+                                    <ComboBoxItem Content="Acne"/>
+                                    <ComboBoxItem Content="Dermatite"/>
+                                    <ComboBoxItem Content="Vitiligo"/>
+                                    <ComboBoxItem Content="Melanoma"/>
+                                    <ComboBoxItem Content="Outras"/>
+                                </ComboBox>
+                                
+                                <TextBox Name="txt_ProblemasPeleOutras" Grid.Column="2"
+                                        Text="{Binding ProblemasPeleDetalhes, UpdateSourceTrigger=PropertyChanged}"
+                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                        Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                        />
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+
+                <!-- Seção 14: Órgãos dos Sentidos -->
+                <Expander Background="White" BorderBrush="#E2E8F0" BorderThickness="1" Margin="0,0,0,16">
+                    <Expander.Header>
+                        <TextBlock Text="👁️ Órgãos dos Sentidos" 
+                                  FontFamily="Segoe UI" FontSize="16" FontWeight="SemiBold"
+                                  Foreground="#1E293B" Margin="16,12"/>
                     </Expander.Header>
                     <StackPanel Margin="24">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
@@ -308,126 +822,288 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
                             
-                            <StackPanel Grid.Column="0" Grid.Row="0" Margin="0,0,8,0">
-                                <TextBlock Text="Exercício físico" 
-                                          FontFamily="Segoe UI" 
-                                          FontSize="14" 
-                                          FontWeight="Medium"
-                                          Foreground="#374151"/>
-                                <ComboBox Name="cb_AtividadeFisica"
-                                         Text="{Binding AtividadeFisica, UpdateSourceTrigger=PropertyChanged}"
-                                         IsEditable="True"
-                                         BorderBrush="#D1D5DB"
-                                         BorderThickness="1"
-                                         Padding="12,8"
-                                         FontSize="14"
-                                         Margin="0,4,0,0">
+                            <!-- Problemas de Visão -->
+                            <StackPanel Grid.Column="0" Grid.Row="0" Margin="0,0,12,0">
+                                <TextBlock Text="Problemas de visão" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="5"/>
+                                        <ColumnDefinition Width="3*"/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <ComboBox Name="cb_ProblemasVisao" Grid.Column="0"
+                                             SelectedItem="{Binding ProblemasVisao, UpdateSourceTrigger=PropertyChanged}"
+                                             Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                             Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                             SelectionChanged="ComboBox_SelectionChanged">
+                                        <ComboBoxItem Content="Nenhum"/>
+                                        <ComboBoxItem Content="Miopia"/>
+                                        <ComboBoxItem Content="Hipermetropia"/>
+                                        <ComboBoxItem Content="Astigmatismo"/>
+                                        <ComboBoxItem Content="Cataratas"/>
+                                        <ComboBoxItem Content="Glaucoma"/>
+                                        <ComboBoxItem Content="Outras"/>
+                                    </ComboBox>
+                                    
+                                    <TextBox Name="txt_ProblemasVisaoOutras" Grid.Column="2"
+                                            Text="{Binding ProblemasVisaoDetalhes, UpdateSourceTrigger=PropertyChanged}"
+                                            Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                            Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                            />
+                                </Grid>
+                            </StackPanel>
+                            
+                            <!-- Problemas de Audição -->
+                            <StackPanel Grid.Column="1" Grid.Row="0" Margin="12,0,0,0">
+                                <TextBlock Text="Problemas de audição" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="5"/>
+                                        <ColumnDefinition Width="3*"/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <ComboBox Name="cb_ProblemasAudicao" Grid.Column="0"
+                                             SelectedItem="{Binding ProblemasAudicao, UpdateSourceTrigger=PropertyChanged}"
+                                             Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                             Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                             SelectionChanged="ComboBox_SelectionChanged">
+                                        <ComboBoxItem Content="Nenhum"/>
+                                        <ComboBoxItem Content="Perda auditiva"/>
+                                        <ComboBoxItem Content="Zumbido no ouvido"/>
+                                        <ComboBoxItem Content="Otite recorrente"/>
+                                        <ComboBoxItem Content="Outras"/>
+                                    </ComboBox>
+                                    
+                                    <TextBox Name="txt_ProblemasAudicaoOutras" Grid.Column="2"
+                                            Text="{Binding ProblemasAudicaoDetalhes, UpdateSourceTrigger=PropertyChanged}"
+                                            Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                            Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                            />
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Expander>
+
+                <!-- Seção 15: Estilo de Vida -->
+                <Expander Background="White" BorderBrush="#E2E8F0" BorderThickness="1" Margin="0,0,0,16">
+                    <Expander.Header>
+                        <TextBlock Text="🏃‍♂️ Estilo de Vida" 
+                                  FontFamily="Segoe UI" FontSize="16" FontWeight="SemiBold"
+                                  Foreground="#1E293B" Margin="16,12"/>
+                    </Expander.Header>
+                    <StackPanel Margin="24">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            
+                            <!-- Atividade Física -->
+                            <StackPanel Grid.Column="0" Grid.Row="0" Margin="0,0,12,0">
+                                <TextBlock Text="Atividade física" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
+                                <ComboBox Text="{Binding AtividadeFisica, UpdateSourceTrigger=PropertyChanged}"
+                                         IsEditable="True" Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                         Padding="8,6" FontSize="14" Margin="0,4,0,0">
                                     <ComboBoxItem Content="Sedentário"/>
-                                    <ComboBoxItem Content="Leve (1-2x semana)"/>
-                                    <ComboBoxItem Content="Moderado (3-4x semana)"/>
-                                    <ComboBoxItem Content="Intenso (5+ x semana)"/>
+                                    <ComboBoxItem Content="Exercício ocasional"/>
+                                    <ComboBoxItem Content="Exercício regular"/>
+                                    <ComboBoxItem Content="Exercício intenso"/>
                                 </ComboBox>
                             </StackPanel>
                             
-                            <StackPanel Grid.Column="1" Grid.Row="0" Margin="8,0,8,0">
-                                <TextBlock Text="Tabagismo" 
-                                          FontFamily="Segoe UI" 
-                                          FontSize="14" 
-                                          FontWeight="Medium"
-                                          Foreground="#374151"/>
-                                <ComboBox Name="cb_Tabagismo"
-                                         Text="{Binding Tabagismo, UpdateSourceTrigger=PropertyChanged}"
-                                         IsEditable="True"
-                                         BorderBrush="#D1D5DB"
-                                         BorderThickness="1"
-                                         Padding="12,8"
-                                         FontSize="14"
-                                         Margin="0,4,0,0">
-                                    <ComboBoxItem Content="Nunca fumou"/>
+                            <!-- Tabagismo -->
+                            <StackPanel Grid.Column="1" Grid.Row="0" Margin="12,0,0,0">
+                                <TextBlock Text="Tabagismo" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
+                                <ComboBox Text="{Binding Tabagismo, UpdateSourceTrigger=PropertyChanged}"
+                                         IsEditable="True" Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                         Padding="8,6" FontSize="14" Margin="0,4,0,0">
+                                    <ComboBoxItem Content="Nunca fumei"/>
                                     <ComboBoxItem Content="Ex-fumador"/>
                                     <ComboBoxItem Content="Fumador ocasional"/>
                                     <ComboBoxItem Content="Fumador regular"/>
                                 </ComboBox>
                             </StackPanel>
                             
-                            <StackPanel Grid.Column="2" Grid.Row="0" Margin="8,0,0,0">
-                                <TextBlock Text="Consumo de álcool" 
-                                          FontFamily="Segoe UI" 
-                                          FontSize="14" 
-                                          FontWeight="Medium"
-                                          Foreground="#374151"/>
-                                <ComboBox Name="cb_ConsumoAlcool"
-                                         Text="{Binding ConsumoAlcool, UpdateSourceTrigger=PropertyChanged}"
-                                         IsEditable="True"
-                                         BorderBrush="#D1D5DB"
-                                         BorderThickness="1"
-                                         Padding="12,8"
-                                         FontSize="14"
-                                         Margin="0,4,0,0">
-                                    <ComboBoxItem Content="Não consome"/>
+                            <!-- Consumo de Álcool -->
+                            <StackPanel Grid.Column="0" Grid.Row="1" Margin="0,16,12,0">
+                                <TextBlock Text="Consumo de álcool" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
+                                <ComboBox Text="{Binding ConsumoAlcool, UpdateSourceTrigger=PropertyChanged}"
+                                         IsEditable="True" Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                         Padding="8,6" FontSize="14" Margin="0,4,0,0">
+                                    <ComboBoxItem Content="Não bebo"/>
                                     <ComboBoxItem Content="Ocasional"/>
-                                    <ComboBoxItem Content="Social"/>
-                                    <ComboBoxItem Content="Regular"/>
+                                    <ComboBoxItem Content="Moderado"/>
+                                    <ComboBoxItem Content="Frequente"/>
                                 </ComboBox>
                             </StackPanel>
                             
-                            <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Margin="0,16,0,0">
-                                <TextBlock Text="Hábitos alimentares" 
-                                          FontFamily="Segoe UI" 
-                                          FontSize="14" 
-                                          FontWeight="Medium"
-                                          Foreground="#374151"/>
-                                <TextBox Name="txt_HabitosAlimentares"
-                                        Text="{Binding HabitosAlimentares, UpdateSourceTrigger=PropertyChanged}"
-                                        Background="White" 
-                                        BorderBrush="#D1D5DB"
-                                        BorderThickness="1"
-                                        Padding="12,8"
-                                        FontSize="14"
-                                        AcceptsReturn="True"
-                                        MinHeight="60"
-                                        Margin="0,4,0,0"/>
+                            <!-- Qualidade do Sono -->
+                            <StackPanel Grid.Column="1" Grid.Row="1" Margin="12,16,0,0">
+                                <TextBlock Text="Qualidade do sono" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
+                                <ComboBox Text="{Binding QualidadeSono, UpdateSourceTrigger=PropertyChanged}"
+                                         IsEditable="True" Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                         Padding="8,6" FontSize="14" Margin="0,4,0,0">
+                                    <ComboBoxItem Content="Excelente"/>
+                                    <ComboBoxItem Content="Boa"/>
+                                    <ComboBoxItem Content="Razoável"/>
+                                    <ComboBoxItem Content="Má"/>
+                                </ComboBox>
+                            </StackPanel>
+                            
+                            <!-- Observações Gerais -->
+                            <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Margin="0,16,0,0">
+                                <TextBlock Text="Observações gerais" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
+                                <TextBox Text="{Binding ObservacoesGerais, UpdateSourceTrigger=PropertyChanged}"
+                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                        Padding="12,8" FontSize="14" Margin="0,4,0,0"
+                                        AcceptsReturn="True" MinHeight="80"/>
                             </StackPanel>
                         </Grid>
                     </StackPanel>
                 </Expander>
 
+                <!-- Consentimentos Informados -->
+                <Border Background="#f8fafc" BorderBrush="#e5e7eb" BorderThickness="1" CornerRadius="8" Margin="0,32,0,16">
+                    <StackPanel Margin="24">
+                        <TextBlock Text="📋 Consentimentos Informados" FontFamily="Segoe UI" FontSize="18" FontWeight="Bold" Foreground="#1f2937" Margin="0,0,0,20"/>
+                        <TextBlock Text="Selecione os consentimentos aplicáveis e assine eletronicamente quando necessário." FontFamily="Segoe UI" FontSize="13" Foreground="#6b7280" Margin="0,0,0,24"/>
+                        
+                        <!-- Consentimento Naturopatia -->
+                        <Expander Header="🌿 Naturopatia" Background="White" BorderBrush="#d1d5db" BorderThickness="1" Margin="0,0,0,12">
+                            <StackPanel Margin="16">
+                                <CheckBox Content="Compreensão da natureza das intervenções (alimentação, fitoterapia, suplementação)" Margin="0,4"/>
+                                <CheckBox Content="Objetivos e benefícios explicados" Margin="0,4"/>
+                                <CheckBox Content="Riscos potenciais discutidos" Margin="0,4"/>
+                                <CheckBox Content="Informação de patologias/medicação fornecida" Margin="0,4"/>
+                                <CheckBox Content="Alternativas discutidas" Margin="0,4"/>
+                                <CheckBox Content="Autorização e corresponsabilidade aceites" Margin="0,4"/>
+                                <CheckBox Content="Revogável a qualquer momento" Margin="0,4"/>
+                                
+                                <Border Background="#f0f9ff" BorderBrush="#0ea5e9" BorderThickness="1" CornerRadius="4" Padding="12" Margin="0,12,0,0">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="✍️ Assinatura:" FontWeight="SemiBold" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                        <Button Content="📝 Assinar Eletronicamente" Background="#0ea5e9" Foreground="White" BorderThickness="0" Padding="12,6" FontSize="12"/>
+                                        <TextBlock Text="Não assinado" Foreground="#ef4444" FontStyle="Italic" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </Expander>
+
+                        <!-- Consentimento Osteopatia -->
+                        <Expander Header="🦴 Osteopatia" Background="White" BorderBrush="#d1d5db" BorderThickness="1" Margin="0,0,0,12">
+                            <StackPanel Margin="16">
+                                <CheckBox Content="Técnicas manuais explicadas" Margin="0,4"/>
+                                <CheckBox Content="Contraindicações e sinais de alerta discutidos" Margin="0,4"/>
+                                <CheckBox Content="Riscos explicados (dor, tonturas, hematomas, raríssimos eventos graves)" Margin="0,4"/>
+                                <CheckBox Content="Autorizo contacto físico profissional" Margin="0,4"/>
+                                <CheckBox Content="Posso interromper a técnica a qualquer momento" Margin="0,4"/>
+                                <CheckBox Content="Revogável a qualquer momento" Margin="0,4"/>
+                                
+                                <Border Background="#f0f9ff" BorderBrush="#0ea5e9" BorderThickness="1" CornerRadius="4" Padding="12" Margin="0,12,0,0">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="✍️ Assinatura:" FontWeight="SemiBold" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                        <Button Content="📝 Assinar Eletronicamente" Background="#0ea5e9" Foreground="White" BorderThickness="0" Padding="12,6" FontSize="12"/>
+                                        <TextBlock Text="Não assinado" Foreground="#ef4444" FontStyle="Italic" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </Expander>
+
+                        <!-- Consentimento Iridologia -->
+                        <Expander Header="👁️ Iridologia" Background="White" BorderBrush="#d1d5db" BorderThickness="1" Margin="0,0,0,12">
+                            <StackPanel Margin="16">
+                                <CheckBox Content="Natureza não invasiva e sem valor diagnóstico médico explicada" Margin="0,4"/>
+                                <CheckBox Content="Autorizo captura e armazenamento de imagens da íris" Margin="0,4"/>
+                                <CheckBox Content="Compreendo limitações e necessidade de correlação clínica" Margin="0,4"/>
+                                <CheckBox Content="Revogável a qualquer momento" Margin="0,4"/>
+                                
+                                <Border Background="#f0f9ff" BorderBrush="#0ea5e9" BorderThickness="1" CornerRadius="4" Padding="12" Margin="0,12,0,0">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="✍️ Assinatura:" FontWeight="SemiBold" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                        <Button Content="📝 Assinar Eletronicamente" Background="#0ea5e9" Foreground="White" BorderThickness="0" Padding="12,6" FontSize="12"/>
+                                        <TextBlock Text="Não assinado" Foreground="#ef4444" FontStyle="Italic" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </Expander>
+
+                        <!-- Consentimento Medicina Quântica -->
+                        <Expander Header="⚛️ Medicina Quântica (Informacional)" Background="White" BorderBrush="#d1d5db" BorderThickness="1" Margin="0,0,0,12">
+                            <StackPanel Margin="16">
+                                <CheckBox Content="Abordagem complementar, sem finalidade diagnóstica reconhecida" Margin="0,4"/>
+                                <CheckBox Content="Natureza dos procedimentos (bases de dados, frequências, aconselhamento)" Margin="0,4"/>
+                                <CheckBox Content="Possíveis reações transitórias explicadas" Margin="0,4"/>
+                                <CheckBox Content="Contraindicações discutidas" Margin="0,4"/>
+                                <CheckBox Content="Liberdade de interromper a qualquer momento" Margin="0,4"/>
+                                <CheckBox Content="Revogável a qualquer momento" Margin="0,4"/>
+                                
+                                <Border Background="#f0f9ff" BorderBrush="#0ea5e9" BorderThickness="1" CornerRadius="4" Padding="12" Margin="0,12,0,0">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="✍️ Assinatura:" FontWeight="SemiBold" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                        <Button Content="📝 Assinar Eletronicamente" Background="#0ea5e9" Foreground="White" BorderThickness="0" Padding="12,6" FontSize="12"/>
+                                        <TextBlock Text="Não assinado" Foreground="#ef4444" FontStyle="Italic" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </Expander>
+
+                        <!-- Consentimento RGPD -->
+                        <Expander Header="🔒 RGPD - Proteção de Dados" Background="White" BorderBrush="#d1d5db" BorderThickness="1" Margin="0,0,0,12">
+                            <StackPanel Margin="16">
+                                <CheckBox Content="Informação de responsável, finalidades, conservação e destinatários" Margin="0,4"/>
+                                <CheckBox Content="Direitos de acesso, retificação, limitação, oposição, portabilidade e eliminação" Margin="0,4"/>
+                                <CheckBox Content="Consentimento explícito para tratamento de dados de saúde" Margin="0,4"/>
+                                <CheckBox Content="Opção de não receber marketing" Margin="0,4"/>
+                                <CheckBox Content="Revogável a qualquer momento" Margin="0,4"/>
+                                
+                                <Border Background="#f0f9ff" BorderBrush="#0ea5e9" BorderThickness="1" CornerRadius="4" Padding="12" Margin="0,12,0,0">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="✍️ Assinatura:" FontWeight="SemiBold" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                        <Button Content="📝 Assinar Eletronicamente" Background="#0ea5e9" Foreground="White" BorderThickness="0" Padding="12,6" FontSize="12"/>
+                                        <TextBlock Text="Não assinado" Foreground="#ef4444" FontStyle="Italic" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </Expander>
+
+                        <!-- Assinatura Geral do Questionário -->
+                        <Border Background="#ecfdf5" BorderBrush="#10b981" BorderThickness="2" CornerRadius="8" Padding="20" Margin="0,24,0,0">
+                            <StackPanel>
+                                <TextBlock Text="✍️ Assinatura do Questionário Completo" FontFamily="Segoe UI" FontSize="16" FontWeight="Bold" Foreground="#065f46" Margin="0,0,0,12"/>
+                                <TextBlock Text="Confirmo que todas as informações fornecidas são verdadeiras e autorizo o tratamento conforme os consentimentos selecionados." FontFamily="Segoe UI" FontSize="13" Foreground="#064e3b" Margin="0,0,0,16"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Content="📝 Assinar Questionário Completo" Background="#10b981" Foreground="White" BorderThickness="0" Padding="16,10" FontWeight="SemiBold" FontSize="14"/>
+                                    <TextBlock Text="Não assinado" Foreground="#ef4444" FontWeight="SemiBold" VerticalAlignment="Center" Margin="16,0,0,0"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </Border>
+
             </StackPanel>
         </ScrollViewer>
 
-        <!-- Footer com ações -->
+        <!-- Botões de Ação -->
         <Border Grid.Row="2" Background="White" BorderBrush="#e5e7eb" BorderThickness="0,1,0,0" Padding="20">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-
-                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
-                    <TextBlock Text="💾 Sistema em desenvolvimento" 
-                             Foreground="#6b7280" 
-                             FontSize="12" 
-                             VerticalAlignment="Center" 
-                             Margin="0,0,16,0"/>
-                    <TextBlock Text="{Binding UltimoAutoSave, StringFormat='Versão: {0:dd/MM/yyyy}'}" 
-                             Foreground="#6b7280" 
-                             FontSize="12" 
-                             VerticalAlignment="Center"/>
-                </StackPanel>
-
-                <StackPanel Grid.Column="1" Orientation="Horizontal">
-                    <Button Content="💾 Guardar" 
-                            Background="#4f7c6d" Foreground="White" 
-                            BorderThickness="0" Padding="16,8" FontWeight="SemiBold"
-                            Command="{Binding GuardarCommand}"
-                            Click="TestButton_Click"
-                            Margin="0,0,10,0"/>
-                    <Button Content="📄 Exportar PDF" 
-                            Background="White" Foreground="#4f7c6d" 
-                            BorderThickness="1" BorderBrush="#4f7c6d" Padding="16,8" FontWeight="SemiBold"
-                            Command="{Binding ExportarPdfCommand}"/>
-                </StackPanel>
-            </Grid>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="💾 Guardar Questionário" 
+                        Background="#10b981" Foreground="White" 
+                        BorderThickness="0" Padding="20,10" FontWeight="SemiBold"
+                        Command="{Binding GuardarCommand}"
+                        Margin="0,0,15,0"/>
+                <Button Content="📄 Gerar PDF" 
+                        Background="#3b82f6" Foreground="White" 
+                        BorderThickness="0" Padding="20,10" FontWeight="SemiBold"
+                        Command="{Binding GerarPdfCommand}"/>
+            </StackPanel>
         </Border>
     </Grid>
 </UserControl>

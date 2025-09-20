@@ -1,6 +1,7 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using BioDesk.App.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -27,6 +28,12 @@ namespace BioDesk.App.Views
             {
                 System.Diagnostics.Debug.WriteLine($"Erro no LoadCompleted: {ex.Message}");
             }
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // As TextBoxes estão sempre visíveis agora, por isso este método pode ficar vazio
+            // Mantemos o método para evitar erros de binding no XAML
         }
 
         private void WebBrowser_Navigating(object sender, System.Windows.Navigation.NavigatingCancelEventArgs e)

@@ -177,6 +177,91 @@ namespace BioDesk.App.ViewModels
             set => SetProperty(ref _doencaCronicaDetalhes, value);
         }
 
+        // Doenças crónicas específicas (checkboxes)
+        private bool _doencaHipertensao;
+        public bool DoencaHipertensao
+        {
+            get => _doencaHipertensao;
+            set => SetProperty(ref _doencaHipertensao, value);
+        }
+
+        private bool _doencaCardiopatia;
+        public bool DoencaCardiopatia
+        {
+            get => _doencaCardiopatia;
+            set => SetProperty(ref _doencaCardiopatia, value);
+        }
+
+        private bool _doencaDiabetesTipo1;
+        public bool DoencaDiabetesTipo1
+        {
+            get => _doencaDiabetesTipo1;
+            set => SetProperty(ref _doencaDiabetesTipo1, value);
+        }
+
+        private bool _doencaDiabetesTipo2;
+        public bool DoencaDiabetesTipo2
+        {
+            get => _doencaDiabetesTipo2;
+            set => SetProperty(ref _doencaDiabetesTipo2, value);
+        }
+
+        private bool _doencaTiroideia;
+        public bool DoencaTiroideia
+        {
+            get => _doencaTiroideia;
+            set => SetProperty(ref _doencaTiroideia, value);
+        }
+
+        private bool _doencaDislipidemia;
+        public bool DoencaDislipidemia
+        {
+            get => _doencaDislipidemia;
+            set => SetProperty(ref _doencaDislipidemia, value);
+        }
+
+        private bool _doencaRenal;
+        public bool DoencaRenal
+        {
+            get => _doencaRenal;
+            set => SetProperty(ref _doencaRenal, value);
+        }
+
+        private bool _doencaHepatica;
+        public bool DoencaHepatica
+        {
+            get => _doencaHepatica;
+            set => SetProperty(ref _doencaHepatica, value);
+        }
+
+        private bool _doencaAutoimune;
+        public bool DoencaAutoimune
+        {
+            get => _doencaAutoimune;
+            set => SetProperty(ref _doencaAutoimune, value);
+        }
+
+        private bool _doencaOsteoporose;
+        public bool DoencaOsteoporose
+        {
+            get => _doencaOsteoporose;
+            set => SetProperty(ref _doencaOsteoporose, value);
+        }
+
+        private bool _doencaAsmaDPOC;
+        public bool DoencaAsmaDPOC
+        {
+            get => _doencaAsmaDPOC;
+            set => SetProperty(ref _doencaAsmaDPOC, value);
+        }
+
+        private bool _doencaOncologia;
+        public bool DoencaOncologia
+        {
+            get => _doencaOncologia;
+            set => SetProperty(ref _doencaOncologia, value);
+        }
+
         private string _sintomasAtuais = string.Empty;
         public string SintomasAtuais
         {
@@ -203,6 +288,56 @@ namespace BioDesk.App.ViewModels
         {
             get => _alergiasAlimentaresDetalhes;
             set => SetProperty(ref _alergiasAlimentaresDetalhes, value);
+        }
+
+        // Intolerâncias alimentares específicas (checkboxes)
+        private bool _intoleranciaGluten;
+        public bool IntoleranciaGluten
+        {
+            get => _intoleranciaGluten;
+            set => SetProperty(ref _intoleranciaGluten, value);
+        }
+
+        private bool _intoleranciaLactose;
+        public bool IntoleranciaLactose
+        {
+            get => _intoleranciaLactose;
+            set => SetProperty(ref _intoleranciaLactose, value);
+        }
+
+        private bool _intoleranciaProteinaLeite;
+        public bool IntoleranciaProteinaLeite
+        {
+            get => _intoleranciaProteinaLeite;
+            set => SetProperty(ref _intoleranciaProteinaLeite, value);
+        }
+
+        private bool _intoleranciaOvos;
+        public bool IntoleranciaOvos
+        {
+            get => _intoleranciaOvos;
+            set => SetProperty(ref _intoleranciaOvos, value);
+        }
+
+        private bool _intoleranciaMarisco;
+        public bool IntoleranciaMarisco
+        {
+            get => _intoleranciaMarisco;
+            set => SetProperty(ref _intoleranciaMarisco, value);
+        }
+
+        private bool _intoleranciaFrutosSecos;
+        public bool IntoleranciaFrutosSecos
+        {
+            get => _intoleranciaFrutosSecos;
+            set => SetProperty(ref _intoleranciaFrutosSecos, value);
+        }
+
+        private string _intoleranciaAlimentarOutras = string.Empty;
+        public string IntoleranciaAlimentarOutras
+        {
+            get => _intoleranciaAlimentarOutras;
+            set => SetProperty(ref _intoleranciaAlimentarOutras, value);
         }
 
         private string _alergiasMedicamentos = string.Empty;
@@ -1227,12 +1362,35 @@ namespace BioDesk.App.ViewModels
             SintomasAtuais = questionario.SintomasAtuais ?? string.Empty;
             MedicacaoAtual = questionario.MedicacaoAtual ?? string.Empty;
             
+            // Doenças crónicas específicas (novos campos boolean)
+            DoencaHipertensao = questionario.DoencaHipertensao;
+            DoencaCardiopatia = questionario.DoencaCardiopatia;
+            DoencaDiabetesTipo1 = questionario.DoencaDiabetesTipo1;
+            DoencaDiabetesTipo2 = questionario.DoencaDiabetesTipo2;
+            DoencaTiroideia = questionario.DoencaTiroideia;
+            DoencaDislipidemia = questionario.DoencaDislipidemia;
+            DoencaRenal = questionario.DoencaRenal;
+            DoencaHepatica = questionario.DoencaHepatica;
+            DoencaAutoimune = questionario.DoencaAutoimune;
+            DoencaOsteoporose = questionario.DoencaOsteoporose;
+            DoencaAsmaDPOC = questionario.DoencaAsmaDPOC;
+            DoencaOncologia = questionario.DoencaOncologia;
+            
             // Alergias - campos string (compatibilidade)
             AlergiasAlimentares = questionario.AlergiasAlimentos ?? string.Empty;
             AlergiasMedicamentos = questionario.AlergiasMedicamentos ?? string.Empty;
             AlergiasAmbientais = questionario.AlergiasAmbientais ?? string.Empty;
             AlergiasPlantas = questionario.AlergiasPlantas ?? string.Empty;
             OutrasAlergias = questionario.AlergiasSupplementos ?? string.Empty;
+            
+            // Intolerâncias alimentares específicas (novos campos boolean)
+            IntoleranciaGluten = questionario.IntoleranciaGluten;
+            IntoleranciaLactose = questionario.IntoleranciaLactose;
+            IntoleranciaProteinaLeite = questionario.IntoleranciaProteínaLeite;
+            IntoleranciaOvos = questionario.IntoleranciaOvos;
+            IntoleranciaMarisco = questionario.IntoleranciaMarisco;
+            IntoleranciaFrutosSecos = questionario.IntoleranciaFrutosSecos;
+            IntoleranciaAlimentarOutras = questionario.IntoleranciaAlimentarOutras ?? string.Empty;
             
             // Alergias ambientais específicas (novos campos boolean)
             AlergiaPolen = questionario.AlergiaPolen;
@@ -1289,9 +1447,33 @@ namespace BioDesk.App.ViewModels
                 questionario.CondicoesCronicas = DoencaCronica;
                 questionario.SintomasAtuais = SintomasAtuais;
                 questionario.MedicacaoAtual = MedicacaoAtual;
+                
+                // Doenças crónicas específicas (checkboxes)
+                questionario.DoencaHipertensao = DoencaHipertensao;
+                questionario.DoencaCardiopatia = DoencaCardiopatia;
+                questionario.DoencaDiabetesTipo1 = DoencaDiabetesTipo1;
+                questionario.DoencaDiabetesTipo2 = DoencaDiabetesTipo2;
+                questionario.DoencaTiroideia = DoencaTiroideia;
+                questionario.DoencaDislipidemia = DoencaDislipidemia;
+                questionario.DoencaRenal = DoencaRenal;
+                questionario.DoencaHepatica = DoencaHepatica;
+                questionario.DoencaAutoimune = DoencaAutoimune;
+                questionario.DoencaOsteoporose = DoencaOsteoporose;
+                questionario.DoencaAsmaDPOC = DoencaAsmaDPOC;
+                questionario.DoencaOncologia = DoencaOncologia;
+                
                 questionario.AlergiasAlimentos = AlergiasAlimentares;
                 questionario.AlergiasMedicamentos = AlergiasMedicamentos;
                 questionario.AlergiasAmbientais = AlergiasAmbientais;
+                
+                // Intolerâncias alimentares específicas (checkboxes)
+                questionario.IntoleranciaGluten = IntoleranciaGluten;
+                questionario.IntoleranciaLactose = IntoleranciaLactose;
+                questionario.IntoleranciaProteínaLeite = IntoleranciaProteinaLeite;
+                questionario.IntoleranciaOvos = IntoleranciaOvos;
+                questionario.IntoleranciaMarisco = IntoleranciaMarisco;
+                questionario.IntoleranciaFrutosSecos = IntoleranciaFrutosSecos;
+                questionario.IntoleranciaAlimentarOutras = IntoleranciaAlimentarOutras;
                 
                 // Alergias ambientais específicas
                 questionario.AlergiaPolen = AlergiaPolen;

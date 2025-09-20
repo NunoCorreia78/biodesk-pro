@@ -83,34 +83,66 @@
                             
                             <!-- Doença Crónica -->
                             <StackPanel Grid.Column="0" Grid.Row="0" Margin="0,0,12,0">
-                                <TextBlock Text="Doença crónica" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="2*"/>
-                                        <ColumnDefinition Width="5"/>
-                                        <ColumnDefinition Width="3*"/>
-                                    </Grid.ColumnDefinitions>
+                                <TextBlock Text="Doenças crónicas" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151" Margin="0,0,0,8"/>
+                                
+                                <!-- CheckBoxes para doenças específicas -->
+                                <StackPanel Orientation="Vertical">
+                                    <CheckBox Content="Hipertensão" 
+                                             IsChecked="{Binding DoencaHipertensao, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
                                     
-                                    <ComboBox Name="cb_DoencaCronica" Grid.Column="0"
-                                             SelectedItem="{Binding DoencaCronica, UpdateSourceTrigger=PropertyChanged}"
-                                             Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                             Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                             SelectionChanged="ComboBox_SelectionChanged">
-                                        <ComboBoxItem Content="Não"/>
-                                        <ComboBoxItem Content="Hipertensão"/>
-                                        <ComboBoxItem Content="Diabetes"/>
-                                        <ComboBoxItem Content="Problemas cardíacos"/>
-                                        <ComboBoxItem Content="Problemas da tiroide"/>
-                                        <ComboBoxItem Content="Artrite"/>
-                                        <ComboBoxItem Content="Asma"/>
-                                        <ComboBoxItem Content="Outras"/>
-                                    </ComboBox>
+                                    <CheckBox Content="Problemas cardíacos" 
+                                             IsChecked="{Binding DoencaCardiopatia, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
                                     
-                                    <TextBox Name="txt_DoencaCronicaOutras" Grid.Column="2"
-                                            Text="{Binding DoencaCronicaDetalhes, UpdateSourceTrigger=PropertyChanged}"
-                                            Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                            Padding="8,6" FontSize="14" Margin="10,4,0,0"/>
-                                </Grid>
+                                    <CheckBox Content="Diabetes Tipo 1" 
+                                             IsChecked="{Binding DoencaDiabetesTipo1, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                    
+                                    <CheckBox Content="Diabetes Tipo 2" 
+                                             IsChecked="{Binding DoencaDiabetesTipo2, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                    
+                                    <CheckBox Content="Problemas da tiroide" 
+                                             IsChecked="{Binding DoencaTiroideia, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                    
+                                    <CheckBox Content="Dislipidemia (colesterol)" 
+                                             IsChecked="{Binding DoencaDislipidemia, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                    
+                                    <CheckBox Content="Problemas renais" 
+                                             IsChecked="{Binding DoencaRenal, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                    
+                                    <CheckBox Content="Problemas hepáticos" 
+                                             IsChecked="{Binding DoencaHepatica, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                    
+                                    <CheckBox Content="Doença autoimune" 
+                                             IsChecked="{Binding DoencaAutoimune, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                    
+                                    <CheckBox Content="Osteoporose" 
+                                             IsChecked="{Binding DoencaOsteoporose, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                    
+                                    <CheckBox Content="Asma/DPOC" 
+                                             IsChecked="{Binding DoencaAsmaDPOC, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                    
+                                    <CheckBox Content="Oncologia" 
+                                             IsChecked="{Binding DoencaOncologia, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563"/>
+                                </StackPanel>
+                                
+                                <!-- Campo para outras doenças -->
+                                <TextBlock Text="Outras doenças crónicas:" FontFamily="Segoe UI" FontSize="12" FontWeight="Medium" Foreground="#6B7280" Margin="0,12,0,4"/>
+                                <TextBox Name="txt_DoencaCronicaOutras"
+                                        Text="{Binding DoencaCronicaDetalhes, UpdateSourceTrigger=PropertyChanged}"
+                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                        Padding="8,6" FontSize="13" TextWrapping="Wrap" AcceptsReturn="True"
+                                        Height="60"/>
                             </StackPanel>
                             
                             <!-- Sintomas Atuais -->
@@ -156,34 +188,42 @@
                             
                             <!-- Alergias Alimentares -->
                             <StackPanel Grid.Column="0" Grid.Row="0" Margin="0,0,12,0">
-                                <TextBlock Text="Alergias alimentares" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="2*"/>
-                                        <ColumnDefinition Width="5"/>
-                                        <ColumnDefinition Width="3*"/>
-                                    </Grid.ColumnDefinitions>
+                                <TextBlock Text="Alergias e intolerâncias alimentares" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151" Margin="0,0,0,8"/>
+                                
+                                <!-- CheckBoxes para intolerâncias específicas -->
+                                <StackPanel Orientation="Vertical">
+                                    <CheckBox Content="Glúten" 
+                                             IsChecked="{Binding IntoleranciaGluten, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
                                     
-                                    <ComboBox Name="cb_AlergiasAlimentares" Grid.Column="0"
-                                             SelectedItem="{Binding AlergiasAlimentares, UpdateSourceTrigger=PropertyChanged}"
-                                             Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                             Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                             SelectionChanged="ComboBox_SelectionChanged">
-                                        <ComboBoxItem Content="Nenhuma"/>
-                                        <ComboBoxItem Content="Lactose"/>
-                                        <ComboBoxItem Content="Glúten"/>
-                                        <ComboBoxItem Content="Frutos secos"/>
-                                        <ComboBoxItem Content="Marisco"/>
-                                        <ComboBoxItem Content="Ovos"/>
-                                        <ComboBoxItem Content="Soja"/>
-                                        <ComboBoxItem Content="Outras"/>
-                                    </ComboBox>
+                                    <CheckBox Content="Lactose" 
+                                             IsChecked="{Binding IntoleranciaLactose, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
                                     
-                                    <TextBox Name="txt_AlergiasAlimentaresOutras" Grid.Column="2"
-                                            Text="{Binding AlergiasAlimentaresDetalhes, UpdateSourceTrigger=PropertyChanged}"
-                                            Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                            Padding="8,6" FontSize="14" Margin="10,4,0,0"/>
-                                </Grid>
+                                    <CheckBox Content="Proteína do leite" 
+                                             IsChecked="{Binding IntoleranciaProteinaLeite, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                    
+                                    <CheckBox Content="Ovos" 
+                                             IsChecked="{Binding IntoleranciaOvos, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                    
+                                    <CheckBox Content="Marisco" 
+                                             IsChecked="{Binding IntoleranciaMarisco, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                    
+                                    <CheckBox Content="Frutos secos" 
+                                             IsChecked="{Binding IntoleranciaFrutosSecos, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563"/>
+                                </StackPanel>
+                                
+                                <!-- Campo para outras intolerâncias alimentares -->
+                                <TextBlock Text="Outras alergias/intolerâncias alimentares:" FontFamily="Segoe UI" FontSize="12" FontWeight="Medium" Foreground="#6B7280" Margin="0,12,0,4"/>
+                                <TextBox Name="txt_AlergiasAlimentaresOutras"
+                                        Text="{Binding IntoleranciaAlimentarOutras, UpdateSourceTrigger=PropertyChanged}"
+                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                        Padding="8,6" FontSize="13" TextWrapping="Wrap" AcceptsReturn="True"
+                                        Height="60"/>
                             </StackPanel>
                             
                             <!-- Alergias a Medicamentos -->

@@ -283,7 +283,181 @@
                     </StackPanel>
                 </Expander>
 
-                <!-- Seção 4: Estilo de Vida -->
+                <!-- Seção 4: Condições Médicas por Sistema -->
+                <Expander Background="White" 
+                         BorderBrush="#E2E8F0" 
+                         BorderThickness="1"
+                         Margin="0,0,0,16">
+                    <Expander.Header>
+                        <TextBlock Text="🫀 Condições Cardiovasculares" 
+                                  FontFamily="Segoe UI" 
+                                  FontSize="16" 
+                                  FontWeight="SemiBold"
+                                  Foreground="#1E293B"
+                                  Margin="16,12"/>
+                    </Expander.Header>
+                    <StackPanel Margin="24">
+                        <WrapPanel>
+                            <CheckBox Content="Hipertensão" IsChecked="{Binding CardioHipertensao}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Arritmia" IsChecked="{Binding CardioArritmia}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Colesterol Alto" IsChecked="{Binding CardioColesterolAlto}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Insuficiência Cardíaca" IsChecked="{Binding CardioInsuficienciaCardiaca}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Angina" IsChecked="{Binding CardioAngina}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Infarto do Miocárdio" IsChecked="{Binding CardioInfartoMiocardio}" Margin="0,0,20,8" FontSize="14"/>
+                        </WrapPanel>
+                    </StackPanel>
+                </Expander>
+
+                <!-- Seção 5: Condições Musculoesqueléticas -->
+                <Expander Background="White" 
+                         BorderBrush="#E2E8F0" 
+                         BorderThickness="1"
+                         Margin="0,0,0,16">
+                    <Expander.Header>
+                        <TextBlock Text="🦴 Condições Musculoesqueléticas" 
+                                  FontFamily="Segoe UI" 
+                                  FontSize="16" 
+                                  FontWeight="SemiBold"
+                                  Foreground="#1E293B"
+                                  Margin="16,12"/>
+                    </Expander.Header>
+                    <StackPanel Margin="24">
+                        <WrapPanel>
+                            <CheckBox Content="Artrose" IsChecked="{Binding MusculoArtrose}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Tendinite" IsChecked="{Binding MusculoTendinite}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Hérnia Discal" IsChecked="{Binding MusculoHerniaDiscal}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Fibromialgia" IsChecked="{Binding MusculoFibromialgia}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Artrite" IsChecked="{Binding MusculoArtrite}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Bursite" IsChecked="{Binding MusculoBursite}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Lombalgias" IsChecked="{Binding MusculoLombalgias}" Margin="0,0,20,8" FontSize="14"/>
+                        </WrapPanel>
+                    </StackPanel>
+                </Expander>
+
+                <!-- Seção 6: Condições Respiratórias -->
+                <Expander Background="White" 
+                         BorderBrush="#E2E8F0" 
+                         BorderThickness="1"
+                         Margin="0,0,0,16">
+                    <Expander.Header>
+                        <TextBlock Text="🫁 Condições Respiratórias" 
+                                  FontFamily="Segoe UI" 
+                                  FontSize="16" 
+                                  FontWeight="SemiBold"
+                                  Foreground="#1E293B"
+                                  Margin="16,12"/>
+                    </Expander.Header>
+                    <StackPanel Margin="24">
+                        <WrapPanel>
+                            <CheckBox Content="Asma" IsChecked="{Binding RespiratorioAsma}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Sinusite Crónica" IsChecked="{Binding RespiratorioSinusiteCronica}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Bronquite" IsChecked="{Binding RespiratorioBronquite}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Rinite Alérgica" IsChecked="{Binding RespiratorioRiniteAlergica}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Apneia do Sono" IsChecked="{Binding RespiratorioApneiaDoSono}" Margin="0,0,20,8" FontSize="14"/>
+                        </WrapPanel>
+                    </StackPanel>
+                </Expander>
+
+                <!-- Seção 7: Condições Digestivas -->
+                <Expander Background="White" 
+                         BorderBrush="#E2E8F0" 
+                         BorderThickness="1"
+                         Margin="0,0,0,16">
+                    <Expander.Header>
+                        <TextBlock Text="🍽️ Condições Digestivas" 
+                                  FontFamily="Segoe UI" 
+                                  FontSize="16" 
+                                  FontWeight="SemiBold"
+                                  Foreground="#1E293B"
+                                  Margin="16,12"/>
+                    </Expander.Header>
+                    <StackPanel Margin="24">
+                        <WrapPanel>
+                            <CheckBox Content="Gastrite" IsChecked="{Binding DigestivoGastrite}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Síndrome Intestino Irritável" IsChecked="{Binding DigestivoSindromeIntestinoIrritavel}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Refluxo Gastroesofágico" IsChecked="{Binding DigestivoRefluxoGastroesofagico}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Intolerância Lactose" IsChecked="{Binding DigestivoIntoleranciaLactose}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Doença de Crohn" IsChecked="{Binding DigestivoDoencaCrohn}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Úlcera Péptica" IsChecked="{Binding DigestivoUlceraPeptica}" Margin="0,0,20,8" FontSize="14"/>
+                        </WrapPanel>
+                    </StackPanel>
+                </Expander>
+
+                <!-- Seção 8: Condições Neurológicas -->
+                <Expander Background="White" 
+                         BorderBrush="#E2E8F0" 
+                         BorderThickness="1"
+                         Margin="0,0,0,16">
+                    <Expander.Header>
+                        <TextBlock Text="🧠 Condições Neurológicas" 
+                                  FontFamily="Segoe UI" 
+                                  FontSize="16" 
+                                  FontWeight="SemiBold"
+                                  Foreground="#1E293B"
+                                  Margin="16,12"/>
+                    </Expander.Header>
+                    <StackPanel Margin="24">
+                        <WrapPanel>
+                            <CheckBox Content="Enxaquecas" IsChecked="{Binding NeurologicoEnxaquecas}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Ansiedade" IsChecked="{Binding NeurologicoAnsiedade}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Depressão" IsChecked="{Binding NeurologicoDepressao}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Insónia" IsChecked="{Binding NeurologicoInsonia}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Epilepsia" IsChecked="{Binding NeurologicoEpilepsia}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Transtorno Bipolar" IsChecked="{Binding NeurologicoTranstornoBipolar}" Margin="0,0,20,8" FontSize="14"/>
+                        </WrapPanel>
+                    </StackPanel>
+                </Expander>
+
+                <!-- Seção 9: Condições Endócrinas -->
+                <Expander Background="White" 
+                         BorderBrush="#E2E8F0" 
+                         BorderThickness="1"
+                         Margin="0,0,0,16">
+                    <Expander.Header>
+                        <TextBlock Text="⚗️ Condições Endócrinas" 
+                                  FontFamily="Segoe UI" 
+                                  FontSize="16" 
+                                  FontWeight="SemiBold"
+                                  Foreground="#1E293B"
+                                  Margin="16,12"/>
+                    </Expander.Header>
+                    <StackPanel Margin="24">
+                        <WrapPanel>
+                            <CheckBox Content="Diabetes Tipo 1" IsChecked="{Binding EndocrinoDiabetesTipo1}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Diabetes Tipo 2" IsChecked="{Binding EndocrinoDiabetesTipo2}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Hipotiroidismo" IsChecked="{Binding EndocrinoHipotiroidismo}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Hipertiroidismo" IsChecked="{Binding EndocrinoHipertiroidismo}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="PCOS" IsChecked="{Binding EndocrinoPCOS}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Resistência à Insulina" IsChecked="{Binding EndocrinoResistenciaInsulina}" Margin="0,0,20,8" FontSize="14"/>
+                        </WrapPanel>
+                    </StackPanel>
+                </Expander>
+
+                <!-- Seção 10: Condições Renais/Geniturinários -->
+                <Expander Background="White" 
+                         BorderBrush="#E2E8F0" 
+                         BorderThickness="1"
+                         Margin="0,0,0,16">
+                    <Expander.Header>
+                        <TextBlock Text="🫘 Condições Renais/Geniturinários" 
+                                  FontFamily="Segoe UI" 
+                                  FontSize="16" 
+                                  FontWeight="SemiBold"
+                                  Foreground="#1E293B"
+                                  Margin="16,12"/>
+                    </Expander.Header>
+                    <StackPanel Margin="24">
+                        <WrapPanel>
+                            <CheckBox Content="Infeção Urinária" IsChecked="{Binding RenalInfecaoUrinaria}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Cálculos Renais" IsChecked="{Binding RenalCalculosRenais}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Cistite" IsChecked="{Binding RenalCistite}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Incontinência" IsChecked="{Binding RenalIncontinencia}" Margin="0,0,20,8" FontSize="14"/>
+                            <CheckBox Content="Insuficiência Renal" IsChecked="{Binding RenalInsuficienciaRenal}" Margin="0,0,20,8" FontSize="14"/>
+                        </WrapPanel>
+                    </StackPanel>
+                </Expander>
+
+                <!-- Seção 11: Estilo de Vida -->
                 <Expander Background="White" 
                          BorderBrush="#E2E8F0" 
                          BorderThickness="1"

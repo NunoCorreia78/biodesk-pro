@@ -250,6 +250,300 @@ namespace BioDesk.App.ViewModels
             set => SetProperty(ref _habitosAlimentares, value);
         }
 
+        // Propriedades para condições específicas por sistema - Cardiovasculares
+        private bool _cardioHipertensao = false;
+        public bool CardioHipertensao
+        {
+            get => _cardioHipertensao;
+            set => SetProperty(ref _cardioHipertensao, value);
+        }
+
+        private bool _cardioArritmia = false;
+        public bool CardioArritmia
+        {
+            get => _cardioArritmia;
+            set => SetProperty(ref _cardioArritmia, value);
+        }
+
+        private bool _cardioColesterolAlto = false;
+        public bool CardioColesterolAlto
+        {
+            get => _cardioColesterolAlto;
+            set => SetProperty(ref _cardioColesterolAlto, value);
+        }
+
+        private bool _cardioInsuficienciaCardiaca = false;
+        public bool CardioInsuficienciaCardiaca
+        {
+            get => _cardioInsuficienciaCardiaca;
+            set => SetProperty(ref _cardioInsuficienciaCardiaca, value);
+        }
+
+        private bool _cardioAngina = false;
+        public bool CardioAngina
+        {
+            get => _cardioAngina;
+            set => SetProperty(ref _cardioAngina, value);
+        }
+
+        private bool _cardioInfartoMiocardio = false;
+        public bool CardioInfartoMiocardio
+        {
+            get => _cardioInfartoMiocardio;
+            set => SetProperty(ref _cardioInfartoMiocardio, value);
+        }
+
+        // Musculoesqueléticas
+        private bool _musculoArtrose = false;
+        public bool MusculoArtrose
+        {
+            get => _musculoArtrose;
+            set => SetProperty(ref _musculoArtrose, value);
+        }
+
+        private bool _musculoTendinite = false;
+        public bool MusculoTendinite
+        {
+            get => _musculoTendinite;
+            set => SetProperty(ref _musculoTendinite, value);
+        }
+
+        private bool _musculoHerniaDiscal = false;
+        public bool MusculoHerniaDiscal
+        {
+            get => _musculoHerniaDiscal;
+            set => SetProperty(ref _musculoHerniaDiscal, value);
+        }
+
+        private bool _musculoFibromialgia = false;
+        public bool MusculoFibromialgia
+        {
+            get => _musculoFibromialgia;
+            set => SetProperty(ref _musculoFibromialgia, value);
+        }
+
+        private bool _musculoArtrite = false;
+        public bool MusculoArtrite
+        {
+            get => _musculoArtrite;
+            set => SetProperty(ref _musculoArtrite, value);
+        }
+
+        private bool _musculoBursite = false;
+        public bool MusculoBursite
+        {
+            get => _musculoBursite;
+            set => SetProperty(ref _musculoBursite, value);
+        }
+
+        private bool _musculoLombalgias = false;
+        public bool MusculoLombalgias
+        {
+            get => _musculoLombalgias;
+            set => SetProperty(ref _musculoLombalgias, value);
+        }
+
+        // Respiratórias
+        private bool _respiratorioAsma = false;
+        public bool RespiratorioAsma
+        {
+            get => _respiratorioAsma;
+            set => SetProperty(ref _respiratorioAsma, value);
+        }
+
+        private bool _respiratorioSinusiteCronica = false;
+        public bool RespiratorioSinusiteCronica
+        {
+            get => _respiratorioSinusiteCronica;
+            set => SetProperty(ref _respiratorioSinusiteCronica, value);
+        }
+
+        private bool _respiratorioBronquite = false;
+        public bool RespiratorioBronquite
+        {
+            get => _respiratorioBronquite;
+            set => SetProperty(ref _respiratorioBronquite, value);
+        }
+
+        private bool _respiratorioRiniteAlergica = false;
+        public bool RespiratorioRiniteAlergica
+        {
+            get => _respiratorioRiniteAlergica;
+            set => SetProperty(ref _respiratorioRiniteAlergica, value);
+        }
+
+        private bool _respiratorioApneiaDoSono = false;
+        public bool RespiratorioApneiaDoSono
+        {
+            get => _respiratorioApneiaDoSono;
+            set => SetProperty(ref _respiratorioApneiaDoSono, value);
+        }
+
+        // Digestivas
+        private bool _digestivoGastrite = false;
+        public bool DigestivoGastrite
+        {
+            get => _digestivoGastrite;
+            set => SetProperty(ref _digestivoGastrite, value);
+        }
+
+        private bool _digestivoSindromeIntestinoIrritavel = false;
+        public bool DigestivoSindromeIntestinoIrritavel
+        {
+            get => _digestivoSindromeIntestinoIrritavel;
+            set => SetProperty(ref _digestivoSindromeIntestinoIrritavel, value);
+        }
+
+        private bool _digestivoRefluxoGastroesofagico = false;
+        public bool DigestivoRefluxoGastroesofagico
+        {
+            get => _digestivoRefluxoGastroesofagico;
+            set => SetProperty(ref _digestivoRefluxoGastroesofagico, value);
+        }
+
+        private bool _digestivoIntoleranciaLactose = false;
+        public bool DigestivoIntoleranciaLactose
+        {
+            get => _digestivoIntoleranciaLactose;
+            set => SetProperty(ref _digestivoIntoleranciaLactose, value);
+        }
+
+        private bool _digestivoDoencaCrohn = false;
+        public bool DigestivoDoencaCrohn
+        {
+            get => _digestivoDoencaCrohn;
+            set => SetProperty(ref _digestivoDoencaCrohn, value);
+        }
+
+        private bool _digestivoUlceraPeptica = false;
+        public bool DigestivoUlceraPeptica
+        {
+            get => _digestivoUlceraPeptica;
+            set => SetProperty(ref _digestivoUlceraPeptica, value);
+        }
+
+        // Neurológicas
+        private bool _neurologicoEnxaquecas = false;
+        public bool NeurologicoEnxaquecas
+        {
+            get => _neurologicoEnxaquecas;
+            set => SetProperty(ref _neurologicoEnxaquecas, value);
+        }
+
+        private bool _neurologicoAnsiedade = false;
+        public bool NeurologicoAnsiedade
+        {
+            get => _neurologicoAnsiedade;
+            set => SetProperty(ref _neurologicoAnsiedade, value);
+        }
+
+        private bool _neurologicoDepressao = false;
+        public bool NeurologicoDepressao
+        {
+            get => _neurologicoDepressao;
+            set => SetProperty(ref _neurologicoDepressao, value);
+        }
+
+        private bool _neurologicoInsonia = false;
+        public bool NeurologicoInsonia
+        {
+            get => _neurologicoInsonia;
+            set => SetProperty(ref _neurologicoInsonia, value);
+        }
+
+        private bool _neurologicoEpilepsia = false;
+        public bool NeurologicoEpilepsia
+        {
+            get => _neurologicoEpilepsia;
+            set => SetProperty(ref _neurologicoEpilepsia, value);
+        }
+
+        private bool _neurologicoTranstornoBipolar = false;
+        public bool NeurologicoTranstornoBipolar
+        {
+            get => _neurologicoTranstornoBipolar;
+            set => SetProperty(ref _neurologicoTranstornoBipolar, value);
+        }
+
+        // Endócrinas
+        private bool _endocrinoDiabetesTipo1 = false;
+        public bool EndocrinoDiabetesTipo1
+        {
+            get => _endocrinoDiabetesTipo1;
+            set => SetProperty(ref _endocrinoDiabetesTipo1, value);
+        }
+
+        private bool _endocrinoDiabetesTipo2 = false;
+        public bool EndocrinoDiabetesTipo2
+        {
+            get => _endocrinoDiabetesTipo2;
+            set => SetProperty(ref _endocrinoDiabetesTipo2, value);
+        }
+
+        private bool _endocrinoHipotiroidismo = false;
+        public bool EndocrinoHipotiroidismo
+        {
+            get => _endocrinoHipotiroidismo;
+            set => SetProperty(ref _endocrinoHipotiroidismo, value);
+        }
+
+        private bool _endocrinoHipertiroidismo = false;
+        public bool EndocrinoHipertiroidismo
+        {
+            get => _endocrinoHipertiroidismo;
+            set => SetProperty(ref _endocrinoHipertiroidismo, value);
+        }
+
+        private bool _endocrinoPCOS = false;
+        public bool EndocrinoPCOS
+        {
+            get => _endocrinoPCOS;
+            set => SetProperty(ref _endocrinoPCOS, value);
+        }
+
+        private bool _endocrinoResistenciaInsulina = false;
+        public bool EndocrinoResistenciaInsulina
+        {
+            get => _endocrinoResistenciaInsulina;
+            set => SetProperty(ref _endocrinoResistenciaInsulina, value);
+        }
+
+        // Renais/Geniturinários
+        private bool _renalInfecaoUrinaria = false;
+        public bool RenalInfecaoUrinaria
+        {
+            get => _renalInfecaoUrinaria;
+            set => SetProperty(ref _renalInfecaoUrinaria, value);
+        }
+
+        private bool _renalCalculosRenais = false;
+        public bool RenalCalculosRenais
+        {
+            get => _renalCalculosRenais;
+            set => SetProperty(ref _renalCalculosRenais, value);
+        }
+
+        private bool _renalCistite = false;
+        public bool RenalCistite
+        {
+            get => _renalCistite;
+            set => SetProperty(ref _renalCistite, value);
+        }
+
+        private bool _renalIncontinencia = false;
+        public bool RenalIncontinencia
+        {
+            get => _renalIncontinencia;
+            set => SetProperty(ref _renalIncontinencia, value);
+        }
+
+        private bool _renalInsuficienciaRenal = false;
+        public bool RenalInsuficienciaRenal
+        {
+            get => _renalInsuficienciaRenal;
+            set => SetProperty(ref _renalInsuficienciaRenal, value);
+        }
+
         #endregion
 
         #region Methods
@@ -259,6 +553,98 @@ namespace BioDesk.App.ViewModels
             PacienteId = pacienteId;
             NomePaciente = nomePaciente;
             App.DebugLog($"QuestionarioCompletoViewModel: Paciente definido - ID: {pacienteId}, Nome: {nomePaciente}");
+            
+            // Carregar questionário existente, se houver
+            _ = CarregarQuestionarioExistente();
+        }
+
+        private async Task CarregarQuestionarioDados()
+        {
+            try
+            {
+                if (PacienteId <= 0) return;
+
+                using var context = new BioDeskDbContext(new DbContextOptionsBuilder<BioDeskDbContext>().Options);
+                
+                var questionario = await context.QuestionariosSaude
+                    .FirstOrDefaultAsync(q => q.PacienteId == PacienteId);
+
+                if (questionario != null)
+                {
+                    // Carregar dados gerais
+                    DoencaCronica = questionario.CondicoesCronicas ?? string.Empty;
+                    SintomasAtuais = questionario.SintomasAtuais ?? string.Empty;
+                    MedicacaoAtual = questionario.MedicacaoAtual ?? string.Empty;
+                    AlergiasAlimentares = questionario.AlergiasAlimentos ?? string.Empty;
+                    AlergiasMedicamentos = questionario.AlergiasMedicamentos ?? string.Empty;
+                    AlergiasAmbientais = questionario.AlergiasAmbientais ?? string.Empty;
+                    OutrasAlergias = questionario.AlergiasPlantas ?? string.Empty;
+                    HistoricoCirurgico = questionario.HistoricoCirurgias ?? string.Empty;
+                    Fraturas = questionario.HistoricoFraturas ?? string.Empty;
+
+                    // Carregar condições específicas - Cardiovasculares
+                    CardioHipertensao = questionario.CardioHipertensao;
+                    CardioArritmia = questionario.CardioArritmia;
+                    CardioColesterolAlto = questionario.CardioColesterolAlto;
+                    CardioInsuficienciaCardiaca = questionario.CardioInsuficienciaCardiaca;
+                    CardioAngina = questionario.CardioAngina;
+                    CardioInfartoMiocardio = questionario.CardioInfartoMiocardio;
+
+                    // Musculoesqueléticas
+                    MusculoArtrose = questionario.MusculoArtrose;
+                    MusculoTendinite = questionario.MusculoTendinite;
+                    MusculoHerniaDiscal = questionario.MusculoHerniaDiscal;
+                    MusculoFibromialgia = questionario.MusculoFibromialgia;
+                    MusculoArtrite = questionario.MusculoArtrite;
+                    MusculoBursite = questionario.MusculoBursite;
+                    MusculoLombalgias = questionario.MusculoLombalgias;
+
+                    // Respiratórias
+                    RespiratorioAsma = questionario.RespiratorioAsma;
+                    RespiratorioSinusiteCronica = questionario.RespiratorioSinusiteCronica;
+                    RespiratorioBronquite = questionario.RespiratorioBronquite;
+                    RespiratorioRiniteAlergica = questionario.RespiratorioRiniteAlergica;
+                    RespiratorioApneiaDoSono = questionario.RespiratorioApneiaDoSono;
+
+                    // Digestivas
+                    DigestivoGastrite = questionario.DigestivoGastrite;
+                    DigestivoSindromeIntestinoIrritavel = questionario.DigestivoSindromeIntestinoIrritavel;
+                    DigestivoRefluxoGastroesofagico = questionario.DigestivoRefluxoGastroesofagico;
+                    DigestivoIntoleranciaLactose = questionario.DigestivoIntoleranciaLactose;
+                    DigestivoDoencaCrohn = questionario.DigestivoDoencaCrohn;
+                    DigestivoUlceraPeptica = questionario.DigestivoUlceraPeptica;
+
+                    // Neurológicas
+                    NeurologicoEnxaquecas = questionario.NeurologicoEnxaquecas;
+                    NeurologicoAnsiedade = questionario.NeurologicoAnsiedade;
+                    NeurologicoDepressao = questionario.NeurologicoDepressao;
+                    NeurologicoInsonia = questionario.NeurologicoInsonia;
+                    NeurologicoEpilepsia = questionario.NeurologicoEpilepsia;
+                    NeurologicoTranstornoBipolar = questionario.NeurologicoTranstornoBipolar;
+
+                    // Endócrinas
+                    EndocrinoDiabetesTipo1 = questionario.EndocrinoDiabetesTipo1;
+                    EndocrinoDiabetesTipo2 = questionario.EndocrinoDiabetesTipo2;
+                    EndocrinoHipotiroidismo = questionario.EndocrinoHipotiroidismo;
+                    EndocrinoHipertiroidismo = questionario.EndocrinoHipertiroidismo;
+                    EndocrinoPCOS = questionario.EndocrinoPCOS;
+                    EndocrinoResistenciaInsulina = questionario.EndocrinoResistenciaInsulina;
+
+                    // Renais/Geniturinários
+                    RenalInfecaoUrinaria = questionario.RenalInfecaoUrinaria;
+                    RenalCalculosRenais = questionario.RenalCalculosRenais;
+                    RenalCistite = questionario.RenalCistite;
+                    RenalIncontinencia = questionario.RenalIncontinencia;
+                    RenalInsuficienciaRenal = questionario.RenalInsuficienciaRenal;
+
+                    DataPreenchimento = questionario.DataPreenchimento;
+                    DataUltimaEdicao = questionario.DataUltimaAtualizacao ?? questionario.DataPreenchimento;
+                }
+            }
+            catch (Exception ex)
+            {
+                App.DebugLog($"Erro ao carregar dados do questionário: {ex.Message}");
+            }
         }
 
         #endregion
@@ -316,10 +702,20 @@ namespace BioDesk.App.ViewModels
             try
             {
                 IsLoading = true;
-                await Task.Delay(500);
+                await CarregarQuestionarioDados();
                 
-                MessageBox.Show("Funcionalidade de carregar questionário existente será implementada em breve.",
-                               "Em desenvolvimento", MessageBoxButton.OK, MessageBoxImage.Information);
+                if (!string.IsNullOrEmpty(DoencaCronica) || CardioHipertensao || MusculoArtrose || 
+                    RespiratorioAsma || DigestivoGastrite || NeurologicoEnxaquecas || 
+                    EndocrinoDiabetesTipo1 || EndocrinoDiabetesTipo2 || RenalInfecaoUrinaria)
+                {
+                    MessageBox.Show("Questionário carregado com sucesso!", 
+                                   "Dados Carregados", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Nenhum questionário encontrado. Pode criar um novo.", 
+                                   "Novo Questionário", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
             catch (Exception ex)
             {
@@ -384,6 +780,78 @@ namespace BioDesk.App.ViewModels
                 questionario.HistoricoFraturas = Fraturas;
                 questionario.DetalhesEstiloVida = $"Atividade Física: {AtividadeFisica}; Tabagismo: {Tabagismo}; Álcool: {ConsumoAlcool}; Hábitos Alimentares: {HabitosAlimentares}";
                 questionario.DataUltimaAtualizacao = DateTime.Now;
+
+                // Mapear condições específicas por sistema
+                // Cardiovasculares
+                questionario.CardioHipertensao = CardioHipertensao;
+                questionario.CardioArritmia = CardioArritmia;
+                questionario.CardioColesterolAlto = CardioColesterolAlto;
+                questionario.CardioInsuficienciaCardiaca = CardioInsuficienciaCardiaca;
+                questionario.CardioAngina = CardioAngina;
+                questionario.CardioInfartoMiocardio = CardioInfartoMiocardio;
+
+                // Musculoesqueléticas
+                questionario.MusculoArtrose = MusculoArtrose;
+                questionario.MusculoTendinite = MusculoTendinite;
+                questionario.MusculoHerniaDiscal = MusculoHerniaDiscal;
+                questionario.MusculoFibromialgia = MusculoFibromialgia;
+                questionario.MusculoArtrite = MusculoArtrite;
+                questionario.MusculoBursite = MusculoBursite;
+                questionario.MusculoLombalgias = MusculoLombalgias;
+
+                // Respiratórias
+                questionario.RespiratorioAsma = RespiratorioAsma;
+                questionario.RespiratorioSinusiteCronica = RespiratorioSinusiteCronica;
+                questionario.RespiratorioBronquite = RespiratorioBronquite;
+                questionario.RespiratorioRiniteAlergica = RespiratorioRiniteAlergica;
+                questionario.RespiratorioApneiaDoSono = RespiratorioApneiaDoSono;
+
+                // Digestivas
+                questionario.DigestivoGastrite = DigestivoGastrite;
+                questionario.DigestivoSindromeIntestinoIrritavel = DigestivoSindromeIntestinoIrritavel;
+                questionario.DigestivoRefluxoGastroesofagico = DigestivoRefluxoGastroesofagico;
+                questionario.DigestivoIntoleranciaLactose = DigestivoIntoleranciaLactose;
+                questionario.DigestivoDoencaCrohn = DigestivoDoencaCrohn;
+                questionario.DigestivoUlceraPeptica = DigestivoUlceraPeptica;
+
+                // Neurológicas
+                questionario.NeurologicoEnxaquecas = NeurologicoEnxaquecas;
+                questionario.NeurologicoAnsiedade = NeurologicoAnsiedade;
+                questionario.NeurologicoDepressao = NeurologicoDepressao;
+                questionario.NeurologicoInsonia = NeurologicoInsonia;
+                questionario.NeurologicoEpilepsia = NeurologicoEpilepsia;
+                questionario.NeurologicoTranstornoBipolar = NeurologicoTranstornoBipolar;
+
+                // Endócrinas
+                questionario.EndocrinoDiabetesTipo1 = EndocrinoDiabetesTipo1;
+                questionario.EndocrinoDiabetesTipo2 = EndocrinoDiabetesTipo2;
+                questionario.EndocrinoHipotiroidismo = EndocrinoHipotiroidismo;
+                questionario.EndocrinoHipertiroidismo = EndocrinoHipertiroidismo;
+                questionario.EndocrinoPCOS = EndocrinoPCOS;
+                questionario.EndocrinoResistenciaInsulina = EndocrinoResistenciaInsulina;
+
+                // Renais/Geniturinários
+                questionario.RenalInfecaoUrinaria = RenalInfecaoUrinaria;
+                questionario.RenalCalculosRenais = RenalCalculosRenais;
+                questionario.RenalCistite = RenalCistite;
+                questionario.RenalIncontinencia = RenalIncontinencia;
+                questionario.RenalInsuficienciaRenal = RenalInsuficienciaRenal;
+
+                // Atualizar campos genéricos baseado nas condições específicas
+                questionario.ProblemasCardiovasculares = CardioHipertensao || CardioArritmia || CardioColesterolAlto || 
+                                                        CardioInsuficienciaCardiaca || CardioAngina || CardioInfartoMiocardio;
+                questionario.ProblemasMusculoesqueleticos = MusculoArtrose || MusculoTendinite || MusculoHerniaDiscal || 
+                                                          MusculoFibromialgia || MusculoArtrite || MusculoBursite || MusculoLombalgias;
+                questionario.ProblemasRespiratorios = RespiratorioAsma || RespiratorioSinusiteCronica || RespiratorioBronquite || 
+                                                    RespiratorioRiniteAlergica || RespiratorioApneiaDoSono;
+                questionario.ProblemasDigestivos = DigestivoGastrite || DigestivoSindromeIntestinoIrritavel || DigestivoRefluxoGastroesofagico || 
+                                                  DigestivoIntoleranciaLactose || DigestivoDoencaCrohn || DigestivoUlceraPeptica;
+                questionario.ProblemasNeurologicos = NeurologicoEnxaquecas || NeurologicoAnsiedade || NeurologicoDepressao || 
+                                                    NeurologicoInsonia || NeurologicoEpilepsia || NeurologicoTranstornoBipolar;
+                questionario.ProblemasEndocrinos = EndocrinoDiabetesTipo1 || EndocrinoDiabetesTipo2 || EndocrinoHipotiroidismo || 
+                                                  EndocrinoHipertiroidismo || EndocrinoPCOS || EndocrinoResistenciaInsulina;
+                questionario.ProblemasRenais = RenalInfecaoUrinaria || RenalCalculosRenais || RenalCistite || 
+                                             RenalIncontinencia || RenalInsuficienciaRenal;
 
                 // Definir campos boolean baseado se há texto
                 questionario.TomaMedicacao = !string.IsNullOrWhiteSpace(MedicacaoAtual);

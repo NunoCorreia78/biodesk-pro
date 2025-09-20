@@ -71,7 +71,7 @@ public class QuestionarioSaude
     [MaxLength(500)]
     public string? HistoricoGinecologico { get; set; }
     
-    // Sistemas corporais
+    // Sistemas corporais - CAMPOS ANTIGOS (manter por compatibilidade)
     public bool ProblemasCardiovasculares { get; set; }
     public bool ProblemasRespiratorios { get; set; }
     public bool ProblemasDigestivos { get; set; }
@@ -80,6 +80,61 @@ public class QuestionarioSaude
     public bool ProblemasRenais { get; set; }
     public bool ProblemasMusculoesqueleticos { get; set; }
     public bool ProblemasPele { get; set; }
+
+    // NOVOS CAMPOS ESPECÍFICOS POR SISTEMA - Problemas Cardiovasculares
+    public bool CardioHipertensao { get; set; }
+    public bool CardioArritmia { get; set; }
+    public bool CardioColesterolAlto { get; set; }
+    public bool CardioInsuficienciaCardiaca { get; set; }
+    public bool CardioAngina { get; set; }
+    public bool CardioInfartoMiocardio { get; set; }
+
+    // Problemas Musculoesqueléticos
+    public bool MusculoArtrose { get; set; }
+    public bool MusculoTendinite { get; set; }
+    public bool MusculoHerniaDiscal { get; set; }
+    public bool MusculoFibromialgia { get; set; }
+    public bool MusculoArtrite { get; set; }
+    public bool MusculoBursite { get; set; }
+    public bool MusculoLombalgias { get; set; }
+
+    // Problemas Respiratórios
+    public bool RespiratorioAsma { get; set; }
+    public bool RespiratorioSinusiteCronica { get; set; }
+    public bool RespiratorioBronquite { get; set; }
+    public bool RespiratorioRiniteAlergica { get; set; }
+    public bool RespiratorioApneiaDoSono { get; set; }
+
+    // Problemas Digestivos
+    public bool DigestivoGastrite { get; set; }
+    public bool DigestivoSindromeIntestinoIrritavel { get; set; }
+    public bool DigestivoRefluxoGastroesofagico { get; set; }
+    public bool DigestivoIntoleranciaLactose { get; set; }
+    public bool DigestivoDoencaCrohn { get; set; }
+    public bool DigestivoUlceraPeptica { get; set; }
+
+    // Problemas Neurológicos
+    public bool NeurologicoEnxaquecas { get; set; }
+    public bool NeurologicoAnsiedade { get; set; }
+    public bool NeurologicoDepressao { get; set; }
+    public bool NeurologicoInsonia { get; set; }
+    public bool NeurologicoEpilepsia { get; set; }
+    public bool NeurologicoTranstornoBipolar { get; set; }
+
+    // Problemas Endócrinos
+    public bool EndocrinoDiabetesTipo1 { get; set; }
+    public bool EndocrinoDiabetesTipo2 { get; set; }
+    public bool EndocrinoHipotiroidismo { get; set; }
+    public bool EndocrinoHipertiroidismo { get; set; }
+    public bool EndocrinoPCOS { get; set; }
+    public bool EndocrinoResistenciaInsulina { get; set; }
+
+    // Problemas Renais/Geniturinários
+    public bool RenalInfecaoUrinaria { get; set; }
+    public bool RenalCalculosRenais { get; set; }
+    public bool RenalCistite { get; set; }
+    public bool RenalIncontinencia { get; set; }
+    public bool RenalInsuficienciaRenal { get; set; }
     
     [MaxLength(2000)]
     public string? DetalhesProblemasSaude { get; set; }

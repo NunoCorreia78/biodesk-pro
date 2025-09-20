@@ -283,6 +283,271 @@
                     </StackPanel>
                 </Expander>
 
+                <!-- Seção 3.5: Sistemas Corporais Detalhados -->
+                <Expander Background="White" 
+                         BorderBrush="#E2E8F0" 
+                         BorderThickness="1"
+                         Margin="0,0,0,16">
+                    <Expander.Header>
+                        <TextBlock Text="🏥 Sistemas Corporais - Condições Específicas" 
+                                  FontFamily="Segoe UI" 
+                                  FontSize="16" 
+                                  FontWeight="SemiBold"
+                                  Foreground="#1E293B"
+                                  Margin="16,12"/>
+                    </Expander.Header>
+                    <StackPanel Margin="24">
+                        <!-- 1. Sistema Cardiovascular -->
+                        <GroupBox Header="🫀 Sistema Cardiovascular" Margin="0,0,0,16" 
+                                 BorderBrush="#E2E8F0" BorderThickness="1">
+                            <StackPanel Margin="12">
+                                <WrapPanel>
+                                    <CheckBox Content="Hipertensão" IsChecked="{Binding CardioHipertensao, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Diabetes Tipo 1" IsChecked="{Binding CardioDiabetesTipo1, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Diabetes Tipo 2" IsChecked="{Binding CardioDiabetesTipo2, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Arritmia" IsChecked="{Binding CardioArritmia, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Colesterol Alto" IsChecked="{Binding CardioColesterolAlto, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Insuficiência Cardíaca" IsChecked="{Binding CardioInsuficienciaCardiaca, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Angina" IsChecked="{Binding CardioAngina, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Outro" IsChecked="{Binding CardioOutro, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                </WrapPanel>
+                                <TextBox PlaceholderText="Especificar outro problema cardiovascular..." 
+                                         Text="{Binding CardioOutroDescricao, UpdateSourceTrigger=PropertyChanged}" 
+                                         IsEnabled="{Binding CardioOutro}" 
+                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                         Padding="8,6" FontSize="13" Margin="0,8,0,0"/>
+                            </StackPanel>
+                        </GroupBox>
+
+                        <!-- 2. Sistema Musculoesquelético -->
+                        <GroupBox Header="🦴 Sistema Musculoesquelético" Margin="0,0,0,16" 
+                                 BorderBrush="#E2E8F0" BorderThickness="1">
+                            <StackPanel Margin="12">
+                                <WrapPanel>
+                                    <CheckBox Content="Artrose" IsChecked="{Binding MusculoArtrose, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Tendinite" IsChecked="{Binding MusculoTendinite, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Hérnia Discal" IsChecked="{Binding MusculoHerniaDiscal, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Fibromialgia" IsChecked="{Binding MusculoFibromialgia, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Artrite" IsChecked="{Binding MusculoArtrite, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Bursite" IsChecked="{Binding MusculoBursite, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Lombalgia" IsChecked="{Binding MusculoLombalgia, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Cervicalgia" IsChecked="{Binding MusculoCervicalgia, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Outro" IsChecked="{Binding MusculoOutro, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                </WrapPanel>
+                                <TextBox PlaceholderText="Especificar outro problema musculoesquelético..." 
+                                         Text="{Binding MusculoOutroDescricao, UpdateSourceTrigger=PropertyChanged}" 
+                                         IsEnabled="{Binding MusculoOutro}" 
+                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                         Padding="8,6" FontSize="13" Margin="0,8,0,0"/>
+                            </StackPanel>
+                        </GroupBox>
+
+                        <!-- 3. Sistema Respiratório -->
+                        <GroupBox Header="🫁 Sistema Respiratório" Margin="0,0,0,16" 
+                                 BorderBrush="#E2E8F0" BorderThickness="1">
+                            <StackPanel Margin="12">
+                                <WrapPanel>
+                                    <CheckBox Content="Asma" IsChecked="{Binding RespiratorioAsma, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Sinusite Crónica" IsChecked="{Binding RespiratorioSinusiteCronica, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Bronquite" IsChecked="{Binding RespiratorioBronquite, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Rinite Alérgica" IsChecked="{Binding RespiratorioRiniteAlergica, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Apneia do Sono" IsChecked="{Binding RespiratorioApneiaSono, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Outro" IsChecked="{Binding RespiratorioOutro, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                </WrapPanel>
+                                <TextBox PlaceholderText="Especificar outro problema respiratório..." 
+                                         Text="{Binding RespiratorioOutroDescricao, UpdateSourceTrigger=PropertyChanged}" 
+                                         IsEnabled="{Binding RespiratorioOutro}" 
+                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                         Padding="8,6" FontSize="13" Margin="0,8,0,0"/>
+                            </StackPanel>
+                        </GroupBox>
+
+                        <!-- 4. Sistema Digestivo -->
+                        <GroupBox Header="🍃 Sistema Digestivo" Margin="0,0,0,16" 
+                                 BorderBrush="#E2E8F0" BorderThickness="1">
+                            <StackPanel Margin="12">
+                                <WrapPanel>
+                                    <CheckBox Content="Gastrite" IsChecked="{Binding DigestivoGastrite, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Refluxo" IsChecked="{Binding DigestivoRefluxo, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Síndrome Intestino Irritável" IsChecked="{Binding DigestivoSII, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Intolerância Lactose" IsChecked="{Binding DigestivoIntoleranciaLactose, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Doença de Crohn" IsChecked="{Binding DigestivoDoencaCrohn, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Colite Ulcerosa" IsChecked="{Binding DigestivoColiteUlcerosa, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Obstipação" IsChecked="{Binding DigestivoConstipacao, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Outro" IsChecked="{Binding DigestivoOutro, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                </WrapPanel>
+                                <TextBox PlaceholderText="Especificar outro problema digestivo..." 
+                                         Text="{Binding DigestivoOutroDescricao, UpdateSourceTrigger=PropertyChanged}" 
+                                         IsEnabled="{Binding DigestivoOutro}" 
+                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                         Padding="8,6" FontSize="13" Margin="0,8,0,0"/>
+                            </StackPanel>
+                        </GroupBox>
+
+                        <!-- 5. Sistema Neurológico -->
+                        <GroupBox Header="🧠 Sistema Neurológico" Margin="0,0,0,16" 
+                                 BorderBrush="#E2E8F0" BorderThickness="1">
+                            <StackPanel Margin="12">
+                                <WrapPanel>
+                                    <CheckBox Content="Enxaquecas" IsChecked="{Binding NeurologicoEnxaquecas, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Ansiedade" IsChecked="{Binding NeurologicoAnsiedade, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Depressão" IsChecked="{Binding NeurologicoDepressao, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Insónia" IsChecked="{Binding NeurologicoInsonia, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Epilepsia" IsChecked="{Binding NeurologicoEpilepsia, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Vertigens/Tonturas" IsChecked="{Binding NeurologicoVertigensTonturas, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Outro" IsChecked="{Binding NeurologicoOutro, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                </WrapPanel>
+                                <TextBox PlaceholderText="Especificar outro problema neurológico..." 
+                                         Text="{Binding NeurologicoOutroDescricao, UpdateSourceTrigger=PropertyChanged}" 
+                                         IsEnabled="{Binding NeurologicoOutro}" 
+                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                         Padding="8,6" FontSize="13" Margin="0,8,0,0"/>
+                            </StackPanel>
+                        </GroupBox>
+
+                        <!-- 6. Sistema Endócrino -->
+                        <GroupBox Header="🦋 Sistema Endócrino" Margin="0,0,0,16" 
+                                 BorderBrush="#E2E8F0" BorderThickness="1">
+                            <StackPanel Margin="12">
+                                <WrapPanel>
+                                    <CheckBox Content="Hipotiroidismo" IsChecked="{Binding EndocrinoHipotiroidismo, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Hipertiroidismo" IsChecked="{Binding EndocrinoHipertiroidismo, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="PCOS" IsChecked="{Binding EndocrinoPCOS, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Resistência à Insulina" IsChecked="{Binding EndocrinoResistenciaInsulina, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Menopausa" IsChecked="{Binding EndocrinoMenopausa, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Outro" IsChecked="{Binding EndocrinoOutro, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                </WrapPanel>
+                                <TextBox PlaceholderText="Especificar outro problema endócrino..." 
+                                         Text="{Binding EndocrinoOutroDescricao, UpdateSourceTrigger=PropertyChanged}" 
+                                         IsEnabled="{Binding EndocrinoOutro}" 
+                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                         Padding="8,6" FontSize="13" Margin="0,8,0,0"/>
+                            </StackPanel>
+                        </GroupBox>
+
+                        <!-- 7. Sistema Renal/Geniturinário -->
+                        <GroupBox Header="🔄 Sistema Renal/Geniturinário" Margin="0,0,0,16" 
+                                 BorderBrush="#E2E8F0" BorderThickness="1">
+                            <StackPanel Margin="12">
+                                <WrapPanel>
+                                    <CheckBox Content="Infeção Urinária" IsChecked="{Binding RenalInfecaoUrinaria, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Cálculos Renais" IsChecked="{Binding RenalCalculosRenais, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Cistite" IsChecked="{Binding RenalCistite, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Incontinência" IsChecked="{Binding RenalIncontinencia, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Outro" IsChecked="{Binding RenalOutro, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                </WrapPanel>
+                                <TextBox PlaceholderText="Especificar outro problema renal/geniturinário..." 
+                                         Text="{Binding RenalOutroDescricao, UpdateSourceTrigger=PropertyChanged}" 
+                                         IsEnabled="{Binding RenalOutro}" 
+                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                         Padding="8,6" FontSize="13" Margin="0,8,0,0"/>
+                            </StackPanel>
+                        </GroupBox>
+
+                        <!-- 8. Sistema Pele/Dermatológico -->
+                        <GroupBox Header="🌟 Sistema Pele/Dermatológico" Margin="0,0,0,16" 
+                                 BorderBrush="#E2E8F0" BorderThickness="1">
+                            <StackPanel Margin="12">
+                                <WrapPanel>
+                                    <CheckBox Content="Eczema" IsChecked="{Binding PeleEczema, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Psoríase" IsChecked="{Binding PelePsoriase, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Dermatite" IsChecked="{Binding PeleDermatite, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Alergias Cutâneas" IsChecked="{Binding PeleAlergiasCutaneas, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Acne" IsChecked="{Binding PeleAcne, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Outro" IsChecked="{Binding PeleOutro, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                </WrapPanel>
+                                <TextBox PlaceholderText="Especificar outro problema de pele..." 
+                                         Text="{Binding PeleOutroDescricao, UpdateSourceTrigger=PropertyChanged}" 
+                                         IsEnabled="{Binding PeleOutro}" 
+                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                         Padding="8,6" FontSize="13" Margin="0,8,0,0"/>
+                            </StackPanel>
+                        </GroupBox>
+
+                        <!-- 9. Sistema Oftalmológico -->
+                        <GroupBox Header="👁️ Sistema Oftalmológico" Margin="0,0,0,16" 
+                                 BorderBrush="#E2E8F0" BorderThickness="1">
+                            <StackPanel Margin="12">
+                                <WrapPanel>
+                                    <CheckBox Content="Miopia" IsChecked="{Binding OftalmologicoMiopia, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Hipermetropia" IsChecked="{Binding OftalmologicoHipermetropia, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Astigmatismo" IsChecked="{Binding OftalmologicoAstigmatismo, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Glaucoma" IsChecked="{Binding OftalmologicoGlaucoma, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Catarata" IsChecked="{Binding OftalmologicoCatarata, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Conjuntivite" IsChecked="{Binding OftalmologicoConjuntivite, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Outro" IsChecked="{Binding OftalmologicoOutro, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                </WrapPanel>
+                                <TextBox PlaceholderText="Especificar outro problema oftalmológico..." 
+                                         Text="{Binding OftalmologicoOutroDescricao, UpdateSourceTrigger=PropertyChanged}" 
+                                         IsEnabled="{Binding OftalmologicoOutro}" 
+                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                         Padding="8,6" FontSize="13" Margin="0,8,0,0"/>
+                            </StackPanel>
+                        </GroupBox>
+
+                        <!-- 10. Sistema Auditivo/Otorrino -->
+                        <GroupBox Header="👂 Sistema Auditivo/Otorrino" Margin="0,0,0,16" 
+                                 BorderBrush="#E2E8F0" BorderThickness="1">
+                            <StackPanel Margin="12">
+                                <WrapPanel>
+                                    <CheckBox Content="Perdas Auditivas" IsChecked="{Binding AuditivoPerdasAuditivas, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Zumbido no Ouvido" IsChecked="{Binding AuditivoZumbidoOuvido, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Otites Recorrentes" IsChecked="{Binding AuditivoOtitesRecorrentes, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Labirintite" IsChecked="{Binding AuditivoLabirintite, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Sinusite" IsChecked="{Binding AuditivoSinusite, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Outro" IsChecked="{Binding AuditivoOutro, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                </WrapPanel>
+                                <TextBox PlaceholderText="Especificar outro problema auditivo/otorrino..." 
+                                         Text="{Binding AuditivoOutroDescricao, UpdateSourceTrigger=PropertyChanged}" 
+                                         IsEnabled="{Binding AuditivoOutro}" 
+                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                         Padding="8,6" FontSize="13" Margin="0,8,0,0"/>
+                            </StackPanel>
+                        </GroupBox>
+
+                        <!-- 11. Sistema Saúde Oral -->
+                        <GroupBox Header="🦷 Sistema Saúde Oral" Margin="0,0,0,16" 
+                                 BorderBrush="#E2E8F0" BorderThickness="1">
+                            <StackPanel Margin="12">
+                                <WrapPanel>
+                                    <CheckBox Content="Cáries" IsChecked="{Binding SaudeOralCaries, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Gengivite" IsChecked="{Binding SaudeOralGengivite, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Periodontite" IsChecked="{Binding SaudeOralPeriodontite, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Bruxismo" IsChecked="{Binding SaudeOralBruxismo, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Sensibilidade Dentária" IsChecked="{Binding SaudeOralSensibilidadeDentaria, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Mau Hálito" IsChecked="{Binding SaudeOralMauHalito, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Outro" IsChecked="{Binding SaudeOralOutro, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                </WrapPanel>
+                                <TextBox PlaceholderText="Especificar outro problema de saúde oral..." 
+                                         Text="{Binding SaudeOralOutroDescricao, UpdateSourceTrigger=PropertyChanged}" 
+                                         IsEnabled="{Binding SaudeOralOutro}" 
+                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                         Padding="8,6" FontSize="13" Margin="0,8,0,0"/>
+                            </StackPanel>
+                        </GroupBox>
+
+                        <!-- 12. Sistema Ginecológico/Reprodutivo Adicional -->
+                        <GroupBox Header="♀️ Sistema Ginecológico/Reprodutivo" Margin="0,0,0,16" 
+                                 BorderBrush="#E2E8F0" BorderThickness="1">
+                            <StackPanel Margin="12">
+                                <WrapPanel>
+                                    <CheckBox Content="Endometriose" IsChecked="{Binding GinecologicoEndometriose, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Síndrome Ovários Poliquísticos" IsChecked="{Binding GinecologicoSOP, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Miomas" IsChecked="{Binding GinecologicoMiomas, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Ciclos Irregulares" IsChecked="{Binding GinecologicoCiclosIrregulares, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Infeção Urinária Recorrente" IsChecked="{Binding GinecologicoInfecaoUrinaria, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                    <CheckBox Content="Outro" IsChecked="{Binding GinecologicoOutro, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,15,5"/>
+                                </WrapPanel>
+                                <TextBox PlaceholderText="Especificar outro problema ginecológico..." 
+                                         Text="{Binding GinecologicoOutroDescricao, UpdateSourceTrigger=PropertyChanged}" 
+                                         IsEnabled="{Binding GinecologicoOutro}" 
+                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                         Padding="8,6" FontSize="13" Margin="0,8,0,0"/>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                </Expander>
+
                 <!-- Seção 4: Estilo de Vida -->
                 <Expander Background="White" 
                          BorderBrush="#E2E8F0" 

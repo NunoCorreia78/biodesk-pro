@@ -250,6 +250,671 @@ namespace BioDesk.App.ViewModels
             set => SetProperty(ref _habitosAlimentares, value);
         }
 
+        #region Sistemas Corporais - Propriedades Detalhadas
+
+        // 1. Sistema Cardiovascular 🫀
+        private bool _cardioHipertensao = false;
+        public bool CardioHipertensao
+        {
+            get => _cardioHipertensao;
+            set => SetProperty(ref _cardioHipertensao, value);
+        }
+
+        private bool _cardioDiabetesTipo1 = false;
+        public bool CardioDiabetesTipo1
+        {
+            get => _cardioDiabetesTipo1;
+            set => SetProperty(ref _cardioDiabetesTipo1, value);
+        }
+
+        private bool _cardioDiabetesTipo2 = false;
+        public bool CardioDiabetesTipo2
+        {
+            get => _cardioDiabetesTipo2;
+            set => SetProperty(ref _cardioDiabetesTipo2, value);
+        }
+
+        private bool _cardioArritmia = false;
+        public bool CardioArritmia
+        {
+            get => _cardioArritmia;
+            set => SetProperty(ref _cardioArritmia, value);
+        }
+
+        private bool _cardioColesterolAlto = false;
+        public bool CardioColesterolAlto
+        {
+            get => _cardioColesterolAlto;
+            set => SetProperty(ref _cardioColesterolAlto, value);
+        }
+
+        private bool _cardioInsuficienciaCardiaca = false;
+        public bool CardioInsuficienciaCardiaca
+        {
+            get => _cardioInsuficienciaCardiaca;
+            set => SetProperty(ref _cardioInsuficienciaCardiaca, value);
+        }
+
+        private bool _cardioAngina = false;
+        public bool CardioAngina
+        {
+            get => _cardioAngina;
+            set => SetProperty(ref _cardioAngina, value);
+        }
+
+        private bool _cardioOutro = false;
+        public bool CardioOutro
+        {
+            get => _cardioOutro;
+            set => SetProperty(ref _cardioOutro, value);
+        }
+
+        private string _cardioOutroDescricao = string.Empty;
+        public string CardioOutroDescricao
+        {
+            get => _cardioOutroDescricao;
+            set => SetProperty(ref _cardioOutroDescricao, value);
+        }
+
+        // 2. Sistema Musculoesquelético 🦴
+        private bool _musculoArtrose = false;
+        public bool MusculoArtrose
+        {
+            get => _musculoArtrose;
+            set => SetProperty(ref _musculoArtrose, value);
+        }
+
+        private bool _musculoTendinite = false;
+        public bool MusculoTendinite
+        {
+            get => _musculoTendinite;
+            set => SetProperty(ref _musculoTendinite, value);
+        }
+
+        private bool _musculoHerniaDiscal = false;
+        public bool MusculoHerniaDiscal
+        {
+            get => _musculoHerniaDiscal;
+            set => SetProperty(ref _musculoHerniaDiscal, value);
+        }
+
+        private bool _musculoFibromialgia = false;
+        public bool MusculoFibromialgia
+        {
+            get => _musculoFibromialgia;
+            set => SetProperty(ref _musculoFibromialgia, value);
+        }
+
+        private bool _musculoArtrite = false;
+        public bool MusculoArtrite
+        {
+            get => _musculoArtrite;
+            set => SetProperty(ref _musculoArtrite, value);
+        }
+
+        private bool _musculoBursite = false;
+        public bool MusculoBursite
+        {
+            get => _musculoBursite;
+            set => SetProperty(ref _musculoBursite, value);
+        }
+
+        private bool _musculoLombalgia = false;
+        public bool MusculoLombalgia
+        {
+            get => _musculoLombalgia;
+            set => SetProperty(ref _musculoLombalgia, value);
+        }
+
+        private bool _musculoCervicalgia = false;
+        public bool MusculoCervicalgia
+        {
+            get => _musculoCervicalgia;
+            set => SetProperty(ref _musculoCervicalgia, value);
+        }
+
+        private bool _musculoOutro = false;
+        public bool MusculoOutro
+        {
+            get => _musculoOutro;
+            set => SetProperty(ref _musculoOutro, value);
+        }
+
+        private string _musculoOutroDescricao = string.Empty;
+        public string MusculoOutroDescricao
+        {
+            get => _musculoOutroDescricao;
+            set => SetProperty(ref _musculoOutroDescricao, value);
+        }
+
+        // 3. Sistema Respiratório 🫁
+        private bool _respiratorioAsma = false;
+        public bool RespiratorioAsma
+        {
+            get => _respiratorioAsma;
+            set => SetProperty(ref _respiratorioAsma, value);
+        }
+
+        private bool _respiratorioSinusiteCronica = false;
+        public bool RespiratorioSinusiteCronica
+        {
+            get => _respiratorioSinusiteCronica;
+            set => SetProperty(ref _respiratorioSinusiteCronica, value);
+        }
+
+        private bool _respiratorioBronquite = false;
+        public bool RespiratorioBronquite
+        {
+            get => _respiratorioBronquite;
+            set => SetProperty(ref _respiratorioBronquite, value);
+        }
+
+        private bool _respiratorioRiniteAlergica = false;
+        public bool RespiratorioRiniteAlergica
+        {
+            get => _respiratorioRiniteAlergica;
+            set => SetProperty(ref _respiratorioRiniteAlergica, value);
+        }
+
+        private bool _respiratorioApneiaSono = false;
+        public bool RespiratorioApneiaSono
+        {
+            get => _respiratorioApneiaSono;
+            set => SetProperty(ref _respiratorioApneiaSono, value);
+        }
+
+        private bool _respiratorioOutro = false;
+        public bool RespiratorioOutro
+        {
+            get => _respiratorioOutro;
+            set => SetProperty(ref _respiratorioOutro, value);
+        }
+
+        private string _respiratorioOutroDescricao = string.Empty;
+        public string RespiratorioOutroDescricao
+        {
+            get => _respiratorioOutroDescricao;
+            set => SetProperty(ref _respiratorioOutroDescricao, value);
+        }
+
+        // 4. Sistema Digestivo 🍃
+        private bool _digestivoGastrite = false;
+        public bool DigestivoGastrite
+        {
+            get => _digestivoGastrite;
+            set => SetProperty(ref _digestivoGastrite, value);
+        }
+
+        private bool _digestivoRefluxo = false;
+        public bool DigestivoRefluxo
+        {
+            get => _digestivoRefluxo;
+            set => SetProperty(ref _digestivoRefluxo, value);
+        }
+
+        private bool _digestivoSII = false;
+        public bool DigestivoSII
+        {
+            get => _digestivoSII;
+            set => SetProperty(ref _digestivoSII, value);
+        }
+
+        private bool _digestivoIntoleranciaLactose = false;
+        public bool DigestivoIntoleranciaLactose
+        {
+            get => _digestivoIntoleranciaLactose;
+            set => SetProperty(ref _digestivoIntoleranciaLactose, value);
+        }
+
+        private bool _digestivoDoencaCrohn = false;
+        public bool DigestivoDoencaCrohn
+        {
+            get => _digestivoDoencaCrohn;
+            set => SetProperty(ref _digestivoDoencaCrohn, value);
+        }
+
+        private bool _digestivoColiteUlcerosa = false;
+        public bool DigestivoColiteUlcerosa
+        {
+            get => _digestivoColiteUlcerosa;
+            set => SetProperty(ref _digestivoColiteUlcerosa, value);
+        }
+
+        private bool _digestivoConstipacao = false;
+        public bool DigestivoConstipacao
+        {
+            get => _digestivoConstipacao;
+            set => SetProperty(ref _digestivoConstipacao, value);
+        }
+
+        private bool _digestivoOutro = false;
+        public bool DigestivoOutro
+        {
+            get => _digestivoOutro;
+            set => SetProperty(ref _digestivoOutro, value);
+        }
+
+        private string _digestivoOutroDescricao = string.Empty;
+        public string DigestivoOutroDescricao
+        {
+            get => _digestivoOutroDescricao;
+            set => SetProperty(ref _digestivoOutroDescricao, value);
+        }
+
+        // 5. Sistema Neurológico 🧠
+        private bool _neurologicoEnxaquecas = false;
+        public bool NeurologicoEnxaquecas
+        {
+            get => _neurologicoEnxaquecas;
+            set => SetProperty(ref _neurologicoEnxaquecas, value);
+        }
+
+        private bool _neurologicoAnsiedade = false;
+        public bool NeurologicoAnsiedade
+        {
+            get => _neurologicoAnsiedade;
+            set => SetProperty(ref _neurologicoAnsiedade, value);
+        }
+
+        private bool _neurologicoDepressao = false;
+        public bool NeurologicoDepressao
+        {
+            get => _neurologicoDepressao;
+            set => SetProperty(ref _neurologicoDepressao, value);
+        }
+
+        private bool _neurologicoInsonia = false;
+        public bool NeurologicoInsonia
+        {
+            get => _neurologicoInsonia;
+            set => SetProperty(ref _neurologicoInsonia, value);
+        }
+
+        private bool _neurologicoEpilepsia = false;
+        public bool NeurologicoEpilepsia
+        {
+            get => _neurologicoEpilepsia;
+            set => SetProperty(ref _neurologicoEpilepsia, value);
+        }
+
+        private bool _neurologicoVertigensTonturas = false;
+        public bool NeurologicoVertigensTonturas
+        {
+            get => _neurologicoVertigensTonturas;
+            set => SetProperty(ref _neurologicoVertigensTonturas, value);
+        }
+
+        private bool _neurologicoOutro = false;
+        public bool NeurologicoOutro
+        {
+            get => _neurologicoOutro;
+            set => SetProperty(ref _neurologicoOutro, value);
+        }
+
+        private string _neurologicoOutroDescricao = string.Empty;
+        public string NeurologicoOutroDescricao
+        {
+            get => _neurologicoOutroDescricao;
+            set => SetProperty(ref _neurologicoOutroDescricao, value);
+        }
+
+        // 6. Sistema Endócrino 🦋
+        private bool _endocrinoHipotiroidismo = false;
+        public bool EndocrinoHipotiroidismo
+        {
+            get => _endocrinoHipotiroidismo;
+            set => SetProperty(ref _endocrinoHipotiroidismo, value);
+        }
+
+        private bool _endocrinoHipertiroidismo = false;
+        public bool EndocrinoHipertiroidismo
+        {
+            get => _endocrinoHipertiroidismo;
+            set => SetProperty(ref _endocrinoHipertiroidismo, value);
+        }
+
+        private bool _endocrinoPCOS = false;
+        public bool EndocrinoPCOS
+        {
+            get => _endocrinoPCOS;
+            set => SetProperty(ref _endocrinoPCOS, value);
+        }
+
+        private bool _endocrinoResistenciaInsulina = false;
+        public bool EndocrinoResistenciaInsulina
+        {
+            get => _endocrinoResistenciaInsulina;
+            set => SetProperty(ref _endocrinoResistenciaInsulina, value);
+        }
+
+        private bool _endocrinoMenopausa = false;
+        public bool EndocrinoMenopausa
+        {
+            get => _endocrinoMenopausa;
+            set => SetProperty(ref _endocrinoMenopausa, value);
+        }
+
+        private bool _endocrinoOutro = false;
+        public bool EndocrinoOutro
+        {
+            get => _endocrinoOutro;
+            set => SetProperty(ref _endocrinoOutro, value);
+        }
+
+        private string _endocrinoOutroDescricao = string.Empty;
+        public string EndocrinoOutroDescricao
+        {
+            get => _endocrinoOutroDescricao;
+            set => SetProperty(ref _endocrinoOutroDescricao, value);
+        }
+
+        // 7. Sistema Renal/Geniturinário 🔄
+        private bool _renalInfecaoUrinaria = false;
+        public bool RenalInfecaoUrinaria
+        {
+            get => _renalInfecaoUrinaria;
+            set => SetProperty(ref _renalInfecaoUrinaria, value);
+        }
+
+        private bool _renalCalculosRenais = false;
+        public bool RenalCalculosRenais
+        {
+            get => _renalCalculosRenais;
+            set => SetProperty(ref _renalCalculosRenais, value);
+        }
+
+        private bool _renalCistite = false;
+        public bool RenalCistite
+        {
+            get => _renalCistite;
+            set => SetProperty(ref _renalCistite, value);
+        }
+
+        private bool _renalIncontinencia = false;
+        public bool RenalIncontinencia
+        {
+            get => _renalIncontinencia;
+            set => SetProperty(ref _renalIncontinencia, value);
+        }
+
+        private bool _renalOutro = false;
+        public bool RenalOutro
+        {
+            get => _renalOutro;
+            set => SetProperty(ref _renalOutro, value);
+        }
+
+        private string _renalOutroDescricao = string.Empty;
+        public string RenalOutroDescricao
+        {
+            get => _renalOutroDescricao;
+            set => SetProperty(ref _renalOutroDescricao, value);
+        }
+
+        // 8. Sistema Pele/Dermatológico 🌟
+        private bool _peleEczema = false;
+        public bool PeleEczema
+        {
+            get => _peleEczema;
+            set => SetProperty(ref _peleEczema, value);
+        }
+
+        private bool _pelePsoriase = false;
+        public bool PelePsoriase
+        {
+            get => _pelePsoriase;
+            set => SetProperty(ref _pelePsoriase, value);
+        }
+
+        private bool _peleDermatite = false;
+        public bool PeleDermatite
+        {
+            get => _peleDermatite;
+            set => SetProperty(ref _peleDermatite, value);
+        }
+
+        private bool _peleAlergiasCutaneas = false;
+        public bool PeleAlergiasCutaneas
+        {
+            get => _peleAlergiasCutaneas;
+            set => SetProperty(ref _peleAlergiasCutaneas, value);
+        }
+
+        private bool _peleAcne = false;
+        public bool PeleAcne
+        {
+            get => _peleAcne;
+            set => SetProperty(ref _peleAcne, value);
+        }
+
+        private bool _peleOutro = false;
+        public bool PeleOutro
+        {
+            get => _peleOutro;
+            set => SetProperty(ref _peleOutro, value);
+        }
+
+        private string _peleOutroDescricao = string.Empty;
+        public string PeleOutroDescricao
+        {
+            get => _peleOutroDescricao;
+            set => SetProperty(ref _peleOutroDescricao, value);
+        }
+
+        // 9. Sistema Oftalmológico 👁️
+        private bool _oftalmologicoMiopia = false;
+        public bool OftalmologicoMiopia
+        {
+            get => _oftalmologicoMiopia;
+            set => SetProperty(ref _oftalmologicoMiopia, value);
+        }
+
+        private bool _oftalmologicoHipermetropia = false;
+        public bool OftalmologicoHipermetropia
+        {
+            get => _oftalmologicoHipermetropia;
+            set => SetProperty(ref _oftalmologicoHipermetropia, value);
+        }
+
+        private bool _oftalmologicoAstigmatismo = false;
+        public bool OftalmologicoAstigmatismo
+        {
+            get => _oftalmologicoAstigmatismo;
+            set => SetProperty(ref _oftalmologicoAstigmatismo, value);
+        }
+
+        private bool _oftalmologicoGlaucoma = false;
+        public bool OftalmologicoGlaucoma
+        {
+            get => _oftalmologicoGlaucoma;
+            set => SetProperty(ref _oftalmologicoGlaucoma, value);
+        }
+
+        private bool _oftalmologicoCatarata = false;
+        public bool OftalmologicoCatarata
+        {
+            get => _oftalmologicoCatarata;
+            set => SetProperty(ref _oftalmologicoCatarata, value);
+        }
+
+        private bool _oftalmologicoConjuntivite = false;
+        public bool OftalmologicoConjuntivite
+        {
+            get => _oftalmologicoConjuntivite;
+            set => SetProperty(ref _oftalmologicoConjuntivite, value);
+        }
+
+        private bool _oftalmologicoOutro = false;
+        public bool OftalmologicoOutro
+        {
+            get => _oftalmologicoOutro;
+            set => SetProperty(ref _oftalmologicoOutro, value);
+        }
+
+        private string _oftalmologicoOutroDescricao = string.Empty;
+        public string OftalmologicoOutroDescricao
+        {
+            get => _oftalmologicoOutroDescricao;
+            set => SetProperty(ref _oftalmologicoOutroDescricao, value);
+        }
+
+        // 10. Sistema Auditivo/Otorrino 👂
+        private bool _auditivoPerdasAuditivas = false;
+        public bool AuditivoPerdasAuditivas
+        {
+            get => _auditivoPerdasAuditivas;
+            set => SetProperty(ref _auditivoPerdasAuditivas, value);
+        }
+
+        private bool _auditivoZumbidoOuvido = false;
+        public bool AuditivoZumbidoOuvido
+        {
+            get => _auditivoZumbidoOuvido;
+            set => SetProperty(ref _auditivoZumbidoOuvido, value);
+        }
+
+        private bool _auditivoOtitesRecorrentes = false;
+        public bool AuditivoOtitesRecorrentes
+        {
+            get => _auditivoOtitesRecorrentes;
+            set => SetProperty(ref _auditivoOtitesRecorrentes, value);
+        }
+
+        private bool _auditivoLabirintite = false;
+        public bool AuditivoLabirintite
+        {
+            get => _auditivoLabirintite;
+            set => SetProperty(ref _auditivoLabirintite, value);
+        }
+
+        private bool _auditivoSinusite = false;
+        public bool AuditivoSinusite
+        {
+            get => _auditivoSinusite;
+            set => SetProperty(ref _auditivoSinusite, value);
+        }
+
+        private bool _auditivoOutro = false;
+        public bool AuditivoOutro
+        {
+            get => _auditivoOutro;
+            set => SetProperty(ref _auditivoOutro, value);
+        }
+
+        private string _auditivoOutroDescricao = string.Empty;
+        public string AuditivoOutroDescricao
+        {
+            get => _auditivoOutroDescricao;
+            set => SetProperty(ref _auditivoOutroDescricao, value);
+        }
+
+        // 11. Sistema Saúde Oral 🦷
+        private bool _saudeOralCaries = false;
+        public bool SaudeOralCaries
+        {
+            get => _saudeOralCaries;
+            set => SetProperty(ref _saudeOralCaries, value);
+        }
+
+        private bool _saudeOralGengivite = false;
+        public bool SaudeOralGengivite
+        {
+            get => _saudeOralGengivite;
+            set => SetProperty(ref _saudeOralGengivite, value);
+        }
+
+        private bool _saudeOralPeriodontite = false;
+        public bool SaudeOralPeriodontite
+        {
+            get => _saudeOralPeriodontite;
+            set => SetProperty(ref _saudeOralPeriodontite, value);
+        }
+
+        private bool _saudeOralBruxismo = false;
+        public bool SaudeOralBruxismo
+        {
+            get => _saudeOralBruxismo;
+            set => SetProperty(ref _saudeOralBruxismo, value);
+        }
+
+        private bool _saudeOralSensibilidadeDentaria = false;
+        public bool SaudeOralSensibilidadeDentaria
+        {
+            get => _saudeOralSensibilidadeDentaria;
+            set => SetProperty(ref _saudeOralSensibilidadeDentaria, value);
+        }
+
+        private bool _saudeOralMauHalito = false;
+        public bool SaudeOralMauHalito
+        {
+            get => _saudeOralMauHalito;
+            set => SetProperty(ref _saudeOralMauHalito, value);
+        }
+
+        private bool _saudeOralOutro = false;
+        public bool SaudeOralOutro
+        {
+            get => _saudeOralOutro;
+            set => SetProperty(ref _saudeOralOutro, value);
+        }
+
+        private string _saudeOralOutroDescricao = string.Empty;
+        public string SaudeOralOutroDescricao
+        {
+            get => _saudeOralOutroDescricao;
+            set => SetProperty(ref _saudeOralOutroDescricao, value);
+        }
+
+        // 12. Sistema Ginecológico/Reprodutivo ♀️
+        private bool _ginecologicoEndometriose = false;
+        public bool GinecologicoEndometriose
+        {
+            get => _ginecologicoEndometriose;
+            set => SetProperty(ref _ginecologicoEndometriose, value);
+        }
+
+        private bool _ginecologicoSOP = false;
+        public bool GinecologicoSOP
+        {
+            get => _ginecologicoSOP;
+            set => SetProperty(ref _ginecologicoSOP, value);
+        }
+
+        private bool _ginecologicoMiomas = false;
+        public bool GinecologicoMiomas
+        {
+            get => _ginecologicoMiomas;
+            set => SetProperty(ref _ginecologicoMiomas, value);
+        }
+
+        private bool _ginecologicoCiclosIrregulares = false;
+        public bool GinecologicoCiclosIrregulares
+        {
+            get => _ginecologicoCiclosIrregulares;
+            set => SetProperty(ref _ginecologicoCiclosIrregulares, value);
+        }
+
+        private bool _ginecologicoInfecaoUrinaria = false;
+        public bool GinecologicoInfecaoUrinaria
+        {
+            get => _ginecologicoInfecaoUrinaria;
+            set => SetProperty(ref _ginecologicoInfecaoUrinaria, value);
+        }
+
+        private bool _ginecologicoOutro = false;
+        public bool GinecologicoOutro
+        {
+            get => _ginecologicoOutro;
+            set => SetProperty(ref _ginecologicoOutro, value);
+        }
+
+        private string _ginecologicoOutroDescricao = string.Empty;
+        public string GinecologicoOutroDescricao
+        {
+            get => _ginecologicoOutroDescricao;
+            set => SetProperty(ref _ginecologicoOutroDescricao, value);
+        }
+
         #endregion
 
         #region Methods
@@ -384,6 +1049,153 @@ namespace BioDesk.App.ViewModels
                 questionario.HistoricoFraturas = Fraturas;
                 questionario.DetalhesEstiloVida = $"Atividade Física: {AtividadeFisica}; Tabagismo: {Tabagismo}; Álcool: {ConsumoAlcool}; Hábitos Alimentares: {HabitosAlimentares}";
                 questionario.DataUltimaAtualizacao = DateTime.Now;
+
+                // Mapear sistemas corporais detalhados
+                // 1. Sistema Cardiovascular
+                questionario.CardioHipertensao = CardioHipertensao;
+                questionario.CardioDiabetesTipo1 = CardioDiabetesTipo1;
+                questionario.CardioDiabetesTipo2 = CardioDiabetesTipo2;
+                questionario.CardioArritmia = CardioArritmia;
+                questionario.CardioColesterolAlto = CardioColesterolAlto;
+                questionario.CardioInsuficienciaCardiaca = CardioInsuficienciaCardiaca;
+                questionario.CardioAngina = CardioAngina;
+                questionario.CardioOutro = CardioOutro;
+                questionario.CardioOutroDescricao = CardioOutroDescricao;
+
+                // 2. Sistema Musculoesquelético
+                questionario.MusculoArtrose = MusculoArtrose;
+                questionario.MusculoTendinite = MusculoTendinite;
+                questionario.MusculoHerniaDiscal = MusculoHerniaDiscal;
+                questionario.MusculoFibromialgia = MusculoFibromialgia;
+                questionario.MusculoArtrite = MusculoArtrite;
+                questionario.MusculoBursite = MusculoBursite;
+                questionario.MusculoLombalgia = MusculoLombalgia;
+                questionario.MusculoCervicalgia = MusculoCervicalgia;
+                questionario.MusculoOutro = MusculoOutro;
+                questionario.MusculoOutroDescricao = MusculoOutroDescricao;
+
+                // 3. Sistema Respiratório
+                questionario.RespiratorioAsma = RespiratorioAsma;
+                questionario.RespiratorioSinusiteCronica = RespiratorioSinusiteCronica;
+                questionario.RespiratorioBronquite = RespiratorioBronquite;
+                questionario.RespiratorioRiniteAlergica = RespiratorioRiniteAlergica;
+                questionario.RespiratorioApneiaSono = RespiratorioApneiaSono;
+                questionario.RespiratorioOutro = RespiratorioOutro;
+                questionario.RespiratorioOutroDescricao = RespiratorioOutroDescricao;
+
+                // 4. Sistema Digestivo
+                questionario.DigestivoGastrite = DigestivoGastrite;
+                questionario.DigestivoRefluxo = DigestivoRefluxo;
+                questionario.DigestivoSII = DigestivoSII;
+                questionario.DigestivoIntoleranciaLactose = DigestivoIntoleranciaLactose;
+                questionario.DigestivoDoencaCrohn = DigestivoDoencaCrohn;
+                questionario.DigestivoColiteUlcerosa = DigestivoColiteUlcerosa;
+                questionario.DigestivoConstipacao = DigestivoConstipacao;
+                questionario.DigestivoOutro = DigestivoOutro;
+                questionario.DigestivoOutroDescricao = DigestivoOutroDescricao;
+
+                // 5. Sistema Neurológico
+                questionario.NeurologicoEnxaquecas = NeurologicoEnxaquecas;
+                questionario.NeurologicoAnsiedade = NeurologicoAnsiedade;
+                questionario.NeurologicoDepressao = NeurologicoDepressao;
+                questionario.NeurologicoInsonia = NeurologicoInsonia;
+                questionario.NeurologicoEpilepsia = NeurologicoEpilepsia;
+                questionario.NeurologicoVertigensTonturas = NeurologicoVertigensTonturas;
+                questionario.NeurologicoOutro = NeurologicoOutro;
+                questionario.NeurologicoOutroDescricao = NeurologicoOutroDescricao;
+
+                // 6. Sistema Endócrino
+                questionario.EndocrinoHipotiroidismo = EndocrinoHipotiroidismo;
+                questionario.EndocrinoHipertiroidismo = EndocrinoHipertiroidismo;
+                questionario.EndocrinoPCOS = EndocrinoPCOS;
+                questionario.EndocrinoResistenciaInsulina = EndocrinoResistenciaInsulina;
+                questionario.EndocrinoMenopausa = EndocrinoMenopausa;
+                questionario.EndocrinoOutro = EndocrinoOutro;
+                questionario.EndocrinoOutroDescricao = EndocrinoOutroDescricao;
+
+                // 7. Sistema Renal/Geniturinário
+                questionario.RenalInfecaoUrinaria = RenalInfecaoUrinaria;
+                questionario.RenalCalculosRenais = RenalCalculosRenais;
+                questionario.RenalCistite = RenalCistite;
+                questionario.RenalIncontinencia = RenalIncontinencia;
+                questionario.RenalOutro = RenalOutro;
+                questionario.RenalOutroDescricao = RenalOutroDescricao;
+
+                // 8. Sistema Pele/Dermatológico
+                questionario.PeleEczema = PeleEczema;
+                questionario.PelePsoriase = PelePsoriase;
+                questionario.PeleDermatite = PeleDermatite;
+                questionario.PeleAlergiasCutaneas = PeleAlergiasCutaneas;
+                questionario.PeleAcne = PeleAcne;
+                questionario.PeleOutro = PeleOutro;
+                questionario.PeleOutroDescricao = PeleOutroDescricao;
+
+                // 9. Sistema Oftalmológico
+                questionario.OftalmologicoMiopia = OftalmologicoMiopia;
+                questionario.OftalmologicoHipermetropia = OftalmologicoHipermetropia;
+                questionario.OftalmologicoAstigmatismo = OftalmologicoAstigmatismo;
+                questionario.OftalmologicoGlaucoma = OftalmologicoGlaucoma;
+                questionario.OftalmologicoCatarata = OftalmologicoCatarata;
+                questionario.OftalmologicoConjuntivite = OftalmologicoConjuntivite;
+                questionario.OftalmologicoOutro = OftalmologicoOutro;
+                questionario.OftalmologicoOutroDescricao = OftalmologicoOutroDescricao;
+
+                // 10. Sistema Auditivo/Otorrino
+                questionario.AuditivoPerdasAuditivas = AuditivoPerdasAuditivas;
+                questionario.AuditivoZumbidoOuvido = AuditivoZumbidoOuvido;
+                questionario.AuditivoOtitesRecorrentes = AuditivoOtitesRecorrentes;
+                questionario.AuditivoLabirintite = AuditivoLabirintite;
+                questionario.AuditivoSinusite = AuditivoSinusite;
+                questionario.AuditivoOutro = AuditivoOutro;
+                questionario.AuditivoOutroDescricao = AuditivoOutroDescricao;
+
+                // 11. Sistema Saúde Oral
+                questionario.SaudeOralCaries = SaudeOralCaries;
+                questionario.SaudeOralGengivite = SaudeOralGengivite;
+                questionario.SaudeOralPeriodontite = SaudeOralPeriodontite;
+                questionario.SaudeOralBruxismo = SaudeOralBruxismo;
+                questionario.SaudeOralSensibilidadeDentaria = SaudeOralSensibilidadeDentaria;
+                questionario.SaudeOralMauHalito = SaudeOralMauHalito;
+                questionario.SaudeOralOutro = SaudeOralOutro;
+                questionario.SaudeOralOutroDescricao = SaudeOralOutroDescricao;
+
+                // 12. Sistema Ginecológico/Reprodutivo
+                questionario.GinecologicoEndometriose = GinecologicoEndometriose;
+                questionario.GinecologicoSOP = GinecologicoSOP;
+                questionario.GinecologicoMiomas = GinecologicoMiomas;
+                questionario.GinecologicoCiclosIrregulares = GinecologicoCiclosIrregulares;
+                questionario.GinecologicoInfecaoUrinaria = GinecologicoInfecaoUrinaria;
+                questionario.GinecologicoOutro = GinecologicoOutro;
+                questionario.GinecologicoOutroDescricao = GinecologicoOutroDescricao;
+
+                // Atualizar campos genéricos baseados nas seleções específicas
+                questionario.ProblemasCardiovasculares = CardioHipertensao || CardioDiabetesTipo1 || CardioDiabetesTipo2 || 
+                                                        CardioArritmia || CardioColesterolAlto || CardioInsuficienciaCardiaca || 
+                                                        CardioAngina || CardioOutro;
+
+                questionario.ProblemasMusculoesqueleticos = MusculoArtrose || MusculoTendinite || MusculoHerniaDiscal || 
+                                                           MusculoFibromialgia || MusculoArtrite || MusculoBursite || 
+                                                           MusculoLombalgia || MusculoCervicalgia || MusculoOutro;
+
+                questionario.ProblemasRespiratorios = RespiratorioAsma || RespiratorioSinusiteCronica || RespiratorioBronquite || 
+                                                     RespiratorioRiniteAlergica || RespiratorioApneiaSono || RespiratorioOutro;
+
+                questionario.ProblemasDigestivos = DigestivoGastrite || DigestivoRefluxo || DigestivoSII || 
+                                                  DigestivoIntoleranciaLactose || DigestivoDoencaCrohn || 
+                                                  DigestivoColiteUlcerosa || DigestivoConstipacao || DigestivoOutro;
+
+                questionario.ProblemasNeurologicos = NeurologicoEnxaquecas || NeurologicoAnsiedade || NeurologicoDepressao || 
+                                                    NeurologicoInsonia || NeurologicoEpilepsia || NeurologicoVertigensTonturas || 
+                                                    NeurologicoOutro;
+
+                questionario.ProblemasEndocrinos = EndocrinoHipotiroidismo || EndocrinoHipertiroidismo || EndocrinoPCOS || 
+                                                  EndocrinoResistenciaInsulina || EndocrinoMenopausa || EndocrinoOutro;
+
+                questionario.ProblemasRenais = RenalInfecaoUrinaria || RenalCalculosRenais || RenalCistite || 
+                                             RenalIncontinencia || RenalOutro;
+
+                questionario.ProblemasPele = PeleEczema || PelePsoriase || PeleDermatite || PeleAlergiasCutaneas || 
+                                           PeleAcne || PeleOutro;
 
                 // Definir campos boolean baseado se há texto
                 questionario.TomaMedicacao = !string.IsNullOrWhiteSpace(MedicacaoAtual);

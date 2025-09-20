@@ -74,9 +74,14 @@ public class NavigationService : INavigationService, INotifyPropertyChanged
         System.Diagnostics.Debug.WriteLine($"GoTo executado. CurrentView: {CurrentView}, Parameter: {NavigationParameter}");
     }
 
+    public void NavigateToQuestionarioCompleto()
+    {
+        GoTo("QuestionarioCompleto");
+    }
+
     private static bool IsValidView(string viewName)
     {
-        return viewName is "Home" or "Pacientes" or "IrisAnonima" or "FichaPaciente";
+        return viewName is "Home" or "Pacientes" or "IrisAnonima" or "FichaPaciente" or "QuestionarioCompleto";
     }
 
     protected virtual void OnPropertyChanged(string propertyName)

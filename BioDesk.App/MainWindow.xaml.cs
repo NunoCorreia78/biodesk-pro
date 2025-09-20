@@ -97,6 +97,7 @@ public partial class MainWindow : Window
                 "Pacientes" => CreatePacientesView(),
                 "IrisAnonima" => new IrisAnonimaView(),
                 "FichaPaciente" => CreateFichaPacienteView(),
+                "QuestionarioCompleto" => CreateQuestionarioCompletoView(),
                 _ => CreateHomeView()
             };
 
@@ -201,6 +202,26 @@ public partial class MainWindow : Window
             var navigationService = (NavigationService)_navigationService;
             fichaPacienteView.DataContext = new FichaPacienteViewModel(dbContext, navigationService);
             return fichaPacienteView;
+        }
+    }
+
+    private QuestionarioCompletoView CreateQuestionarioCompletoView()
+    {
+        try
+        {
+            // Usar versão simplificada por enquanto
+            var questionarioView = new QuestionarioCompletoView();
+            
+            // O ViewModel já é criado dentro da View
+            return questionarioView;
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Erro ao criar QuestionarioCompletoView: {ex.Message}");
+            
+            // Fallback - criar view básica
+            var fallbackView = new QuestionarioCompletoView();
+            return fallbackView;
         }
     }
 

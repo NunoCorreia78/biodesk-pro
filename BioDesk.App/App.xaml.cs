@@ -92,6 +92,7 @@ public partial class App : Application
         services.AddTransient<HomeView>();
         services.AddTransient<PacientesView>();
         services.AddTransient<IrisAnonimaView>();
+        services.AddTransient<QuestionarioCompletoView>();
         
         _serviceProvider = services.BuildServiceProvider();
     }

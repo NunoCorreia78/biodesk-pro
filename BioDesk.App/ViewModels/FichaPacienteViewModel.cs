@@ -5,6 +5,7 @@ using BioDesk.App.Models;
 using BioDesk.App.Services;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -15,6 +16,11 @@ public partial class FichaPacienteViewModel : ObservableObject
     private readonly BioDeskDbContext _dbContext;
     private readonly NavigationService _navigationService;
     private int _pacienteId;
+
+    public int GetPacienteId() => _pacienteId;
+
+    // Evento para notificar quando o paciente é carregado
+    public event EventHandler? PacienteCarregado;
 
     [ObservableProperty]
     private int abaAtiva = 0;
@@ -72,17 +78,73 @@ public partial class FichaPacienteViewModel : ObservableObject
     private string? observacoes;
 
     // Propriedade calculada para mostrar a idade
-    public int Idade => DateTime.Now.Year - DataNascimento.Year - 
-        (DateTime.Now.DayOfYear < DataNascimento.DayOfYear ? 1 : 0);
+    private int _idade;
+    public int Idade
+    {
+        get
+        {
+            _idade = DateTime.Now.Year - DataNascimento.Year - 
+                (DateTime.Now.DayOfYear < DataNascimento.DayOfYear ? 1 : 0);
+            return _idade;
+        }
+        private set => SetProperty(ref _idade, value);
+    }
 
     // Propriedade para mostrar/ocultar campo "Quem Recomendou"
-    public bool MostrarCampoRecomendacao => ComoConheceu == "Recomendação";
+    private bool _mostrarCampoRecomendacao;
+    public bool MostrarCampoRecomendacao
+    {
+        get
+        {
+            _mostrarCampoRecomendacao = ComoConheceu == "Recomendação";
+            return _mostrarCampoRecomendacao;
+        }
+        private set => SetProperty(ref _mostrarCampoRecomendacao, value);
+    }
 
     // Propriedades para controlo de alterações
     [ObservableProperty]
     private bool temAlteracoesNaoGuardadas;
 
     private bool _estaCarregandoDados = false;
+
+    // ComboBox Options - Static collections for dropdown bindings
+    public ObservableCollection<string> GeneroOptions { get; } = new()
+    {
+        "Masculino",
+        "Feminino", 
+        "Outro"
+    };
+
+    public ObservableCollection<string> EstadoCivilOptions { get; } = new()
+    {
+        "Solteiro(a)",
+        "Casado(a)",
+        "Divorciado(a)",
+        "Viúvo(a)",
+        "União de Facto"
+    };
+
+    public ObservableCollection<string> LocalHabitualOptions { get; } = new()
+    {
+        "Chão de Lopes",
+        "Samora Correia",
+        "Coruche",
+        "Elvas",
+        "Campo Maior",
+        "Cliniprata",
+        "Spazzio Vita",
+        "Online"
+    };
+
+    public ObservableCollection<string> ComoConheceuOptions { get; } = new()
+    {
+        "Website/Google",
+        "Recomendação",
+        "Redes Sociais",
+        "Publicidade",
+        "Outro"
+    };
 
     // Dados originais para comparação
     private string? _nomeCompletoOriginal;
@@ -112,13 +174,6 @@ public partial class FichaPacienteViewModel : ObservableObject
     {
         try
         {
-            BioDesk.App.App.DebugLog("=== INICIANDO GUARDAR PACIENTE ===");
-            BioDesk.App.App.DebugLog($"Nome: '{NomeCompleto}'");
-            BioDesk.App.App.DebugLog($"Data Nascimento: {DataNascimento}");
-            BioDesk.App.App.DebugLog($"Local: '{LocalHabitual2}'");
-            BioDesk.App.App.DebugLog($"Telefone: '{Telefone}'");
-            BioDesk.App.App.DebugLog($"Email: '{Email}'");
-            
             // Validação obrigatória
             if (string.IsNullOrWhiteSpace(NomeCompleto))
             {
@@ -176,14 +231,12 @@ public partial class FichaPacienteViewModel : ObservableObject
 
             // Garantir que a base de dados existe
             await _dbContext.Database.EnsureCreatedAsync();
-            BioDesk.App.App.DebugLog("Base de dados verificada/criada");
 
             Paciente paciente;
             
             if (_pacienteId == 0)
             {
                 // Novo paciente
-                BioDesk.App.App.DebugLog("Criando novo paciente");
                 paciente = new Paciente();
                 
                 // Atualizar todos os dados (converter strings vazias para null)
@@ -204,20 +257,15 @@ public partial class FichaPacienteViewModel : ObservableObject
                 paciente.Observacoes = string.IsNullOrWhiteSpace(Observacoes) ? null : Observacoes;
                 
                 _dbContext.Pacientes.Add(paciente);
-                BioDesk.App.App.DebugLog("Paciente adicionado ao contexto");
             }
             else
             {
                 // Paciente existente
-                BioDesk.App.App.DebugLog($"Atualizando paciente existente ID: {_pacienteId}");
-                BioDesk.App.App.DebugLog($"Atualizando paciente existente ID: {_pacienteId}");
                 var pacienteExistente = await _dbContext.Pacientes.FindAsync(_pacienteId);
                 
                 if (pacienteExistente == null)
                 {
-                    var erro = "Paciente não encontrado na base de dados!";
-                    BioDesk.App.App.DebugLog($"ERRO: {erro}");
-                    MessageBox.Show(erro, "Erro", 
+                    MessageBox.Show("Paciente não encontrado na base de dados!", "Erro", 
                         MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
@@ -242,19 +290,15 @@ public partial class FichaPacienteViewModel : ObservableObject
                 paciente.Observacoes = string.IsNullOrWhiteSpace(Observacoes) ? null : Observacoes;
                 
                 _dbContext.Pacientes.Update(paciente);
-                BioDesk.App.App.DebugLog("Paciente atualizado no contexto");
             }
 
             // Salvar alterações na base de dados
-            BioDesk.App.App.DebugLog("Salvando alterações na base de dados...");
             var rowsAffected = await _dbContext.SaveChangesAsync();
-            BioDesk.App.App.DebugLog($"Operação concluída! Linhas afetadas: {rowsAffected}");
 
             // Se é um novo paciente, atualizar o ID
             if (_pacienteId == 0)
             {
                 _pacienteId = paciente.Id;
-                BioDesk.App.App.DebugLog($"Novo paciente criado com ID: {_pacienteId}");
                 
                 // Atualizar header
                 NomePaciente = paciente.NomeCompleto;
@@ -267,20 +311,9 @@ public partial class FichaPacienteViewModel : ObservableObject
 
             MessageBox.Show("Dados guardados com sucesso!", "Sucesso", 
                 MessageBoxButton.OK, MessageBoxImage.Information);
-            
-            BioDesk.App.App.DebugLog("=== PACIENTE GUARDADO COM SUCESSO ===");
         }
         catch (Exception ex)
         {
-            BioDesk.App.App.DebugLog($"=== ERRO AO GUARDAR PACIENTE ===");
-            BioDesk.App.App.DebugLog($"Erro: {ex.Message}");
-            BioDesk.App.App.DebugLog($"StackTrace: {ex.StackTrace}");
-            
-            if (ex.InnerException != null)
-            {
-                BioDesk.App.App.DebugLog($"InnerException: {ex.InnerException.Message}");
-            }
-            
             MessageBox.Show($"Erro ao guardar dados do paciente:\n\n{ex.Message}\n\nVerifique os dados e tente novamente.", 
                 "Erro ao Guardar", MessageBoxButton.OK, MessageBoxImage.Error);
         }
@@ -384,6 +417,9 @@ public partial class FichaPacienteViewModel : ObservableObject
         }
         
         _estaCarregandoDados = false;
+        
+        // Notificar que o paciente foi carregado
+        PacienteCarregado?.Invoke(this, EventArgs.Empty);
     }
 
     // Método para salvar dados originais para comparação
@@ -436,7 +472,6 @@ public partial class FichaPacienteViewModel : ObservableObject
     {
         OnPropertyChanged(nameof(Idade));
         IdadePaciente = Idade;
-        BioDesk.App.App.DebugLog($"Idade calculada: {Idade} anos");
         VerificarAlteracoes();
     }
 

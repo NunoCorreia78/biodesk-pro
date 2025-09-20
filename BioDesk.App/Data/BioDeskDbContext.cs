@@ -25,17 +25,6 @@ public class BioDeskDbContext : DbContext
             Directory.CreateDirectory(dataDir);
             var dbPath = Path.Combine(dataDir, "BioDesk_Pacientes.db");
             
-            // Usar o sistema de logging da App
-            try 
-            {
-                BioDesk.App.App.DebugLog("=== CONFIGURAÇÃO BD ===");
-                BioDesk.App.App.DebugLog($"App Directory: {appDir}");
-                BioDesk.App.App.DebugLog($"Data Directory: {dataDir}");
-                BioDesk.App.App.DebugLog($"DB Path: {dbPath}");
-                BioDesk.App.App.DebugLog($"DB Exists: {File.Exists(dbPath)}");
-            }
-            catch { /* Ignorar se App não está disponível */ }
-            
             optionsBuilder.UseSqlite($"Data Source={dbPath}");
         }
     }

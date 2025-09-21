@@ -617,26 +617,50 @@
                             
                             <!-- Coluna 1 -->
                             <StackPanel Grid.Column="0" Margin="0,0,12,0">
-                                <CheckBox Content="Enxaquecas / Cefaleias" Margin="0,4" FontSize="13"/>
-                                <CheckBox Content="Epilepsia" Margin="0,4" FontSize="13"/>
-                                <CheckBox Content="Ansiedade" Margin="0,4" FontSize="13"/>
-                                <CheckBox Content="Depressão" Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Enxaquecas / Cefaleias" 
+                                         IsChecked="{Binding EnxaquecasCefaleias, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Epilepsia" 
+                                         IsChecked="{Binding Epilepsia, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Ansiedade" 
+                                         IsChecked="{Binding Ansiedade, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Depressão" 
+                                         IsChecked="{Binding Depressao, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
                             </StackPanel>
                             
                             <!-- Coluna 2 -->
                             <StackPanel Grid.Column="1" Margin="0,0,12,0">
-                                <CheckBox Content="Insónia / Distúrbios do sono" Margin="0,4" FontSize="13"/>
-                                <CheckBox Content="Tonturas / Vertigens" Margin="0,4" FontSize="13"/>
-                                <CheckBox Content="Problemas de memória" Margin="0,4" FontSize="13"/>
-                                <CheckBox Content="Doença de Parkinson" Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Insónia / Distúrbios do sono" 
+                                         IsChecked="{Binding InsoniaDisturbiosSono, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Tonturas / Vertigens" 
+                                         IsChecked="{Binding TonturasVertigens, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Problemas de memória" 
+                                         IsChecked="{Binding ProblemasMemoriaNeuro, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Doença de Parkinson" 
+                                         IsChecked="{Binding DoencaParkinson, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
                             </StackPanel>
                             
                             <!-- Coluna 3 -->
                             <StackPanel Grid.Column="2">
-                                <CheckBox Content="Esclerose múltipla" Margin="0,4" FontSize="13"/>
-                                <CheckBox Content="AVC / Acidente vascular" Margin="0,4" FontSize="13"/>
-                                <CheckBox Content="Doença de Alzheimer" Margin="0,4" FontSize="13"/>
-                                <CheckBox Content="Neuropatias periféricas" Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Esclerose múltipla" 
+                                         IsChecked="{Binding EscleroseMultipla, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="AVC / Acidente vascular" 
+                                         IsChecked="{Binding AvcAcidenteVascular, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Doença de Alzheimer" 
+                                         IsChecked="{Binding DoencaAlzheimer, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Neuropatias periféricas" 
+                                         IsChecked="{Binding NeuropatiasPeriphericas, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
                             </StackPanel>
                         </Grid>
                         
@@ -659,36 +683,73 @@
                                   Foreground="#1E293B" Margin="16,12"/>
                     </Expander.Header>
                     <StackPanel Margin="24">
-                        <StackPanel Margin="0,0,0,16">
-                            <TextBlock Text="Problemas musculoesqueléticos" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="5"/>
-                                    <ColumnDefinition Width="3*"/>
-                                </Grid.ColumnDefinitions>
-                                
-                                <ComboBox Name="cb_ProblemasMusculoesqueleticos" Grid.Column="0"
-                                         SelectedItem="{Binding ProblemasMusculoesqueleticos, UpdateSourceTrigger=PropertyChanged}"
-                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                         Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                         SelectionChanged="ComboBox_SelectionChanged">
-                                    <ComboBoxItem Content="Nenhum"/>
-                                    <ComboBoxItem Content="Dor nas costas"/>
-                                    <ComboBoxItem Content="Hérnia discal"/>
-                                    <ComboBoxItem Content="Escoliose"/>
-                                    <ComboBoxItem Content="Tendinite"/>
-                                    <ComboBoxItem Content="Bursite"/>
-                                    <ComboBoxItem Content="Fraturas"/>
-                                    <ComboBoxItem Content="Outras"/>
-                                </ComboBox>
-                                
-                                <TextBox Name="txt_ProblemasMusculoesqueleticosOutras" Grid.Column="2"
-                                        Text="{Binding ProblemasMusculoesqueleticosDetalhes, UpdateSourceTrigger=PropertyChanged}"
-                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                        Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                        />
-                            </Grid>
+                        <TextBlock Text="Selecione todos os problemas musculoesqueléticos que tem ou já teve:" 
+                                  FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" 
+                                  Foreground="#374151" Margin="0,0,0,12"/>
+                        
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <!-- Coluna 1 -->
+                            <StackPanel Grid.Column="0" Margin="0,0,12,0">
+                                <CheckBox Content="Artrite/Artrose" 
+                                         IsChecked="{Binding ArtriteArtrose, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Dores lombares" 
+                                         IsChecked="{Binding DoresLombares, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Osteoporose" 
+                                         IsChecked="{Binding OsteoporoseMusculo, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Problemas cervicais" 
+                                         IsChecked="{Binding ProblemasCervicais, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                            </StackPanel>
+                            
+                            <!-- Coluna 2 -->
+                            <StackPanel Grid.Column="1" Margin="0,0,12,0">
+                                <CheckBox Content="Fibromialgia" 
+                                         IsChecked="{Binding Fibromialgia, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Hérnias discais" 
+                                         IsChecked="{Binding HerniasDiscais, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Lesões desportivas" 
+                                         IsChecked="{Binding LesoesDesportivas, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Bursites" 
+                                         IsChecked="{Binding Bursites, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                            </StackPanel>
+                            
+                            <!-- Coluna 3 -->
+                            <StackPanel Grid.Column="2">
+                                <CheckBox Content="Tendinites" 
+                                         IsChecked="{Binding Tendinites, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Ciática" 
+                                         IsChecked="{Binding Ciatica, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Contraturas musculares" 
+                                         IsChecked="{Binding ContraturasMusculares, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Outros" 
+                                         IsChecked="{Binding OutrosMusculoesqueleticos, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                            </StackPanel>
+                        </Grid>
+                        
+                        <StackPanel Margin="0,16,0,0">
+                            <TextBlock Text="Outros problemas musculoesqueléticos ou detalhes adicionais:" 
+                                      FontSize="13" FontWeight="Medium" Foreground="#374151" Margin="0,0,0,4"/>
+                            <TextBox Text="{Binding ProblemasMusculoesqueleticosDetalhes, UpdateSourceTrigger=PropertyChanged}"
+                                    Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                    Padding="8,6" FontSize="13" Height="60" TextWrapping="Wrap"
+                                    AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
                         </StackPanel>
                     </StackPanel>
                 </Expander>
@@ -701,35 +762,53 @@
                                   Foreground="#1E293B" Margin="16,12"/>
                     </Expander.Header>
                     <StackPanel Margin="24">
-                        <StackPanel Margin="0,0,0,16">
-                            <TextBlock Text="Problemas urinários" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="5"/>
-                                    <ColumnDefinition Width="3*"/>
-                                </Grid.ColumnDefinitions>
-                                
-                                <ComboBox Name="cb_ProblemasUrinarios" Grid.Column="0"
-                                         SelectedItem="{Binding ProblemasUrinarios, UpdateSourceTrigger=PropertyChanged}"
-                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                         Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                         SelectionChanged="ComboBox_SelectionChanged">
-                                    <ComboBoxItem Content="Nenhum"/>
-                                    <ComboBoxItem Content="Infecções urinárias"/>
-                                    <ComboBoxItem Content="Cálculos renais"/>
-                                    <ComboBoxItem Content="Incontinência"/>
-                                    <ComboBoxItem Content="Cistite"/>
-                                    <ComboBoxItem Content="Problemas de próstata"/>
-                                    <ComboBoxItem Content="Outras"/>
-                                </ComboBox>
-                                
-                                <TextBox Name="txt_ProblemasUrinariosOutras" Grid.Column="2"
-                                        Text="{Binding ProblemasUrinariosDetalhes, UpdateSourceTrigger=PropertyChanged}"
-                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                        Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                        />
-                            </Grid>
+                        <TextBlock Text="Selecione todos os problemas urinários que tem ou já teve:" 
+                                  FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" 
+                                  Foreground="#374151" Margin="0,0,0,12"/>
+                        
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <!-- Coluna 1 -->
+                            <StackPanel Grid.Column="0" Margin="0,0,12,0">
+                                <CheckBox Content="Infeções urinárias" 
+                                         IsChecked="{Binding InfeccoesUrinarias, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Incontinência" 
+                                         IsChecked="{Binding IncontinenciaUrinaria, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Problemas prostáticos" 
+                                         IsChecked="{Binding ProblemasProstata, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Outros problemas urinários" 
+                                         IsChecked="{Binding OutrosProblemasUrinarios, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                            </StackPanel>
+                            
+                            <!-- Coluna 2 -->
+                            <StackPanel Grid.Column="1">
+                                <CheckBox Content="Cálculos renais" 
+                                         IsChecked="{Binding CalculosRenais, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Cistites recorrentes" 
+                                         IsChecked="{Binding CistiteRecorrente, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Nefrites" 
+                                         IsChecked="{Binding Nefrites, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                            </StackPanel>
+                        </Grid>
+                        
+                        <StackPanel Margin="0,16,0,0">
+                            <TextBlock Text="Outros problemas urinários ou detalhes adicionais:" 
+                                      FontSize="13" FontWeight="Medium" Foreground="#374151" Margin="0,0,0,4"/>
+                            <TextBox Text="{Binding ProblemasUrinariosDetalhes, UpdateSourceTrigger=PropertyChanged}"
+                                    Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                    Padding="8,6" FontSize="13" Height="60" TextWrapping="Wrap"
+                                    AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
                         </StackPanel>
                     </StackPanel>
                 </Expander>
@@ -742,34 +821,50 @@
                                   Foreground="#1E293B" Margin="16,12"/>
                     </Expander.Header>
                     <StackPanel Margin="24">
-                        <StackPanel Margin="0,0,0,16">
-                            <TextBlock Text="Problemas imunitários" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="5"/>
-                                    <ColumnDefinition Width="3*"/>
-                                </Grid.ColumnDefinitions>
-                                
-                                <ComboBox Name="cb_ProblemasImunitarios" Grid.Column="0"
-                                         SelectedItem="{Binding ProblemasImunitarios, UpdateSourceTrigger=PropertyChanged}"
-                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                         Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                         SelectionChanged="ComboBox_SelectionChanged">
-                                    <ComboBoxItem Content="Nenhum"/>
-                                    <ComboBoxItem Content="Doenças autoimunes"/>
-                                    <ComboBoxItem Content="Imunossupressão"/>
-                                    <ComboBoxItem Content="Infeções recorrentes"/>
-                                    <ComboBoxItem Content="HIV"/>
-                                    <ComboBoxItem Content="Outras"/>
-                                </ComboBox>
-                                
-                                <TextBox Name="txt_ProblemasImunitariosOutras" Grid.Column="2"
-                                        Text="{Binding ProblemasImunitariosDetalhes, UpdateSourceTrigger=PropertyChanged}"
-                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                        Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                        />
-                            </Grid>
+                        <TextBlock Text="Selecione todos os problemas imunitários que tem ou já teve:" 
+                                  FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" 
+                                  Foreground="#374151" Margin="0,0,0,12"/>
+                        
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <!-- Coluna 1 -->
+                            <StackPanel Grid.Column="0" Margin="0,0,12,0">
+                                <CheckBox Content="Alergias alimentares" 
+                                         IsChecked="{Binding AlergiasAlimentaresImune, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Doenças autoimunes" 
+                                         IsChecked="{Binding DoencasAutoimunes, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Infeções recorrentes" 
+                                         IsChecked="{Binding InfeccoesRecorrentes, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                            </StackPanel>
+                            
+                            <!-- Coluna 2 -->
+                            <StackPanel Grid.Column="1">
+                                <CheckBox Content="Alergias respiratórias" 
+                                         IsChecked="{Binding AlergiasRespiratorias, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Imunodeficiências" 
+                                         IsChecked="{Binding Imunodeficiencias, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Outros" 
+                                         IsChecked="{Binding OutrosProblemasImunitarios, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                            </StackPanel>
+                        </Grid>
+                        
+                        <StackPanel Margin="0,16,0,0">
+                            <TextBlock Text="Outros problemas imunitários ou detalhes adicionais:" 
+                                      FontSize="13" FontWeight="Medium" Foreground="#374151" Margin="0,0,0,4"/>
+                            <TextBox Text="{Binding ProblemasImunitariosDetalhes, UpdateSourceTrigger=PropertyChanged}"
+                                    Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                    Padding="8,6" FontSize="13" Height="60" TextWrapping="Wrap"
+                                    AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
                         </StackPanel>
                     </StackPanel>
                 </Expander>
@@ -782,35 +877,50 @@
                                   Foreground="#1E293B" Margin="16,12"/>
                     </Expander.Header>
                     <StackPanel Margin="24">
-                        <StackPanel Margin="0,0,0,16">
-                            <TextBlock Text="Problemas endócrinos" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="5"/>
-                                    <ColumnDefinition Width="3*"/>
-                                </Grid.ColumnDefinitions>
-                                
-                                <ComboBox Name="cb_ProblemasEndocrinos" Grid.Column="0"
-                                         SelectedItem="{Binding ProblemasEndocrinos, UpdateSourceTrigger=PropertyChanged}"
-                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                         Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                         SelectionChanged="ComboBox_SelectionChanged">
-                                    <ComboBoxItem Content="Nenhum"/>
-                                    <ComboBoxItem Content="Diabetes"/>
-                                    <ComboBoxItem Content="Hipertiroidismo"/>
-                                    <ComboBoxItem Content="Hipotiroidismo"/>
-                                    <ComboBoxItem Content="Problemas das supra-renais"/>
-                                    <ComboBoxItem Content="Síndrome metabólica"/>
-                                    <ComboBoxItem Content="Outras"/>
-                                </ComboBox>
-                                
-                                <TextBox Name="txt_ProblemasEndocrinosOutras" Grid.Column="2"
-                                        Text="{Binding ProblemasEndocrinosDetalhes, UpdateSourceTrigger=PropertyChanged}"
-                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                        Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                        />
-                            </Grid>
+                        <TextBlock Text="Selecione todos os problemas endócrinos que tem ou já teve:" 
+                                  FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" 
+                                  Foreground="#374151" Margin="0,0,0,12"/>
+                        
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <!-- Coluna 1 -->
+                            <StackPanel Grid.Column="0" Margin="0,0,12,0">
+                                <CheckBox Content="Diabetes tipo 1/2" 
+                                         IsChecked="{Binding DiabetesTipo1Tipo2, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Hipertensão" 
+                                         IsChecked="{Binding HipertensaoEndocrino, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Distúrbios hormonais" 
+                                         IsChecked="{Binding DisturbiosHormonais, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                            </StackPanel>
+                            
+                            <!-- Coluna 2 -->
+                            <StackPanel Grid.Column="1">
+                                <CheckBox Content="Problemas da tiroide" 
+                                         IsChecked="{Binding ProblemasTiroide, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Colesterol elevado" 
+                                         IsChecked="{Binding ColesterolElevado, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Outros" 
+                                         IsChecked="{Binding OutrosProblemasEndocrinos, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                            </StackPanel>
+                        </Grid>
+                        
+                        <StackPanel Margin="0,16,0,0">
+                            <TextBlock Text="Outros problemas endócrinos ou detalhes adicionais:" 
+                                      FontSize="13" FontWeight="Medium" Foreground="#374151" Margin="0,0,0,4"/>
+                            <TextBox Text="{Binding ProblemasEndocrinosDetalhes, UpdateSourceTrigger=PropertyChanged}"
+                                    Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                    Padding="8,6" FontSize="13" Height="60" TextWrapping="Wrap"
+                                    AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
                         </StackPanel>
                     </StackPanel>
                 </Expander>
@@ -823,36 +933,64 @@
                                   Foreground="#1E293B" Margin="16,12"/>
                     </Expander.Header>
                     <StackPanel Margin="24">
-                        <StackPanel Margin="0,0,0,16">
-                            <TextBlock Text="Problemas de pele" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="5"/>
-                                    <ColumnDefinition Width="3*"/>
-                                </Grid.ColumnDefinitions>
-                                
-                                <ComboBox Name="cb_ProblemasPele" Grid.Column="0"
-                                         SelectedItem="{Binding ProblemasPele, UpdateSourceTrigger=PropertyChanged}"
-                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                         Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                         SelectionChanged="ComboBox_SelectionChanged">
-                                    <ComboBoxItem Content="Nenhum"/>
-                                    <ComboBoxItem Content="Eczema"/>
-                                    <ComboBoxItem Content="Psoríase"/>
-                                    <ComboBoxItem Content="Acne"/>
-                                    <ComboBoxItem Content="Dermatite"/>
-                                    <ComboBoxItem Content="Vitiligo"/>
-                                    <ComboBoxItem Content="Melanoma"/>
-                                    <ComboBoxItem Content="Outras"/>
-                                </ComboBox>
-                                
-                                <TextBox Name="txt_ProblemasPeleOutras" Grid.Column="2"
-                                        Text="{Binding ProblemasPeleDetalhes, UpdateSourceTrigger=PropertyChanged}"
-                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                        Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                        />
-                            </Grid>
+                        <TextBlock Text="Selecione todos os problemas de pele que tem ou já teve:" 
+                                  FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" 
+                                  Foreground="#374151" Margin="0,0,0,12"/>
+                        
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <!-- Coluna 1 -->
+                            <StackPanel Grid.Column="0" Margin="0,0,12,0">
+                                <CheckBox Content="Eczemas" 
+                                         IsChecked="{Binding Eczemas, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Acne" 
+                                         IsChecked="{Binding Acne, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Micoses" 
+                                         IsChecked="{Binding Micoses, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                            </StackPanel>
+                            
+                            <!-- Coluna 2 -->
+                            <StackPanel Grid.Column="1" Margin="0,0,12,0">
+                                <CheckBox Content="Psoríase" 
+                                         IsChecked="{Binding Psoriase, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Urticária" 
+                                         IsChecked="{Binding Urticaria, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Verrugas" 
+                                         IsChecked="{Binding Verrugas, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                            </StackPanel>
+                            
+                            <!-- Coluna 3 -->
+                            <StackPanel Grid.Column="2">
+                                <CheckBox Content="Dermatites" 
+                                         IsChecked="{Binding Dermatites, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Vitiligo" 
+                                         IsChecked="{Binding Vitiligo, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Outros problemas de pele" 
+                                         IsChecked="{Binding OutrosProblemasPele, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,4" FontSize="13"/>
+                            </StackPanel>
+                        </Grid>
+                        
+                        <StackPanel Margin="0,16,0,0">
+                            <TextBlock Text="Outros problemas de pele ou detalhes adicionais:" 
+                                      FontSize="13" FontWeight="Medium" Foreground="#374151" Margin="0,0,0,4"/>
+                            <TextBox Text="{Binding ProblemasPeleDetalhes, UpdateSourceTrigger=PropertyChanged}"
+                                    Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                    Padding="8,6" FontSize="13" Height="60" TextWrapping="Wrap"
+                                    AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
                         </StackPanel>
                     </StackPanel>
                 </Expander>
@@ -877,64 +1015,79 @@
                             
                             <!-- Problemas de Visão -->
                             <StackPanel Grid.Column="0" Grid.Row="0" Margin="0,0,12,0">
-                                <TextBlock Text="Problemas de visão" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="2*"/>
-                                        <ColumnDefinition Width="5"/>
-                                        <ColumnDefinition Width="3*"/>
-                                    </Grid.ColumnDefinitions>
-                                    
-                                    <ComboBox Name="cb_ProblemasVisao" Grid.Column="0"
-                                             SelectedItem="{Binding ProblemasVisao, UpdateSourceTrigger=PropertyChanged}"
-                                             Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                             Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                             SelectionChanged="ComboBox_SelectionChanged">
-                                        <ComboBoxItem Content="Nenhum"/>
-                                        <ComboBoxItem Content="Miopia"/>
-                                        <ComboBoxItem Content="Hipermetropia"/>
-                                        <ComboBoxItem Content="Astigmatismo"/>
-                                        <ComboBoxItem Content="Cataratas"/>
-                                        <ComboBoxItem Content="Glaucoma"/>
-                                        <ComboBoxItem Content="Outras"/>
-                                    </ComboBox>
-                                    
-                                    <TextBox Name="txt_ProblemasVisaoOutras" Grid.Column="2"
-                                            Text="{Binding ProblemasVisaoDetalhes, UpdateSourceTrigger=PropertyChanged}"
+                                <TextBlock Text="Selecione problemas de visão que tem ou já teve:" 
+                                          FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" 
+                                          Foreground="#374151" Margin="0,0,0,8"/>
+                                
+                                <StackPanel>
+                                    <CheckBox Content="Miopia/Hipermetropia" 
+                                             IsChecked="{Binding MiopiaHipermetropia, UpdateSourceTrigger=PropertyChanged}"
+                                             Margin="0,4" FontSize="13"/>
+                                    <CheckBox Content="Glaucoma" 
+                                             IsChecked="{Binding Glaucoma, UpdateSourceTrigger=PropertyChanged}"
+                                             Margin="0,4" FontSize="13"/>
+                                    <CheckBox Content="Degeneração macular" 
+                                             IsChecked="{Binding DegeneracaoMacular, UpdateSourceTrigger=PropertyChanged}"
+                                             Margin="0,4" FontSize="13"/>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,0">
+                                    <CheckBox Content="Astigmatismo" 
+                                             IsChecked="{Binding Astigmatismo, UpdateSourceTrigger=PropertyChanged}"
+                                             Margin="0,4" FontSize="13"/>
+                                    <CheckBox Content="Cataratas" 
+                                             IsChecked="{Binding Cataratas, UpdateSourceTrigger=PropertyChanged}"
+                                             Margin="0,4" FontSize="13"/>
+                                    <CheckBox Content="Outros" 
+                                             IsChecked="{Binding OutrosProblemasVisao, UpdateSourceTrigger=PropertyChanged}"
+                                             Margin="0,4" FontSize="13"/>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,12,0,0">
+                                    <TextBlock Text="Detalhes sobre problemas de visão:" 
+                                              FontSize="12" FontWeight="Medium" Foreground="#374151" Margin="0,0,0,4"/>
+                                    <TextBox Text="{Binding ProblemasVisaoDetalhes, UpdateSourceTrigger=PropertyChanged}"
                                             Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                            Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                            />
-                                </Grid>
+                                            Padding="6,4" FontSize="12" Height="50" TextWrapping="Wrap"
+                                            AcceptsReturn="True"/>
+                                </StackPanel>
                             </StackPanel>
                             
                             <!-- Problemas de Audição -->
                             <StackPanel Grid.Column="1" Grid.Row="0" Margin="12,0,0,0">
-                                <TextBlock Text="Problemas de audição" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="2*"/>
-                                        <ColumnDefinition Width="5"/>
-                                        <ColumnDefinition Width="3*"/>
-                                    </Grid.ColumnDefinitions>
-                                    
-                                    <ComboBox Name="cb_ProblemasAudicao" Grid.Column="0"
-                                             SelectedItem="{Binding ProblemasAudicao, UpdateSourceTrigger=PropertyChanged}"
-                                             Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                             Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                             SelectionChanged="ComboBox_SelectionChanged">
-                                        <ComboBoxItem Content="Nenhum"/>
-                                        <ComboBoxItem Content="Perda auditiva"/>
-                                        <ComboBoxItem Content="Zumbido no ouvido"/>
-                                        <ComboBoxItem Content="Otite recorrente"/>
-                                        <ComboBoxItem Content="Outras"/>
-                                    </ComboBox>
-                                    
-                                    <TextBox Name="txt_ProblemasAudicaoOutras" Grid.Column="2"
-                                            Text="{Binding ProblemasAudicaoDetalhes, UpdateSourceTrigger=PropertyChanged}"
+                                <TextBlock Text="Selecione problemas de audição que tem ou já teve:" 
+                                          FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" 
+                                          Foreground="#374151" Margin="0,0,0,8"/>
+                                
+                                <StackPanel>
+                                    <CheckBox Content="Perda auditiva" 
+                                             IsChecked="{Binding PerdaAuditiva, UpdateSourceTrigger=PropertyChanged}"
+                                             Margin="0,4" FontSize="13"/>
+                                    <CheckBox Content="Otites recorrentes" 
+                                             IsChecked="{Binding OtitesRecorrentes, UpdateSourceTrigger=PropertyChanged}"
+                                             Margin="0,4" FontSize="13"/>
+                                    <CheckBox Content="Outros problemas auditivos" 
+                                             IsChecked="{Binding OutrosProblemasAudicao, UpdateSourceTrigger=PropertyChanged}"
+                                             Margin="0,4" FontSize="13"/>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,0">
+                                    <CheckBox Content="Zumbidos (tinnitus)" 
+                                             IsChecked="{Binding ZumbidosTinnitus, UpdateSourceTrigger=PropertyChanged}"
+                                             Margin="0,4" FontSize="13"/>
+                                    <CheckBox Content="Vertigens" 
+                                             IsChecked="{Binding VertigensAudicao, UpdateSourceTrigger=PropertyChanged}"
+                                             Margin="0,4" FontSize="13"/>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,12,0,0">
+                                    <TextBlock Text="Detalhes sobre problemas de audição:" 
+                                              FontSize="12" FontWeight="Medium" Foreground="#374151" Margin="0,0,0,4"/>
+                                    <TextBox Text="{Binding ProblemasAudicaoDetalhes, UpdateSourceTrigger=PropertyChanged}"
                                             Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                            Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                            />
-                                </Grid>
+                                            Padding="6,4" FontSize="12" Height="50" TextWrapping="Wrap"
+                                            AcceptsReturn="True"/>
+                                </StackPanel>
                             </StackPanel>
                         </Grid>
                     </StackPanel>

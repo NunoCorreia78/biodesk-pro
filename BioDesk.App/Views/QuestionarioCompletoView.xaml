@@ -604,36 +604,49 @@
                                   Foreground="#1E293B" Margin="16,12"/>
                     </Expander.Header>
                     <StackPanel Margin="24">
-                        <StackPanel Margin="0,0,0,16">
-                            <TextBlock Text="Problemas neurológicos" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="5"/>
-                                    <ColumnDefinition Width="3*"/>
-                                </Grid.ColumnDefinitions>
-                                
-                                <ComboBox Name="cb_ProblemasNeurologicos" Grid.Column="0"
-                                         SelectedItem="{Binding ProblemasNeurologicos, UpdateSourceTrigger=PropertyChanged}"
-                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                         Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                         SelectionChanged="ComboBox_SelectionChanged">
-                                    <ComboBoxItem Content="Nenhum"/>
-                                    <ComboBoxItem Content="Enxaquecas"/>
-                                    <ComboBoxItem Content="Epilepsia"/>
-                                    <ComboBoxItem Content="Parkinson"/>
-                                    <ComboBoxItem Content="Alzheimer"/>
-                                    <ComboBoxItem Content="Esclerose múltipla"/>
-                                    <ComboBoxItem Content="AVC"/>
-                                    <ComboBoxItem Content="Outras"/>
-                                </ComboBox>
-                                
-                                <TextBox Name="txt_ProblemasNeurologicosOutras" Grid.Column="2"
-                                        Text="{Binding ProblemasNeurologicosDetalhes, UpdateSourceTrigger=PropertyChanged}"
-                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                        Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                        />
-                            </Grid>
+                        <TextBlock Text="Selecione todos os problemas neurológicos que tem ou já teve:" 
+                                  FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" 
+                                  Foreground="#374151" Margin="0,0,0,12"/>
+                        
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <!-- Coluna 1 -->
+                            <StackPanel Grid.Column="0" Margin="0,0,12,0">
+                                <CheckBox Content="Enxaquecas / Cefaleias" Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Epilepsia" Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Ansiedade" Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Depressão" Margin="0,4" FontSize="13"/>
+                            </StackPanel>
+                            
+                            <!-- Coluna 2 -->
+                            <StackPanel Grid.Column="1" Margin="0,0,12,0">
+                                <CheckBox Content="Insónia / Distúrbios do sono" Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Tonturas / Vertigens" Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Problemas de memória" Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Doença de Parkinson" Margin="0,4" FontSize="13"/>
+                            </StackPanel>
+                            
+                            <!-- Coluna 3 -->
+                            <StackPanel Grid.Column="2">
+                                <CheckBox Content="Esclerose múltipla" Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="AVC / Acidente vascular" Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Doença de Alzheimer" Margin="0,4" FontSize="13"/>
+                                <CheckBox Content="Neuropatias periféricas" Margin="0,4" FontSize="13"/>
+                            </StackPanel>
+                        </Grid>
+                        
+                        <StackPanel Margin="0,16,0,0">
+                            <TextBlock Text="Outros problemas neurológicos ou detalhes adicionais:" 
+                                      FontSize="13" FontWeight="Medium" Foreground="#374151" Margin="0,0,0,4"/>
+                            <TextBox Text="{Binding ProblemasNeurologicosDetalhes, UpdateSourceTrigger=PropertyChanged}"
+                                    Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                    Padding="8,6" FontSize="13" Height="60" TextWrapping="Wrap"
+                                    AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
                         </StackPanel>
                     </StackPanel>
                 </Expander>
@@ -1017,15 +1030,144 @@
                         <TextBlock Text="Selecione os consentimentos aplicáveis e assine eletronicamente quando necessário." FontFamily="Segoe UI" FontSize="13" Foreground="#6b7280" Margin="0,0,0,24"/>
                         
                         <!-- Consentimento Naturopatia -->
-                        <Expander Header="🌿 Naturopatia" Background="White" BorderBrush="#d1d5db" BorderThickness="1" Margin="0,0,0,12">
+                        <Expander Header="🌿 Naturopatia - Consentimento Informado" Background="White" BorderBrush="#d1d5db" BorderThickness="1" Margin="0,0,0,12">
                             <StackPanel Margin="16">
-                                <CheckBox Content="Compreensão da natureza das intervenções (alimentação, fitoterapia, suplementação)" Margin="0,4"/>
-                                <CheckBox Content="Objetivos e benefícios explicados" Margin="0,4"/>
-                                <CheckBox Content="Riscos potenciais discutidos" Margin="0,4"/>
-                                <CheckBox Content="Informação de patologias/medicação fornecida" Margin="0,4"/>
-                                <CheckBox Content="Alternativas discutidas" Margin="0,4"/>
-                                <CheckBox Content="Autorização e corresponsabilidade aceites" Margin="0,4"/>
-                                <CheckBox Content="Revogável a qualquer momento" Margin="0,4"/>
+                                <!-- Introdução -->
+                                <Border Background="#f0fdf4" BorderBrush="#16a34a" BorderThickness="1" CornerRadius="6" Padding="12" Margin="0,0,0,16">
+                                    <TextBlock Text="A naturopatia é uma abordagem terapêutica que utiliza métodos naturais para promover a saúde e prevenir doenças. Este consentimento garante que compreende completamente os procedimentos, benefícios e riscos associados." 
+                                              FontSize="12" Foreground="#15803d" TextWrapping="Wrap" FontWeight="Medium"/>
+                                </Border>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="NATUREZA DOS TRATAMENTOS - Compreendo os métodos naturopáticos" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#4b5563" TextWrapping="Wrap">
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Fitoterapia:"/>
+                                        <Run Text=" Utilização de plantas medicinais em diferentes formas (chás, tinturas, cápsulas, óleos essenciais)."/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Suplementação nutricional:"/>
+                                        <Run Text=" Vitaminas, minerais, probióticos e outros suplementos naturais."/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Aconselhamento nutricional:"/>
+                                        <Run Text=" Orientações alimentares personalizadas e modificações dietéticas."/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Mudanças de estilo de vida:"/>
+                                        <Run Text=" Recomendações sobre exercício, gestão de stress, higiene do sono e hábitos saudáveis."/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="OBJETIVOS TERAPÊUTICOS - Foram-me explicados os benefícios esperados" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#4b5563" TextWrapping="Wrap">
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Melhoria da vitalidade e energia natural"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Fortalecimento do sistema imunitário"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Optimização da função digestiva e absorção de nutrientes"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Redução de inflamação e dor natural"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Melhoria da qualidade do sono e gestão do stress"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Prevenção de doenças através de hábitos saudáveis"/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="RISCOS E CONTRAINDICAÇÕES - Estou ciente dos potenciais efeitos adversos" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#dc2626" TextWrapping="Wrap">
+                                        <Run FontWeight="Medium" Text="ATENÇÃO - Riscos importantes:"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Interações medicamentosas:"/>
+                                        <Run Text=" Plantas medicinais podem alterar a eficácia de medicamentos prescritos."/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Reações alérgicas:"/>
+                                        <Run Text=" Possível desenvolvimento de alergias a componentes naturais."/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Efeitos gastrointestinais:"/>
+                                        <Run Text=" Náuseas, diarreia ou desconforto abdominal inicial."/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Agravamento inicial:"/>
+                                        <Run Text=" Alguns sintomas podem piorar temporariamente antes da melhoria."/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Gravidez e amamentação:"/>
+                                        <Run Text=" Algumas plantas são contraindicadas nestas situações."/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="TRANSPARÊNCIA MÉDICA - Forneci informação médica completa e verídica" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#4b5563" TextWrapping="Wrap">
+                                        <Run Text="Declaro que informei completamente sobre:"/>
+                                        <LineBreak/>
+                                        <Run Text="• Todos os medicamentos que tomo atualmente (prescritos e automedicação)"/>
+                                        <LineBreak/>
+                                        <Run Text="• Todas as condições médicas diagnosticadas"/>
+                                        <LineBreak/>
+                                        <Run Text="• Alergias conhecidas a alimentos, medicamentos ou substâncias"/>
+                                        <LineBreak/>
+                                        <Run Text="• Gravidez confirmada ou suspeita, amamentação"/>
+                                        <LineBreak/>
+                                        <Run Text="• Cirurgias recentes ou tratamentos médicos em curso"/>
+                                        <LineBreak/>
+                                        <Run FontWeight="Medium" Text="Comprometo-me a comunicar imediatamente qualquer alteração no meu estado de saúde."/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="ALTERNATIVAS TERAPÊUTICAS - Foram discutidas outras opções de tratamento" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#4b5563" TextWrapping="Wrap">
+                                        <Run Text="Compreendo que existem outras abordagens terapêuticas disponíveis, incluindo tratamento médico convencional, e que posso procurar uma segunda opinião a qualquer momento. A naturopatia é "/>
+                                        <Run FontWeight="Medium" Text="complementar"/>
+                                        <Run Text=" e não substitui o acompanhamento médico quando necessário."/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="RESPONSABILIDADE PARTILHADA - Aceito a minha corresponsabilidade no tratamento" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#4b5563" TextWrapping="Wrap">
+                                        <Run Text="Comprometo-me a:"/>
+                                        <LineBreak/>
+                                        <Run Text="• Seguir rigorosamente as dosagens e instruções fornecidas"/>
+                                        <LineBreak/>
+                                        <Run Text="• Comunicar qualquer efeito adverso imediatamente"/>
+                                        <LineBreak/>
+                                        <Run Text="• Não interromper medicação prescrita sem consultar o médico"/>
+                                        <LineBreak/>
+                                        <Run Text="• Implementar as mudanças de estilo de vida recomendadas"/>
+                                        <LineBreak/>
+                                        <Run Text="• Comparecer às consultas de seguimento agendadas"/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="DIREITO DE REVOGAÇÃO - Posso retirar este consentimento a qualquer momento" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#4b5563" TextWrapping="Wrap">
+                                        <Run Text="Este consentimento pode ser retirado a qualquer momento, por escrito ou verbalmente, sem necessidade de justificação e sem prejuízo para futuras consultas. Tenho o direito de interromper ou modificar o plano de tratamento quando desejar."/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <Border Background="#fef3c7" BorderBrush="#f59e0b" BorderThickness="1" CornerRadius="6" Padding="12" Margin="0,16,0,16">
+                                    <StackPanel>
+                                        <TextBlock Text="⚠️ DECLARAÇÃO IMPORTANTE" FontWeight="Bold" FontSize="13" Foreground="#92400e" Margin="0,0,0,4"/>
+                                        <TextBlock Text="Li e compreendi completamente este consentimento informado. Tive oportunidade de fazer perguntas que foram respondidas satisfatoriamente. Autorizo o início do tratamento naturopático e aceito a responsabilidade partilhada no processo terapêutico." 
+                                                  FontSize="12" Foreground="#92400e" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </Border>
                                 
                                 <Border Background="#f0f9ff" BorderBrush="#0ea5e9" BorderThickness="1" CornerRadius="4" Padding="12" Margin="0,12,0,0">
                                     <StackPanel Orientation="Horizontal">
@@ -1038,14 +1180,190 @@
                         </Expander>
 
                         <!-- Consentimento Osteopatia -->
-                        <Expander Header="🦴 Osteopatia" Background="White" BorderBrush="#d1d5db" BorderThickness="1" Margin="0,0,0,12">
+                        <Expander Header="🦴 Osteopatia - Consentimento Informado para Contacto Físico e Tratamento Manual" Background="White" BorderBrush="#d1d5db" BorderThickness="1" Margin="0,0,0,12">
                             <StackPanel Margin="16">
-                                <CheckBox Content="Técnicas manuais explicadas" Margin="0,4"/>
-                                <CheckBox Content="Contraindicações e sinais de alerta discutidos" Margin="0,4"/>
-                                <CheckBox Content="Riscos explicados (dor, tonturas, hematomas, raríssimos eventos graves)" Margin="0,4"/>
-                                <CheckBox Content="Autorizo contacto físico profissional" Margin="0,4"/>
-                                <CheckBox Content="Posso interromper a técnica a qualquer momento" Margin="0,4"/>
-                                <CheckBox Content="Revogável a qualquer momento" Margin="0,4"/>
+                                <!-- Introdução -->
+                                <Border Background="#fef7ff" BorderBrush="#9333ea" BorderThickness="1" CornerRadius="6" Padding="12" Margin="0,0,0,16">
+                                    <TextBlock Text="A osteopatia é uma terapia manual que requer contacto físico direto para avaliação e tratamento. Este consentimento assegura que compreende completamente a natureza do contacto físico necessário, as técnicas utilizadas e os seus direitos durante o tratamento." 
+                                              FontSize="12" Foreground="#7c3aed" TextWrapping="Wrap" FontWeight="Medium"/>
+                                </Border>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="TÉCNICAS MANUAIS - Compreendo os métodos osteopáticos que serão utilizados" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#4b5563" TextWrapping="Wrap">
+                                        <Run FontWeight="Medium" Text="Técnicas que podem ser aplicadas:"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Técnicas de tecidos moles:"/>
+                                        <Run Text=" Massagem terapêutica, pontos trigger, libertação miofascial"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Mobilizações articulares:"/>
+                                        <Run Text=" Movimentos passivos suaves para restaurar mobilidade"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Manipulações articulares:"/>
+                                        <Run Text=" Técnicas de alta velocidade e baixa amplitude (com 'estalido')"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Técnicas craniossacrais:"/>
+                                        <Run Text=" Trabalho suave no crânio, face e região sacral"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Técnicas viscerais:"/>
+                                        <Run Text=" Trabalho abdominal para órgãos internos (se apropriado)"/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="CONTACTO FÍSICO AUTORIZADO - Dou consentimento expresso para contacto corporal" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#dc2626" TextWrapping="Wrap">
+                                        <Run FontWeight="Bold" Text="AUTORIZAÇÃO ESPECÍFICA PARA CONTACTO FÍSICO:"/>
+                                        <LineBreak/>
+                                        <Run Text="Autorizo expressamente o osteopata a tocar e manipular as seguintes áreas corporais:"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Região dorsal e lombar"/>
+                                        <Run Text=" (incluindo zona paravertebral)"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Região cervical e occipital"/>
+                                        <Run Text=" (pescoço e base do crânio)"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Região pélvica e sacral"/>
+                                        <Run Text=" (zona baixa das costas, região do cóccix)"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Membros superiores"/>
+                                        <Run Text=" (ombros, braços, cotovelos, punhos, mãos)"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Membros inferiores"/>
+                                        <Run Text=" (ancas, coxas, joelhos, pernas, tornozelos, pés)"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Região abdominal"/>
+                                        <Run Text=" (se indicado para técnicas viscerais)"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Região facial e craniana"/>
+                                        <Run Text=" (para técnicas craniossacrais)"/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="EXPOSIÇÃO CORPORAL - Compreendo as necessidades de exposição para tratamento" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#4b5563" TextWrapping="Wrap">
+                                        <Run Text="Compreendo que pode ser necessário:"/>
+                                        <LineBreak/>
+                                        <Run Text="• Remoção de roupas superiores (para acesso às costas e ombros)"/>
+                                        <LineBreak/>
+                                        <Run Text="• Utilização de roupa interior apropriada ou roupas de tratamento fornecidas"/>
+                                        <LineBreak/>
+                                        <Run Text="• Exposição parcial de áreas específicas conforme necessário"/>
+                                        <LineBreak/>
+                                        <Run FontWeight="Medium" Text="DIREITOS: "/>
+                                        <Run Text="Posso solicitar a presença de um acompanhante durante o tratamento e será sempre mantida a privacidade e dignidade."/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="CONTRAINDICAÇÕES - Foram explicadas situações de risco ou cuidado especial" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#dc2626" TextWrapping="Wrap">
+                                        <Run FontWeight="Medium" Text="CONTRAINDICAÇÕES ABSOLUTAS (tratamento não pode ser realizado):"/>
+                                        <LineBreak/>
+                                        <Run Text="• Fraturas recentes não consolidadas"/>
+                                        <LineBreak/>
+                                        <Run Text="• Infeções agudas com febre"/>
+                                        <LineBreak/>
+                                        <Run Text="• Tumores malignos na zona de tratamento"/>
+                                        <LineBreak/>
+                                        <Run Text="• Osteoporose severa ou fragilidade óssea extrema"/>
+                                        <LineBreak/>
+                                        <Run Text="• Instabilidade vertebral grave"/>
+                                        <LineBreak/>
+                                        <LineBreak/>
+                                        <Run FontWeight="Medium" Text="CONTRAINDICAÇÕES RELATIVAS (requerem cuidado especial):"/>
+                                        <LineBreak/>
+                                        <Run Text="• Hérnia discal aguda"/>
+                                        <LineBreak/>
+                                        <Run Text="• Gravidez (técnicas adaptadas)"/>
+                                        <LineBreak/>
+                                        <Run Text="• Pós-cirúrgico recente"/>
+                                        <LineBreak/>
+                                        <Run Text="• Toma de anticoagulantes"/>
+                                        <LineBreak/>
+                                        <Run Text="• Problemas circulatórios graves"/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="EFEITOS ADVERSOS - Estou ciente dos possíveis efeitos após tratamento" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#dc2626" TextWrapping="Wrap">
+                                        <Run FontWeight="Medium" Text="EFEITOS NORMAIS (temporários, 24-72h):"/>
+                                        <LineBreak/>
+                                        <Run Text="• Ligeiro desconforto ou dor muscular"/>
+                                        <LineBreak/>
+                                        <Run Text="• Sensação de fadiga ou relaxamento profundo"/>
+                                        <LineBreak/>
+                                        <Run Text="• Rigidez temporária"/>
+                                        <LineBreak/>
+                                        <Run Text="• Ligeiras tonturas após manipulações cervicais"/>
+                                        <LineBreak/>
+                                        <LineBreak/>
+                                        <Run FontWeight="Medium" Text="EFEITOS RAROS MAS POSSÍVEIS:"/>
+                                        <LineBreak/>
+                                        <Run Text="• Pequenos hematomas na zona tratada"/>
+                                        <LineBreak/>
+                                        <Run Text="• Agravamento temporário dos sintomas"/>
+                                        <LineBreak/>
+                                        <Run Text="• Dores de cabeça ligeiras"/>
+                                        <LineBreak/>
+                                        <LineBreak/>
+                                        <Run FontWeight="Bold" Text="EVENTOS GRAVES (extremamente raros, menos de 1 em 100.000):"/>
+                                        <LineBreak/>
+                                        <Run Text="• Lesão arterial cervical (em manipulações cervicais)"/>
+                                        <LineBreak/>
+                                        <Run Text="• Agravamento de hérnia discal"/>
+                                        <LineBreak/>
+                                        <Run Text="• Fraturas em ossos frágeis"/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="DIREITO DE INTERRUPÇÃO - Posso parar o tratamento a qualquer momento" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#059669" TextWrapping="Wrap">
+                                        <Run FontWeight="Medium" Text="OS MEUS DIREITOS DURANTE O TRATAMENTO:"/>
+                                        <LineBreak/>
+                                        <Run Text="• Posso pedir para parar qualquer técnica imediatamente"/>
+                                        <LineBreak/>
+                                        <Run Text="• Posso solicitar explicações sobre o que está a ser feito"/>
+                                        <LineBreak/>
+                                        <Run Text="• Posso recusar técnicas específicas sem afetar o resto do tratamento"/>
+                                        <LineBreak/>
+                                        <Run Text="• Posso pedir ajustes na pressão ou intensidade"/>
+                                        <LineBreak/>
+                                        <Run Text="• Posso solicitar a presença de um acompanhante"/>
+                                        <LineBreak/>
+                                        <Run Text="• O profissional respeitará imediatamente qualquer pedido de paragem"/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="REVOGAÇÃO DO CONSENTIMENTO - Posso retirar autorização a qualquer momento" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#4b5563" TextWrapping="Wrap">
+                                        <Run Text="Este consentimento pode ser retirado total ou parcialmente a qualquer momento, durante a consulta atual ou em consultas futuras, sem necessidade de justificação. Posso manter o tratamento geral recusando apenas técnicas específicas que me causem desconforto."/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <Border Background="#fef3c7" BorderBrush="#f59e0b" BorderThickness="1" CornerRadius="6" Padding="12" Margin="0,16,0,16">
+                                    <StackPanel>
+                                        <TextBlock Text="⚠️ DECLARAÇÃO DE CONSENTIMENTO INFORMADO" FontWeight="Bold" FontSize="13" Foreground="#92400e" Margin="0,0,0,4"/>
+                                        <TextBlock Text="Li e compreendi completamente este consentimento. Compreendo a natureza do contacto físico necessário, as técnicas que serão utilizadas, os riscos envolvidos e os meus direitos. Autorizo expressamente o contacto físico necessário para o tratamento osteopático e aceito os riscos explicados." 
+                                                  FontSize="12" Foreground="#92400e" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </Border>
                                 
                                 <Border Background="#f0f9ff" BorderBrush="#0ea5e9" BorderThickness="1" CornerRadius="4" Padding="12" Margin="0,12,0,0">
                                     <StackPanel Orientation="Horizontal">
@@ -1058,12 +1376,200 @@
                         </Expander>
 
                         <!-- Consentimento Iridologia -->
-                        <Expander Header="👁️ Iridologia" Background="White" BorderBrush="#d1d5db" BorderThickness="1" Margin="0,0,0,12">
+                        <Expander Header="👁️ Iridologia - Análise Detalhada da Íris e Proteção Ocular" Background="White" BorderBrush="#d1d5db" BorderThickness="1" Margin="0,0,0,12">
                             <StackPanel Margin="16">
-                                <CheckBox Content="Natureza não invasiva e sem valor diagnóstico médico explicada" Margin="0,4"/>
-                                <CheckBox Content="Autorizo captura e armazenamento de imagens da íris" Margin="0,4"/>
-                                <CheckBox Content="Compreendo limitações e necessidade de correlação clínica" Margin="0,4"/>
-                                <CheckBox Content="Revogável a qualquer momento" Margin="0,4"/>
+                                <!-- Introdução -->
+                                <Border Background="#eff6ff" BorderBrush="#3b82f6" BorderThickness="1" CornerRadius="6" Padding="12" Margin="0,0,0,16">
+                                    <TextBlock Text="A iridologia é uma análise diagnóstica da íris do olho que requer proximidade física e utilização de equipamento óptico. Este consentimento esclarece os procedimentos, riscos e medidas de proteção ocular durante a análise." 
+                                              FontSize="12" Foreground="#1d4ed8" TextWrapping="Wrap" FontWeight="Medium"/>
+                                </Border>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="PROCEDIMENTO DE ANÁLISE - Compreendo como será realizada a análise da íris" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#4b5563" TextWrapping="Wrap">
+                                        <Run FontWeight="Medium" Text="Etapas da análise iridológica:"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Exame visual direto:"/>
+                                        <Run Text=" Observação próxima da íris com lente de aumento"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Utilização de lanterna penlight:"/>
+                                        <Run Text=" Luz direcionada para observação de detalhes"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Fotografia digital (se autorizada):"/>
+                                        <Run Text=" Registo fotográfico para análise detalhada"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Análise de padrões:"/>
+                                        <Run Text=" Identificação de sinais específicos na íris"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Duração estimada:"/>
+                                        <Run Text=" 10-20 minutos por olho"/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="PROXIMIDADE FÍSICA - Autorizo a proximidade necessária para exame ocular" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#dc2626" TextWrapping="Wrap">
+                                        <Run FontWeight="Bold" Text="CONTACTO PRÓXIMO AUTORIZADO:"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Proximidade facial:"/>
+                                        <Run Text=" O profissional ficará a 15-30cm do meu rosto"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Contacto suave nas pálpebras:"/>
+                                        <Run Text=" Para abrir ligeiramente o olho se necessário"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Orientação do olhar:"/>
+                                        <Run Text=" Direcionamento suave da posição ocular"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Utilização de luvas:"/>
+                                        <Run Text=" O profissional usará luvas descartáveis quando necessário"/>
+                                        <LineBreak/>
+                                        <Run FontWeight="Medium" Text="DIREITO DE PRIVACIDADE: "/>
+                                        <Run Text="Posso solicitar pausas durante o exame e o profissional respeitará meu conforto pessoal."/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="PROTEÇÃO OCULAR - Compreendo as medidas de segurança implementadas" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#059669" TextWrapping="Wrap">
+                                        <Run FontWeight="Medium" Text="MEDIDAS DE PROTEÇÃO OCULAR:"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Luz suave controlada:"/>
+                                        <Run Text=" Intensidade adequada para não causar desconforto"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Tempo de exposição limitado:"/>
+                                        <Run Text=" Exposições curtas com pausas regulares"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Ângulo adequado:"/>
+                                        <Run Text=" Direcionamento oblíquo da luz para evitar reflexos"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Higiene rigorosa:"/>
+                                        <Run Text=" Equipamento esterilizado e luvas descartáveis"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Pausas obrigatórias:"/>
+                                        <Run Text=" Intervalos para descanso ocular durante análise prolongada"/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="CONTRAINDICAÇÕES OCULARES - Informei sobre condições oculares relevantes" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#dc2626" TextWrapping="Wrap">
+                                        <Run FontWeight="Medium" Text="CONDIÇÕES QUE IMPEDEM A ANÁLISE:"/>
+                                        <LineBreak/>
+                                        <Run Text="• Infeções oculares ativas (conjuntivite, blefarite aguda)"/>
+                                        <LineBreak/>
+                                        <Run Text="• Lesões recentes no olho ou pálpebras"/>
+                                        <LineBreak/>
+                                        <Run Text="• Cirurgia ocular recente (menos de 4 semanas)"/>
+                                        <LineBreak/>
+                                        <Run Text="• Alergia severa com inflamação ocular"/>
+                                        <LineBreak/>
+                                        <Run Text="• Fotofobia extrema ou sensibilidade à luz"/>
+                                        <LineBreak/>
+                                        <LineBreak/>
+                                        <Run FontWeight="Medium" Text="CONDIÇÕES QUE REQUEREM CUIDADO ESPECIAL:"/>
+                                        <LineBreak/>
+                                        <Run Text="• Olho seco severo"/>
+                                        <LineBreak/>
+                                        <Run Text="• Glaucoma com pressão intraocular elevada"/>
+                                        <LineBreak/>
+                                        <Run Text="• Retinopatia diabética"/>
+                                        <LineBreak/>
+                                        <Run Text="• Uso de lentes de contacto (devem ser removidas)"/>
+                                        <LineBreak/>
+                                        <Run Text="• Medicação que afeta a pupila"/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="DESCONFORTOS POSSÍVEIS - Estou ciente dos efeitos temporários da análise" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#dc2626" TextWrapping="Wrap">
+                                        <Run FontWeight="Medium" Text="EFEITOS TEMPORÁRIOS NORMAIS:"/>
+                                        <LineBreak/>
+                                        <Run Text="• Ligeiro desconforto com a luz dirigida"/>
+                                        <LineBreak/>
+                                        <Run Text="• Lacrimejo temporário"/>
+                                        <LineBreak/>
+                                        <Run Text="• Ligeira irritação ocular (1-2 horas)"/>
+                                        <LineBreak/>
+                                        <Run Text="• Sensibilidade aumentada à luz após o exame"/>
+                                        <LineBreak/>
+                                        <Run Text="• Sensação de 'vista cansada' temporária"/>
+                                        <LineBreak/>
+                                        <LineBreak/>
+                                        <Run FontWeight="Bold" Text="SINAIS DE ALERTA (contactar imediatamente):"/>
+                                        <LineBreak/>
+                                        <Run Text="• Dor ocular persistente após 4 horas"/>
+                                        <LineBreak/>
+                                        <Run Text="• Visão turva que não melhora"/>
+                                        <LineBreak/>
+                                        <Run Text="• Vermelhidão intensa que aumenta"/>
+                                        <LineBreak/>
+                                        <Run Text="• Secreção purulenta"/>
+                                        <LineBreak/>
+                                        <Run Text="• Alterações súbitas na visão"/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="LIMITAÇÕES DIAGNÓSTICAS - Compreendo o âmbito da iridologia" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#4b5563" TextWrapping="Wrap">
+                                        <Run FontWeight="Medium" Text="NATUREZA DA IRIDOLOGIA:"/>
+                                        <LineBreak/>
+                                        <Run Text="• A iridologia é uma técnica de análise constitucional, não um exame médico"/>
+                                        <LineBreak/>
+                                        <Run Text="• Não substitui avaliação oftalmológica ou médica"/>
+                                        <LineBreak/>
+                                        <Run Text="• Foca-se em padrões constitucionais e tendências"/>
+                                        <LineBreak/>
+                                        <Run Text="• Não diagnostica doenças específicas"/>
+                                        <LineBreak/>
+                                        <Run Text="• Complementa outras formas de avaliação de saúde"/>
+                                        <LineBreak/>
+                                        <Run FontWeight="Medium" Text="RECOMENDAÇÃO: "/>
+                                        <Run Text="Devo manter seguimento oftalmológico regular independentemente desta análise."/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="DIREITO DE INTERRUPÇÃO - Posso parar a análise a qualquer momento" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#059669" TextWrapping="Wrap">
+                                        <Run FontWeight="Medium" Text="OS MEUS DIREITOS DURANTE A ANÁLISE:"/>
+                                        <LineBreak/>
+                                        <Run Text="• Posso pedir para parar o exame a qualquer momento"/>
+                                        <LineBreak/>
+                                        <Run Text="• Posso solicitar pausas para descanso ocular"/>
+                                        <LineBreak/>
+                                        <Run Text="• Posso recusar a fotografia digital"/>
+                                        <LineBreak/>
+                                        <Run Text="• Posso pedir ajustes na intensidade da luz"/>
+                                        <LineBreak/>
+                                        <Run Text="• Posso solicitar explicações sobre o que está a ser observado"/>
+                                        <LineBreak/>
+                                        <Run Text="• O profissional respeitará imediatamente qualquer desconforto reportado"/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <Border Background="#fef3c7" BorderBrush="#f59e0b" BorderThickness="1" CornerRadius="6" Padding="12" Margin="0,16,0,16">
+                                    <StackPanel>
+                                        <TextBlock Text="👁️ CONSENTIMENTO PARA ANÁLISE IRIDOLÓGICA" FontWeight="Bold" FontSize="13" Foreground="#92400e" Margin="0,0,0,4"/>
+                                        <TextBlock Text="Compreendo completamente o procedimento de análise iridológica, os requisitos de proximidade física, as medidas de proteção ocular implementadas e os meus direitos. Autorizo a análise detalhada da íris com equipamento óptico e aceito os riscos mínimos explicados." 
+                                                  FontSize="12" Foreground="#92400e" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </Border>
                                 
                                 <Border Background="#f0f9ff" BorderBrush="#0ea5e9" BorderThickness="1" CornerRadius="4" Padding="12" Margin="0,12,0,0">
                                     <StackPanel Orientation="Horizontal">
@@ -1076,14 +1582,198 @@
                         </Expander>
 
                         <!-- Consentimento Medicina Quântica -->
-                        <Expander Header="⚛️ Medicina Quântica (Informacional)" Background="White" BorderBrush="#d1d5db" BorderThickness="1" Margin="0,0,0,12">
+                        <Expander Header="⚛️ Medicina Quântica - Terapias Energéticas e Informacionais" Background="White" BorderBrush="#d1d5db" BorderThickness="1" Margin="0,0,0,12">
                             <StackPanel Margin="16">
-                                <CheckBox Content="Abordagem complementar, sem finalidade diagnóstica reconhecida" Margin="0,4"/>
-                                <CheckBox Content="Natureza dos procedimentos (bases de dados, frequências, aconselhamento)" Margin="0,4"/>
-                                <CheckBox Content="Possíveis reações transitórias explicadas" Margin="0,4"/>
-                                <CheckBox Content="Contraindicações discutidas" Margin="0,4"/>
-                                <CheckBox Content="Liberdade de interromper a qualquer momento" Margin="0,4"/>
-                                <CheckBox Content="Revogável a qualquer momento" Margin="0,4"/>
+                                <!-- Introdução -->
+                                <Border Background="#f8fafc" BorderBrush="#6b7280" BorderThickness="1" CornerRadius="6" Padding="12" Margin="0,0,0,16">
+                                    <TextBlock Text="A medicina quântica utiliza princípios de física quântica para terapias energéticas e informacionais. Este consentimento esclarece a natureza experimental desta abordagem, os procedimentos utilizados e os potenciais efeitos." 
+                                              FontSize="12" Foreground="#374151" TextWrapping="Wrap" FontWeight="Medium"/>
+                                </Border>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="NATUREZA EXPERIMENTAL - Compreendo o estatuto científico desta abordagem" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#dc2626" TextWrapping="Wrap">
+                                        <Run FontWeight="Bold" Text="IMPORTANTE - NATUREZA EXPERIMENTAL:"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Não reconhecida pela medicina convencional:"/>
+                                        <Run Text=" Esta abordagem não é aceite pela comunidade médica científica"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Evidência científica limitada:"/>
+                                        <Run Text=" Não existem estudos clínicos que comprovem a eficácia"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Carácter complementar:"/>
+                                        <Run Text=" Nunca substitui tratamento médico convencional"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Base teórica controversa:"/>
+                                        <Run Text=" Os princípios utilizados são questionados pela física moderna"/>
+                                        <LineBreak/>
+                                        <Run FontWeight="Medium" Text="OBRIGAÇÃO: "/>
+                                        <Run Text="Devo manter seguimento médico convencional para qualquer condição de saúde."/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="PROCEDIMENTOS UTILIZADOS - Compreendo as técnicas aplicadas" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#4b5563" TextWrapping="Wrap">
+                                        <Run FontWeight="Medium" Text="Técnicas de medicina quântica que podem ser utilizadas:"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Análise bioenergética:"/>
+                                        <Run Text=" Avaliação de campos energéticos com equipamento especializado"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Terapias de frequência:"/>
+                                        <Run Text=" Aplicação de ondas electromagnéticas específicas"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Harmonização energética:"/>
+                                        <Run Text=" Técnicas de equilíbrio de campos bioenergéticos"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Medicina informacional:"/>
+                                        <Run Text=" Utilização de bases de dados quânticas e padrões vibratórios"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Contacto mínimo:"/>
+                                        <Run Text=" Principalmente procedimentos sem toque físico direto"/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="EQUIPAMENTOS E DISPOSITIVOS - Autorizo utilização de tecnologia específica" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#4b5563" TextWrapping="Wrap">
+                                        <Run FontWeight="Medium" Text="Equipamentos que podem ser utilizados:"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Dispositivos de bioress onância:"/>
+                                        <Run Text=" Aparelhos de leitura e harmonização energética"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Geradores de frequência:"/>
+                                        <Run Text=" Equipamento de ondas electromagnéticas de baixa intensidade"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Sensores bioenergéticos:"/>
+                                        <Run Text=" Dispositivos de medição de campos corporais"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Software especializado:"/>
+                                        <Run Text=" Programas de análise e terapia informacional"/>
+                                        <LineBreak/>
+                                        <Run FontWeight="Medium" Text="SEGURANÇA: "/>
+                                        <Run Text="Todos os dispositivos são de baixa potência e considerados seguros."/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="CONTRAINDICAÇÕES ESPECÍFICAS - Informei sobre condições relevantes" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#dc2626" TextWrapping="Wrap">
+                                        <Run FontWeight="Medium" Text="CONTRAINDICAÇÕES PARA MEDICINA QUÂNTICA:"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Dispositivos eletrónicos implantados:"/>
+                                        <Run Text=" Pacemakers, desfibrilhadores, implantes cocleares"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Gravidez:"/>
+                                        <Run Text=" Especialmente primeiro trimestre (por precaução)"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Epilepsia não controlada:"/>
+                                        <Run Text=" Risco potencial de desencadear crises"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Estados psicóticos agudos:"/>
+                                        <Run Text=" Condições mentais severas não estabilizadas"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Hipersensibilidade electromagnética:"/>
+                                        <Run Text=" Pessoas sensíveis a campos electromagnéticos"/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="REAÇÕES POSSÍVEIS - Estou ciente dos efeitos que podem ocorrer" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#dc2626" TextWrapping="Wrap">
+                                        <Run FontWeight="Medium" Text="REAÇÕES TRANSITÓRIAS REPORTADAS:"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Fadiga temporária:"/>
+                                        <Run Text=" Cansaço durante ou após a sessão"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Alterações emocionais:"/>
+                                        <Run Text=" Flutuações de humor transitórias"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Sensações corporais:"/>
+                                        <Run Text=" Formigueiro, calor ou frio localizado"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Sonolência ou ativação:"/>
+                                        <Run Text=" Aumento ou diminuição da energia"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Alterações de sono:"/>
+                                        <Run Text=" Padrões de sono temporariamente diferentes"/>
+                                        <LineBreak/>
+                                        <Run FontWeight="Medium" Text="NOTA: "/>
+                                        <Run Text="Estes efeitos são temporários e cessam normalmente em 24-48 horas."/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="LIMITAÇÕES TERAPÊUTICAS - Compreendo o âmbito desta abordagem" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#4b5563" TextWrapping="Wrap">
+                                        <Run FontWeight="Medium" Text="LIMITAÇÕES E RESPONSABILIDADES:"/>
+                                        <LineBreak/>
+                                        <Run Text="• Não é um tratamento médico reconhecido"/>
+                                        <LineBreak/>
+                                        <Run Text="• Não diagnostica condições médicas"/>
+                                        <LineBreak/>
+                                        <Run Text="• Não substitui medicação prescrita"/>
+                                        <LineBreak/>
+                                        <Run Text="• Não garante resultados específicos"/>
+                                        <LineBreak/>
+                                        <Run Text="• Resultados variam entre indivíduos"/>
+                                        <LineBreak/>
+                                        <Run Text="• Pode não ter qualquer efeito percetível"/>
+                                        <LineBreak/>
+                                        <Run FontWeight="Medium" Text="RESPONSABILIDADE: "/>
+                                        <Run Text="Sou responsável por manter cuidados médicos convencionais e informar o profissional sobre qualquer alteração na minha condição."/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="DIREITO DE INTERRUPÇÃO - Posso parar a sessão a qualquer momento" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#059669" TextWrapping="Wrap">
+                                        <Run FontWeight="Medium" Text="OS MEUS DIREITOS DURANTE A SESSÃO:"/>
+                                        <LineBreak/>
+                                        <Run Text="• Posso interromper a sessão a qualquer momento"/>
+                                        <LineBreak/>
+                                        <Run Text="• Posso solicitar explicações sobre os procedimentos"/>
+                                        <LineBreak/>
+                                        <Run Text="• Posso recusar técnicas específicas"/>
+                                        <LineBreak/>
+                                        <Run Text="• Posso relatar qualquer desconforto"/>
+                                        <LineBreak/>
+                                        <Run Text="• Posso solicitar pausas durante a sessão"/>
+                                        <LineBreak/>
+                                        <Run Text="• O profissional respeitará imediatamente qualquer pedido de paragem"/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <Border Background="#fef3c7" BorderBrush="#f59e0b" BorderThickness="1" CornerRadius="6" Padding="12" Margin="0,16,0,16">
+                                    <StackPanel>
+                                        <TextBlock Text="⚛️ CONSENTIMENTO PARA MEDICINA QUÂNTICA" FontWeight="Bold" FontSize="13" Foreground="#92400e" Margin="0,0,0,4"/>
+                                        <TextBlock Text="Compreendo completamente a natureza experimental da medicina quântica, os procedimentos utilizados, as limitações desta abordagem e os meus direitos. Aceito participar sabendo que esta não é uma terapia médica reconhecida e mantenho responsabilidade pelos meus cuidados de saúde convencionais." 
+                                                  FontSize="12" Foreground="#92400e" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </Border>
                                 
                                 <Border Background="#f0f9ff" BorderBrush="#0ea5e9" BorderThickness="1" CornerRadius="4" Padding="12" Margin="0,12,0,0">
                                     <StackPanel Orientation="Horizontal">
@@ -1096,13 +1786,275 @@
                         </Expander>
 
                         <!-- Consentimento RGPD -->
-                        <Expander Header="🔒 RGPD - Proteção de Dados" Background="White" BorderBrush="#d1d5db" BorderThickness="1" Margin="0,0,0,12">
+                        <Expander Header="🔒 RGPD - Proteção Completa de Dados Pessoais de Saúde" Background="White" BorderBrush="#d1d5db" BorderThickness="1" Margin="0,0,0,12">
                             <StackPanel Margin="16">
-                                <CheckBox Content="Informação de responsável, finalidades, conservação e destinatários" Margin="0,4"/>
-                                <CheckBox Content="Direitos de acesso, retificação, limitação, oposição, portabilidade e eliminação" Margin="0,4"/>
-                                <CheckBox Content="Consentimento explícito para tratamento de dados de saúde" Margin="0,4"/>
-                                <CheckBox Content="Opção de não receber marketing" Margin="0,4"/>
-                                <CheckBox Content="Revogável a qualquer momento" Margin="0,4"/>
+                                <!-- Introdução -->
+                                <Border Background="#fef2f2" BorderBrush="#dc2626" BorderThickness="1" CornerRadius="6" Padding="12" Margin="0,0,0,16">
+                                    <TextBlock Text="Este consentimento é obrigatório para o tratamento de dados pessoais de saúde (categoria especial de dados). O Regulamento Geral de Proteção de Dados (RGPD) garante-lhe direitos específicos sobre os seus dados pessoais." 
+                                              FontSize="12" Foreground="#991b1b" TextWrapping="Wrap" FontWeight="Medium"/>
+                                </Border>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="RESPONSÁVEL PELO TRATAMENTO - Identificação e contactos" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#4b5563" TextWrapping="Wrap">
+                                        <Run FontWeight="Medium" Text="Responsável pelo tratamento dos dados:"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Entidade:"/>
+                                        <Run Text=" [Nome da Clínica/Profissional]"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Morada:"/>
+                                        <Run Text=" [Endereço completo]"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Contacto:"/>
+                                        <Run Text=" [Telefone e email]"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Encarregado de Proteção de Dados:"/>
+                                        <Run Text=" [Contacto específico para questões de dados]"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Autoridade de controlo:"/>
+                                        <Run Text=" Comissão Nacional de Proteção de Dados (CNPD)"/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="FINALIDADES DO TRATAMENTO - Como serão utilizados os meus dados" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#4b5563" TextWrapping="Wrap">
+                                        <Run FontWeight="Medium" Text="Os meus dados pessoais de saúde serão utilizados para:"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Prestação de cuidados de saúde:"/>
+                                        <Run Text=" Avaliação, diagnóstico e tratamento"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Elaboração de processos clínicos:"/>
+                                        <Run Text=" Registo e acompanhamento do estado de saúde"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Comunicação terapêutica:"/>
+                                        <Run Text=" Contactos relacionados com consultas e tratamentos"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Cumprimento de obrigações legais:"/>
+                                        <Run Text=" Relatórios exigidos por lei ou autoridades"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Gestão administrativa:"/>
+                                        <Run Text=" Marcações, faturação e seguros de saúde"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Emergências médicas:"/>
+                                        <Run Text=" Disponibilização de informação em situações urgentes"/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="BASE LEGAL E LEGITIMIDADE - Fundamento jurídico para tratamento" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#dc2626" TextWrapping="Wrap">
+                                        <Run FontWeight="Bold" Text="BASES LEGAIS PARA O TRATAMENTO:"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Consentimento explícito:"/>
+                                        <Run Text=" Para dados de saúde (artigo 9.º, n.º 2, alínea a) do RGPD)"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Interesses vitais:"/>
+                                        <Run Text=" Proteção da vida ou integridade física (artigo 6.º, n.º 1, alínea d)"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Cuidados de saúde:"/>
+                                        <Run Text=" Medicina preventiva e cuidados de saúde (artigo 9.º, n.º 2, alínea h)"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Cumprimento de obrigações legais:"/>
+                                        <Run Text=" Quando exigido por lei (artigo 6.º, n.º 1, alínea c)"/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="CONSERVAÇÃO DOS DADOS - Período de armazenamento" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#4b5563" TextWrapping="Wrap">
+                                        <Run FontWeight="Medium" Text="PERÍODOS DE CONSERVAÇÃO:"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Dados clínicos ativos:"/>
+                                        <Run Text=" Durante a relação terapêutica e 5 anos após última consulta"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Dados administrativos:"/>
+                                        <Run Text=" 10 anos para efeitos fiscais e legais"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Imagens médicas:"/>
+                                        <Run Text=" 20 anos ou durante toda a vida conforme relevância clínica"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Consentimentos assinados:"/>
+                                        <Run Text=" Conservados enquanto necessários para comprovar autorização"/>
+                                        <LineBreak/>
+                                        <Run FontWeight="Medium" Text="ELIMINAÇÃO: "/>
+                                        <Run Text="Após os períodos indicados, os dados são eliminados de forma segura e irreversível."/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="DESTINATÁRIOS DOS DADOS - Com quem podem ser partilhados" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#4b5563" TextWrapping="Wrap">
+                                        <Run FontWeight="Medium" Text="OS MEUS DADOS PODEM SER PARTILHADOS COM:"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Outros profissionais de saúde:"/>
+                                        <Run Text=" Para continuidade de cuidados (com consentimento)"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Laboratórios de análises:"/>
+                                        <Run Text=" Para realização de exames complementares"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Seguradoras de saúde:"/>
+                                        <Run Text=" Para reembolsos e aprovações (apenas dados necessários)"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Autoridades de saúde:"/>
+                                        <Run Text=" Quando legalmente obrigatório (doenças de declaração obrigatória)"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Serviços de emergência:"/>
+                                        <Run Text=" Em situações de urgência médica"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Prestadores de serviços IT:"/>
+                                        <Run Text=" Para manutenção de sistemas (com acordos de confidencialidade)"/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="OS MEUS DIREITOS - Conheço todos os direitos sobre os dados" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#059669" TextWrapping="Wrap">
+                                        <Run FontWeight="Medium" Text="TENHO DIREITO A:"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="ACESSO:"/>
+                                        <Run Text=" Consultar os meus dados e saber como são tratados"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="RETIFICAÇÃO:"/>
+                                        <Run Text=" Corrigir dados incorretos ou incompletos"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="ELIMINAÇÃO:"/>
+                                        <Run Text=" Apagar os meus dados ('direito ao esquecimento')"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="LIMITAÇÃO:"/>
+                                        <Run Text=" Restringir o tratamento em certas circunstâncias"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="PORTABILIDADE:"/>
+                                        <Run Text=" Transferir os dados para outro prestador"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="OPOSIÇÃO:"/>
+                                        <Run Text=" Opor-me ao tratamento para marketing direto"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="RETIRAR CONSENTIMENTO:"/>
+                                        <Run Text=" Anular autorização a qualquer momento"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="RECLAMAÇÃO:"/>
+                                        <Run Text=" Apresentar queixa na CNPD"/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="SEGURANÇA DOS DADOS - Medidas de proteção implementadas" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#4b5563" TextWrapping="Wrap">
+                                        <Run FontWeight="Medium" Text="MEDIDAS DE SEGURANÇA IMPLEMENTADAS:"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Encriptação de dados:"/>
+                                        <Run Text=" Proteção criptográfica dos dados armazenados e transmitidos"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Controlo de acessos:"/>
+                                        <Run Text=" Apenas pessoal autorizado acede aos dados"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Backups seguros:"/>
+                                        <Run Text=" Cópias de segurança encriptadas e testadas regularmente"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Auditoria de acessos:"/>
+                                        <Run Text=" Registo de todos os acessos aos dados"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Formação de pessoal:"/>
+                                        <Run Text=" Sensibilização regular sobre proteção de dados"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Atualizações de segurança:"/>
+                                        <Run Text=" Sistemas mantidos sempre atualizados"/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="TRANSFERÊNCIAS INTERNACIONAIS - Dados fora da UE" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#dc2626" TextWrapping="Wrap">
+                                        <Run FontWeight="Medium" Text="TRANSFERÊNCIAS PARA PAÍSES TERCEIROS:"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Política geral:"/>
+                                        <Run Text=" Os dados permanecem na União Europeia sempre que possível"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Exceções autorizadas:"/>
+                                        <Run Text=" Apenas para países com decisão de adequação da Comissão Europeia"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Salvaguardas adicionais:"/>
+                                        <Run Text=" Cláusulas contratuais tipo da UE quando necessário"/>
+                                        <LineBreak/>
+                                        <Run Text="• "/>
+                                        <Run FontWeight="Medium" Text="Serviços cloud:"/>
+                                        <Run Text=" Apenas fornecedores com servidores na UE ou adequação garantida"/>
+                                        <LineBreak/>
+                                        <Run FontWeight="Medium" Text="GARANTIA: "/>
+                                        <Run Text="Será sempre informado de qualquer transferência internacional dos seus dados."/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0,8,0,16">
+                                    <CheckBox Content="CONSENTIMENTO ESPECÍFICO - Autorizo tratamento de dados de saúde" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Margin="20,6,0,0" FontSize="12" Foreground="#dc2626" TextWrapping="Wrap">
+                                        <Run FontWeight="Bold" Text="DOU O MEU CONSENTIMENTO EXPLÍCITO PARA:"/>
+                                        <LineBreak/>
+                                        <Run Text="• Tratamento dos meus dados pessoais de saúde"/>
+                                        <LineBreak/>
+                                        <Run Text="• Conservação conforme os períodos indicados"/>
+                                        <LineBreak/>
+                                        <Run Text="• Partilha com os destinatários mencionados"/>
+                                        <LineBreak/>
+                                        <Run Text="• Utilização para as finalidades especificadas"/>
+                                        <LineBreak/>
+                                        <Run Text="• Aplicação das medidas de segurança descritas"/>
+                                        <LineBreak/>
+                                        <Run FontWeight="Medium" Text="RESERVO-ME O DIREITO: "/>
+                                        <Run Text="de retirar este consentimento a qualquer momento, sem afetar a legalidade do tratamento já realizado."/>
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <Border Background="#fef3c7" BorderBrush="#f59e0b" BorderThickness="1" CornerRadius="6" Padding="12" Margin="0,16,0,16">
+                                    <StackPanel>
+                                        <TextBlock Text="🔒 CONSENTIMENTO RGPD PARA DADOS DE SAÚDE" FontWeight="Bold" FontSize="13" Foreground="#92400e" Margin="0,0,0,4"/>
+                                        <TextBlock Text="Li e compreendi completamente a informação sobre o tratamento dos meus dados pessoais de saúde. Conheço os meus direitos e as medidas de proteção implementadas. Dou o meu consentimento livre, específico, informado e inequívoco para o tratamento dos meus dados de saúde conforme descrito." 
+                                                  FontSize="12" Foreground="#92400e" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </Border>
                                 
                                 <Border Background="#f0f9ff" BorderBrush="#0ea5e9" BorderThickness="1" CornerRadius="4" Padding="12" Margin="0,12,0,0">
                                     <StackPanel Orientation="Horizontal">

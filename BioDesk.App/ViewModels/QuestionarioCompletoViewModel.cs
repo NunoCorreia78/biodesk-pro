@@ -1083,6 +1083,252 @@ namespace BioDesk.App.ViewModels
             set => SetProperty(ref _outrosProblemasImunitarios, value);
         }
 
+        // ========== SEÇÃO 13.2: SISTEMA ENDÓCRINO ==========
+        private string _problemasEndocrinos = string.Empty;
+        public string ProblemasEndocrinos
+        {
+            get => _problemasEndocrinos;
+            set => SetProperty(ref _problemasEndocrinos, value);
+        }
+
+        private string _problemasEndocrinosDetalhes = string.Empty;
+        public string ProblemasEndocrinosDetalhes
+        {
+            get => _problemasEndocrinosDetalhes;
+            set => SetProperty(ref _problemasEndocrinosDetalhes, value);
+        }
+
+        // Checkbox properties for endocrine system problems (2 columns as per requirements)
+        private bool _diabetesTipo1Tipo2;
+        public bool DiabetesTipo1Tipo2
+        {
+            get => _diabetesTipo1Tipo2;
+            set => SetProperty(ref _diabetesTipo1Tipo2, value);
+        }
+
+        private bool _problemasTiroide;
+        public bool ProblemasTiroide
+        {
+            get => _problemasTiroide;
+            set => SetProperty(ref _problemasTiroide, value);
+        }
+
+        private bool _hipertensaoEndocrino;
+        public bool HipertensaoEndocrino
+        {
+            get => _hipertensaoEndocrino;
+            set => SetProperty(ref _hipertensaoEndocrino, value);
+        }
+
+        private bool _colesterolElevado;
+        public bool ColesterolElevado
+        {
+            get => _colesterolElevado;
+            set => SetProperty(ref _colesterolElevado, value);
+        }
+
+        private bool _disturbiosHormonais;
+        public bool DisturbiosHormonais
+        {
+            get => _disturbiosHormonais;
+            set => SetProperty(ref _disturbiosHormonais, value);
+        }
+
+        private bool _outrosProblemasEndocrinos;
+        public bool OutrosProblemasEndocrinos
+        {
+            get => _outrosProblemasEndocrinos;
+            set => SetProperty(ref _outrosProblemasEndocrinos, value);
+        }
+
+        // ========== SEÇÃO 13.3: PELE E ANEXOS ==========
+        private string _problemasPele = string.Empty;
+        public string ProblemasPele
+        {
+            get => _problemasPele;
+            set => SetProperty(ref _problemasPele, value);
+        }
+
+        private string _problemasPeleDetalhes = string.Empty;
+        public string ProblemasPeleDetalhes
+        {
+            get => _problemasPeleDetalhes;
+            set => SetProperty(ref _problemasPeleDetalhes, value);
+        }
+
+        // Checkbox properties for skin and anexos problems (3 columns as per requirements)
+        private bool _eczemas;
+        public bool Eczemas
+        {
+            get => _eczemas;
+            set => SetProperty(ref _eczemas, value);
+        }
+
+        private bool _psoriase;
+        public bool Psoriase
+        {
+            get => _psoriase;
+            set => SetProperty(ref _psoriase, value);
+        }
+
+        private bool _dermatites;
+        public bool Dermatites
+        {
+            get => _dermatites;
+            set => SetProperty(ref _dermatites, value);
+        }
+
+        private bool _acne;
+        public bool Acne
+        {
+            get => _acne;
+            set => SetProperty(ref _acne, value);
+        }
+
+        private bool _urticaria;
+        public bool Urticaria
+        {
+            get => _urticaria;
+            set => SetProperty(ref _urticaria, value);
+        }
+
+        private bool _vitiligo;
+        public bool Vitiligo
+        {
+            get => _vitiligo;
+            set => SetProperty(ref _vitiligo, value);
+        }
+
+        private bool _micoses;
+        public bool Micoses
+        {
+            get => _micoses;
+            set => SetProperty(ref _micoses, value);
+        }
+
+        private bool _verrugas;
+        public bool Verrugas
+        {
+            get => _verrugas;
+            set => SetProperty(ref _verrugas, value);
+        }
+
+        private bool _outrosProblemasPele;
+        public bool OutrosProblemasPele
+        {
+            get => _outrosProblemasPele;
+            set => SetProperty(ref _outrosProblemasPele, value);
+        }
+
+        // ========== SEÇÃO 13.4: ÓRGÃOS DOS SENTIDOS - VISÃO ==========
+        private string _problemasVisao = string.Empty;
+        public string ProblemasVisao
+        {
+            get => _problemasVisao;
+            set => SetProperty(ref _problemasVisao, value);
+        }
+
+        private string _problemasVisaoDetalhes = string.Empty;
+        public string ProblemasVisaoDetalhes
+        {
+            get => _problemasVisaoDetalhes;
+            set => SetProperty(ref _problemasVisaoDetalhes, value);
+        }
+
+        // Checkbox properties for vision problems (2 columns as per requirements)
+        private bool _miopiaHipermetropia;
+        public bool MiopiaHipermetropia
+        {
+            get => _miopiaHipermetropia;
+            set => SetProperty(ref _miopiaHipermetropia, value);
+        }
+
+        private bool _astigmatismo;
+        public bool Astigmatismo
+        {
+            get => _astigmatismo;
+            set => SetProperty(ref _astigmatismo, value);
+        }
+
+        private bool _glaucoma;
+        public bool Glaucoma
+        {
+            get => _glaucoma;
+            set => SetProperty(ref _glaucoma, value);
+        }
+
+        private bool _cataratas;
+        public bool Cataratas
+        {
+            get => _cataratas;
+            set => SetProperty(ref _cataratas, value);
+        }
+
+        private bool _degeneracaoMacular;
+        public bool DegeneracaoMacular
+        {
+            get => _degeneracaoMacular;
+            set => SetProperty(ref _degeneracaoMacular, value);
+        }
+
+        private bool _outrosProblemasVisao;
+        public bool OutrosProblemasVisao
+        {
+            get => _outrosProblemasVisao;
+            set => SetProperty(ref _outrosProblemasVisao, value);
+        }
+
+        // ========== SEÇÃO 13.5: ÓRGÃOS DOS SENTIDOS - AUDIÇÃO ==========
+        private string _problemasAudicao = string.Empty;
+        public string ProblemasAudicao
+        {
+            get => _problemasAudicao;
+            set => SetProperty(ref _problemasAudicao, value);
+        }
+
+        private string _problemasAudicaoDetalhes = string.Empty;
+        public string ProblemasAudicaoDetalhes
+        {
+            get => _problemasAudicaoDetalhes;
+            set => SetProperty(ref _problemasAudicaoDetalhes, value);
+        }
+
+        // Checkbox properties for hearing problems (2 columns as per requirements)
+        private bool _perdaAuditiva;
+        public bool PerdaAuditiva
+        {
+            get => _perdaAuditiva;
+            set => SetProperty(ref _perdaAuditiva, value);
+        }
+
+        private bool _zumbidosTinnitus;
+        public bool ZumbidosTinnitus
+        {
+            get => _zumbidosTinnitus;
+            set => SetProperty(ref _zumbidosTinnitus, value);
+        }
+
+        private bool _otitesRecorrentes;
+        public bool OtitesRecorrentes
+        {
+            get => _otitesRecorrentes;
+            set => SetProperty(ref _otitesRecorrentes, value);
+        }
+
+        private bool _vertigens;
+        public bool VertigensAudicao
+        {
+            get => _vertigens;
+            set => SetProperty(ref _vertigens, value);
+        }
+
+        private bool _outrosProblemasAudicao;
+        public bool OutrosProblemasAudicao
+        {
+            get => _outrosProblemasAudicao;
+            set => SetProperty(ref _outrosProblemasAudicao, value);
+        }
+
         // ========== SEÇÃO 14: PELE E ANEXOS ==========
         private string _alergiasPele = string.Empty;
         public string AlergiasPele

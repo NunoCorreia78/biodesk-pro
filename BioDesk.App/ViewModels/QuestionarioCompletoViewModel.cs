@@ -691,6 +691,91 @@ namespace BioDesk.App.ViewModels
             set => SetProperty(ref _problemasNeurologicosDetalhes, value);
         }
 
+        // Checkbox properties for neurological problems
+        private bool _enxaquecasCefaleias;
+        public bool EnxaquecasCefaleias
+        {
+            get => _enxaquecasCefaleias;
+            set => SetProperty(ref _enxaquecasCefaleias, value);
+        }
+
+        private bool _epilepsia;
+        public bool Epilepsia
+        {
+            get => _epilepsia;
+            set => SetProperty(ref _epilepsia, value);
+        }
+
+        private bool _ansiedade;
+        public bool Ansiedade
+        {
+            get => _ansiedade;
+            set => SetProperty(ref _ansiedade, value);
+        }
+
+        private bool _depressao;
+        public bool Depressao
+        {
+            get => _depressao;
+            set => SetProperty(ref _depressao, value);
+        }
+
+        private bool _insoniaDisturbiosSono;
+        public bool InsoniaDisturbiosSono
+        {
+            get => _insoniaDisturbiosSono;
+            set => SetProperty(ref _insoniaDisturbiosSono, value);
+        }
+
+        private bool _tonturasVertigens;
+        public bool TonturasVertigens
+        {
+            get => _tonturasVertigens;
+            set => SetProperty(ref _tonturasVertigens, value);
+        }
+
+        private bool _problemasMemoriaNeuro;
+        public bool ProblemasMemoriaNeuro
+        {
+            get => _problemasMemoriaNeuro;
+            set => SetProperty(ref _problemasMemoriaNeuro, value);
+        }
+
+        private bool _doencaParkinson;
+        public bool DoencaParkinson
+        {
+            get => _doencaParkinson;
+            set => SetProperty(ref _doencaParkinson, value);
+        }
+
+        private bool _escleroseMultipla;
+        public bool EscleroseMultipla
+        {
+            get => _escleroseMultipla;
+            set => SetProperty(ref _escleroseMultipla, value);
+        }
+
+        private bool _avcAcidenteVascular;
+        public bool AvcAcidenteVascular
+        {
+            get => _avcAcidenteVascular;
+            set => SetProperty(ref _avcAcidenteVascular, value);
+        }
+
+        private bool _doencaAlzheimer;
+        public bool DoencaAlzheimer
+        {
+            get => _doencaAlzheimer;
+            set => SetProperty(ref _doencaAlzheimer, value);
+        }
+
+        private bool _neuropatiasPeriphericas;
+        public bool NeuropatiasPeriphericas
+        {
+            get => _neuropatiasPeriphericas;
+            set => SetProperty(ref _neuropatiasPeriphericas, value);
+        }
+
         private string _dorCabeca = string.Empty;
         public string DorCabeca
         {
@@ -755,6 +840,105 @@ namespace BioDesk.App.ViewModels
             set => SetProperty(ref _problemasMusculos, value);
         }
 
+        private string _problemasMusculoesqueleticos = string.Empty;
+        public string ProblemasMusculoesqueleticos
+        {
+            get => _problemasMusculoesqueleticos;
+            set => SetProperty(ref _problemasMusculoesqueleticos, value);
+        }
+
+        private string _problemasMusculoesqueleticosDetalhes = string.Empty;
+        public string ProblemasMusculoesqueleticosDetalhes
+        {
+            get => _problemasMusculoesqueleticosDetalhes;
+            set => SetProperty(ref _problemasMusculoesqueleticosDetalhes, value);
+        }
+
+        // Checkbox properties for musculoskeletal problems (3 columns as per requirements)
+        private bool _artriteArtrose;
+        public bool ArtriteArtrose
+        {
+            get => _artriteArtrose;
+            set => SetProperty(ref _artriteArtrose, value);
+        }
+
+        private bool _fibromialgia;
+        public bool Fibromialgia
+        {
+            get => _fibromialgia;
+            set => SetProperty(ref _fibromialgia, value);
+        }
+
+        private bool _tendinites;
+        public bool Tendinites
+        {
+            get => _tendinites;
+            set => SetProperty(ref _tendinites, value);
+        }
+
+        private bool _doresLombares;
+        public bool DoresLombares
+        {
+            get => _doresLombares;
+            set => SetProperty(ref _doresLombares, value);
+        }
+
+        private bool _herniasDiscais;
+        public bool HerniasDiscais
+        {
+            get => _herniasDiscais;
+            set => SetProperty(ref _herniasDiscais, value);
+        }
+
+        private bool _ciatica;
+        public bool Ciatica
+        {
+            get => _ciatica;
+            set => SetProperty(ref _ciatica, value);
+        }
+
+        private bool _osteoporoseMusculo;
+        public bool OsteoporoseMusculo
+        {
+            get => _osteoporoseMusculo;
+            set => SetProperty(ref _osteoporoseMusculo, value);
+        }
+
+        private bool _lesoesDesportivas;
+        public bool LesoesDesportivas
+        {
+            get => _lesoesDesportivas;
+            set => SetProperty(ref _lesoesDesportivas, value);
+        }
+
+        private bool _contraturasMusculares;
+        public bool ContraturasMusculares
+        {
+            get => _contraturasMusculares;
+            set => SetProperty(ref _contraturasMusculares, value);
+        }
+
+        private bool _problemasCervicais;
+        public bool ProblemasCervicais
+        {
+            get => _problemasCervicais;
+            set => SetProperty(ref _problemasCervicais, value);
+        }
+
+        private bool _bursites;
+        public bool Bursites
+        {
+            get => _bursites;
+            set => SetProperty(ref _bursites, value);
+        }
+
+        private bool _outrosMusculoesqueleticos;
+        public bool OutrosMusculoesqueleticos
+        {
+            get => _outrosMusculoesqueleticos;
+            set => SetProperty(ref _outrosMusculoesqueleticos, value);
+        }
+
         // ========== SEÇÃO 13: SISTEMA URINÁRIO ==========
         private string _infeccoesUrinaras = string.Empty;
         public string InfeccoesUrinaras
@@ -775,6 +959,128 @@ namespace BioDesk.App.ViewModels
         {
             get => _incontinencia;
             set => SetProperty(ref _incontinencia, value);
+        }
+
+        private string _problemasUrinarios = string.Empty;
+        public string ProblemasUrinarios
+        {
+            get => _problemasUrinarios;
+            set => SetProperty(ref _problemasUrinarios, value);
+        }
+
+        private string _problemasUrinariosDetalhes = string.Empty;
+        public string ProblemasUrinariosDetalhes
+        {
+            get => _problemasUrinariosDetalhes;
+            set => SetProperty(ref _problemasUrinariosDetalhes, value);
+        }
+
+        // Checkbox properties for urinary problems (2 columns as per requirements)
+        private bool _infeccoesUrinarias;
+        public bool InfeccoesUrinarias
+        {
+            get => _infeccoesUrinarias;
+            set => SetProperty(ref _infeccoesUrinarias, value);
+        }
+
+        private bool _calculosRenais;
+        public bool CalculosRenais
+        {
+            get => _calculosRenais;
+            set => SetProperty(ref _calculosRenais, value);
+        }
+
+        private bool _incontinenciaUrinaria;
+        public bool IncontinenciaUrinaria
+        {
+            get => _incontinenciaUrinaria;
+            set => SetProperty(ref _incontinenciaUrinaria, value);
+        }
+
+        private bool _cistiteRecorrente;
+        public bool CistiteRecorrente
+        {
+            get => _cistiteRecorrente;
+            set => SetProperty(ref _cistiteRecorrente, value);
+        }
+
+        private bool _problemasProstata;
+        public bool ProblemasProstata
+        {
+            get => _problemasProstata;
+            set => SetProperty(ref _problemasProstata, value);
+        }
+
+        private bool _nefrites;
+        public bool Nefrites
+        {
+            get => _nefrites;
+            set => SetProperty(ref _nefrites, value);
+        }
+
+        private bool _outrosProblemasUrinarios;
+        public bool OutrosProblemasUrinarios
+        {
+            get => _outrosProblemasUrinarios;
+            set => SetProperty(ref _outrosProblemasUrinarios, value);
+        }
+
+        // ========== SEÇÃO 13.1: SISTEMA IMUNITÁRIO ==========
+        private string _problemasImunitarios = string.Empty;
+        public string ProblemasImunitarios
+        {
+            get => _problemasImunitarios;
+            set => SetProperty(ref _problemasImunitarios, value);
+        }
+
+        private string _problemasImunitariosDetalhes = string.Empty;
+        public string ProblemasImunitariosDetalhes
+        {
+            get => _problemasImunitariosDetalhes;
+            set => SetProperty(ref _problemasImunitariosDetalhes, value);
+        }
+
+        // Checkbox properties for immune system problems (2 columns as per requirements)
+        private bool _alergiasAlimentares;
+        public bool AlergiasAlimentaresImune
+        {
+            get => _alergiasAlimentares;
+            set => SetProperty(ref _alergiasAlimentares, value);
+        }
+
+        private bool _alergiasRespiratorias;
+        public bool AlergiasRespiratorias
+        {
+            get => _alergiasRespiratorias;
+            set => SetProperty(ref _alergiasRespiratorias, value);
+        }
+
+        private bool _doencasAutoimunes;
+        public bool DoencasAutoimunes
+        {
+            get => _doencasAutoimunes;
+            set => SetProperty(ref _doencasAutoimunes, value);
+        }
+
+        private bool _imunodeficiencias;
+        public bool Imunodeficiencias
+        {
+            get => _imunodeficiencias;
+            set => SetProperty(ref _imunodeficiencias, value);
+        }
+
+        private bool _infeccoesRecorrentes;
+        public bool InfeccoesRecorrentes
+        {
+            get => _infeccoesRecorrentes;
+            set => SetProperty(ref _infeccoesRecorrentes, value);
+        }
+
+        private bool _outrosProblemasImunitarios;
+        public bool OutrosProblemasImunitarios
+        {
+            get => _outrosProblemasImunitarios;
+            set => SetProperty(ref _outrosProblemasImunitarios, value);
         }
 
         // ========== SEÇÃO 14: PELE E ANEXOS ==========

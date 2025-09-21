@@ -228,34 +228,38 @@
                             
                             <!-- Alergias a Medicamentos -->
                             <StackPanel Grid.Column="1" Grid.Row="0" Margin="12,0,0,0">
-                                <TextBlock Text="Alergias a medicamentos" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="2*"/>
-                                        <ColumnDefinition Width="5"/>
-                                        <ColumnDefinition Width="3*"/>
-                                    </Grid.ColumnDefinitions>
+                                <TextBlock Text="Alergias a medicamentos" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151" Margin="0,0,0,8"/>
+                                
+                                <!-- CheckBoxes para alergias específicas -->
+                                <StackPanel Orientation="Vertical">
+                                    <CheckBox Content="Penicilina" 
+                                             IsChecked="{Binding AlergiaPenicilina, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
                                     
-                                    <ComboBox Name="cb_AlergiasMedicamentos" Grid.Column="0"
-                                             SelectedItem="{Binding AlergiasMedicamentos, UpdateSourceTrigger=PropertyChanged}"
-                                             Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                             Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                             SelectionChanged="ComboBox_SelectionChanged">
-                                        <ComboBoxItem Content="Nenhuma"/>
-                                        <ComboBoxItem Content="Penicilina"/>
-                                        <ComboBoxItem Content="Aspirina"/>
-                                        <ComboBoxItem Content="Ibuprofeno"/>
-                                        <ComboBoxItem Content="Antibióticos"/>
-                                        <ComboBoxItem Content="Anestésicos"/>
-                                        <ComboBoxItem Content="Outras"/>
-                                    </ComboBox>
+                                    <CheckBox Content="Aspirina" 
+                                             IsChecked="{Binding AlergiaAspirina, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
                                     
-                                    <TextBox Name="txt_AlergiasMedicamentosOutras" Grid.Column="2"
-                                            Text="{Binding AlergiasMedicamentosDetalhes, UpdateSourceTrigger=PropertyChanged}"
-                                            Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                            Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                            />
-                                </Grid>
+                                    <CheckBox Content="Ibuprofeno" 
+                                             IsChecked="{Binding AlergiaIbuprofeno, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                    
+                                    <CheckBox Content="Antibióticos" 
+                                             IsChecked="{Binding AlergiaAntibioticos, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                    
+                                    <CheckBox Content="Anestésicos" 
+                                             IsChecked="{Binding AlergiaAnestesicos, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563"/>
+                                </StackPanel>
+                                
+                                <!-- Campo para outras alergias a medicamentos -->
+                                <TextBlock Text="Outras alergias a medicamentos:" FontFamily="Segoe UI" FontSize="12" FontWeight="Medium" Foreground="#6B7280" Margin="0,12,0,4"/>
+                                <TextBox Name="txt_AlergiasMedicamentosOutras"
+                                        Text="{Binding AlergiaMedicamentosOutras, UpdateSourceTrigger=PropertyChanged}"
+                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                        Padding="8,6" FontSize="13" TextWrapping="Wrap" AcceptsReturn="True"
+                                        Height="60"/>
                             </StackPanel>
                             
                             <!-- Alergias Ambientais -->
@@ -314,65 +318,80 @@
                             
                             <!-- Alergias a Plantas/Fitoterápicos -->
                             <StackPanel Grid.Column="1" Grid.Row="1" Margin="12,16,0,0">
-                                <TextBlock Text="Plantas/Fitoterápicos" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="2*"/>
-                                        <ColumnDefinition Width="5"/>
-                                        <ColumnDefinition Width="3*"/>
-                                    </Grid.ColumnDefinitions>
+                                <TextBlock Text="Plantas/Fitoterápicos" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151" Margin="0,0,0,8"/>
+                                
+                                <!-- CheckBoxes para alergias a plantas específicas -->
+                                <StackPanel Orientation="Vertical">
+                                    <CheckBox Content="Camomila" 
+                                             IsChecked="{Binding AlergiaCamomila, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
                                     
-                                    <ComboBox Name="cb_AlergiasPlantas" Grid.Column="0"
-                                             SelectedItem="{Binding AlergiasPlantas, UpdateSourceTrigger=PropertyChanged}"
-                                             Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                             Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                             SelectionChanged="ComboBox_SelectionChanged">
-                                        <ComboBoxItem Content="Nenhuma"/>
-                                        <ComboBoxItem Content="Camomila"/>
-                                        <ComboBoxItem Content="Eucalipto"/>
-                                        <ComboBoxItem Content="Arnica"/>
-                                        <ComboBoxItem Content="Aloe vera"/>
-                                        <ComboBoxItem Content="Ginkgo biloba"/>
-                                        <ComboBoxItem Content="Ginseng"/>
-                                        <ComboBoxItem Content="Equinácea"/>
-                                        <ComboBoxItem Content="Outras"/>
-                                    </ComboBox>
+                                    <CheckBox Content="Eucalipto" 
+                                             IsChecked="{Binding AlergiaEucalipto, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
                                     
-                                    <TextBox Name="txt_AlergiasPlantasOutras" Grid.Column="2"
-                                            Text="{Binding AlergiasPlantasDetalhes, UpdateSourceTrigger=PropertyChanged}"
-                                            Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                            Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                            />
-                                </Grid>
+                                    <CheckBox Content="Arnica" 
+                                             IsChecked="{Binding AlergiaArnica, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                    
+                                    <CheckBox Content="Aloe vera" 
+                                             IsChecked="{Binding AlergiaAloeVera, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                    
+                                    <CheckBox Content="Ginkgo biloba" 
+                                             IsChecked="{Binding AlergiaGinkgoBiloba, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                    
+                                    <CheckBox Content="Ginseng" 
+                                             IsChecked="{Binding AlergiaGinseng, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                    
+                                    <CheckBox Content="Equinácea" 
+                                             IsChecked="{Binding AlergiaEchinacea, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563"/>
+                                </StackPanel>
+                                
+                                <!-- Campo para outras alergias a plantas -->
+                                <TextBlock Text="Outras plantas/fitoterápicos:" FontFamily="Segoe UI" FontSize="12" FontWeight="Medium" Foreground="#6B7280" Margin="0,12,0,4"/>
+                                <TextBox Name="txt_AlergiasPlantasOutras"
+                                        Text="{Binding AlergiaPlantasOutras, UpdateSourceTrigger=PropertyChanged}"
+                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                        Padding="8,6" FontSize="13" TextWrapping="Wrap" AcceptsReturn="True"
+                                        Height="60"/>
+                            </StackPanel>
                             </StackPanel>
                             
                             <!-- Outras Alergias -->
                             <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Margin="0,16,0,0">
-                                <TextBlock Text="Outras alergias (látex, níquel, cosméticos, etc.)" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="2*"/>
-                                        <ColumnDefinition Width="5"/>
-                                        <ColumnDefinition Width="3*"/>
-                                    </Grid.ColumnDefinitions>
+                                <TextBlock Text="Outras alergias (látex, níquel, cosméticos, etc.)" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151" Margin="0,0,0,8"/>
+                                
+                                <!-- CheckBoxes para outras alergias específicas -->
+                                <StackPanel Orientation="Vertical">
+                                    <CheckBox Content="Látex" 
+                                             IsChecked="{Binding AlergiaLatex, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
                                     
-                                    <ComboBox Name="cb_OutrasAlergias" Grid.Column="0"
-                                             SelectedItem="{Binding OutrasAlergias, UpdateSourceTrigger=PropertyChanged}"
-                                             Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                             Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                             SelectionChanged="ComboBox_SelectionChanged">
-                                        <ComboBoxItem Content="Nenhuma"/>
-                                        <ComboBoxItem Content="Látex"/>
-                                        <ComboBoxItem Content="Níquel"/>
-                                        <ComboBoxItem Content="Cosméticos"/>
-                                        <ComboBoxItem Content="Detergentes"/>
-                                        <ComboBoxItem Content="Outras"/>
-                                    </ComboBox>
+                                    <CheckBox Content="Níquel" 
+                                             IsChecked="{Binding AlergiaNiquel, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
                                     
-                                    <TextBox Name="txt_OutrasAlergiasOutras" Grid.Column="2"
-                                            Text="{Binding OutrasAlergiasDetalhes, UpdateSourceTrigger=PropertyChanged}"
-                                            Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                            Padding="8,6" FontSize="14" Margin="0,4,0,0"
+                                    <CheckBox Content="Cosméticos" 
+                                             IsChecked="{Binding AlergiaCosmeticos, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                    
+                                    <CheckBox Content="Detergentes" 
+                                             IsChecked="{Binding AlergiaDetergentes, UpdateSourceTrigger=PropertyChanged}"
+                                             FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563"/>
+                                </StackPanel>
+                                
+                                <!-- Campo para outras alergias específicas -->
+                                <TextBlock Text="Outras alergias específicas:" FontFamily="Segoe UI" FontSize="12" FontWeight="Medium" Foreground="#6B7280" Margin="0,12,0,4"/>
+                                <TextBox Name="txt_OutrasAlergiasOutras"
+                                        Text="{Binding OutrasAlergiasEspecificas, UpdateSourceTrigger=PropertyChanged}"
+                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                        Padding="8,6" FontSize="13" TextWrapping="Wrap" AcceptsReturn="True"
+                                        Height="60"/>
+                            </StackPanel>
                                             />
                                 </Grid>
                             </StackPanel>
@@ -390,37 +409,50 @@
                     <StackPanel Margin="24">
                         <!-- Histórico Oncológico -->
                         <StackPanel Margin="0,0,0,16">
-                            <TextBlock Text="Histórico oncológico" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="5"/>
-                                    <ColumnDefinition Width="3*"/>
-                                </Grid.ColumnDefinitions>
+                            <TextBlock Text="Histórico oncológico" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151" Margin="0,0,0,8"/>
+                            
+                            <!-- CheckBoxes para problemas oncológicos específicos -->
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox Content="Câncer de mama" 
+                                         IsChecked="{Binding OncologiaCancerMama, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
                                 
-                                <ComboBox Name="cb_ProblemasOncologicos" Grid.Column="0"
-                                         SelectedItem="{Binding ProblemasOncologicos, UpdateSourceTrigger=PropertyChanged}"
-                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                         Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                         SelectionChanged="ComboBox_SelectionChanged">
-                                    <ComboBoxItem Content="Nenhum"/>
-                                    <ComboBoxItem Content="Câncer de mama"/>
-                                    <ComboBoxItem Content="Câncer de pulmão"/>
-                                    <ComboBoxItem Content="Câncer colorretal"/>
-                                    <ComboBoxItem Content="Câncer de próstata"/>
-                                    <ComboBoxItem Content="Câncer de estômago"/>
-                                    <ComboBoxItem Content="Linfoma"/>
-                                    <ComboBoxItem Content="Leucemia"/>
-                                    <ComboBoxItem Content="Melanoma"/>
-                                    <ComboBoxItem Content="Outras"/>
-                                </ComboBox>
+                                <CheckBox Content="Câncer de pulmão" 
+                                         IsChecked="{Binding OncologiaCancerPulmao, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
                                 
-                                <TextBox Name="txt_ProblemasOncologicosOutras" Grid.Column="2"
-                                        Text="{Binding ProblemasOncologicosDetalhes, UpdateSourceTrigger=PropertyChanged}"
-                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                        Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                        />
-                            </Grid>
+                                <CheckBox Content="Câncer colorretal" 
+                                         IsChecked="{Binding OncologiaCancerColorretal, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                
+                                <CheckBox Content="Câncer de próstata" 
+                                         IsChecked="{Binding OncologiaCancerProstata, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                
+                                <CheckBox Content="Câncer de estômago" 
+                                         IsChecked="{Binding OncologiaCancerEstomago, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                
+                                <CheckBox Content="Linfoma" 
+                                         IsChecked="{Binding OncologiaLinfoma, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                
+                                <CheckBox Content="Leucemia" 
+                                         IsChecked="{Binding OncologiaLeucemia, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                
+                                <CheckBox Content="Melanoma" 
+                                         IsChecked="{Binding OncologiaMelanoma, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563"/>
+                            </StackPanel>
+                            
+                            <!-- Campo para outros problemas oncológicos -->
+                            <TextBlock Text="Outros problemas oncológicos:" FontFamily="Segoe UI" FontSize="12" FontWeight="Medium" Foreground="#6B7280" Margin="0,12,0,4"/>
+                            <TextBox Name="txt_ProblemasOncologicosOutras"
+                                    Text="{Binding OncologiaOutras, UpdateSourceTrigger=PropertyChanged}"
+                                    Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                    Padding="8,6" FontSize="13" TextWrapping="Wrap" AcceptsReturn="True"
+                                    Height="60"/>
                         </StackPanel>
                     </StackPanel>
                 </Expander>
@@ -435,36 +467,46 @@
                     <StackPanel Margin="24">
                         <!-- Problemas Reumáticos -->
                         <StackPanel Margin="0,0,0,16">
-                            <TextBlock Text="Doenças reumáticas" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="5"/>
-                                    <ColumnDefinition Width="3*"/>
-                                </Grid.ColumnDefinitions>
+                            <TextBlock Text="Doenças reumáticas" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151" Margin="0,0,0,8"/>
+                            
+                            <!-- CheckBoxes para problemas reumáticos específicos -->
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox Content="Artrite reumatoide" 
+                                         IsChecked="{Binding ReumatoideArtriteReumatoide, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
                                 
-                                <ComboBox Name="cb_ProblemasReumaticos" Grid.Column="0"
-                                         SelectedItem="{Binding ProblemasReumaticos, UpdateSourceTrigger=PropertyChanged}"
-                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                         Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                         SelectionChanged="ComboBox_SelectionChanged">
-                                    <ComboBoxItem Content="Nenhuma"/>
-                                    <ComboBoxItem Content="Artrite reumatoide"/>
-                                    <ComboBoxItem Content="Osteoartrite"/>
-                                    <ComboBoxItem Content="Fibromialgia"/>
-                                    <ComboBoxItem Content="Lupus"/>
-                                    <ComboBoxItem Content="Artrite psoriática"/>
-                                    <ComboBoxItem Content="Espondilite anquilosante"/>
-                                    <ComboBoxItem Content="Gota"/>
-                                    <ComboBoxItem Content="Outras"/>
-                                </ComboBox>
+                                <CheckBox Content="Osteoartrite" 
+                                         IsChecked="{Binding ReumatoideOsteoartrite, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
                                 
-                                <TextBox Name="txt_ProblemasReumaticosOutras" Grid.Column="2"
-                                        Text="{Binding ProblemasReumaticosDetalhes, UpdateSourceTrigger=PropertyChanged}"
-                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                        Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                        />
-                            </Grid>
+                                <CheckBox Content="Fibromialgia" 
+                                         IsChecked="{Binding ReumatoideFibromialgia, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                
+                                <CheckBox Content="Lúpus" 
+                                         IsChecked="{Binding ReumatoideLupus, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                
+                                <CheckBox Content="Artrite psoriática" 
+                                         IsChecked="{Binding ReumatoideArtritePsoriatica, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                
+                                <CheckBox Content="Espondilite anquilosante" 
+                                         IsChecked="{Binding ReumatoideEspondiliteAnquilosante, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                
+                                <CheckBox Content="Gota" 
+                                         IsChecked="{Binding ReumatoideGota, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563"/>
+                            </StackPanel>
+                            
+                            <!-- Campo para outros problemas reumáticos -->
+                            <TextBlock Text="Outras doenças reumáticas:" FontFamily="Segoe UI" FontSize="12" FontWeight="Medium" Foreground="#6B7280" Margin="0,12,0,4"/>
+                            <TextBox Name="txt_ProblemasReumaticosOutras"
+                                    Text="{Binding ReumatoideOutras, UpdateSourceTrigger=PropertyChanged}"
+                                    Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                    Padding="8,6" FontSize="13" TextWrapping="Wrap" AcceptsReturn="True"
+                                    Height="60"/>
                         </StackPanel>
                     </StackPanel>
                 </Expander>
@@ -1030,7 +1072,9 @@
                                 <Border Background="#f0f9ff" BorderBrush="#0ea5e9" BorderThickness="1" CornerRadius="4" Padding="12" Margin="0,12,0,0">
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="✍️ Assinatura:" FontWeight="SemiBold" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                        <Button Content="📝 Assinar Eletronicamente" Background="#0ea5e9" Foreground="White" BorderThickness="0" Padding="12,6" FontSize="12"/>
+                                        <Button Content="📝 Assinar Eletronicamente" 
+                                               Command="{Binding AssinarNaturopatiaCommand}"
+                                               Background="#0ea5e9" Foreground="White" BorderThickness="0" Padding="12,6" FontSize="12"/>
                                         <TextBlock Text="Não assinado" Foreground="#ef4444" FontStyle="Italic" VerticalAlignment="Center" Margin="12,0,0,0"/>
                                     </StackPanel>
                                 </Border>
@@ -1050,7 +1094,9 @@
                                 <Border Background="#f0f9ff" BorderBrush="#0ea5e9" BorderThickness="1" CornerRadius="4" Padding="12" Margin="0,12,0,0">
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="✍️ Assinatura:" FontWeight="SemiBold" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                        <Button Content="📝 Assinar Eletronicamente" Background="#0ea5e9" Foreground="White" BorderThickness="0" Padding="12,6" FontSize="12"/>
+                                        <Button Content="📝 Assinar Eletronicamente" 
+                                               Command="{Binding AssinarOsteopatiaCommand}"
+                                               Background="#0ea5e9" Foreground="White" BorderThickness="0" Padding="12,6" FontSize="12"/>
                                         <TextBlock Text="Não assinado" Foreground="#ef4444" FontStyle="Italic" VerticalAlignment="Center" Margin="12,0,0,0"/>
                                     </StackPanel>
                                 </Border>

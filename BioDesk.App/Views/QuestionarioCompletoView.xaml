@@ -520,35 +520,42 @@
                     </Expander.Header>
                     <StackPanel Margin="24">
                         <StackPanel Margin="0,0,0,16">
-                            <TextBlock Text="Problemas respiratórios" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="5"/>
-                                    <ColumnDefinition Width="3*"/>
-                                </Grid.ColumnDefinitions>
+                            <TextBlock Text="Problemas respiratórios" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151" Margin="0,0,0,8"/>
+                            
+                            <!-- CheckBoxes para problemas respiratórios específicos -->
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox Content="Asma" 
+                                         IsChecked="{Binding RespiratorioAsma, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
                                 
-                                <ComboBox Name="cb_ProblemasRespiratorios" Grid.Column="0"
-                                         SelectedItem="{Binding ProblemasRespiratorios, UpdateSourceTrigger=PropertyChanged}"
-                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                         Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                         SelectionChanged="ComboBox_SelectionChanged">
-                                    <ComboBoxItem Content="Nenhum"/>
-                                    <ComboBoxItem Content="Asma"/>
-                                    <ComboBoxItem Content="Bronquite"/>
-                                    <ComboBoxItem Content="DPOC"/>
-                                    <ComboBoxItem Content="Apneia do sono"/>
-                                    <ComboBoxItem Content="Rinite alérgica"/>
-                                    <ComboBoxItem Content="Sinusite"/>
-                                    <ComboBoxItem Content="Outras"/>
-                                </ComboBox>
+                                <CheckBox Content="Bronquite" 
+                                         IsChecked="{Binding RespiratorioBronquite, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
                                 
-                                <TextBox Name="txt_ProblemasRespiratoriosOutras" Grid.Column="2"
-                                        Text="{Binding ProblemasRespiratoriosDetalhes, UpdateSourceTrigger=PropertyChanged}"
-                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                        Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                        />
-                            </Grid>
+                                <CheckBox Content="DPOC" 
+                                         IsChecked="{Binding RespiratorioDPOC, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                
+                                <CheckBox Content="Apneia do sono" 
+                                         IsChecked="{Binding RespiratorioApneiaSono, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                
+                                <CheckBox Content="Rinite alérgica" 
+                                         IsChecked="{Binding RespiratorioRiniteAlergica, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                
+                                <CheckBox Content="Sinusite" 
+                                         IsChecked="{Binding RespiratorioSinusite, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563"/>
+                            </StackPanel>
+                            
+                            <!-- Campo para outros problemas respiratórios -->
+                            <TextBlock Text="Outros problemas respiratórios:" FontFamily="Segoe UI" FontSize="12" FontWeight="Medium" Foreground="#6B7280" Margin="0,12,0,4"/>
+                            <TextBox Name="txt_ProblemasRespiratoriosOutras"
+                                    Text="{Binding RespiratorioOutros, UpdateSourceTrigger=PropertyChanged}"
+                                    Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                    Padding="8,6" FontSize="13" TextWrapping="Wrap" AcceptsReturn="True"
+                                    Height="60"/>
                         </StackPanel>
                     </StackPanel>
                 </Expander>
@@ -562,36 +569,46 @@
                     </Expander.Header>
                     <StackPanel Margin="24">
                         <StackPanel Margin="0,0,0,16">
-                            <TextBlock Text="Problemas digestivos" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="5"/>
-                                    <ColumnDefinition Width="3*"/>
-                                </Grid.ColumnDefinitions>
+                            <TextBlock Text="Problemas digestivos" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151" Margin="0,0,0,8"/>
+                            
+                            <!-- CheckBoxes para problemas digestivos específicos -->
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox Content="Gastrite" 
+                                         IsChecked="{Binding DigestivoGastrite, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
                                 
-                                <ComboBox Name="cb_ProblemasDigestivos" Grid.Column="0"
-                                         SelectedItem="{Binding ProblemasDigestivos, UpdateSourceTrigger=PropertyChanged}"
-                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                         Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                         SelectionChanged="ComboBox_SelectionChanged">
-                                    <ComboBoxItem Content="Nenhum"/>
-                                    <ComboBoxItem Content="Gastrite"/>
-                                    <ComboBoxItem Content="Úlcera"/>
-                                    <ComboBoxItem Content="Refluxo"/>
-                                    <ComboBoxItem Content="Síndrome do intestino irritável"/>
-                                    <ComboBoxItem Content="Doença de Crohn"/>
-                                    <ComboBoxItem Content="Colite ulcerosa"/>
-                                    <ComboBoxItem Content="Prisão de ventre"/>
-                                    <ComboBoxItem Content="Outras"/>
-                                </ComboBox>
+                                <CheckBox Content="Úlcera" 
+                                         IsChecked="{Binding DigestivoUlcera, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
                                 
-                                <TextBox Name="txt_ProblemasDigestivosOutras" Grid.Column="2"
-                                        Text="{Binding ProblemasDigestivosDetalhes, UpdateSourceTrigger=PropertyChanged}"
-                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                        Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                        />
-                            </Grid>
+                                <CheckBox Content="Refluxo" 
+                                         IsChecked="{Binding DigestivoRefluxo, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                
+                                <CheckBox Content="Síndrome do intestino irritável" 
+                                         IsChecked="{Binding DigestivoSindromeIntestinoIrritavel, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                
+                                <CheckBox Content="Doença de Crohn" 
+                                         IsChecked="{Binding DigestivoDoencaCrohn, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                
+                                <CheckBox Content="Colite ulcerosa" 
+                                         IsChecked="{Binding DigestivoColiteUlcerosa, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                
+                                <CheckBox Content="Prisão de ventre" 
+                                         IsChecked="{Binding DigestivoPrisaoVentre, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563"/>
+                            </StackPanel>
+                            
+                            <!-- Campo para outros problemas digestivos -->
+                            <TextBlock Text="Outros problemas digestivos:" FontFamily="Segoe UI" FontSize="12" FontWeight="Medium" Foreground="#6B7280" Margin="0,12,0,4"/>
+                            <TextBox Name="txt_ProblemasDigestivosOutras"
+                                    Text="{Binding DigestivoOutros, UpdateSourceTrigger=PropertyChanged}"
+                                    Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                    Padding="8,6" FontSize="13" TextWrapping="Wrap" AcceptsReturn="True"
+                                    Height="60"/>
                         </StackPanel>
                     </StackPanel>
                 </Expander>
@@ -605,35 +622,46 @@
                     </Expander.Header>
                     <StackPanel Margin="24">
                         <StackPanel Margin="0,0,0,16">
-                            <TextBlock Text="Problemas cardiovasculares" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151"/>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="5"/>
-                                    <ColumnDefinition Width="3*"/>
-                                </Grid.ColumnDefinitions>
+                            <TextBlock Text="Problemas cardiovasculares" FontFamily="Segoe UI" FontSize="14" FontWeight="Medium" Foreground="#374151" Margin="0,0,0,8"/>
+                            
+                            <!-- CheckBoxes para problemas cardiovasculares específicos -->
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox Content="Hipertensão" 
+                                         IsChecked="{Binding CardiovascularHipertensao, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
                                 
-                                <ComboBox Name="cb_ProblemasCardiovasculares" Grid.Column="0"
-                                         SelectedItem="{Binding ProblemasCardiovasculares, UpdateSourceTrigger=PropertyChanged}"
-                                         Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                         Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                         SelectionChanged="ComboBox_SelectionChanged">
-                                    <ComboBoxItem Content="Nenhum"/>
-                                    <ComboBoxItem Content="Hipertensão"/>
-                                    <ComboBoxItem Content="Arritmia"/>
-                                    <ComboBoxItem Content="Angina"/>
-                                    <ComboBoxItem Content="Enfarte do miocárdio"/>
-                                    <ComboBoxItem Content="Insuficiência cardíaca"/>
-                                    <ComboBoxItem Content="Varizes"/>
-                                    <ComboBoxItem Content="Outras"/>
-                                </ComboBox>
+                                <CheckBox Content="Arritmia" 
+                                         IsChecked="{Binding CardiovascularArritmia, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
                                 
-                                <TextBox Name="txt_ProblemasCardiovascularesOutras" Grid.Column="2"
-                                        Text="{Binding ProblemasCardiovascularesDetalhes, UpdateSourceTrigger=PropertyChanged}"
-                                        Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
-                                        Padding="8,6" FontSize="14" Margin="0,4,0,0"
-                                        />
-                            </Grid>
+                                <CheckBox Content="Angina" 
+                                         IsChecked="{Binding CardiovascularAngina, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                
+                                <CheckBox Content="Enfarte do miocárdio" 
+                                         IsChecked="{Binding CardiovascularEnfarteMinocardiaco, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                
+                                <CheckBox Content="Insuficiência cardíaca" 
+                                         IsChecked="{Binding CardiovascularInsuficienciaCardiaca, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                
+                                <CheckBox Content="Colesterol alto" 
+                                         IsChecked="{Binding CardiovascularColesterolAlto, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563" Margin="0,0,0,6"/>
+                                
+                                <CheckBox Content="Varizes" 
+                                         IsChecked="{Binding CardiovascularVarizes, UpdateSourceTrigger=PropertyChanged}"
+                                         FontFamily="Segoe UI" FontSize="13" Foreground="#4B5563"/>
+                            </StackPanel>
+                            
+                            <!-- Campo para outros problemas cardiovasculares -->
+                            <TextBlock Text="Outros problemas cardiovasculares:" FontFamily="Segoe UI" FontSize="12" FontWeight="Medium" Foreground="#6B7280" Margin="0,12,0,4"/>
+                            <TextBox Name="txt_ProblemasCardiovascularesOutras"
+                                    Text="{Binding CardiovascularOutros, UpdateSourceTrigger=PropertyChanged}"
+                                    Background="White" BorderBrush="#D1D5DB" BorderThickness="1"
+                                    Padding="8,6" FontSize="13" TextWrapping="Wrap" AcceptsReturn="True"
+                                    Height="60"/>
                         </StackPanel>
                     </StackPanel>
                 </Expander>

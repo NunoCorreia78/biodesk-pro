@@ -775,6 +775,13 @@ namespace BioDesk.App.ViewModels
             set => SetProperty(ref _digestivoRefluxo, value);
         }
 
+        private bool _digestivoUlcera;
+        public bool DigestivoUlcera
+        {
+            get => _digestivoUlcera;
+            set => SetProperty(ref _digestivoUlcera, value);
+        }
+
         private bool _digestivoSindromeIntestinoIrritavel;
         public bool DigestivoSindromeIntestinoIrritavel
         {
@@ -794,6 +801,13 @@ namespace BioDesk.App.ViewModels
         {
             get => _digestivoColiteUlcerosa;
             set => SetProperty(ref _digestivoColiteUlcerosa, value);
+        }
+
+        private bool _digestivoPrisaoVentre;
+        public bool DigestivoPrisaoVentre
+        {
+            get => _digestivoPrisaoVentre;
+            set => SetProperty(ref _digestivoPrisaoVentre, value);
         }
 
         private string _digestivoOutros = string.Empty;
@@ -837,6 +851,20 @@ namespace BioDesk.App.ViewModels
         {
             get => _cardiovascularAngina;
             set => SetProperty(ref _cardiovascularAngina, value);
+        }
+
+        private bool _cardiovascularEnfarteMinocardiaco;
+        public bool CardiovascularEnfarteMinocardiaco
+        {
+            get => _cardiovascularEnfarteMinocardiaco;
+            set => SetProperty(ref _cardiovascularEnfarteMinocardiaco, value);
+        }
+
+        private bool _cardiovascularVarizes;
+        public bool CardiovascularVarizes
+        {
+            get => _cardiovascularVarizes;
+            set => SetProperty(ref _cardiovascularVarizes, value);
         }
 
         private string _cardiovascularOutros = string.Empty;

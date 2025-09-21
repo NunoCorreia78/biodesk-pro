@@ -25,7 +25,8 @@ public partial class FichaPacienteView : UserControl
         {
             // Create navigation service (simple implementation for now)
             var navigationService = new NavigationService();
-            _questionarioCompletoViewModel = new QuestionarioCompletoViewModel(navigationService);
+            var serviceProvider = App.Services ?? throw new InvalidOperationException("ServiceProvider not initialized");
+            _questionarioCompletoViewModel = new QuestionarioCompletoViewModel(navigationService, serviceProvider);
             
             // NÃO sobrescrever o DataContext aqui! 
             // O DataContext será definido pelo MainWindow como FichaPacienteViewModel

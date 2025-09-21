@@ -78,8 +78,8 @@ public class BioDeskDbContext : DbContext
                 EstadoCivil = "Casado(a)",
                 LocalHabitual = "Chão de Lopes",
                 ComoConheceu = "Redes Sociais",
-                DataCriacao = DateTime.Now.AddDays(-30),
-                UltimaConsulta = DateTime.Now.AddDays(-7)
+                DataCriacao = new DateTime(2024, 12, 1),
+                UltimaConsulta = new DateTime(2024, 12, 28)
             },
             new Paciente
             {
@@ -98,8 +98,8 @@ public class BioDeskDbContext : DbContext
                 LocalHabitual = "Samora Correia",
                 ComoConheceu = "Recomendação",
                 QuemRecomendou = "Ana Costa",
-                DataCriacao = DateTime.Now.AddDays(-45),
-                UltimaConsulta = DateTime.Now.AddDays(-14)
+                DataCriacao = new DateTime(2024, 11, 20),
+                UltimaConsulta = new DateTime(2024, 12, 21)
             },
             new Paciente
             {
@@ -117,8 +117,8 @@ public class BioDeskDbContext : DbContext
                 EstadoCivil = "União de Facto",
                 LocalHabitual = "Online",
                 ComoConheceu = "Website/Google",
-                DataCriacao = DateTime.Now.AddDays(-20),
-                UltimaConsulta = DateTime.Now.AddDays(-3)
+                DataCriacao = new DateTime(2024, 12, 15),
+                UltimaConsulta = new DateTime(2025, 1, 1)
             }
         );
         

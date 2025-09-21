@@ -10,22 +10,26 @@ using BioDesk.App.Services;
 using BioDesk.App.ViewModels.Base;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using System.Linq;
 
 namespace BioDesk.App.ViewModels
 {
     public class QuestionarioCompletoViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
+        private readonly IServiceProvider _serviceProvider;
         private bool _isLoading;
         private int _pacienteId;
 
-        public QuestionarioCompletoViewModel(INavigationService navigationService)
+        public QuestionarioCompletoViewModel(INavigationService navigationService, IServiceProvider serviceProvider)
         {
             try
             {
                 System.Diagnostics.Debug.WriteLine("QuestionarioCompletoViewModel: Construtor iniciado");
                 _navigationService = navigationService;
-                System.Diagnostics.Debug.WriteLine("QuestionarioCompletoViewModel: NavigationService atribuído");
+                _serviceProvider = serviceProvider;
+                System.Diagnostics.Debug.WriteLine("QuestionarioCompletoViewModel: NavigationService e ServiceProvider atribuídos");
                 InitializeCommands();
                 System.Diagnostics.Debug.WriteLine("QuestionarioCompletoViewModel: Commands inicializados");
                 System.Diagnostics.Debug.WriteLine("QuestionarioCompletoViewModel: Construtor concluído com sucesso");
@@ -166,6 +170,98 @@ namespace BioDesk.App.ViewModels
             set => SetProperty(ref _doencaCronica, value);
         }
 
+        private string _doencaCronicaDetalhes = string.Empty;
+        public string DoencaCronicaDetalhes
+        {
+            get => _doencaCronicaDetalhes;
+            set => SetProperty(ref _doencaCronicaDetalhes, value);
+        }
+
+        // Doenças crónicas específicas (checkboxes)
+        private bool _doencaHipertensao;
+        public bool DoencaHipertensao
+        {
+            get => _doencaHipertensao;
+            set => SetProperty(ref _doencaHipertensao, value);
+        }
+
+        private bool _doencaCardiopatia;
+        public bool DoencaCardiopatia
+        {
+            get => _doencaCardiopatia;
+            set => SetProperty(ref _doencaCardiopatia, value);
+        }
+
+        private bool _doencaDiabetesTipo1;
+        public bool DoencaDiabetesTipo1
+        {
+            get => _doencaDiabetesTipo1;
+            set => SetProperty(ref _doencaDiabetesTipo1, value);
+        }
+
+        private bool _doencaDiabetesTipo2;
+        public bool DoencaDiabetesTipo2
+        {
+            get => _doencaDiabetesTipo2;
+            set => SetProperty(ref _doencaDiabetesTipo2, value);
+        }
+
+        private bool _doencaTiroideia;
+        public bool DoencaTiroideia
+        {
+            get => _doencaTiroideia;
+            set => SetProperty(ref _doencaTiroideia, value);
+        }
+
+        private bool _doencaDislipidemia;
+        public bool DoencaDislipidemia
+        {
+            get => _doencaDislipidemia;
+            set => SetProperty(ref _doencaDislipidemia, value);
+        }
+
+        private bool _doencaRenal;
+        public bool DoencaRenal
+        {
+            get => _doencaRenal;
+            set => SetProperty(ref _doencaRenal, value);
+        }
+
+        private bool _doencaHepatica;
+        public bool DoencaHepatica
+        {
+            get => _doencaHepatica;
+            set => SetProperty(ref _doencaHepatica, value);
+        }
+
+        private bool _doencaAutoimune;
+        public bool DoencaAutoimune
+        {
+            get => _doencaAutoimune;
+            set => SetProperty(ref _doencaAutoimune, value);
+        }
+
+        private bool _doencaOsteoporose;
+        public bool DoencaOsteoporose
+        {
+            get => _doencaOsteoporose;
+            set => SetProperty(ref _doencaOsteoporose, value);
+        }
+
+        private bool _doencaAsmaDPOC;
+        public bool DoencaAsmaDPOC
+        {
+            get => _doencaAsmaDPOC;
+            set => SetProperty(ref _doencaAsmaDPOC, value);
+        }
+
+        private bool _doencaOncologia;
+        public bool DoencaOncologia
+        {
+            get => _doencaOncologia;
+            set => SetProperty(ref _doencaOncologia, value);
+        }
+
         private string _sintomasAtuais = string.Empty;
         public string SintomasAtuais
         {
@@ -187,11 +283,75 @@ namespace BioDesk.App.ViewModels
             set => SetProperty(ref _alergiasAlimentares, value);
         }
 
+        private string _alergiasAlimentaresDetalhes = string.Empty;
+        public string AlergiasAlimentaresDetalhes
+        {
+            get => _alergiasAlimentaresDetalhes;
+            set => SetProperty(ref _alergiasAlimentaresDetalhes, value);
+        }
+
+        // Intolerâncias alimentares específicas (checkboxes)
+        private bool _intoleranciaGluten;
+        public bool IntoleranciaGluten
+        {
+            get => _intoleranciaGluten;
+            set => SetProperty(ref _intoleranciaGluten, value);
+        }
+
+        private bool _intoleranciaLactose;
+        public bool IntoleranciaLactose
+        {
+            get => _intoleranciaLactose;
+            set => SetProperty(ref _intoleranciaLactose, value);
+        }
+
+        private bool _intoleranciaProteinaLeite;
+        public bool IntoleranciaProteinaLeite
+        {
+            get => _intoleranciaProteinaLeite;
+            set => SetProperty(ref _intoleranciaProteinaLeite, value);
+        }
+
+        private bool _intoleranciaOvos;
+        public bool IntoleranciaOvos
+        {
+            get => _intoleranciaOvos;
+            set => SetProperty(ref _intoleranciaOvos, value);
+        }
+
+        private bool _intoleranciaMarisco;
+        public bool IntoleranciaMarisco
+        {
+            get => _intoleranciaMarisco;
+            set => SetProperty(ref _intoleranciaMarisco, value);
+        }
+
+        private bool _intoleranciaFrutosSecos;
+        public bool IntoleranciaFrutosSecos
+        {
+            get => _intoleranciaFrutosSecos;
+            set => SetProperty(ref _intoleranciaFrutosSecos, value);
+        }
+
+        private string _intoleranciaAlimentarOutras = string.Empty;
+        public string IntoleranciaAlimentarOutras
+        {
+            get => _intoleranciaAlimentarOutras;
+            set => SetProperty(ref _intoleranciaAlimentarOutras, value);
+        }
+
         private string _alergiasMedicamentos = string.Empty;
         public string AlergiasMedicamentos
         {
             get => _alergiasMedicamentos;
             set => SetProperty(ref _alergiasMedicamentos, value);
+        }
+
+        private string _alergiasMedicamentosDetalhes = string.Empty;
+        public string AlergiasMedicamentosDetalhes
+        {
+            get => _alergiasMedicamentosDetalhes;
+            set => SetProperty(ref _alergiasMedicamentosDetalhes, value);
         }
 
         private string _alergiasAmbientais = string.Empty;
@@ -201,11 +361,339 @@ namespace BioDesk.App.ViewModels
             set => SetProperty(ref _alergiasAmbientais, value);
         }
 
+        private string _alergiasAmbientaisDetalhes = string.Empty;
+        public string AlergiasAmbientaisDetalhes
+        {
+            get => _alergiasAmbientaisDetalhes;
+            set => SetProperty(ref _alergiasAmbientaisDetalhes, value);
+        }
+
+        // Alergias ambientais específicas
+        private bool _alergiaPolen;
+        public bool AlergiaPolen
+        {
+            get => _alergiaPolen;
+            set => SetProperty(ref _alergiaPolen, value);
+        }
+
+        private bool _alergiaAcaros;
+        public bool AlergiaAcaros
+        {
+            get => _alergiaAcaros;
+            set => SetProperty(ref _alergiaAcaros, value);
+        }
+
+        private bool _alergiaPelosAnimais;
+        public bool AlergiaPelosAnimais
+        {
+            get => _alergiaPelosAnimais;
+            set => SetProperty(ref _alergiaPelosAnimais, value);
+        }
+
+        private bool _alergiaPoeira;
+        public bool AlergiaPoeira
+        {
+            get => _alergiaPoeira;
+            set => SetProperty(ref _alergiaPoeira, value);
+        }
+
+        private bool _alergiaMofo;
+        public bool AlergiaMofo
+        {
+            get => _alergiaMofo;
+            set => SetProperty(ref _alergiaMofo, value);
+        }
+
+        private string _alergiasAmbientaisOutras = string.Empty;
+        public string AlergiasAmbientaisOutras
+        {
+            get => _alergiasAmbientaisOutras;
+            set => SetProperty(ref _alergiasAmbientaisOutras, value);
+        }
+
+        private string _alergiasPlantas = string.Empty;
+        public string AlergiasPlantas
+        {
+            get => _alergiasPlantas;
+            set => SetProperty(ref _alergiasPlantas, value);
+        }
+
+        private string _alergiasPlantasDetalhes = string.Empty;
+        public string AlergiasPlantasDetalhes
+        {
+            get => _alergiasPlantasDetalhes;
+            set => SetProperty(ref _alergiasPlantasDetalhes, value);
+        }
+
         private string _outrasAlergias = string.Empty;
         public string OutrasAlergias
         {
             get => _outrasAlergias;
             set => SetProperty(ref _outrasAlergias, value);
+        }
+
+        private string _outrasAlergiasDetalhes = string.Empty;
+        public string OutrasAlergiasDetalhes
+        {
+            get => _outrasAlergiasDetalhes;
+            set => SetProperty(ref _outrasAlergiasDetalhes, value);
+        }
+
+        // ======= CHECKBOXES PARA ALERGIAS A MEDICAMENTOS =======
+        private bool _alergiaPenicilina;
+        public bool AlergiaPenicilina
+        {
+            get => _alergiaPenicilina;
+            set => SetProperty(ref _alergiaPenicilina, value);
+        }
+
+        private bool _alergiaAspirina;
+        public bool AlergiaAspirina
+        {
+            get => _alergiaAspirina;
+            set => SetProperty(ref _alergiaAspirina, value);
+        }
+
+        private bool _alergiaIbuprofeno;
+        public bool AlergiaIbuprofeno
+        {
+            get => _alergiaIbuprofeno;
+            set => SetProperty(ref _alergiaIbuprofeno, value);
+        }
+
+        private bool _alergiaAntibioticos;
+        public bool AlergiaAntibioticos
+        {
+            get => _alergiaAntibioticos;
+            set => SetProperty(ref _alergiaAntibioticos, value);
+        }
+
+        private bool _alergiaAnestesicos;
+        public bool AlergiaAnestesicos
+        {
+            get => _alergiaAnestesicos;
+            set => SetProperty(ref _alergiaAnestesicos, value);
+        }
+
+        private string _alergiaMedicamentosOutras = string.Empty;
+        public string AlergiaMedicamentosOutras
+        {
+            get => _alergiaMedicamentosOutras;
+            set => SetProperty(ref _alergiaMedicamentosOutras, value);
+        }
+
+        // ======= CHECKBOXES PARA ALERGIAS A PLANTAS/ERVAS =======
+        private bool _alergiaCamomila;
+        public bool AlergiaCamomila
+        {
+            get => _alergiaCamomila;
+            set => SetProperty(ref _alergiaCamomila, value);
+        }
+
+        private bool _alergiaEucalipto;
+        public bool AlergiaEucalipto
+        {
+            get => _alergiaEucalipto;
+            set => SetProperty(ref _alergiaEucalipto, value);
+        }
+
+        private bool _alergiaArnica;
+        public bool AlergiaArnica
+        {
+            get => _alergiaArnica;
+            set => SetProperty(ref _alergiaArnica, value);
+        }
+
+        private bool _alergiaAloeVera;
+        public bool AlergiaAloeVera
+        {
+            get => _alergiaAloeVera;
+            set => SetProperty(ref _alergiaAloeVera, value);
+        }
+
+        private bool _alergiaGinkgoBiloba;
+        public bool AlergiaGinkgoBiloba
+        {
+            get => _alergiaGinkgoBiloba;
+            set => SetProperty(ref _alergiaGinkgoBiloba, value);
+        }
+
+        private bool _alergiaGinseng;
+        public bool AlergiaGinseng
+        {
+            get => _alergiaGinseng;
+            set => SetProperty(ref _alergiaGinseng, value);
+        }
+
+        private bool _alergiaEchinacea;
+        public bool AlergiaEchinacea
+        {
+            get => _alergiaEchinacea;
+            set => SetProperty(ref _alergiaEchinacea, value);
+        }
+
+        private string _alergiaPlantasOutras = string.Empty;
+        public string AlergiaPlantasOutras
+        {
+            get => _alergiaPlantasOutras;
+            set => SetProperty(ref _alergiaPlantasOutras, value);
+        }
+
+        // ======= CHECKBOXES PARA OUTRAS ALERGIAS =======
+        private bool _alergiaLatex;
+        public bool AlergiaLatex
+        {
+            get => _alergiaLatex;
+            set => SetProperty(ref _alergiaLatex, value);
+        }
+
+        private bool _alergiaNiquel;
+        public bool AlergiaNiquel
+        {
+            get => _alergiaNiquel;
+            set => SetProperty(ref _alergiaNiquel, value);
+        }
+
+        private bool _alergiaCosmeticos;
+        public bool AlergiaCosmeticos
+        {
+            get => _alergiaCosmeticos;
+            set => SetProperty(ref _alergiaCosmeticos, value);
+        }
+
+        private bool _alergiaDetergentes;
+        public bool AlergiaDetergentes
+        {
+            get => _alergiaDetergentes;
+            set => SetProperty(ref _alergiaDetergentes, value);
+        }
+
+        private string _outrasAlergiasEspecificas = string.Empty;
+        public string OutrasAlergiasEspecificas
+        {
+            get => _outrasAlergiasEspecificas;
+            set => SetProperty(ref _outrasAlergiasEspecificas, value);
+        }
+
+        // ======= CHECKBOXES PARA PROBLEMAS ONCOLÓGICOS =======
+        private bool _oncologiaCancerMama;
+        public bool OncologiaCancerMama
+        {
+            get => _oncologiaCancerMama;
+            set => SetProperty(ref _oncologiaCancerMama, value);
+        }
+
+        private bool _oncologiaCancerPulmao;
+        public bool OncologiaCancerPulmao
+        {
+            get => _oncologiaCancerPulmao;
+            set => SetProperty(ref _oncologiaCancerPulmao, value);
+        }
+
+        private bool _oncologiaCancerColorretal;
+        public bool OncologiaCancerColorretal
+        {
+            get => _oncologiaCancerColorretal;
+            set => SetProperty(ref _oncologiaCancerColorretal, value);
+        }
+
+        private bool _oncologiaCancerProstata;
+        public bool OncologiaCancerProstata
+        {
+            get => _oncologiaCancerProstata;
+            set => SetProperty(ref _oncologiaCancerProstata, value);
+        }
+
+        private bool _oncologiaCancerEstomago;
+        public bool OncologiaCancerEstomago
+        {
+            get => _oncologiaCancerEstomago;
+            set => SetProperty(ref _oncologiaCancerEstomago, value);
+        }
+
+        private bool _oncologiaLinfoma;
+        public bool OncologiaLinfoma
+        {
+            get => _oncologiaLinfoma;
+            set => SetProperty(ref _oncologiaLinfoma, value);
+        }
+
+        private bool _oncologiaLeucemia;
+        public bool OncologiaLeucemia
+        {
+            get => _oncologiaLeucemia;
+            set => SetProperty(ref _oncologiaLeucemia, value);
+        }
+
+        private bool _oncologiaMelanoma;
+        public bool OncologiaMelanoma
+        {
+            get => _oncologiaMelanoma;
+            set => SetProperty(ref _oncologiaMelanoma, value);
+        }
+
+        private string _oncologiaOutras = string.Empty;
+        public string OncologiaOutras
+        {
+            get => _oncologiaOutras;
+            set => SetProperty(ref _oncologiaOutras, value);
+        }
+
+        // ======= CHECKBOXES PARA PROBLEMAS REUMÁTICOS =======
+        private bool _reumatoideArtriteReumatoide;
+        public bool ReumatoideArtriteReumatoide
+        {
+            get => _reumatoideArtriteReumatoide;
+            set => SetProperty(ref _reumatoideArtriteReumatoide, value);
+        }
+
+        private bool _reumatoideOsteoartrite;
+        public bool ReumatoideOsteoartrite
+        {
+            get => _reumatoideOsteoartrite;
+            set => SetProperty(ref _reumatoideOsteoartrite, value);
+        }
+
+        private bool _reumatoideFibromialgia;
+        public bool ReumatoideFibromialgia
+        {
+            get => _reumatoideFibromialgia;
+            set => SetProperty(ref _reumatoideFibromialgia, value);
+        }
+
+        private bool _reumatoideLupus;
+        public bool ReumatoideLupus
+        {
+            get => _reumatoideLupus;
+            set => SetProperty(ref _reumatoideLupus, value);
+        }
+
+        private bool _reumatoideArtritePsoriatica;
+        public bool ReumatoideArtritePsoriatica
+        {
+            get => _reumatoideArtritePsoriatica;
+            set => SetProperty(ref _reumatoideArtritePsoriatica, value);
+        }
+
+        private bool _reumatoideEspondiliteAnquilosante;
+        public bool ReumatoideEspondiliteAnquilosante
+        {
+            get => _reumatoideEspondiliteAnquilosante;
+            set => SetProperty(ref _reumatoideEspondiliteAnquilosante, value);
+        }
+
+        private bool _reumatoideGota;
+        public bool ReumatoideGota
+        {
+            get => _reumatoideGota;
+            set => SetProperty(ref _reumatoideGota, value);
+        }
+
+        private string _reumatoideOutras = string.Empty;
+        public string ReumatoideOutras
+        {
+            get => _reumatoideOutras;
+            set => SetProperty(ref _reumatoideOutras, value);
         }
 
         private string _historicoCirurgico = string.Empty;
@@ -220,6 +708,507 @@ namespace BioDesk.App.ViewModels
         {
             get => _fraturas;
             set => SetProperty(ref _fraturas, value);
+        }
+
+        // ======= CHECKBOXES PARA PROBLEMAS RESPIRATÓRIOS =======
+        private bool _respiratorioAsma;
+        public bool RespiratorioAsma
+        {
+            get => _respiratorioAsma;
+            set => SetProperty(ref _respiratorioAsma, value);
+        }
+
+        private bool _respiratorioBronquite;
+        public bool RespiratorioBronquite
+        {
+            get => _respiratorioBronquite;
+            set => SetProperty(ref _respiratorioBronquite, value);
+        }
+
+        private bool _respiratorioDPOC;
+        public bool RespiratorioDPOC
+        {
+            get => _respiratorioDPOC;
+            set => SetProperty(ref _respiratorioDPOC, value);
+        }
+
+        private bool _respiratorioApneiaSono;
+        public bool RespiratorioApneiaSono
+        {
+            get => _respiratorioApneiaSono;
+            set => SetProperty(ref _respiratorioApneiaSono, value);
+        }
+
+        private bool _respiratorioRiniteAlergica;
+        public bool RespiratorioRiniteAlergica
+        {
+            get => _respiratorioRiniteAlergica;
+            set => SetProperty(ref _respiratorioRiniteAlergica, value);
+        }
+
+        private bool _respiratorioSinusite;
+        public bool RespiratorioSinusite
+        {
+            get => _respiratorioSinusite;
+            set => SetProperty(ref _respiratorioSinusite, value);
+        }
+
+        private string _respiratorioOutros = string.Empty;
+        public string RespiratorioOutros
+        {
+            get => _respiratorioOutros;
+            set => SetProperty(ref _respiratorioOutros, value);
+        }
+
+        // ======= CHECKBOXES PARA PROBLEMAS DIGESTIVOS =======
+        private bool _digestivoGastrite;
+        public bool DigestivoGastrite
+        {
+            get => _digestivoGastrite;
+            set => SetProperty(ref _digestivoGastrite, value);
+        }
+
+        private bool _digestivoRefluxo;
+        public bool DigestivoRefluxo
+        {
+            get => _digestivoRefluxo;
+            set => SetProperty(ref _digestivoRefluxo, value);
+        }
+
+        private bool _digestivoUlcera;
+        public bool DigestivoUlcera
+        {
+            get => _digestivoUlcera;
+            set => SetProperty(ref _digestivoUlcera, value);
+        }
+
+        private bool _digestivoSindromeIntestinoIrritavel;
+        public bool DigestivoSindromeIntestinoIrritavel
+        {
+            get => _digestivoSindromeIntestinoIrritavel;
+            set => SetProperty(ref _digestivoSindromeIntestinoIrritavel, value);
+        }
+
+        private bool _digestivoDoencaCrohn;
+        public bool DigestivoDoencaCrohn
+        {
+            get => _digestivoDoencaCrohn;
+            set => SetProperty(ref _digestivoDoencaCrohn, value);
+        }
+
+        private bool _digestivoColiteUlcerosa;
+        public bool DigestivoColiteUlcerosa
+        {
+            get => _digestivoColiteUlcerosa;
+            set => SetProperty(ref _digestivoColiteUlcerosa, value);
+        }
+
+        private bool _digestivoPrisaoVentre;
+        public bool DigestivoPrisaoVentre
+        {
+            get => _digestivoPrisaoVentre;
+            set => SetProperty(ref _digestivoPrisaoVentre, value);
+        }
+
+        private string _digestivoOutros = string.Empty;
+        public string DigestivoOutros
+        {
+            get => _digestivoOutros;
+            set => SetProperty(ref _digestivoOutros, value);
+        }
+
+        // ======= CHECKBOXES PARA PROBLEMAS CARDIOVASCULARES =======
+        private bool _cardiovascularHipertensao;
+        public bool CardiovascularHipertensao
+        {
+            get => _cardiovascularHipertensao;
+            set => SetProperty(ref _cardiovascularHipertensao, value);
+        }
+
+        private bool _cardiovascularArritmia;
+        public bool CardiovascularArritmia
+        {
+            get => _cardiovascularArritmia;
+            set => SetProperty(ref _cardiovascularArritmia, value);
+        }
+
+        private bool _cardiovascularColesterolAlto;
+        public bool CardiovascularColesterolAlto
+        {
+            get => _cardiovascularColesterolAlto;
+            set => SetProperty(ref _cardiovascularColesterolAlto, value);
+        }
+
+        private bool _cardiovascularInsuficienciaCardiaca;
+        public bool CardiovascularInsuficienciaCardiaca
+        {
+            get => _cardiovascularInsuficienciaCardiaca;
+            set => SetProperty(ref _cardiovascularInsuficienciaCardiaca, value);
+        }
+
+        private bool _cardiovascularAngina;
+        public bool CardiovascularAngina
+        {
+            get => _cardiovascularAngina;
+            set => SetProperty(ref _cardiovascularAngina, value);
+        }
+
+        private bool _cardiovascularEnfarteMinocardiaco;
+        public bool CardiovascularEnfarteMinocardiaco
+        {
+            get => _cardiovascularEnfarteMinocardiaco;
+            set => SetProperty(ref _cardiovascularEnfarteMinocardiaco, value);
+        }
+
+        private bool _cardiovascularVarizes;
+        public bool CardiovascularVarizes
+        {
+            get => _cardiovascularVarizes;
+            set => SetProperty(ref _cardiovascularVarizes, value);
+        }
+
+        private string _cardiovascularOutros = string.Empty;
+        public string CardiovascularOutros
+        {
+            get => _cardiovascularOutros;
+            set => SetProperty(ref _cardiovascularOutros, value);
+        }
+
+        // ======= CHECKBOXES PARA PROBLEMAS NEUROLÓGICOS =======
+        private bool _neurologicoEnxaquecas;
+        public bool NeurologicoEnxaquecas
+        {
+            get => _neurologicoEnxaquecas;
+            set => SetProperty(ref _neurologicoEnxaquecas, value);
+        }
+
+        private bool _neurologicoAnsiedade;
+        public bool NeurologicoAnsiedade
+        {
+            get => _neurologicoAnsiedade;
+            set => SetProperty(ref _neurologicoAnsiedade, value);
+        }
+
+        private bool _neurologicoDepressao;
+        public bool NeurologicoDepressao
+        {
+            get => _neurologicoDepressao;
+            set => SetProperty(ref _neurologicoDepressao, value);
+        }
+
+        private bool _neurologicoInsonia;
+        public bool NeurologicoInsonia
+        {
+            get => _neurologicoInsonia;
+            set => SetProperty(ref _neurologicoInsonia, value);
+        }
+
+        private bool _neurologicoEpilepsia;
+        public bool NeurologicoEpilepsia
+        {
+            get => _neurologicoEpilepsia;
+            set => SetProperty(ref _neurologicoEpilepsia, value);
+        }
+
+        private bool _neurologicoVertigens;
+        public bool NeurologicoVertigens
+        {
+            get => _neurologicoVertigens;
+            set => SetProperty(ref _neurologicoVertigens, value);
+        }
+
+        private string _neurologicoOutros = string.Empty;
+        public string NeurologicoOutros
+        {
+            get => _neurologicoOutros;
+            set => SetProperty(ref _neurologicoOutros, value);
+        }
+
+        // ======= CHECKBOXES PARA PROBLEMAS MUSCULOESQUELÉTICOS =======
+        private bool _musculoesqueleticoArtrose;
+        public bool MusculoesqueleticoArtrose
+        {
+            get => _musculoesqueleticoArtrose;
+            set => SetProperty(ref _musculoesqueleticoArtrose, value);
+        }
+
+        private bool _musculoesqueleticoTendinite;
+        public bool MusculoesqueleticoTendinite
+        {
+            get => _musculoesqueleticoTendinite;
+            set => SetProperty(ref _musculoesqueleticoTendinite, value);
+        }
+
+        private bool _musculoesqueleticoHerniaDiscal;
+        public bool MusculoesqueleticoHerniaDiscal
+        {
+            get => _musculoesqueleticoHerniaDiscal;
+            set => SetProperty(ref _musculoesqueleticoHerniaDiscal, value);
+        }
+
+        private bool _musculoesqueleticoFibromialgia;
+        public bool MusculoesqueleticoFibromialgia
+        {
+            get => _musculoesqueleticoFibromialgia;
+            set => SetProperty(ref _musculoesqueleticoFibromialgia, value);
+        }
+
+        private bool _musculoesqueleticoArtrite;
+        public bool MusculoesqueleticoArtrite
+        {
+            get => _musculoesqueleticoArtrite;
+            set => SetProperty(ref _musculoesqueleticoArtrite, value);
+        }
+
+        private bool _musculoesqueleticoBursite;
+        public bool MusculoesqueleticoBursite
+        {
+            get => _musculoesqueleticoBursite;
+            set => SetProperty(ref _musculoesqueleticoBursite, value);
+        }
+
+        private bool _musculoesqueleticoLombalgia;
+        public bool MusculoesqueleticoLombalgia
+        {
+            get => _musculoesqueleticoLombalgia;
+            set => SetProperty(ref _musculoesqueleticoLombalgia, value);
+        }
+
+        private string _musculoesqueleticoOutros = string.Empty;
+        public string MusculoesqueleticoOutros
+        {
+            get => _musculoesqueleticoOutros;
+            set => SetProperty(ref _musculoesqueleticoOutros, value);
+        }
+
+        // ======= CHECKBOXES PARA PROBLEMAS URINÁRIOS =======
+        private bool _urinarioInfecaoUrinaria;
+        public bool UrinarioInfecaoUrinaria
+        {
+            get => _urinarioInfecaoUrinaria;
+            set => SetProperty(ref _urinarioInfecaoUrinaria, value);
+        }
+
+        private bool _urinarioCalculosRenais;
+        public bool UrinarioCalculosRenais
+        {
+            get => _urinarioCalculosRenais;
+            set => SetProperty(ref _urinarioCalculosRenais, value);
+        }
+
+        private bool _urinarioCistite;
+        public bool UrinarioCistite
+        {
+            get => _urinarioCistite;
+            set => SetProperty(ref _urinarioCistite, value);
+        }
+
+        private bool _urinarioIncontinencia;
+        public bool UrinarioIncontinencia
+        {
+            get => _urinarioIncontinencia;
+            set => SetProperty(ref _urinarioIncontinencia, value);
+        }
+
+        private string _urinarioOutros = string.Empty;
+        public string UrinarioOutros
+        {
+            get => _urinarioOutros;
+            set => SetProperty(ref _urinarioOutros, value);
+        }
+
+        // ======= CHECKBOXES PARA PROBLEMAS DO SISTEMA IMUNITÁRIO =======
+        private bool _imunitarioAlergias;
+        public bool ImunitarioAlergias
+        {
+            get => _imunitarioAlergias;
+            set => SetProperty(ref _imunitarioAlergias, value);
+        }
+
+        private bool _imunitarioDoencasAutoimunes;
+        public bool ImunitarioDoencasAutoimunes
+        {
+            get => _imunitarioDoencasAutoimunes;
+            set => SetProperty(ref _imunitarioDoencasAutoimunes, value);
+        }
+
+        private bool _imunitarioInfecoesRecorrentes;
+        public bool ImunitarioInfecoesRecorrentes
+        {
+            get => _imunitarioInfecoesRecorrentes;
+            set => SetProperty(ref _imunitarioInfecoesRecorrentes, value);
+        }
+
+        private string _imunitarioOutros = string.Empty;
+        public string ImunitarioOutros
+        {
+            get => _imunitarioOutros;
+            set => SetProperty(ref _imunitarioOutros, value);
+        }
+
+        // ======= CHECKBOXES PARA PROBLEMAS ENDÓCRINOS =======
+        private bool _endocrinoDiabetes;
+        public bool EndocrinoDiabetes
+        {
+            get => _endocrinoDiabetes;
+            set => SetProperty(ref _endocrinoDiabetes, value);
+        }
+
+        private bool _endocrinoHipertiroidismo;
+        public bool EndocrinoHipertiroidismo
+        {
+            get => _endocrinoHipertiroidismo;
+            set => SetProperty(ref _endocrinoHipertiroidismo, value);
+        }
+
+        private bool _endocrinoHipotiroidismo;
+        public bool EndocrinoHipotiroidismo
+        {
+            get => _endocrinoHipotiroidismo;
+            set => SetProperty(ref _endocrinoHipotiroidismo, value);
+        }
+
+        private bool _endocrinoProblemasSupraRenais;
+        public bool EndocrinoProblemasSupraRenais
+        {
+            get => _endocrinoProblemasSupraRenais;
+            set => SetProperty(ref _endocrinoProblemasSupraRenais, value);
+        }
+
+        private bool _endocrinoSindromeMetabolica;
+        public bool EndocrinoSindromeMetabolica
+        {
+            get => _endocrinoSindromeMetabolica;
+            set => SetProperty(ref _endocrinoSindromeMetabolica, value);
+        }
+
+        private string _endocrinoOutros = string.Empty;
+        public string EndocrinoOutros
+        {
+            get => _endocrinoOutros;
+            set => SetProperty(ref _endocrinoOutros, value);
+        }
+
+        // ======= CHECKBOXES PARA PROBLEMAS DE PELE =======
+        private bool _peleEczema;
+        public bool PeleEczema
+        {
+            get => _peleEczema;
+            set => SetProperty(ref _peleEczema, value);
+        }
+
+        private bool _pelePsoriase;
+        public bool PelePsoriase
+        {
+            get => _pelePsoriase;
+            set => SetProperty(ref _pelePsoriase, value);
+        }
+
+        private bool _peleAcne;
+        public bool PeleAcne
+        {
+            get => _peleAcne;
+            set => SetProperty(ref _peleAcne, value);
+        }
+
+        private bool _peleDermatite;
+        public bool PeleDermatite
+        {
+            get => _peleDermatite;
+            set => SetProperty(ref _peleDermatite, value);
+        }
+
+        private bool _peleVitiligo;
+        public bool PeleVitiligo
+        {
+            get => _peleVitiligo;
+            set => SetProperty(ref _peleVitiligo, value);
+        }
+
+        private bool _peleMelanoma;
+        public bool PeleMelanoma
+        {
+            get => _peleMelanoma;
+            set => SetProperty(ref _peleMelanoma, value);
+        }
+
+        private string _peleOutros = string.Empty;
+        public string PeleOutros
+        {
+            get => _peleOutros;
+            set => SetProperty(ref _peleOutros, value);
+        }
+
+        // ======= CHECKBOXES PARA PROBLEMAS DE VISÃO =======
+        private bool _visaoMiopia;
+        public bool VisaoMiopia
+        {
+            get => _visaoMiopia;
+            set => SetProperty(ref _visaoMiopia, value);
+        }
+
+        private bool _visaoHipermetropia;
+        public bool VisaoHipermetropia
+        {
+            get => _visaoHipermetropia;
+            set => SetProperty(ref _visaoHipermetropia, value);
+        }
+
+        private bool _visaoAstigmatismo;
+        public bool VisaoAstigmatismo
+        {
+            get => _visaoAstigmatismo;
+            set => SetProperty(ref _visaoAstigmatismo, value);
+        }
+
+        private bool _visaoCataratas;
+        public bool VisaoCataratas
+        {
+            get => _visaoCataratas;
+            set => SetProperty(ref _visaoCataratas, value);
+        }
+
+        private bool _visaoGlaucoma;
+        public bool VisaoGlaucoma
+        {
+            get => _visaoGlaucoma;
+            set => SetProperty(ref _visaoGlaucoma, value);
+        }
+
+        private string _visaoOutros = string.Empty;
+        public string VisaoOutros
+        {
+            get => _visaoOutros;
+            set => SetProperty(ref _visaoOutros, value);
+        }
+
+        // ======= CHECKBOXES PARA PROBLEMAS DE AUDIÇÃO =======
+        private bool _audicaoPerdaAuditiva;
+        public bool AudicaoPerdaAuditiva
+        {
+            get => _audicaoPerdaAuditiva;
+            set => SetProperty(ref _audicaoPerdaAuditiva, value);
+        }
+
+        private bool _audicaoZumbidoOuvido;
+        public bool AudicaoZumbidoOuvido
+        {
+            get => _audicaoZumbidoOuvido;
+            set => SetProperty(ref _audicaoZumbidoOuvido, value);
+        }
+
+        private bool _audicaoOtiteRecorrente;
+        public bool AudicaoOtiteRecorrente
+        {
+            get => _audicaoOtiteRecorrente;
+            set => SetProperty(ref _audicaoOtiteRecorrente, value);
+        }
+
+        private string _audicaoOutros = string.Empty;
+        public string AudicaoOutros
+        {
+            get => _audicaoOutros;
+            set => SetProperty(ref _audicaoOutros, value);
         }
 
         private string _atividadeFisica = string.Empty;
@@ -250,6 +1239,750 @@ namespace BioDesk.App.ViewModels
             set => SetProperty(ref _habitosAlimentares, value);
         }
 
+        // ========== SEÇÃO 5: OBJETIVOS ==========
+        private string _objetivoConsulta = string.Empty;
+        public string ObjetivoConsulta
+        {
+            get => _objetivoConsulta;
+            set => SetProperty(ref _objetivoConsulta, value);
+        }
+
+        private string _expectativas = string.Empty;
+        public string Expectativas
+        {
+            get => _expectativas;
+            set => SetProperty(ref _expectativas, value);
+        }
+
+        private string _motivacoes = string.Empty;
+        public string Motivacoes
+        {
+            get => _motivacoes;
+            set => SetProperty(ref _motivacoes, value);
+        }
+
+        // ========== SEÇÃO 6: ESTADO GERAL ==========
+        private string _qualidadeSono = string.Empty;
+        public string QualidadeSono
+        {
+            get => _qualidadeSono;
+            set => SetProperty(ref _qualidadeSono, value);
+        }
+
+        private string _nivelEnergia = string.Empty;
+        public string NivelEnergia
+        {
+            get => _nivelEnergia;
+            set => SetProperty(ref _nivelEnergia, value);
+        }
+
+        private string _estadoHumor = string.Empty;
+        public string EstadoHumor
+        {
+            get => _estadoHumor;
+            set => SetProperty(ref _estadoHumor, value);
+        }
+
+        private string _nivelStress = string.Empty;
+        public string NivelStress
+        {
+            get => _nivelStress;
+            set => SetProperty(ref _nivelStress, value);
+        }
+
+        private string _problemasSono = string.Empty;
+        public string ProblemasSono
+        {
+            get => _problemasSono;
+            set => SetProperty(ref _problemasSono, value);
+        }
+
+        // ========== SEÇÃO 7: SISTEMA CARDIOVASCULAR ==========
+        private string _problemasCardiacos = string.Empty;
+        public string ProblemasCardiacos
+        {
+            get => _problemasCardiacos;
+            set => SetProperty(ref _problemasCardiacos, value);
+        }
+
+        private string _hipertensao = string.Empty;
+        public string Hipertensao
+        {
+            get => _hipertensao;
+            set => SetProperty(ref _hipertensao, value);
+        }
+
+        private string _problemasCirculatorios = string.Empty;
+        public string ProblemasCirculatorios
+        {
+            get => _problemasCirculatorios;
+            set => SetProperty(ref _problemasCirculatorios, value);
+        }
+
+        private string _colesterol = string.Empty;
+        public string Colesterol
+        {
+            get => _colesterol;
+            set => SetProperty(ref _colesterol, value);
+        }
+
+        // ========== SEÇÃO 8: SISTEMA RESPIRATÓRIO ==========
+        private string _problemasRespiratorios = string.Empty;
+        public string ProblemasRespiratorios
+        {
+            get => _problemasRespiratorios;
+            set => SetProperty(ref _problemasRespiratorios, value);
+        }
+
+        private string _problemasRespiratoriosDetalhes = string.Empty;
+        public string ProblemasRespiratoriosDetalhes
+        {
+            get => _problemasRespiratoriosDetalhes;
+            set => SetProperty(ref _problemasRespiratoriosDetalhes, value);
+        }
+
+        private string _asma = string.Empty;
+        public string Asma
+        {
+            get => _asma;
+            set => SetProperty(ref _asma, value);
+        }
+
+        private string _bronquite = string.Empty;
+        public string Bronquite
+        {
+            get => _bronquite;
+            set => SetProperty(ref _bronquite, value);
+        }
+
+        private string _problemasPulmonares = string.Empty;
+        public string ProblemasPulmonares
+        {
+            get => _problemasPulmonares;
+            set => SetProperty(ref _problemasPulmonares, value);
+        }
+
+        // ========== SEÇÃO 9: SISTEMA DIGESTIVO ==========
+        private string _problemasDigestivos = string.Empty;
+        public string ProblemasDigestivos
+        {
+            get => _problemasDigestivos;
+            set => SetProperty(ref _problemasDigestivos, value);
+        }
+
+        private string _problemasDigestivosDetalhes = string.Empty;
+        public string ProblemasDigestivosDetalhes
+        {
+            get => _problemasDigestivosDetalhes;
+            set => SetProperty(ref _problemasDigestivosDetalhes, value);
+        }
+
+        private string _refluxo = string.Empty;
+        public string Refluxo
+        {
+            get => _refluxo;
+            set => SetProperty(ref _refluxo, value);
+        }
+
+        private string _ulceras = string.Empty;
+        public string Ulceras
+        {
+            get => _ulceras;
+            set => SetProperty(ref _ulceras, value);
+        }
+
+        private string _intestino = string.Empty;
+        public string Intestino
+        {
+            get => _intestino;
+            set => SetProperty(ref _intestino, value);
+        }
+
+        private string _figado = string.Empty;
+        public string Figado
+        {
+            get => _figado;
+            set => SetProperty(ref _figado, value);
+        }
+
+        // ========== SEÇÃO 10: SISTEMA REPRODUTOR ==========
+        private string _saudeReproductiva = string.Empty;
+        public string SaudeReproductiva
+        {
+            get => _saudeReproductiva;
+            set => SetProperty(ref _saudeReproductiva, value);
+        }
+
+        private string _cicloMenstrual = string.Empty;
+        public string CicloMenstrual
+        {
+            get => _cicloMenstrual;
+            set => SetProperty(ref _cicloMenstrual, value);
+        }
+
+        private string _menopausa = string.Empty;
+        public string Menopausa
+        {
+            get => _menopausa;
+            set => SetProperty(ref _menopausa, value);
+        }
+
+        private string _gravidez = string.Empty;
+        public string Gravidez
+        {
+            get => _gravidez;
+            set => SetProperty(ref _gravidez, value);
+        }
+
+        // ========== SEÇÃO 11: SISTEMA NERVOSO ==========
+        private string _problemasNeurologicos = string.Empty;
+        public string ProblemasNeurologicos
+        {
+            get => _problemasNeurologicos;
+            set => SetProperty(ref _problemasNeurologicos, value);
+        }
+
+        private string _problemasNeurologicosDetalhes = string.Empty;
+        public string ProblemasNeurologicosDetalhes
+        {
+            get => _problemasNeurologicosDetalhes;
+            set => SetProperty(ref _problemasNeurologicosDetalhes, value);
+        }
+
+        private string _dorCabeca = string.Empty;
+        public string DorCabeca
+        {
+            get => _dorCabeca;
+            set => SetProperty(ref _dorCabeca, value);
+        }
+
+        private string _enxaquecas = string.Empty;
+        public string Enxaquecas
+        {
+            get => _enxaquecas;
+            set => SetProperty(ref _enxaquecas, value);
+        }
+
+        private string _problemasTonturas = string.Empty;
+        public string ProblemasTonturas
+        {
+            get => _problemasTonturas;
+            set => SetProperty(ref _problemasTonturas, value);
+        }
+
+        private string _problemasMemoria = string.Empty;
+        public string ProblemasMemoria
+        {
+            get => _problemasMemoria;
+            set => SetProperty(ref _problemasMemoria, value);
+        }
+
+        // ========== SEÇÃO 12: SISTEMA MUSCULOESQUELÉTICO ==========
+        private string _doresArticulares = string.Empty;
+        public string DoresArticulares
+        {
+            get => _doresArticulares;
+            set => SetProperty(ref _doresArticulares, value);
+        }
+
+        private string _doresCostas = string.Empty;
+        public string DoresCostas
+        {
+            get => _doresCostas;
+            set => SetProperty(ref _doresCostas, value);
+        }
+
+        private string _artrite = string.Empty;
+        public string Artrite
+        {
+            get => _artrite;
+            set => SetProperty(ref _artrite, value);
+        }
+
+        private string _problemasOsseos = string.Empty;
+        public string ProblemasOsseos
+        {
+            get => _problemasOsseos;
+            set => SetProperty(ref _problemasOsseos, value);
+        }
+
+        private string _problemasMusculos = string.Empty;
+        public string ProblemasMusculos
+        {
+            get => _problemasMusculos;
+            set => SetProperty(ref _problemasMusculos, value);
+        }
+
+        // ========== SEÇÃO 13: SISTEMA URINÁRIO ==========
+        private string _infeccoesUrinaras = string.Empty;
+        public string InfeccoesUrinaras
+        {
+            get => _infeccoesUrinaras;
+            set => SetProperty(ref _infeccoesUrinaras, value);
+        }
+
+        private string _problemasRins = string.Empty;
+        public string ProblemasRins
+        {
+            get => _problemasRins;
+            set => SetProperty(ref _problemasRins, value);
+        }
+
+        private string _incontinencia = string.Empty;
+        public string Incontinencia
+        {
+            get => _incontinencia;
+            set => SetProperty(ref _incontinencia, value);
+        }
+
+        // ========== SEÇÃO 14: PELE E ANEXOS ==========
+        private string _alergiasPele = string.Empty;
+        public string AlergiasPele
+        {
+            get => _alergiasPele;
+            set => SetProperty(ref _alergiasPele, value);
+        }
+
+        private string _eczema = string.Empty;
+        public string Eczema
+        {
+            get => _eczema;
+            set => SetProperty(ref _eczema, value);
+        }
+
+        private string _psoriase = string.Empty;
+        public string Psoriase
+        {
+            get => _psoriase;
+            set => SetProperty(ref _psoriase, value);
+        }
+
+        // ========== SEÇÃO 15: ÓRGÃOS DOS SENTIDOS ==========
+        private string _problemasVisao = string.Empty;
+        public string ProblemasVisao
+        {
+            get => _problemasVisao;
+            set => SetProperty(ref _problemasVisao, value);
+        }
+
+        private string _problemasAudicao = string.Empty;
+        public string ProblemasAudicao
+        {
+            get => _problemasAudicao;
+            set => SetProperty(ref _problemasAudicao, value);
+        }
+
+        private string _problemasOncologicos = string.Empty;
+        public string ProblemasOncologicos
+        {
+            get => _problemasOncologicos;
+            set => SetProperty(ref _problemasOncologicos, value);
+        }
+
+        private string _problemasReumaticos = string.Empty;
+        public string ProblemasReumaticos
+        {
+            get => _problemasReumaticos;
+            set => SetProperty(ref _problemasReumaticos, value);
+        }
+
+        private string _problemasOlfato = string.Empty;
+        public string ProblemasOlfato
+        {
+            get => _problemasOlfato;
+            set => SetProperty(ref _problemasOlfato, value);
+        }
+
+        private string _problemasPaladar = string.Empty;
+        public string ProblemasPaladar
+        {
+            get => _problemasPaladar;
+            set => SetProperty(ref _problemasPaladar, value);
+        }
+
+        // ========== SEÇÃO 16: OUTROS PROBLEMAS ==========
+        private string _outrosProblemas = string.Empty;
+        public string OutrosProblemas
+        {
+            get => _outrosProblemas;
+            set => SetProperty(ref _outrosProblemas, value);
+        }
+
+        private string _observacoesGerais = string.Empty;
+        public string ObservacoesGerais
+        {
+            get => _observacoesGerais;
+            set => SetProperty(ref _observacoesGerais, value);
+        }
+
+        private string _historicoFamiliar = string.Empty;
+        public string HistoricoFamiliar
+        {
+            get => _historicoFamiliar;
+            set => SetProperty(ref _historicoFamiliar, value);
+        }
+
+        // ========== PROPRIEDADES ADICIONAIS PARA NOVOS SISTEMAS ==========
+        
+        // Sistema Musculoesquelético
+        private string _problemasMusculoesqueleticos = string.Empty;
+        public string ProblemasMusculoesqueleticos
+        {
+            get => _problemasMusculoesqueleticos;
+            set => SetProperty(ref _problemasMusculoesqueleticos, value);
+        }
+
+        private string _problemasMusculoesqueleticosDetalhes = string.Empty;
+        public string ProblemasMusculoesqueleticosDetalhes
+        {
+            get => _problemasMusculoesqueleticosDetalhes;
+            set => SetProperty(ref _problemasMusculoesqueleticosDetalhes, value);
+        }
+
+        // Sistema Urinário
+        private string _problemasUrinarios = string.Empty;
+        public string ProblemasUrinarios
+        {
+            get => _problemasUrinarios;
+            set => SetProperty(ref _problemasUrinarios, value);
+        }
+
+        private string _problemasUrinariosDetalhes = string.Empty;
+        public string ProblemasUrinariosDetalhes
+        {
+            get => _problemasUrinariosDetalhes;
+            set => SetProperty(ref _problemasUrinariosDetalhes, value);
+        }
+
+        // Sistema Imunitário
+        private string _problemasImunitarios = string.Empty;
+        public string ProblemasImunitarios
+        {
+            get => _problemasImunitarios;
+            set => SetProperty(ref _problemasImunitarios, value);
+        }
+
+        private string _problemasImunitariosDetalhes = string.Empty;
+        public string ProblemasImunitariosDetalhes
+        {
+            get => _problemasImunitariosDetalhes;
+            set => SetProperty(ref _problemasImunitariosDetalhes, value);
+        }
+
+        // Sistema Endócrino
+        private string _problemasEndocrinos = string.Empty;
+        public string ProblemasEndocrinos
+        {
+            get => _problemasEndocrinos;
+            set => SetProperty(ref _problemasEndocrinos, value);
+        }
+
+        private string _problemasEndocrinosDetalhes = string.Empty;
+        public string ProblemasEndocrinosDetalhes
+        {
+            get => _problemasEndocrinosDetalhes;
+            set => SetProperty(ref _problemasEndocrinosDetalhes, value);
+        }
+
+        // Pele e Anexos
+        private string _problemasPele = string.Empty;
+        public string ProblemasPele
+        {
+            get => _problemasPele;
+            set => SetProperty(ref _problemasPele, value);
+        }
+
+        private string _problemasPeleDetalhes = string.Empty;
+        public string ProblemasPeleDetalhes
+        {
+            get => _problemasPeleDetalhes;
+            set => SetProperty(ref _problemasPeleDetalhes, value);
+        }
+
+        // Órgãos dos Sentidos - Detalhes
+        private string _problemasVisaoDetalhes = string.Empty;
+        public string ProblemasVisaoDetalhes
+        {
+            get => _problemasVisaoDetalhes;
+            set => SetProperty(ref _problemasVisaoDetalhes, value);
+        }
+
+        private string _problemasAudicaoDetalhes = string.Empty;
+        public string ProblemasAudicaoDetalhes
+        {
+            get => _problemasAudicaoDetalhes;
+            set => SetProperty(ref _problemasAudicaoDetalhes, value);
+        }
+
+        private string _problemasOncologicosDetalhes = string.Empty;
+        public string ProblemasOncologicosDetalhes
+        {
+            get => _problemasOncologicosDetalhes;
+            set => SetProperty(ref _problemasOncologicosDetalhes, value);
+        }
+
+        private string _problemasReumaticosDetalhes = string.Empty;
+        public string ProblemasReumaticosDetalhes
+        {
+            get => _problemasReumaticosDetalhes;
+            set => SetProperty(ref _problemasReumaticosDetalhes, value);
+        }
+
+        #region Consentimentos
+
+        // Naturopatia
+        private bool _naturopatiaCompreendeNatureza = false;
+        public bool NaturopatiaCompreendeNatureza
+        {
+            get => _naturopatiaCompreendeNatureza;
+            set => SetProperty(ref _naturopatiaCompreendeNatureza, value);
+        }
+
+        private bool _naturopatiaObjetivosExplicados = false;
+        public bool NaturopatiaObjetivosExplicados
+        {
+            get => _naturopatiaObjetivosExplicados;
+            set => SetProperty(ref _naturopatiaObjetivosExplicados, value);
+        }
+
+        private bool _naturopatiaRiscosDiscutidos = false;
+        public bool NaturopatiaRiscosDiscutidos
+        {
+            get => _naturopatiaRiscosDiscutidos;
+            set => SetProperty(ref _naturopatiaRiscosDiscutidos, value);
+        }
+
+        private bool _naturopatiaInformacaoPatologias = false;
+        public bool NaturopatiaInformacaoPatologias
+        {
+            get => _naturopatiaInformacaoPatologias;
+            set => SetProperty(ref _naturopatiaInformacaoPatologias, value);
+        }
+
+        private bool _naturopatiaAlternativasDiscutidas = false;
+        public bool NaturopatiaAlternativasDiscutidas
+        {
+            get => _naturopatiaAlternativasDiscutidas;
+            set => SetProperty(ref _naturopatiaAlternativasDiscutidas, value);
+        }
+
+        private bool _naturopatiaAutorizacaoCorresponsabilidade = false;
+        public bool NaturopatiaAutorizacaoCorresponsabilidade
+        {
+            get => _naturopatiaAutorizacaoCorresponsabilidade;
+            set => SetProperty(ref _naturopatiaAutorizacaoCorresponsabilidade, value);
+        }
+
+        private bool _naturopatiaRevogavel = false;
+        public bool NaturopatiaRevogavel
+        {
+            get => _naturopatiaRevogavel;
+            set => SetProperty(ref _naturopatiaRevogavel, value);
+        }
+
+        private string? _naturopatiaAssinatura = null;
+        public string? NaturopatiaAssinatura
+        {
+            get => _naturopatiaAssinatura;
+            set => SetProperty(ref _naturopatiaAssinatura, value);
+        }
+
+        // Osteopatia
+        private bool _osteopatiaTecnicasExplicadas = false;
+        public bool OsteopatiaTecnicasExplicadas
+        {
+            get => _osteopatiaTecnicasExplicadas;
+            set => SetProperty(ref _osteopatiaTecnicasExplicadas, value);
+        }
+
+        private bool _osteopatiaContraindicacoesDiscutidas = false;
+        public bool OsteopatiaContraindicacoesDiscutidas
+        {
+            get => _osteopatiaContraindicacoesDiscutidas;
+            set => SetProperty(ref _osteopatiaContraindicacoesDiscutidas, value);
+        }
+
+        private bool _osteopatiaRiscosExplicados = false;
+        public bool OsteopatiaRiscosExplicados
+        {
+            get => _osteopatiaRiscosExplicados;
+            set => SetProperty(ref _osteopatiaRiscosExplicados, value);
+        }
+
+        private bool _osteopatiaAutorizoContactoFisico = false;
+        public bool OsteopatiaAutorizoContactoFisico
+        {
+            get => _osteopatiaAutorizoContactoFisico;
+            set => SetProperty(ref _osteopatiaAutorizoContactoFisico, value);
+        }
+
+        private bool _osteopatiaPossoInterromper = false;
+        public bool OsteopatiaPossoInterromper
+        {
+            get => _osteopatiaPossoInterromper;
+            set => SetProperty(ref _osteopatiaPossoInterromper, value);
+        }
+
+        private bool _osteopatiaRevogavel = false;
+        public bool OsteopatiaRevogavel
+        {
+            get => _osteopatiaRevogavel;
+            set => SetProperty(ref _osteopatiaRevogavel, value);
+        }
+
+        private string? _osteopatiaAssinatura = null;
+        public string? OsteopatiaAssinatura
+        {
+            get => _osteopatiaAssinatura;
+            set => SetProperty(ref _osteopatiaAssinatura, value);
+        }
+
+        // Iridologia
+        private bool _iridologiaNaturezaNaoInvasiva = false;
+        public bool IridologiaNaturezaNaoInvasiva
+        {
+            get => _iridologiaNaturezaNaoInvasiva;
+            set => SetProperty(ref _iridologiaNaturezaNaoInvasiva, value);
+        }
+
+        private bool _iridologiaAutorizoCapturaImagens = false;
+        public bool IridologiaAutorizoCapturaImagens
+        {
+            get => _iridologiaAutorizoCapturaImagens;
+            set => SetProperty(ref _iridologiaAutorizoCapturaImagens, value);
+        }
+
+        private bool _iridologiaCompreensoLimitacoes = false;
+        public bool IridologiaCompreensoLimitacoes
+        {
+            get => _iridologiaCompreensoLimitacoes;
+            set => SetProperty(ref _iridologiaCompreensoLimitacoes, value);
+        }
+
+        private bool _iridologiaRevogavel = false;
+        public bool IridologiaRevogavel
+        {
+            get => _iridologiaRevogavel;
+            set => SetProperty(ref _iridologiaRevogavel, value);
+        }
+
+        private string? _iridologiaAssinatura = null;
+        public string? IridologiaAssinatura
+        {
+            get => _iridologiaAssinatura;
+            set => SetProperty(ref _iridologiaAssinatura, value);
+        }
+
+        // Medicina Quântica
+        private bool _medicinaQuanticaAbordagemComplementar = false;
+        public bool MedicinaQuanticaAbordagemComplementar
+        {
+            get => _medicinaQuanticaAbordagemComplementar;
+            set => SetProperty(ref _medicinaQuanticaAbordagemComplementar, value);
+        }
+
+        private bool _medicinaQuanticaNaturezaProcedimentos = false;
+        public bool MedicinaQuanticaNaturezaProcedimentos
+        {
+            get => _medicinaQuanticaNaturezaProcedimentos;
+            set => SetProperty(ref _medicinaQuanticaNaturezaProcedimentos, value);
+        }
+
+        private bool _medicinaQuanticaPossiveisReacoes = false;
+        public bool MedicinaQuanticaPossiveisReacoes
+        {
+            get => _medicinaQuanticaPossiveisReacoes;
+            set => SetProperty(ref _medicinaQuanticaPossiveisReacoes, value);
+        }
+
+        private bool _medicinaQuanticaContraindicacoes = false;
+        public bool MedicinaQuanticaContraindicacoes
+        {
+            get => _medicinaQuanticaContraindicacoes;
+            set => SetProperty(ref _medicinaQuanticaContraindicacoes, value);
+        }
+
+        private bool _medicinaQuanticaLiberdadeInterromper = false;
+        public bool MedicinaQuanticaLiberdadeInterromper
+        {
+            get => _medicinaQuanticaLiberdadeInterromper;
+            set => SetProperty(ref _medicinaQuanticaLiberdadeInterromper, value);
+        }
+
+        private bool _medicinaQuanticaRevogavel = false;
+        public bool MedicinaQuanticaRevogavel
+        {
+            get => _medicinaQuanticaRevogavel;
+            set => SetProperty(ref _medicinaQuanticaRevogavel, value);
+        }
+
+        private string? _medicinaQuanticaAssinatura = null;
+        public string? MedicinaQuanticaAssinatura
+        {
+            get => _medicinaQuanticaAssinatura;
+            set => SetProperty(ref _medicinaQuanticaAssinatura, value);
+        }
+
+        // RGPD
+        private bool _rgpdInformacaoResponsavel = false;
+        public bool RgpdInformacaoResponsavel
+        {
+            get => _rgpdInformacaoResponsavel;
+            set => SetProperty(ref _rgpdInformacaoResponsavel, value);
+        }
+
+        private bool _rgpdDireitosAcesso = false;
+        public bool RgpdDireitosAcesso
+        {
+            get => _rgpdDireitosAcesso;
+            set => SetProperty(ref _rgpdDireitosAcesso, value);
+        }
+
+        private bool _rgpdConsentimentoExplicito = false;
+        public bool RgpdConsentimentoExplicito
+        {
+            get => _rgpdConsentimentoExplicito;
+            set => SetProperty(ref _rgpdConsentimentoExplicito, value);
+        }
+
+        private bool _rgpdOpcaoNaoMarketing = false;
+        public bool RgpdOpcaoNaoMarketing
+        {
+            get => _rgpdOpcaoNaoMarketing;
+            set => SetProperty(ref _rgpdOpcaoNaoMarketing, value);
+        }
+
+        private bool _rgpdRevogavel = false;
+        public bool RgpdRevogavel
+        {
+            get => _rgpdRevogavel;
+            set => SetProperty(ref _rgpdRevogavel, value);
+        }
+
+        private string? _rgpdAssinatura = null;
+        public string? RgpdAssinatura
+        {
+            get => _rgpdAssinatura;
+            set => SetProperty(ref _rgpdAssinatura, value);
+        }
+
+        // Assinatura geral do questionário
+        private string? _assinaturaQuestionarioCompleto = null;
+        public string? AssinaturaQuestionarioCompleto
+        {
+            get => _assinaturaQuestionarioCompleto;
+            set => SetProperty(ref _assinaturaQuestionarioCompleto, value);
+        }
+
+        private bool _questionarioAssinado = false;
+        public bool QuestionarioAssinado
+        {
+            get => _questionarioAssinado;
+            set => SetProperty(ref _questionarioAssinado, value);
+        }
+
+        #endregion
+
         #endregion
 
         #region Methods
@@ -273,6 +2006,14 @@ namespace BioDesk.App.ViewModels
         public ICommand ImprimirCommand { get; private set; } = null!;
         public ICommand ExportarPdfCommand { get; private set; } = null!;
 
+        // Comandos para assinatura de consentimentos
+        public ICommand AssinarNaturopatiaCommand { get; private set; } = null!;
+        public ICommand AssinarOsteopatiaCommand { get; private set; } = null!;
+        public ICommand AssinarIridologiaCommand { get; private set; } = null!;
+        public ICommand AssinarMedicinaQuanticaCommand { get; private set; } = null!;
+        public ICommand AssinarRgpdCommand { get; private set; } = null!;
+        public ICommand AssinarQuestionarioCompletoCommand { get; private set; } = null!;
+
         private void InitializeCommands()
         {
             App.DebugLog("=== INICIALIZANDO COMMANDS DO QUESTIONÁRIO ===");
@@ -283,6 +2024,15 @@ namespace BioDesk.App.ViewModels
             AssinarProfissionalCommand = new RelayCommand(async () => await AssinarComoProfissional());
             ImprimirCommand = new RelayCommand(ImprimirQuestionario);
             ExportarPdfCommand = new RelayCommand(async () => await ExportarParaPdf());
+            
+            // Comandos de consentimentos
+            AssinarNaturopatiaCommand = new RelayCommand(async () => await AssinarConsentimento("Naturopatia"));
+            AssinarOsteopatiaCommand = new RelayCommand(async () => await AssinarConsentimento("Osteopatia"));
+            AssinarIridologiaCommand = new RelayCommand(async () => await AssinarConsentimento("Iridologia"));
+            AssinarMedicinaQuanticaCommand = new RelayCommand(async () => await AssinarConsentimento("MedicinaQuantica"));
+            AssinarRgpdCommand = new RelayCommand(async () => await AssinarConsentimento("RGPD"));
+            AssinarQuestionarioCompletoCommand = new RelayCommand(async () => await AssinarQuestionarioCompleto());
+            
             App.DebugLog("=== COMMANDS INICIALIZADOS COM SUCESSO ===");
         }
 
@@ -316,13 +2066,42 @@ namespace BioDesk.App.ViewModels
             try
             {
                 IsLoading = true;
-                await Task.Delay(500);
                 
-                MessageBox.Show("Funcionalidade de carregar questionário existente será implementada em breve.",
-                               "Em desenvolvimento", MessageBoxButton.OK, MessageBoxImage.Information);
+                if (PacienteId <= 0)
+                {
+                    MessageBox.Show("Por favor, selecione um paciente primeiro.", 
+                                   "Paciente não selecionado", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                App.DebugLog($"=== CARREGANDO QUESTIONÁRIO PARA PACIENTE {PacienteId} ===");
+                
+                using var context = _serviceProvider.GetRequiredService<BioDeskDbContext>();
+                
+                // Buscar questionário mais recente do paciente
+                var questionario = await context.QuestionariosSaude
+                    .Where(q => q.PacienteId == PacienteId)
+                    .OrderByDescending(q => q.DataPreenchimento)
+                    .FirstOrDefaultAsync();
+
+                if (questionario == null)
+                {
+                    MessageBox.Show("Nenhum questionário encontrado para este paciente.", 
+                                   "Questionário não encontrado", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return;
+                }
+
+                App.DebugLog($"Questionário encontrado! ID: {questionario.Id}, Data: {questionario.DataPreenchimento}");
+                
+                // Carregar dados na interface
+                CarregarDadosNaInterface(questionario);
+                
+                MessageBox.Show($"Questionário carregado com sucesso!\nData: {questionario.DataPreenchimento:dd/MM/yyyy HH:mm}", 
+                               "Questionário carregado", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
             {
+                App.DebugLog($"ERRO ao carregar questionário: {ex.Message}");
                 MessageBox.Show($"Erro ao carregar questionário: {ex.Message}", 
                                "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -330,6 +2109,56 @@ namespace BioDesk.App.ViewModels
             {
                 IsLoading = false;
             }
+        }
+
+        private void CarregarDadosNaInterface(QuestionarioSaude questionario)
+        {
+            App.DebugLog("=== CARREGANDO DADOS NA INTERFACE ===");
+            
+            // Informações médicas gerais
+            DoencaCronica = questionario.CondicoesCronicas ?? string.Empty;
+            SintomasAtuais = questionario.SintomasAtuais ?? string.Empty;
+            MedicacaoAtual = questionario.MedicacaoAtual ?? string.Empty;
+            
+            // Doenças crónicas específicas (novos campos boolean)
+            DoencaHipertensao = questionario.DoencaHipertensao;
+            DoencaCardiopatia = questionario.DoencaCardiopatia;
+            DoencaDiabetesTipo1 = questionario.DoencaDiabetesTipo1;
+            DoencaDiabetesTipo2 = questionario.DoencaDiabetesTipo2;
+            DoencaTiroideia = questionario.DoencaTiroideia;
+            DoencaDislipidemia = questionario.DoencaDislipidemia;
+            DoencaRenal = questionario.DoencaRenal;
+            DoencaHepatica = questionario.DoencaHepatica;
+            DoencaAutoimune = questionario.DoencaAutoimune;
+            DoencaOsteoporose = questionario.DoencaOsteoporose;
+            DoencaAsmaDPOC = questionario.DoencaAsmaDPOC;
+            DoencaOncologia = questionario.DoencaOncologia;
+            
+            // Alergias - campos string (compatibilidade)
+            AlergiasAlimentares = questionario.AlergiasAlimentos ?? string.Empty;
+            AlergiasMedicamentos = questionario.AlergiasMedicamentos ?? string.Empty;
+            AlergiasAmbientais = questionario.AlergiasAmbientais ?? string.Empty;
+            AlergiasPlantas = questionario.AlergiasPlantas ?? string.Empty;
+            OutrasAlergias = questionario.AlergiasSupplementos ?? string.Empty;
+            
+            // Intolerâncias alimentares específicas (novos campos boolean)
+            IntoleranciaGluten = questionario.IntoleranciaGluten;
+            IntoleranciaLactose = questionario.IntoleranciaLactose;
+            IntoleranciaProteinaLeite = questionario.IntoleranciaProteínaLeite;
+            IntoleranciaOvos = questionario.IntoleranciaOvos;
+            IntoleranciaMarisco = questionario.IntoleranciaMarisco;
+            IntoleranciaFrutosSecos = questionario.IntoleranciaFrutosSecos;
+            IntoleranciaAlimentarOutras = questionario.IntoleranciaAlimentarOutras ?? string.Empty;
+            
+            // Alergias ambientais específicas (novos campos boolean)
+            AlergiaPolen = questionario.AlergiaPolen;
+            AlergiaAcaros = questionario.AlergiaAcaros;
+            AlergiaPelosAnimais = questionario.AlergiaPelosAnimais;
+            AlergiaPoeira = questionario.AlergiaPoeira;
+            AlergiaMofo = questionario.AlergiaMofo;
+            AlergiasAmbientaisOutras = questionario.AlergiasAmbientaisOutras ?? string.Empty;
+            
+            App.DebugLog("Dados carregados na interface com sucesso!");
         }
 
         private async Task GuardarQuestionario()
@@ -376,23 +2205,124 @@ namespace BioDesk.App.ViewModels
                 questionario.CondicoesCronicas = DoencaCronica;
                 questionario.SintomasAtuais = SintomasAtuais;
                 questionario.MedicacaoAtual = MedicacaoAtual;
+                
+                // Doenças crónicas específicas (checkboxes)
+                questionario.DoencaHipertensao = DoencaHipertensao;
+                questionario.DoencaCardiopatia = DoencaCardiopatia;
+                questionario.DoencaDiabetesTipo1 = DoencaDiabetesTipo1;
+                questionario.DoencaDiabetesTipo2 = DoencaDiabetesTipo2;
+                questionario.DoencaTiroideia = DoencaTiroideia;
+                questionario.DoencaDislipidemia = DoencaDislipidemia;
+                questionario.DoencaRenal = DoencaRenal;
+                questionario.DoencaHepatica = DoencaHepatica;
+                questionario.DoencaAutoimune = DoencaAutoimune;
+                questionario.DoencaOsteoporose = DoencaOsteoporose;
+                questionario.DoencaAsmaDPOC = DoencaAsmaDPOC;
+                questionario.DoencaOncologia = DoencaOncologia;
+                
                 questionario.AlergiasAlimentos = AlergiasAlimentares;
                 questionario.AlergiasMedicamentos = AlergiasMedicamentos;
                 questionario.AlergiasAmbientais = AlergiasAmbientais;
-                questionario.AlergiasPlantas = OutrasAlergias;
+                
+                // Intolerâncias alimentares específicas (checkboxes)
+                questionario.IntoleranciaGluten = IntoleranciaGluten;
+                questionario.IntoleranciaLactose = IntoleranciaLactose;
+                questionario.IntoleranciaProteínaLeite = IntoleranciaProteinaLeite;
+                questionario.IntoleranciaOvos = IntoleranciaOvos;
+                questionario.IntoleranciaMarisco = IntoleranciaMarisco;
+                questionario.IntoleranciaFrutosSecos = IntoleranciaFrutosSecos;
+                questionario.IntoleranciaAlimentarOutras = IntoleranciaAlimentarOutras;
+                
+                // Alergias ambientais específicas
+                questionario.AlergiaPolen = AlergiaPolen;
+                questionario.AlergiaAcaros = AlergiaAcaros;
+                questionario.AlergiaPelosAnimais = AlergiaPelosAnimais;
+                questionario.AlergiaPoeira = AlergiaPoeira;
+                questionario.AlergiaMofo = AlergiaMofo;
+                questionario.AlergiasAmbientaisOutras = AlergiasAmbientaisOutras;
+                
+                questionario.AlergiasPlantas = AlergiasPlantas;
+                questionario.AlergiasSupplementos = OutrasAlergias;
                 questionario.HistoricoCirurgias = HistoricoCirurgico;
                 questionario.HistoricoFraturas = Fraturas;
                 questionario.DetalhesEstiloVida = $"Atividade Física: {AtividadeFisica}; Tabagismo: {Tabagismo}; Álcool: {ConsumoAlcool}; Hábitos Alimentares: {HabitosAlimentares}";
+                
+                // ========== SEÇÃO 5: OBJETIVOS ==========
+                questionario.QueixaPrincipal = ObjetivoConsulta;
+                questionario.ObjetivoOutro = $"Expectativas: {Expectativas}; Motivações: {Motivacoes}";
+                
+                // ========== SEÇÃO 6: ESTADO GERAL ==========
+                questionario.SaudeGlobal = EstadoHumor;
+                questionario.HorasSono = QualidadeSono;
+                questionario.ExercicioFisico = NivelEnergia;
+                questionario.DetalhesEstiloVida += $"; Sono: {QualidadeSono}; Energia: {NivelEnergia}; Humor: {EstadoHumor}; Stress: {NivelStress}; Problemas Sono: {ProblemasSono}";
+                
+                // ========== SEÇÃO 7: SISTEMA CARDIOVASCULAR ==========
+                questionario.DoencaCardiopatia = !string.IsNullOrWhiteSpace(ProblemasCardiacos);
+                questionario.DiagnosticosMedicosAtuais = $"Cardíacos: {ProblemasCardiacos}; Hipertensão: {Hipertensao}; Circulatórios: {ProblemasCirculatorios}; Colesterol: {Colesterol}";
+                questionario.DoencaHipertensao = Hipertensao?.Contains("Sim") == true;
+                questionario.DoencaDislipidemia = Colesterol?.Contains("Elevado") == true;
+                
+                // ========== SEÇÃO 8: SISTEMA RESPIRATÓRIO ==========
+                questionario.DoencaAsmaDPOC = !string.IsNullOrWhiteSpace(ProblemasRespiratorios) || Asma?.Contains("Sim") == true;
+                var respiratorioDetalhes = ProblemasRespiratorios;
+                if (!string.IsNullOrWhiteSpace(ProblemasRespiratoriosDetalhes)) {
+                    respiratorioDetalhes += $" - Detalhes: {ProblemasRespiratoriosDetalhes}";
+                }
+                questionario.DiagnosticosMedicosAtuais += $"; Respiratórios: {respiratorioDetalhes}; Asma: {Asma}; Bronquite: {Bronquite}; Pulmonares: {ProblemasPulmonares}";
+                
+                // ========== SEÇÃO 9: SISTEMA DIGESTIVO ==========
+                var digestivoDetalhes = ProblemasDigestivos;
+                if (!string.IsNullOrWhiteSpace(ProblemasDigestivosDetalhes)) {
+                    digestivoDetalhes += $" - Detalhes: {ProblemasDigestivosDetalhes}";
+                }
+                questionario.DiagnosticosMedicosAtuais += $"; Digestivos: {digestivoDetalhes}; Refluxo: {Refluxo}; Úlceras: {Ulceras}; Intestino: {Intestino}; Fígado: {Figado}";
+                
+                // ========== SEÇÃO 10: SISTEMA REPRODUTOR ==========
+                questionario.DiagnosticosMedicosAtuais += $"; Reprodutivo: {SaudeReproductiva}; Ciclo: {CicloMenstrual}; Menopausa: {Menopausa}; Gravidez: {Gravidez}";
+                if (!string.IsNullOrWhiteSpace(Gravidez)) {
+                    questionario.GravidezAleitamento = Gravidez.Contains("grávida") ? "Grávida" : "Não";
+                }
+                
+                // ========== SEÇÃO 11: SISTEMA NERVOSO ==========
+                var neurologicoDetalhes = ProblemasNeurologicos;
+                if (!string.IsNullOrWhiteSpace(ProblemasNeurologicosDetalhes)) {
+                    neurologicoDetalhes += $" - Detalhes: {ProblemasNeurologicosDetalhes}";
+                }
+                questionario.DiagnosticosMedicosAtuais += $"; Neurológicos: {neurologicoDetalhes}; Dor Cabeça: {DorCabeca}; Enxaquecas: {Enxaquecas}; Tonturas: {ProblemasTonturas}; Memória: {ProblemasMemoria}";
+                
+                // ========== DOENÇA CRÓNICA COM DETALHES ==========
+                var doencaCronicaCompleta = DoencaCronica;
+                if (!string.IsNullOrWhiteSpace(DoencaCronicaDetalhes)) {
+                    doencaCronicaCompleta += $" - Detalhes: {DoencaCronicaDetalhes}";
+                }
+                questionario.CondicoesCronicas = doencaCronicaCompleta;
+                
+                // ========== SEÇÃO 12: SISTEMA MUSCULOESQUELÉTICO ==========
+                questionario.DiagnosticosMedicosAtuais += $"; Articulares: {DoresArticulares}; Costas: {DoresCostas}; Artrite: {Artrite}; Ósseos: {ProblemasOsseos}; Musculares: {ProblemasMusculos}";
+                if (Artrite?.Contains("Artrite") == true) {
+                    questionario.DoencaAutoimune = true;
+                }
+                
+                // ========== SEÇÃO 13: SISTEMA URINÁRIO ==========
+                questionario.DoencaRenal = !string.IsNullOrWhiteSpace(ProblemasUrinarios) || !string.IsNullOrWhiteSpace(ProblemasRins);
+                questionario.DiagnosticosMedicosAtuais += $"; Urinários: {ProblemasUrinarios}; Infecções: {InfeccoesUrinaras}; Rins: {ProblemasRins}; Incontinência: {Incontinencia}";
+                
+                // ========== SEÇÃO 14: PELE E ANEXOS ==========
+                questionario.DiagnosticosMedicosAtuais += $"; Pele: {ProblemasPele}; Alergias Pele: {AlergiasPele}; Eczema: {Eczema}; Psoríase: {Psoriase}";
+                
+                // ========== SEÇÃO 15: ÓRGÃOS DOS SENTIDOS ==========
+                questionario.DiagnosticosMedicosAtuais += $"; Visão: {ProblemasVisao}; Audição: {ProblemasAudicao}; Olfato: {ProblemasOlfato}; Paladar: {ProblemasPaladar}";
+                
+                // ========== SEÇÃO 16: OUTROS PROBLEMAS ==========
+                questionario.DiagnosticosMedicosAtuais += $"; Outros: {OutrosProblemas}; Histórico Familiar: {HistoricoFamiliar}; Observações: {ObservacoesGerais}";
+                
                 questionario.DataUltimaAtualizacao = DateTime.Now;
 
                 // Definir campos boolean baseado se há texto
                 questionario.TomaMedicacao = !string.IsNullOrWhiteSpace(MedicacaoAtual);
                 questionario.JaFezCirurgias = !string.IsNullOrWhiteSpace(HistoricoCirurgico);
                 questionario.JaTeveFraturas = !string.IsNullOrWhiteSpace(Fraturas);
-                questionario.TemAlergias = !string.IsNullOrWhiteSpace(AlergiasAlimentares) || 
-                                          !string.IsNullOrWhiteSpace(AlergiasMedicamentos) || 
-                                          !string.IsNullOrWhiteSpace(AlergiasAmbientais) || 
-                                          !string.IsNullOrWhiteSpace(OutrasAlergias);
                 questionario.PraticaExercicio = !string.IsNullOrWhiteSpace(AtividadeFisica);
                 questionario.Fuma = !string.IsNullOrWhiteSpace(Tabagismo) && !Tabagismo.ToLower().Contains("não");
                 questionario.ConsomeAlcool = !string.IsNullOrWhiteSpace(ConsumoAlcool) && !ConsumoAlcool.ToLower().Contains("não");
@@ -415,6 +2345,11 @@ namespace BioDesk.App.ViewModels
                 App.DebugLog("Salvando alterações na base de dados...");
                 var linhasAfetadas = await context.SaveChangesAsync();
                 App.DebugLog($"Operação concluída! Linhas afetadas: {linhasAfetadas}");
+
+                // Salvar consentimentos
+                App.DebugLog("Salvando consentimentos...");
+                await SalvarConsentimentos();
+                App.DebugLog("Consentimentos salvos com sucesso!");
 
                 // Atualizar propriedades de interface
                 DataUltimaEdicao = DateTime.Now;
@@ -512,6 +2447,240 @@ namespace BioDesk.App.ViewModels
             {
                 MessageBox.Show($"Erro ao exportar para PDF: {ex.Message}", 
                                "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        #endregion
+
+        #region Métodos de Consentimentos
+
+        private Task AssinarConsentimento(string tipoConsentimento)
+        {
+            return Task.Run(() =>
+            {
+                try
+                {
+                    // Simular abertura do SignatureCanvas
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        var signatureWindow = new Window
+                        {
+                            Title = $"Assinar {tipoConsentimento}",
+                            Width = 600,
+                            Height = 400,
+                            WindowStartupLocation = WindowStartupLocation.CenterOwner
+                        };
+
+                        var signatureCanvas = new Controls.SignatureCanvas();
+                        signatureWindow.Content = signatureCanvas;
+
+                        signatureCanvas.SignatureCompleted += (sender, args) =>
+                        {
+                            // Converter assinatura para Base64
+                            string base64Signature = Convert.ToBase64String(args.SignatureData);
+                            
+                            // Atualizar a propriedade correspondente
+                            switch (tipoConsentimento)
+                            {
+                                case "Naturopatia":
+                                    NaturopatiaAssinatura = base64Signature;
+                                    break;
+                                case "Osteopatia":
+                                    OsteopatiaAssinatura = base64Signature;
+                                    break;
+                                case "Iridologia":
+                                    IridologiaAssinatura = base64Signature;
+                                    break;
+                                case "MedicinaQuantica":
+                                    MedicinaQuanticaAssinatura = base64Signature;
+                                    break;
+                                case "RGPD":
+                                    RgpdAssinatura = base64Signature;
+                                    break;
+                            }
+
+                            signatureWindow.DialogResult = true;
+                            signatureWindow.Close();
+                        };
+
+                        signatureCanvas.SignatureCancelled += (sender, args) =>
+                        {
+                            signatureWindow.DialogResult = false;
+                            signatureWindow.Close();
+                        };
+
+                        var result = signatureWindow.ShowDialog();
+                        
+                        if (result == true)
+                        {
+                            MessageBox.Show($"Consentimento {tipoConsentimento} assinado com sucesso!", 
+                                           "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        MessageBox.Show($"Erro ao assinar consentimento {tipoConsentimento}: {ex.Message}", 
+                                       "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                    });
+                }
+            });
+        }
+
+        private Task AssinarQuestionarioCompleto()
+        {
+            return Task.Run(() =>
+            {
+                try
+                {
+                    // Verificar se consentimentos obrigatórios foram preenchidos
+                    if (!ValidarConsentimentosObrigatorios())
+                    {
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
+                            MessageBox.Show("Complete todos os consentimentos obrigatórios antes de assinar o questionário completo.", 
+                                           "Validação", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        });
+                        return;
+                    }
+
+                    // Simular abertura do SignatureCanvas
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        var signatureWindow = new Window
+                        {
+                            Title = "Assinar Questionário Completo",
+                            Width = 600,
+                            Height = 400,
+                            WindowStartupLocation = WindowStartupLocation.CenterOwner
+                        };
+
+                        var signatureCanvas = new Controls.SignatureCanvas();
+                        signatureWindow.Content = signatureCanvas;
+
+                        signatureCanvas.SignatureCompleted += (sender, args) =>
+                        {
+                            AssinaturaQuestionarioCompleto = Convert.ToBase64String(args.SignatureData);
+                            QuestionarioAssinado = true;
+                            signatureWindow.DialogResult = true;
+                            signatureWindow.Close();
+                        };
+
+                        signatureCanvas.SignatureCancelled += (sender, args) =>
+                        {
+                            signatureWindow.DialogResult = false;
+                            signatureWindow.Close();
+                        };
+
+                        var result = signatureWindow.ShowDialog();
+                        
+                        if (result == true)
+                        {
+                            MessageBox.Show("Questionário assinado com sucesso!", 
+                                           "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        MessageBox.Show($"Erro ao assinar questionário: {ex.Message}", 
+                                       "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                    });
+                }
+            });
+        }
+
+        private bool ValidarConsentimentosObrigatorios()
+        {
+            // Implementar validação de consentimentos obrigatórios
+            // Por exemplo, RGPD é sempre obrigatório
+            return RgpdConsentimentoExplicito && !string.IsNullOrEmpty(RgpdAssinatura);
+        }
+
+        private async Task SalvarConsentimentos()
+        {
+            try
+            {
+                // Usar o contexto que já pode estar injetado ou criar um novo com options
+                var optionsBuilder = new DbContextOptionsBuilder<BioDeskDbContext>();
+                optionsBuilder.UseSqlite("Data Source=biodesk.db");
+                
+                using var context = new BioDeskDbContext(optionsBuilder.Options);
+                
+                // Verificar se já existe um consentimento para este paciente
+                var consentimentoExistente = await context.ConsentimentosInformados
+                    .FirstOrDefaultAsync(c => c.PacienteId == PacienteId);
+
+                if (consentimentoExistente == null)
+                {
+                    consentimentoExistente = new ConsentimentoInformado
+                    {
+                        PacienteId = PacienteId,
+                        DataConsentimento = DateTime.Now,
+                        ConteudoConsentimento = "Questionário completo com consentimentos"
+                    };
+                    context.ConsentimentosInformados.Add(consentimentoExistente);
+                }
+
+                // Atualizar campos de consentimentos
+                consentimentoExistente.NaturopatiaCompreendeNatureza = NaturopatiaCompreendeNatureza;
+                consentimentoExistente.NaturopatiaObjetivosExplicados = NaturopatiaObjetivosExplicados;
+                consentimentoExistente.NaturopatiaRiscosDiscutidos = NaturopatiaRiscosDiscutidos;
+                consentimentoExistente.NaturopatiaInformacaoPatologias = NaturopatiaInformacaoPatologias;
+                consentimentoExistente.NaturopatiaAlternativasDiscutidas = NaturopatiaAlternativasDiscutidas;
+                consentimentoExistente.NaturopatiaAutorizacaoCorresponsabilidade = NaturopatiaAutorizacaoCorresponsabilidade;
+                consentimentoExistente.NaturopatiaRevogavel = NaturopatiaRevogavel;
+                consentimentoExistente.NaturopatiaAssinatura = NaturopatiaAssinatura;
+                consentimentoExistente.NaturopatiaDataAssinatura = !string.IsNullOrEmpty(NaturopatiaAssinatura) ? DateTime.Now : null;
+
+                consentimentoExistente.OsteopatiaTecnicasExplicadas = OsteopatiaTecnicasExplicadas;
+                consentimentoExistente.OsteopatiaContraindicacoesDiscutidas = OsteopatiaContraindicacoesDiscutidas;
+                consentimentoExistente.OsteopatiaRiscosExplicados = OsteopatiaRiscosExplicados;
+                consentimentoExistente.OsteopatiaAutorizoContactoFisico = OsteopatiaAutorizoContactoFisico;
+                consentimentoExistente.OsteopatiaPossoInterromper = OsteopatiaPossoInterromper;
+                consentimentoExistente.OsteopatiaRevogavel = OsteopatiaRevogavel;
+                consentimentoExistente.OsteopatiaAssinatura = OsteopatiaAssinatura;
+                consentimentoExistente.OsteopatiaDataAssinatura = !string.IsNullOrEmpty(OsteopatiaAssinatura) ? DateTime.Now : null;
+
+                consentimentoExistente.IridologiaNaturezaNaoInvasiva = IridologiaNaturezaNaoInvasiva;
+                consentimentoExistente.IridologiaAutorizoCapturaImagens = IridologiaAutorizoCapturaImagens;
+                consentimentoExistente.IridologiaCompreensoLimitacoes = IridologiaCompreensoLimitacoes;
+                consentimentoExistente.IridologiaRevogavel = IridologiaRevogavel;
+                consentimentoExistente.IridologiaAssinatura = IridologiaAssinatura;
+                consentimentoExistente.IridologiaDataAssinatura = !string.IsNullOrEmpty(IridologiaAssinatura) ? DateTime.Now : null;
+
+                consentimentoExistente.MedicinaQuanticaAbordagemComplementar = MedicinaQuanticaAbordagemComplementar;
+                consentimentoExistente.MedicinaQuanticaNaturezaProcedimentos = MedicinaQuanticaNaturezaProcedimentos;
+                consentimentoExistente.MedicinaQuanticaPossiveisReacoes = MedicinaQuanticaPossiveisReacoes;
+                consentimentoExistente.MedicinaQuanticaContraindicacoes = MedicinaQuanticaContraindicacoes;
+                consentimentoExistente.MedicinaQuanticaLiberdadeInterromper = MedicinaQuanticaLiberdadeInterromper;
+                consentimentoExistente.MedicinaQuanticaRevogavel = MedicinaQuanticaRevogavel;
+                consentimentoExistente.MedicinaQuanticaAssinatura = MedicinaQuanticaAssinatura;
+                consentimentoExistente.MedicinaQuanticaDataAssinatura = !string.IsNullOrEmpty(MedicinaQuanticaAssinatura) ? DateTime.Now : null;
+
+                consentimentoExistente.RgpdInformacaoResponsavel = RgpdInformacaoResponsavel;
+                consentimentoExistente.RgpdDireitosAcesso = RgpdDireitosAcesso;
+                consentimentoExistente.RgpdConsentimentoExplicito = RgpdConsentimentoExplicito;
+                consentimentoExistente.RgpdOpcaoNaoMarketing = RgpdOpcaoNaoMarketing;
+                consentimentoExistente.RgpdRevogavel = RgpdRevogavel;
+                consentimentoExistente.RgpdAssinatura = RgpdAssinatura;
+                consentimentoExistente.RgpdDataAssinatura = !string.IsNullOrEmpty(RgpdAssinatura) ? DateTime.Now : null;
+
+                consentimentoExistente.AssinaturaQuestionarioCompleto = AssinaturaQuestionarioCompleto;
+                consentimentoExistente.DataAssinaturaQuestionario = !string.IsNullOrEmpty(AssinaturaQuestionarioCompleto) ? DateTime.Now : null;
+                consentimentoExistente.QuestionarioAssinado = QuestionarioAssinado;
+
+                consentimentoExistente.DataUltimaAtualizacao = DateTime.Now;
+
+                await context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao salvar consentimentos: {ex.Message}", ex);
             }
         }
 
